@@ -1,0 +1,76 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id            String          @id @default(uuid())
+  email         String          @unique
+  username      String          @unique @default(dbgenerated("concat('user_', substr(md5(random()::text), 1, 8))")) //random default username like "user_a1b2c3d4"
+  password      String
+  createdAt     DateTime        @default(now())
+  updatedAt     DateTime        @updatedAt
+  posts         Posts[]
+  reactions     Reactions[]
+  matches       Matches[]       @relation("UserMatches")
+  matchedWith   Matches[]       @relation("MatchUserMatches")
+  userInterests UserInterests[]
+}
+
+model Posts {
+  id        String   @id @default(uuid())
+  title     String
+  content   String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  userId    String
+  user      User     @relation(fields: [userId], references: [id])
+  reactions Reactions[]
+}
+
+model Reactions {
+  id        String   @id @default(uuid())
+  postId    String
+  userId    String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  User      User     @relation(fields: [userId], references: [id])
+  post      Posts    @relation(fields: [postId], references: [id])
+}
+
+model Matches {
+  id          String   @id @default(uuid())
+  userId      String
+  matchUserId String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  User        User     @relation("UserMatches", fields: [userId], references: [id])
+  matchUser   User     @relation("MatchUserMatches", fields: [matchUserId], references: [id])
+}
+
+model Interests {
+  id        String   @id @default(uuid())
+  name      String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model UserInterests {
+  id         String   @id @default(uuid())
+  userId     String
+  interestId String
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+  User       User     @relation(fields: [userId], references: [id])
+}
