@@ -36,9 +36,9 @@
 		{
 			"id": "pointer:pointer",
 			"typeName": "pointer",
-			"x": 255,
-			"y": 846,
-			"lastActivityTimestamp": 1746984590559,
+			"x": -637.5,
+			"y": 149.25198443279908,
+			"lastActivityTimestamp": 1746990919556,
 			"meta": {}
 		},
 		{
@@ -258,6 +258,310 @@
 			"typeName": "shape"
 		},
 		{
+			"x": -801.5,
+			"y": -312.7480155672009,
+			"rotation": 0,
+			"isLocked": false,
+			"opacity": 1,
+			"meta": {},
+			"id": "shape:EDzQuas-m2-NmLyDSjoH6",
+			"type": "text",
+			"props": {
+				"color": "black",
+				"size": "m",
+				"w": 669.46875,
+				"font": "draw",
+				"textAlign": "start",
+				"autoSize": true,
+				"scale": 1,
+				"richText": {
+					"type": "doc",
+					"content": [
+						{
+							"type": "paragraph",
+							"attrs": {
+								"dir": "auto"
+							},
+							"content": [
+								{
+									"type": "text",
+									"text": "API Routes:"
+								}
+							]
+						},
+						{
+							"type": "paragraph",
+							"attrs": {
+								"dir": "auto"
+							}
+						},
+						{
+							"type": "bulletList",
+							"content": [
+								{
+									"type": "listItem",
+									"content": [
+										{
+											"type": "paragraph",
+											"attrs": {
+												"dir": "auto"
+											},
+											"content": [
+												{
+													"type": "text",
+													"text": "GET /api/user/id - get that user"
+												}
+											]
+										}
+									]
+								},
+								{
+									"type": "listItem",
+									"content": [
+										{
+											"type": "paragraph",
+											"attrs": {
+												"dir": "auto"
+											},
+											"content": [
+												{
+													"type": "text",
+													"text": "POST /api/user/id - create new user"
+												}
+											]
+										}
+									]
+								},
+								{
+									"type": "listItem",
+									"content": [
+										{
+											"type": "paragraph",
+											"attrs": {
+												"dir": "auto"
+											},
+											"content": [
+												{
+													"type": "text",
+													"text": "PATCH /api/user/id - update the user"
+												}
+											]
+										}
+									]
+								}
+							]
+						},
+						{
+							"type": "paragraph",
+							"attrs": {
+								"dir": "auto"
+							}
+						},
+						{
+							"type": "bulletList",
+							"content": [
+								{
+									"type": "listItem",
+									"content": [
+										{
+											"type": "paragraph",
+											"attrs": {
+												"dir": "auto"
+											},
+											"content": [
+												{
+													"type": "text",
+													"text": "GET /api/posts/id - get that post"
+												}
+											]
+										}
+									]
+								},
+								{
+									"type": "listItem",
+									"content": [
+										{
+											"type": "paragraph",
+											"attrs": {
+												"dir": "auto"
+											},
+											"content": [
+												{
+													"type": "text",
+													"text": "POST /api/posts/id - create new post"
+												}
+											]
+										}
+									]
+								},
+								{
+									"type": "listItem",
+									"content": [
+										{
+											"type": "paragraph",
+											"attrs": {
+												"dir": "auto"
+											},
+											"content": [
+												{
+													"type": "text",
+													"text": "?PATCH /api/posts/id - update a post "
+												}
+											]
+										}
+									]
+								},
+								{
+									"type": "listItem",
+									"content": [
+										{
+											"type": "paragraph",
+											"attrs": {
+												"dir": "auto"
+											},
+											"content": [
+												{
+													"type": "text",
+													"text": "GET /api/posts - get all posts"
+												}
+											]
+										}
+									]
+								}
+							]
+						},
+						{
+							"type": "paragraph",
+							"attrs": {
+								"dir": "auto"
+							}
+						},
+						{
+							"type": "bulletList",
+							"content": [
+								{
+									"type": "listItem",
+									"content": [
+										{
+											"type": "paragraph",
+											"attrs": {
+												"dir": "auto"
+											},
+											"content": [
+												{
+													"type": "text",
+													"text": "/api/user/id/posts - get all posts by user"
+												}
+											]
+										}
+									]
+								},
+								{
+									"type": "listItem",
+									"content": [
+										{
+											"type": "paragraph",
+											"attrs": {
+												"dir": "auto"
+											},
+											"content": [
+												{
+													"type": "text",
+													"text": "/api/user/id/comments - get all comments by user"
+												}
+											]
+										}
+									]
+								}
+							]
+						},
+						{
+							"type": "paragraph",
+							"attrs": {
+								"dir": "auto"
+							}
+						},
+						{
+							"type": "bulletList",
+							"content": [
+								{
+									"type": "listItem",
+									"content": [
+										{
+											"type": "paragraph",
+											"attrs": {
+												"dir": "auto"
+											},
+											"content": [
+												{
+													"type": "text",
+													"text": "GET /api/matches/id - get that match"
+												}
+											]
+										}
+									]
+								},
+								{
+									"type": "listItem",
+									"content": [
+										{
+											"type": "paragraph",
+											"attrs": {
+												"dir": "auto"
+											},
+											"content": [
+												{
+													"type": "text",
+													"text": "POST /api/matches - create a new match"
+												}
+											]
+										}
+									]
+								},
+								{
+									"type": "listItem",
+									"content": [
+										{
+											"type": "paragraph",
+											"attrs": {
+												"dir": "auto"
+											},
+											"content": [
+												{
+													"type": "text",
+													"text": "PATCH /api/matches/id - update a match"
+												}
+											]
+										}
+									]
+								},
+								{
+									"type": "listItem",
+									"content": [
+										{
+											"type": "paragraph",
+											"attrs": {
+												"dir": "auto"
+											},
+											"content": [
+												{
+													"type": "text",
+													"text": "GET /api/matches - get all matches"
+												}
+											]
+										}
+									]
+								}
+							]
+						}
+					]
+				}
+			},
+			"parentId": "page:page",
+			"index": "aE7dg",
+			"typeName": "shape"
+		},
+		{
 			"x": 955,
 			"y": 642,
 			"rotation": 0,
@@ -327,8 +631,8 @@
 			"typeName": "shape"
 		},
 		{
-			"x": 270,
-			"y": -298,
+			"x": 1161.5,
+			"y": 513.7480155672009,
 			"z": 1,
 			"meta": {},
 			"id": "camera:page:page",
@@ -372,12 +676,12 @@
 			"typeName": "shape"
 		},
 		{
-			"editingShapeId": "shape:Y_Snt1GyQDiff72D8w2zD",
+			"editingShapeId": "shape:EDzQuas-m2-NmLyDSjoH6",
 			"croppingShapeId": null,
 			"selectedShapeIds": [
-				"shape:Y_Snt1GyQDiff72D8w2zD"
+				"shape:EDzQuas-m2-NmLyDSjoH6"
 			],
-			"hoveredShapeId": "shape:Y_Snt1GyQDiff72D8w2zD",
+			"hoveredShapeId": "shape:EDzQuas-m2-NmLyDSjoH6",
 			"erasingShapeIds": [],
 			"hintingShapeIds": [],
 			"focusedGroupId": null,
@@ -746,7 +1050,7 @@
 			"props": {
 				"color": "black",
 				"size": "m",
-				"w": 326.9375,
+				"w": 326.65625,
 				"font": "draw",
 				"textAlign": "start",
 				"autoSize": true,
@@ -780,6 +1084,11 @@
 											"content": [
 												{
 													"type": "text",
+													"marks": [
+														{
+															"type": "italic"
+														}
+													],
 													"text": "decide upon database"
 												}
 											]
@@ -797,6 +1106,11 @@
 											"content": [
 												{
 													"type": "text",
+													"marks": [
+														{
+															"type": "italic"
+														}
+													],
 													"text": "setup nextauth"
 												}
 											]
@@ -919,9 +1233,7 @@
 		{
 			"followingUserId": null,
 			"opacityForNextShape": 1,
-			"stylesForNextShape": {
-				"tldraw:geo": "rectangle"
-			},
+			"stylesForNextShape": {},
 			"brush": null,
 			"scribbles": [],
 			"cursor": {
@@ -935,7 +1247,7 @@
 			"screenBounds": {
 				"x": 0,
 				"y": 0,
-				"w": 1664,
+				"w": 1239,
 				"h": 939
 			},
 			"insets": [
