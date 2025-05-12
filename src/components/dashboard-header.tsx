@@ -15,6 +15,7 @@ import { Bell, Menu, Search } from "lucide-react"
 import Link from "next/link"
 import { useState } from "react"
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
+import LogOutButton from "./signup/logOutButton"
 
 export default function DashboardHeader() {
   const [isSearchOpen, setIsSearchOpen] = useState(false)
@@ -142,7 +143,7 @@ export default function DashboardHeader() {
               </DropdownMenuItem>
               <DropdownMenuSeparator className="bg-pink-500/10" />
               <DropdownMenuItem asChild>
-                <Link href="/api/auth/logout">Log out</Link>
+                <LogOutButton />
               </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
