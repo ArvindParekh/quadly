@@ -2,15 +2,14 @@
 import { z } from "zod";
 import { prisma } from "../prisma";
 import { createUserSchema } from "../zod/user";
-import { UserSchema } from "../zod/user";
 import { updateUserSchema } from "../zod/user";
 
 // infer type
-type User = z.infer<typeof UserSchema>;
+// type User = z.infer<typeof UserSchema>;
 type CreateUser = z.infer<typeof createUserSchema>;
 type UpdateUser = z.infer<typeof updateUserSchema>;
 
-export const getUser = async (id: string): Promise<User> => {
+export const getUser = async (id: string) => {
     const user = await prisma.user.findUnique({
         where: {
             id: id,
@@ -21,7 +20,7 @@ export const getUser = async (id: string): Promise<User> => {
         throw new Error("User not found");
     }
 
-    return UserSchema.parse(user);
+    return user;
 }
 
 export const createUser = async (data: CreateUser): Promise<string> => {

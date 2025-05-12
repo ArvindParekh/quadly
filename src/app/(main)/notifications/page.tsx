@@ -5,14 +5,12 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Badge } from "@/components/ui/badge"
 import { Bell, Calendar, Heart, MessageSquare, Sparkles, User, Users } from "lucide-react"
-import DashboardHeader from "@/components/dashboard-header"
 import { ScrollArea } from "@/components/ui/scroll-area"
 import { Separator } from "@/components/ui/separator"
 
 export default function NotificationsPage() {
   return (
     <div className="min-h-screen bg-background">
-      <DashboardHeader />
 
       <main className="container py-6 mx-auto">
         <div className="flex items-center justify-between mb-6">

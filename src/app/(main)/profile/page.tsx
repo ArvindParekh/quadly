@@ -5,12 +5,10 @@ import { Textarea } from "@/components/ui/textarea"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Badge } from "@/components/ui/badge"
 import { BookOpen, Camera, Plus, Save, Sparkles, X } from "lucide-react"
-import DashboardHeader from "@/components/dashboard-header"
 
 export default function ProfilePage() {
   return (
     <div className="min-h-screen bg-background">
-      <DashboardHeader />
 
       <main className="container py-6 mx-auto">
         <div className="max-w-3xl mx-auto space-y-6">

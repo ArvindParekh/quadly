@@ -4,7 +4,7 @@ import { Inter as FontSans, Inter } from "next/font/google"
 import { Space_Grotesk as FontSansSpaceGrotesque } from "next/font/google"
 import "./globals.css"
 import { cn } from "@/lib/utils"
-import { ThemeProvider } from "@/components/theme-provider"
+import Providers from "./providers"
 
 const fontSans = FontSans({
   subsets: ["latin"],
@@ -34,9 +34,9 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={cn("min-h-screen bg-background font-sans antialiased", fontSpaceGrotesk.className)}>
-        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem disableTransitionOnChange>
+        <Providers>
           {children}
-        </ThemeProvider>
+        </Providers>
       </body>
     </html>
   )

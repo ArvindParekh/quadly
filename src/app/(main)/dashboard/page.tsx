@@ -5,15 +5,26 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Badge } from "@/components/ui/badge"
 import { BookOpen, Coffee, MessageSquare, Plus, User } from "lucide-react"
 import Link from "next/link"
-import DashboardHeader from "@/components/dashboard-header"
+import { redirect } from "next/navigation"
 import InterestPost from "@/components/interest-post"
 import MatchSuggestion from "@/components/match-suggestion"
 import CreatePostButton from "@/components/create-post-button"
+import { getServerSession } from "next-auth"
+import { authOptions } from "@/lib/auth"
+import { getUser } from "@/lib/data/user"
 
-export default function DashboardPage() {
+export default async function DashboardPage() {
+
+  const session = await getServerSession(authOptions);
+  console.log("session", session);
+  if (!session) {
+    redirect("/login");
+  }
+
+  const user = await getUser(session.user?.id);
+
   return (
     <div className="min-h-screen bg-background">
-      <DashboardHeader />
 
       <main className="container py-6 mx-auto">
         <div className="grid gap-6 md:grid-cols-[1fr_300px]">
@@ -246,7 +257,7 @@ export default function DashboardPage() {
                     <span className="absolute bottom-0 right-0 h-5 w-5 rounded-full bg-green-500 border-2 border-background"></span>
                   </div>
                   <div className="text-center">
-                    <h3 className="text-lg font-medium">Your Name</h3>
+                    <h3 className="text-lg font-medium">{user?.username}</h3>
                     <p className="text-sm text-muted-foreground">Computer Science, Year 2</p>
                   </div>
                 </div>

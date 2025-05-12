@@ -8,12 +8,10 @@ import { Switch } from "@/components/ui/switch"
 import { Slider } from "@/components/ui/slider"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Bell, Key, Lock, Save, Shield, User } from "lucide-react"
-import DashboardHeader from "@/components/dashboard-header"
 
 export default function SettingsPage() {
   return (
     <div className="min-h-screen bg-background">
-      <DashboardHeader />
 
       <main className="container py-6 mx-auto">
         <div className="flex items-center justify-between mb-6">

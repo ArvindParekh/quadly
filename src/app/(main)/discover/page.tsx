@@ -5,13 +5,11 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Badge } from "@/components/ui/badge"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { BookOpen, Coffee, Flame, Globe, Lightbulb, MessageSquare, Plus, Sparkles, Zap } from "lucide-react"
-import DashboardHeader from "@/components/dashboard-header"
 import { Input } from "@/components/ui/input"
 
 export default function DiscoverPage() {
   return (
     <div className="min-h-screen bg-background">
-      <DashboardHeader />
 
       <main className="container py-6 mx-auto">
         <div className="flex items-center justify-between mb-6">

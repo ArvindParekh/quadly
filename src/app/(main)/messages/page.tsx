@@ -5,14 +5,12 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { EmojiPicker } from "@/components/emoji-picker"
 import { ImagePlus, Paperclip, Send, Sparkles } from "lucide-react"
-import DashboardHeader from "@/components/dashboard-header"
 import { ScrollArea } from "@/components/ui/scroll-area"
 import { Separator } from "@/components/ui/separator"
 
 export default function MessagesPage() {
   return (
     <div className="min-h-screen bg-background">
-      <DashboardHeader />
 
       <main className="container py-6 mx-auto">
         <div className="flex items-center justify-between mb-6">

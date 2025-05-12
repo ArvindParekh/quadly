@@ -5,7 +5,6 @@ import Facebook from "next-auth/providers/facebook";
 import { prisma } from "@/lib/prisma";
 import { JWT } from "next-auth/jwt";
 import { createUserSchema } from "./zod/user";
-import { z } from "zod";
 import { compare , hash} from "bcrypt";
 
 
@@ -135,12 +134,14 @@ export const authOptions = {
          if (session.user) {
             // @ts-ignore
             session.user.id = token.sub;
+            session.user.name = token.name;
          }
          return session;
       },
       async jwt({ token, user }) {
          if (user) {
             token.id = user.id;
+            token.name = user.name;
          }
          return token;
       },
@@ -168,7 +169,27 @@ export const authOptions = {
          return true;
       },
       async redirect({ url, baseUrl }) {
-         return "/dashboard";
+         console.log("Redirect URL:", url);
+         console.log("Base URL:", baseUrl);
+         
+         // For sign-out, respect the callbackUrl parameter
+         if (url.includes('signout')) {
+            const callbackUrl = new URL(url).searchParams.get('callbackUrl');
+            return callbackUrl || baseUrl;
+         }
+         
+         // After successful login, always redirect to dashboard
+         // This handles the login callback URLs like:
+         // http://localhost:3000/login?callbackUrl=http%3A%2F%2Flocalhost%3A3000%2F
+         if (url.includes('/login') || url.includes('/api/auth/callback')) {
+            return `${baseUrl}/dashboard`;
+         }
+         
+         // Standard NextAuth redirect logic for other cases
+         if (url.startsWith('/')) return `${baseUrl}${url}`;
+         if (new URL(url).origin === baseUrl) return url;
+         
+         return baseUrl;
       },
    },
    pages: {

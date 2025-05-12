@@ -1,12 +1,20 @@
+"use client"
+
 import FacebookSignupButton from "@/components/signup/facebookButton";
 import GoogleSignupButton from "@/components/signup/googleButton";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { ArrowLeft, Sparkles } from "lucide-react";
+import { signIn } from "next-auth/react";
 import Link from "next/link";
+import { useState } from "react";
 
 export default function LoginPage() {
+
+   const [email, setEmail] = useState("");
+   const [password, setPassword] = useState("");
+
    return (
       <div className='min-h-screen flex flex-col bg-gradient-to-b from-background via-background to-pink-500/5'>
          <div className='container flex h-16 items-center mx-auto'>
@@ -41,6 +49,8 @@ export default function LoginPage() {
                      <Input
                         id='email'
                         type='email'
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
                         placeholder='you@university.edu'
                         className='border-pink-500/20 focus-visible:ring-pink-500'
                      />
@@ -58,10 +68,18 @@ export default function LoginPage() {
                      <Input
                         id='password'
                         type='password'
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
                         className='border-pink-500/20 focus-visible:ring-pink-500'
                      />
                   </div>
-                  <Button className='w-full bg-gradient-to-r from-pink-500 to-yellow-400 text-black hover:opacity-90'>
+                  <Button onClick={async () => {
+                     await signIn("credentials", {
+                        email,
+                        password,
+                        redirect: true,
+                     })
+                  }} className='w-full bg-gradient-to-r from-pink-500 to-yellow-400 text-black hover:opacity-90'>
                      <Sparkles className='mr-2 h-4 w-4' />
                      Sign in
                   </Button>

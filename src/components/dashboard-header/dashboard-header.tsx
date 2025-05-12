@@ -1,7 +1,4 @@
-"use client"
-
 import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -13,12 +10,14 @@ import {
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Bell, Menu, Search } from "lucide-react"
 import Link from "next/link"
-import { useState } from "react"
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
-import LogOutButton from "./signup/logOutButton"
+import LogOutButton from "../signup/logOutButton"
+import SearchComponent from "./searchComponent"
+import DropdownMenuComponent from "./dropdownMenu"
+import { User } from "@/generated/prisma"
+// export the search logic to another component
 
-export default function DashboardHeader() {
-  const [isSearchOpen, setIsSearchOpen] = useState(false)
+export default function DashboardHeader({ user }: { user: User }) {
 
   return (
     <header className="sticky top-0 z-50 w-full backdrop-blur supports-[backdrop-filter]:bg-background/60">
@@ -90,23 +89,7 @@ export default function DashboardHeader() {
         </div>
 
         <div className="flex items-center gap-4">
-          {isSearchOpen ? (
-            <div className="relative w-full max-w-sm">
-              <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
-              <Input
-                type="search"
-                placeholder="Search interests, people..."
-                className="w-full rounded-full bg-background pl-8 border-pink-500/20 focus-visible:ring-pink-500"
-                autoFocus
-                onBlur={() => setIsSearchOpen(false)}
-              />
-            </div>
-          ) : (
-            <Button variant="ghost" size="icon" onClick={() => setIsSearchOpen(true)} className="hidden md:flex">
-              <Search className="h-5 w-5" />
-              <span className="sr-only">Search</span>
-            </Button>
-          )}
+          <SearchComponent />
 
           <Link href="/notifications" className="relative">
             <Button variant="ghost" size="icon">
@@ -116,37 +99,7 @@ export default function DashboardHeader() {
             </Button>
           </Link>
 
-          <DropdownMenu>
-            <DropdownMenuTrigger asChild>
-              <Button variant="ghost" className="relative h-8 w-8 rounded-full">
-                <Avatar className="h-8 w-8 border border-pink-500/20">
-                  <AvatarImage src="/placeholder.svg?height=32&width=32" alt="Profile" />
-                  <AvatarFallback className="bg-gradient-to-br from-pink-500 to-yellow-400 text-black">
-                    YP
-                  </AvatarFallback>
-                </Avatar>
-              </Button>
-            </DropdownMenuTrigger>
-            <DropdownMenuContent className="w-56 border-pink-500/20" align="end" forceMount>
-              <DropdownMenuLabel className="font-normal">
-                <div className="flex flex-col space-y-1">
-                  <p className="text-sm font-medium leading-none">Your Name</p>
-                  <p className="text-xs leading-none text-muted-foreground">your.email@university.edu</p>
-                </div>
-              </DropdownMenuLabel>
-              <DropdownMenuSeparator className="bg-pink-500/10" />
-              <DropdownMenuItem asChild>
-                <Link href="/profile">Profile</Link>
-              </DropdownMenuItem>
-              <DropdownMenuItem asChild>
-                <Link href="/settings">Settings</Link>
-              </DropdownMenuItem>
-              <DropdownMenuSeparator className="bg-pink-500/10" />
-              <DropdownMenuItem asChild>
-                <LogOutButton />
-              </DropdownMenuItem>
-            </DropdownMenuContent>
-          </DropdownMenu>
+          <DropdownMenuComponent name={user.username} email={user.email} />
         </div>
       </div>
     </header>

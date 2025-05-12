@@ -1,11 +1,22 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import DashboardHeader from "@/components/dashboard-header"
+import DashboardHeader from "@/components/dashboard-header/dashboard-header"
 import MatchAlgorithmDemo from "@/components/match-algorithm-demo"
+import { getServerSession } from "next-auth";
+import { authOptions } from "@/lib/auth";
+import { redirect } from "next/navigation";
+import { getUser } from "@/lib/data/user";
+export default async function MatchesPage() {
 
-export default function MatchesPage() {
+  const session = await getServerSession(authOptions);
+
+  const user = await getUser(session?.user?.id);
+
+  if (!session) {
+    redirect("/login");
+  }
+
   return (
     <div className="min-h-screen bg-background">
-      <DashboardHeader />
 
       <main className="container py-6 mx-auto">
         <div className="max-w-4xl mx-auto space-y-6">
