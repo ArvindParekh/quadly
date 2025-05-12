@@ -107,11 +107,13 @@ export default function DashboardHeader() {
             </Button>
           )}
 
-          <Button variant="ghost" size="icon" className="relative">
-            <Bell className="h-5 w-5" />
-            <span className="sr-only">Notifications</span>
-            <span className="absolute right-1 top-1 h-2 w-2 rounded-full bg-pink-500"></span>
-          </Button>
+          <Link href="/notifications" className="relative">
+            <Button variant="ghost" size="icon">
+              <Bell className="h-5 w-5" />
+              <span className="sr-only">Notifications</span>
+              <span className="absolute right-1 top-1 h-2 w-2 rounded-full bg-pink-500"></span>
+            </Button>
+          </Link>
 
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
