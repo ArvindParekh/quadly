@@ -1,32 +1,10 @@
 // define resusable post data that can be used in server components and server actions
 import { z } from "zod";
 import { prisma } from "../prisma";
+import { PostSchema, createPostSchema, updatePostSchema } from "../zod/posts";
 
-const PostSchema = z.object({
-    id: z.string().uuid(),
-    title: z.string(),
-    content: z.string(),
-    createdAt: z.date(),
-    updatedAt: z.date(),
-    userId: z.string().uuid(),
-    reactions: z.array(z.any()),
-})
-
-const createPostSchema = PostSchema.omit({
-    id: true,
-    createdAt: true,
-    updatedAt: true,
-    reactions: true,
-})
-
-const updatePostSchema = PostSchema.partial().omit({
-    id: true,
-    createdAt: true,
-    updatedAt: true,
-    reactions: true,
-    userId: true,
-})
-
+    
+// infer type
 type Post = z.infer<typeof PostSchema>;
 type CreatePost = z.infer<typeof createPostSchema>;
 type UpdatePost = z.infer<typeof updatePostSchema>;

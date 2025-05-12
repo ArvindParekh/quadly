@@ -2,27 +2,10 @@
 
 import { z } from "zod";
 import { prisma } from "../prisma";
+import { createMatchSchema, updateMatchSchema } from "../zod/matches";
+import { MatchSchema } from "../zod/matches";
 
-const MatchSchema = z.object({
-    id: z.string().uuid(),
-    userId: z.string().uuid(),
-    matchUserId: z.string().uuid(),
-    createdAt: z.date(),
-    updatedAt: z.date(),
-})
-
-const createMatchSchema = MatchSchema.omit({
-    id: true,
-    createdAt: true,
-    updatedAt: true,
-})
-
-const updateMatchSchema = MatchSchema.partial().omit({
-    id: true,
-    createdAt: true,
-    updatedAt: true,
-})
-
+// infer type
 type Match = z.infer<typeof MatchSchema>;
 type CreateMatch = z.infer<typeof createMatchSchema>;
 type UpdateMatch = z.infer<typeof updateMatchSchema>;
