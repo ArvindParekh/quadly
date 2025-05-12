@@ -92,7 +92,34 @@ const handler = NextAuth({
                 token.id = user.id;
             }
             return token;
+        },
+        async signIn({ user, account, profile }) {
+            if (account?.provider === "facebook" || account?.provider === "google") {
+                // check if the user is already in the database
+                const existingUser = await prisma.user.findUnique({
+                    where: {
+                        email: profile?.email as string
+                    }
+                });
+
+                if (!existingUser) {
+                    await prisma.user.create({
+                        data: {
+                            email: profile?.email as string,
+                            password: "",
+                        }
+                    })
+                }
+            }
+            return true;
+        },
+        async redirect({ url, baseUrl }) {
+            return "/dashboard";
         }
+
+    },
+    pages: {
+        signIn: "/login",
     }
 })
 

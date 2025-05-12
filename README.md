@@ -1,5 +1,5 @@
 ## About the project:
-- Social Garden
+- Quadly
 	- Problem: “It’s hard to make friends in grad school.”
 	- A private, university-only site where students post:
 		- What they’re reading, watching, working on
@@ -14,7 +14,7 @@
 		Think: Subtle matchmaking for friendships.
 
 
-# Social Garden MVP Context
+# Quadly MVP Context
 
 **Problem**: It’s hard to make friends in grad school.
 

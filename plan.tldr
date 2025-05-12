@@ -36,9 +36,9 @@
 		{
 			"id": "pointer:pointer",
 			"typeName": "pointer",
-			"x": -637.5,
-			"y": 149.25198443279908,
-			"lastActivityTimestamp": 1746990919556,
+			"x": 706.530654131356,
+			"y": -107.77032574152531,
+			"lastActivityTimestamp": 1747073626562,
 			"meta": {}
 		},
 		{
@@ -631,8 +631,8 @@
 			"typeName": "shape"
 		},
 		{
-			"x": 1161.5,
-			"y": 513.7480155672009,
+			"x": 55.4693458686441,
+			"y": 529.7703257415253,
 			"z": 1,
 			"meta": {},
 			"id": "camera:page:page",
@@ -676,12 +676,12 @@
 			"typeName": "shape"
 		},
 		{
-			"editingShapeId": "shape:EDzQuas-m2-NmLyDSjoH6",
+			"editingShapeId": "shape:s8Zv8XATbIWxk1XAJ8X9J",
 			"croppingShapeId": null,
 			"selectedShapeIds": [
-				"shape:EDzQuas-m2-NmLyDSjoH6"
+				"shape:s8Zv8XATbIWxk1XAJ8X9J"
 			],
-			"hoveredShapeId": "shape:EDzQuas-m2-NmLyDSjoH6",
+			"hoveredShapeId": "shape:s8Zv8XATbIWxk1XAJ8X9J",
 			"erasingShapeIds": [],
 			"hintingShapeIds": [],
 			"focusedGroupId": null,
@@ -1050,7 +1050,7 @@
 			"props": {
 				"color": "black",
 				"size": "m",
-				"w": 326.65625,
+				"w": 418.625,
 				"font": "draw",
 				"textAlign": "start",
 				"autoSize": true,
@@ -1128,6 +1128,11 @@
 											"content": [
 												{
 													"type": "text",
+													"marks": [
+														{
+															"type": "italic"
+														}
+													],
 													"text": "setup api routes"
 												}
 											]
@@ -1145,6 +1150,11 @@
 											"content": [
 												{
 													"type": "text",
+													"marks": [
+														{
+															"type": "italic"
+														}
+													],
 													"text": "build route logic"
 												}
 											]
@@ -1162,7 +1172,29 @@
 											"content": [
 												{
 													"type": "text",
+													"marks": [
+														{
+															"type": "italic"
+														}
+													],
 													"text": "build frontend"
+												}
+											]
+										}
+									]
+								},
+								{
+									"type": "listItem",
+									"content": [
+										{
+											"type": "paragraph",
+											"attrs": {
+												"dir": "auto"
+											},
+											"content": [
+												{
+													"type": "text",
+													"text": "patch frontend with backend"
 												}
 											]
 										}
@@ -1248,7 +1280,7 @@
 				"x": 0,
 				"y": 0,
 				"w": 1239,
-				"h": 939
+				"h": 600
 			},
 			"insets": [
 				false,

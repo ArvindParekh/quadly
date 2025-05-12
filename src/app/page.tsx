@@ -1,6 +1,7 @@
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { ArrowRight, BookOpen, Coffee, Sparkles, Users } from "lucide-react"
+import LoginButton from "@/components/signup/loginButton"
 
 export default function LandingPage() {
   return (
@@ -13,7 +14,7 @@ export default function LandingPage() {
               <div className="absolute inset-[2px] rounded-full bg-background" />
               <div className="absolute inset-[4px] rounded-full bg-gradient-to-br from-pink-500 to-yellow-400 opacity-50" />
             </div>
-            <span className="text-xl font-bold tracking-tight">Social Garden</span>
+            <span className="text-xl font-bold tracking-tight">Quadly</span>
           </div>
           <nav className="hidden md:flex items-center gap-6">
             <Link
@@ -28,19 +29,10 @@ export default function LandingPage() {
             >
               How It Works
             </Link>
-            <Link
-              href="/login"
-              className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
-            >
-              Login
-            </Link>
+
           </nav>
           <div className="flex items-center gap-2">
-            <Link href="/login">
-              <Button variant="ghost" size="sm">
-                Log in
-              </Button>
-            </Link>
+            <LoginButton variant="outline" size="sm" />
             <Link href="/signup">
               <Button size="sm" className="bg-gradient-to-r from-pink-500 to-yellow-400 text-black hover:opacity-90">
                 Sign up
@@ -91,7 +83,7 @@ export default function LandingPage() {
               <div className="absolute inset-0 bg-gradient-to-tr from-pink-500/10 to-yellow-400/10" />
               <img
                 src="/placeholder.svg?height=800&width=1200"
-                alt="Social Garden Dashboard Preview"
+                alt="Quadly Dashboard Preview"
                 className="w-full h-auto"
               />
             </div>
@@ -107,7 +99,7 @@ export default function LandingPage() {
               Find your people, no awkwardness required
             </h2>
             <p className="max-w-[85%] leading-normal text-muted-foreground sm:text-lg sm:leading-7">
-              Social Garden makes it easy to find and connect with people who share your interests.
+              Quadly makes it easy to find and connect with people who share your interests.
             </p>
           </div>
           <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
@@ -205,7 +197,7 @@ export default function LandingPage() {
               <div className="absolute inset-0 bg-gradient-to-tr from-pink-500/10 to-yellow-400/10" />
               <img
                 src="/placeholder.svg?height=600&width=800"
-                alt="How Social Garden works"
+                alt="How Quadly works"
                 className="w-full h-auto"
               />
             </div>
@@ -223,7 +215,7 @@ export default function LandingPage() {
                 Your social circle is waiting
               </h2>
               <p className="max-w-[85%] leading-normal text-muted-foreground sm:text-lg sm:leading-7">
-                Join Social Garden today and connect with fellow students who share your interests.
+                Join Quadly today and connect with fellow students who share your interests.
               </p>
               <div className="flex flex-wrap items-center justify-center gap-4 mt-6">
                 <Link href="/signup">
@@ -326,7 +318,7 @@ export default function LandingPage() {
           </div>
           <div className="mt-10 flex flex-col items-center justify-between gap-4 border-t border-pink-500/10 pt-6 md:flex-row">
             <p className="text-center text-sm text-muted-foreground md:text-left">
-              &copy; {new Date().getFullYear()} Social Garden. All rights reserved.
+              &copy; {new Date().getFullYear()} Quadly. All rights reserved.
             </p>
             <div className="flex items-center gap-4">
               <Link href="#" className="text-muted-foreground hover:text-foreground">

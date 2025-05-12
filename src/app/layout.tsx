@@ -1,6 +1,7 @@
 import type React from "react"
 import type { Metadata } from "next"
-import { Mona_Sans as FontSans } from "next/font/google"
+import { Inter as FontSans, Inter } from "next/font/google"
+import { Space_Grotesk as FontSansSpaceGrotesque } from "next/font/google"
 import "./globals.css"
 import { cn } from "@/lib/utils"
 import { ThemeProvider } from "@/components/theme-provider"
@@ -10,8 +11,18 @@ const fontSans = FontSans({
   variable: "--font-sans",
 })
 
+const fontInter = Inter({
+  subsets: ["latin"],
+  variable: "--font-inter",
+})
+
+const fontSpaceGrotesk = FontSansSpaceGrotesque({
+  subsets: ["latin"],
+  variable: "--font-space-grotesk",
+})
+
 export const metadata: Metadata = {
-  title: "Social Garden",
+  title: "Quadly",
   description: "Connect with fellow students through shared interests",
 }
 
@@ -22,7 +33,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={cn("min-h-screen bg-background font-sans antialiased", fontSans.variable)}>
+      <body className={cn("min-h-screen bg-background font-sans antialiased", fontSpaceGrotesk.className)}>
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem disableTransitionOnChange>
           {children}
         </ThemeProvider>

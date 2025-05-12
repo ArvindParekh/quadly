@@ -236,7 +236,7 @@ function ChatMessages() {
     {
       id: "1",
       sender: "Taylor Kim",
-      content: "Hey! I saw we matched on Social Garden. I'm also interested in distributed systems!",
+      content: "Hey! I saw we matched on Quadly. I'm also interested in distributed systems!",
       time: "10:30 AM",
       isMine: false,
     },

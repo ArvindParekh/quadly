@@ -57,7 +57,7 @@ export default function DashboardHeader() {
               <div className="absolute inset-[2px] rounded-full bg-background" />
               <div className="absolute inset-[4px] rounded-full bg-gradient-to-br from-pink-500 to-yellow-400 opacity-50" />
             </div>
-            <span className="text-xl font-bold tracking-tight hidden md:inline-block">Social Garden</span>
+            <span className="text-xl font-bold tracking-tight hidden md:inline-block">Quadly</span>
           </Link>
 
           <nav className="hidden md:flex items-center gap-6 ml-6">

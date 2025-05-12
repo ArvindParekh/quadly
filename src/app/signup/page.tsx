@@ -4,6 +4,7 @@ import { Label } from "@/components/ui/label"
 import { ArrowLeft, Sparkles } from "lucide-react"
 import Link from "next/link"
 import { Checkbox } from "@/components/ui/checkbox"
+import LoginButton from "@/components/signup/loginButton"
 
 export default function SignupPage() {
   return (
@@ -130,9 +131,7 @@ export default function SignupPage() {
           <div className="text-center text-sm">
             <p className="text-muted-foreground">
               Already have an account?{" "}
-              <Link href="/login" className="text-pink-500 hover:underline">
-                Sign in
-              </Link>
+              <LoginButton variant="ghost" size="sm" className="text-pink-500 hover:text-pink-500 hover:underline hover:bg-transparent hover:cursor-pointer" />
             </p>
           </div>
         </div>

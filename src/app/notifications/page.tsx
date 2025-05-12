@@ -139,7 +139,7 @@ const allNotifications: Notification[] = [
     id: "2",
     type: "message",
     title: "New Message",
-    description: "Taylor Kim sent you a message: 'Hey! I saw we matched on Social Garden...'",
+    description: "Taylor Kim sent you a message: 'Hey! I saw we matched on Quadly...'",
     time: "10 minutes ago",
     read: false,
     user: {
@@ -195,7 +195,7 @@ const allNotifications: Notification[] = [
     id: "6",
     type: "system",
     title: "Profile Verified",
-    description: "Your university email has been verified. You now have full access to Social Garden!",
+    description: "Your university email has been verified. You now have full access to Quadly!",
     time: "1 day ago",
     read: true,
     action: {
@@ -246,7 +246,7 @@ const allNotifications: Notification[] = [
   {
     id: "10",
     type: "system",
-    title: "Welcome to Social Garden!",
+    title: "Welcome to Quadly!",
     description: "Complete your profile to start connecting with fellow students.",
     time: "1 week ago",
     read: true,

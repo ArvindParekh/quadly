@@ -17,7 +17,7 @@ export default function AboutPage() {
               <div className="absolute inset-[2px] rounded-full bg-background" />
               <div className="absolute inset-[4px] rounded-full bg-gradient-to-br from-pink-500 to-yellow-400 opacity-50" />
             </div>
-            <span className="text-xl font-bold tracking-tight">Social Garden</span>
+            <span className="text-xl font-bold tracking-tight">Quadly</span>
           </div>
           <nav className="hidden md:flex items-center gap-6">
             <Link
@@ -57,7 +57,7 @@ export default function AboutPage() {
             <h1 className="text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl">
               About{" "}
               <span className="bg-clip-text text-transparent bg-gradient-to-r from-pink-500 to-yellow-400">
-                Social Garden
+                Quadly
               </span>
             </h1>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
@@ -69,7 +69,7 @@ export default function AboutPage() {
             <div className="space-y-4">
               <h2 className="text-3xl font-bold">Our Mission</h2>
               <p className="text-muted-foreground">
-                Social Garden was created to solve a common problem: making meaningful connections in university can be
+                Quadly was created to solve a common problem: making meaningful connections in university can be
                 hard, especially for grad students and those who don't fit into the typical social scene.
               </p>
               <p className="text-muted-foreground">
@@ -160,16 +160,16 @@ export default function AboutPage() {
               <TabsContent value="general">
                 <Accordion type="single" collapsible className="w-full">
                   <AccordionItem value="item-1" className="border-pink-500/10">
-                    <AccordionTrigger className="hover:text-pink-500">Who can use Social Garden?</AccordionTrigger>
+                    <AccordionTrigger className="hover:text-pink-500">Who can use Quadly?</AccordionTrigger>
                     <AccordionContent className="text-muted-foreground">
-                      Social Garden is exclusively for university students. You'll need a valid university email address
+                      Quadly is exclusively for university students. You'll need a valid university email address
                       to sign up and verify your account.
                     </AccordionContent>
                   </AccordionItem>
                   <AccordionItem value="item-2" className="border-pink-500/10">
-                    <AccordionTrigger className="hover:text-pink-500">Is Social Garden free to use?</AccordionTrigger>
+                    <AccordionTrigger className="hover:text-pink-500">Is Quadly free to use?</AccordionTrigger>
                     <AccordionContent className="text-muted-foreground">
-                      Yes! Social Garden is completely free for all university students. We believe in making meaningful
+                      Yes! Quadly is completely free for all university students. We believe in making meaningful
                       connections accessible to everyone.
                     </AccordionContent>
                   </AccordionItem>
@@ -184,7 +184,7 @@ export default function AboutPage() {
                   </AccordionItem>
                   <AccordionItem value="item-4" className="border-pink-500/10">
                     <AccordionTrigger className="hover:text-pink-500">
-                      Can I organize events on Social Garden?
+                      Can I organize events on Quadly?
                     </AccordionTrigger>
                     <AccordionContent className="text-muted-foreground">
                       You can create study groups, coffee chats, or interest-based meetups and invite other students to
@@ -218,7 +218,7 @@ export default function AboutPage() {
                       What happens to my account after I graduate?
                     </AccordionTrigger>
                     <AccordionContent className="text-muted-foreground">
-                      You can continue using Social Garden for up to 6 months after graduation to maintain your
+                      You can continue using Quadly for up to 6 months after graduation to maintain your
                       connections. After that, you'll be transitioned to our alumni network.
                     </AccordionContent>
                   </AccordionItem>
@@ -244,7 +244,7 @@ export default function AboutPage() {
                   <AccordionItem value="item-2" className="border-pink-500/10">
                     <AccordionTrigger className="hover:text-blue-500">How is my data used?</AccordionTrigger>
                     <AccordionContent className="text-muted-foreground">
-                      We only use your data to provide and improve the Social Garden service. We never sell your
+                      We only use your data to provide and improve the Quadly service. We never sell your
                       personal information to third parties.
                     </AccordionContent>
                   </AccordionItem>
@@ -276,7 +276,7 @@ export default function AboutPage() {
           <div className="text-center space-y-6">
             <h2 className="text-3xl font-bold">Ready to grow your social circle?</h2>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Join thousands of students already connecting on Social Garden.
+              Join thousands of students already connecting on Quadly.
             </p>
             <div className="flex flex-wrap items-center justify-center gap-4 pt-4">
               <Link href="/signup">
@@ -306,10 +306,10 @@ export default function AboutPage() {
                 <div className="absolute inset-[2px] rounded-full bg-background" />
                 <div className="absolute inset-[4px] rounded-full bg-gradient-to-br from-pink-500 to-yellow-400 opacity-50" />
               </div>
-              <span className="text-xl font-bold tracking-tight">Social Garden</span>
+              <span className="text-xl font-bold tracking-tight">Quadly</span>
             </div>
             <p className="text-center text-sm text-muted-foreground md:text-left">
-              &copy; {new Date().getFullYear()} Social Garden. All rights reserved.
+              &copy; {new Date().getFullYear()} Quadly. All rights reserved.
             </p>
             <div className="flex items-center gap-4">
               <Link href="/terms" className="text-sm text-muted-foreground hover:text-foreground">
