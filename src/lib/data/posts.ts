@@ -30,6 +30,21 @@ export const getAllPosts = async (): Promise<Post[]> => {
     const posts = await prisma.posts.findMany({
         include: {
             reactions: true,
+            postInterests: true,
+            user: {
+                include: {
+                    userDetails: {
+                        select: {
+                            name: true,
+                            image: true,
+                            department: true,
+                        }
+                    }
+                }
+            }
+        },
+        orderBy: {
+            createdAt: "desc",
         }
     });
     

@@ -8,6 +8,7 @@ const PostSchema = z.object({
     userId: z.string().uuid(),
     reactions: z.array(z.any()),
     postInterests: z.array(z.any()),
+    user: z.any(),
 })
 
 const createPostSchema = PostSchema.omit({
@@ -16,6 +17,7 @@ const createPostSchema = PostSchema.omit({
     updatedAt: true,
     reactions: true,
     postInterests: true,
+    user: true,
 })
 
 const updatePostSchema = PostSchema.partial().omit({
@@ -25,6 +27,7 @@ const updatePostSchema = PostSchema.partial().omit({
     reactions: true,
     userId: true,
     postInterests: true,
+    user: true,
 })
 
 export { PostSchema, createPostSchema, updatePostSchema };

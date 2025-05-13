@@ -13,6 +13,8 @@ import { getServerSession } from "next-auth"
 import { authOptions } from "@/lib/auth"
 import { getUser } from "@/lib/data/user"
 import { sessionType } from "@/types/session"
+import { getAllPosts } from "@/lib/data/posts"
+
 export default async function DashboardPage() {
 
   const session: sessionType | null = await getServerSession(authOptions);
@@ -22,6 +24,8 @@ export default async function DashboardPage() {
   }
 
   const user = await getUser(session.user?.id);
+
+  const posts = await getAllPosts();
 
   return (
       <div className="min-h-screen bg-background">
@@ -56,6 +60,23 @@ export default async function DashboardPage() {
                 </TabsTrigger>
               </TabsList>
               <TabsContent value="feed" className="space-y-4 mt-6">
+                {posts.map((post, index)=> {
+                  return (
+                    <InterestPost
+                    key={index}
+                    user={{
+                      name: post.user.userDetails.name,
+                      avatar: post.user.userDetails.image,
+                      department: post.user.userDetails.department,
+                    }}
+                    content={post.content}
+                    interests={post.postInterests.map((interest) => interest.interest.name)}
+                    timestamp={post.createdAt.toLocaleString()}
+                    likes={post.reactions.filter((reaction) => reaction.type === "like").length}
+                    comments={post.reactions.filter((reaction) => reaction.type === "comment").length}
+                  />
+                  )
+                })}
                 <InterestPost
                   user={{
                     name: "Alex Johnson",
