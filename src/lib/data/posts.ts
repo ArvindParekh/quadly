@@ -26,11 +26,15 @@ export const getPost = async (id: string): Promise<Post> => {
     return PostSchema.parse(post);
 }
 
-export const getAllPosts = async (): Promise<Post[]> => {
+export const getAllPosts = async () => {
     const posts = await prisma.posts.findMany({
         include: {
             reactions: true,
-            postInterests: true,
+            postInterests: {
+                include: {
+                    interest: true
+                }
+            },
             user: {
                 include: {
                     userDetails: {
@@ -52,7 +56,7 @@ export const getAllPosts = async (): Promise<Post[]> => {
         throw new Error("Failed to fetch posts");
     }
 
-    return posts.map(post => PostSchema.parse(post));
+    return posts;
 }
 
 export const createPost = async (data: CreatePost): Promise<string> => {

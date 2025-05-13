@@ -61,6 +61,7 @@ export default async function DashboardPage() {
               </TabsList>
               <TabsContent value="feed" className="space-y-4 mt-6">
                 {posts.map((post, index)=> {
+                  console.log(post.postInterests);
                   return (
                     <InterestPost
                     key={index}
@@ -70,7 +71,7 @@ export default async function DashboardPage() {
                       department: post.user.userDetails.department,
                     }}
                     content={post.content}
-                    interests={post.postInterests.map((interest) => interest.interest.name)}
+                    interests={post.postInterests.map((interest)=> interest.interest.name)}
                     timestamp={post.createdAt.toLocaleString()}
                     likes={post.reactions.filter((reaction) => reaction.type === "like").length}
                     comments={post.reactions.filter((reaction) => reaction.type === "comment").length}

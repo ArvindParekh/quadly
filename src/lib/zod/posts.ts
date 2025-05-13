@@ -3,6 +3,7 @@ import { z } from "zod";
 const PostSchema = z.object({
     id: z.string().uuid(),
     content: z.string(),
+    interests: z.string().optional(),
     createdAt: z.date(),
     updatedAt: z.date(),
     userId: z.string().uuid(),

@@ -29,6 +29,8 @@ export default function CreatePostButton({ userId }: { userId: string }) {
     // Handle post creation logic here
     setOpen(false)
     const formData = new FormData(e.target as HTMLFormElement);
+    const interests = formData.get("interests") as string;
+    const interestsArray = interests.split(",");
 
     startTransition(() => {
       formAction(formData);
@@ -39,7 +41,7 @@ export default function CreatePostButton({ userId }: { userId: string }) {
     if (state?.success) {
       toast.success("Post created successfully");
     } else if (state?.error) {
-      toast.error("Failed to create post");
+      toast.error(JSON.stringify(state.error));
     }
   }, [state])
 

@@ -57,8 +57,12 @@ model PostInterests {
   id        String      @id @default(uuid())
   postId    String
   interestId String
-  post      Posts       @relation(fields: [postId], references: [id])
-  interest  Interests   @relation(fields: [interestId], references: [id])
+  post      Posts       @relation(fields: [postId], references: [id], onDelete: Cascade)
+  interest  Interests   @relation(fields: [interestId], references: [id], onDelete: Cascade)
+
+  @@unique([postId, interestId])
+  @@index([postId])
+  @@index([interestId])
 }
 
 model Reactions {
@@ -67,8 +71,8 @@ model Reactions {
   userId    String
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
-  User      User     @relation(fields: [userId], references: [id])
-  post      Posts    @relation(fields: [postId], references: [id])
+  User      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  post      Posts    @relation(fields: [postId], references: [id], onDelete: Cascade)
 }
 
 model Matches {
