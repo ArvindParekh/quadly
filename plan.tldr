@@ -36,9 +36,9 @@
 		{
 			"id": "pointer:pointer",
 			"typeName": "pointer",
-			"x": 585.5037376695445,
-			"y": -28.676903514179003,
-			"lastActivityTimestamp": 1747105631461,
+			"x": 2192.4276854029918,
+			"y": 183.29097914137122,
+			"lastActivityTimestamp": 1747174421736,
 			"meta": {}
 		},
 		{
@@ -631,9 +631,9 @@
 			"typeName": "shape"
 		},
 		{
-			"x": 505.5191122071507,
-			"y": 552.3678714549928,
-			"z": 0.6186854840632227,
+			"x": -1785.0608220744894,
+			"y": 111.47040977112226,
+			"z": 0.9058174172169643,
 			"meta": {},
 			"id": "camera:page:page",
 			"typeName": "camera"
@@ -678,9 +678,7 @@
 		{
 			"editingShapeId": null,
 			"croppingShapeId": null,
-			"selectedShapeIds": [
-				"shape:o0V1EBqySiAW-cQJriF70"
-			],
+			"selectedShapeIds": [],
 			"hoveredShapeId": null,
 			"erasingShapeIds": [],
 			"hintingShapeIds": [],
@@ -1039,6 +1037,118 @@
 			"typeName": "shape"
 		},
 		{
+			"x": -587.951949753391,
+			"y": 580.6795622688039,
+			"rotation": 0,
+			"isLocked": false,
+			"opacity": 1,
+			"meta": {},
+			"id": "shape:caVchkl3w4Fp-AsAxrilI",
+			"type": "text",
+			"props": {
+				"color": "black",
+				"size": "m",
+				"w": 246.140625,
+				"font": "draw",
+				"textAlign": "start",
+				"autoSize": true,
+				"scale": 1,
+				"richText": {
+					"type": "doc",
+					"content": [
+						{
+							"type": "paragraph",
+							"attrs": {
+								"dir": "auto"
+							},
+							"content": [
+								{
+									"type": "text",
+									"text": "Things I can use:"
+								}
+							]
+						},
+						{
+							"type": "bulletList",
+							"content": [
+								{
+									"type": "listItem",
+									"content": [
+										{
+											"type": "paragraph",
+											"attrs": {
+												"dir": "auto"
+											},
+											"content": [
+												{
+													"type": "text",
+													"text": "Hero highlight"
+												}
+											]
+										}
+									]
+								},
+								{
+									"type": "listItem",
+									"content": [
+										{
+											"type": "paragraph",
+											"attrs": {
+												"dir": "auto"
+											},
+											"content": [
+												{
+													"type": "text",
+													"text": "Draggable card"
+												}
+											]
+										}
+									]
+								},
+								{
+									"type": "listItem",
+									"content": [
+										{
+											"type": "paragraph",
+											"attrs": {
+												"dir": "auto"
+											},
+											"content": [
+												{
+													"type": "text",
+													"text": "badge"
+												}
+											]
+										}
+									]
+								},
+								{
+									"type": "listItem",
+									"content": [
+										{
+											"type": "paragraph",
+											"attrs": {
+												"dir": "auto"
+											},
+											"content": [
+												{
+													"type": "text",
+													"text": "combobox"
+												}
+											]
+										}
+									]
+								}
+							]
+						}
+					]
+				}
+			},
+			"parentId": "page:page",
+			"index": "aFAbr",
+			"typeName": "shape"
+		},
+		{
 			"x": 506,
 			"y": -318,
 			"rotation": 0,
@@ -1265,7 +1375,9 @@
 		{
 			"followingUserId": null,
 			"opacityForNextShape": 1,
-			"stylesForNextShape": {},
+			"stylesForNextShape": {
+				"tldraw:geo": "rectangle"
+			},
 			"brush": null,
 			"scribbles": [],
 			"cursor": {

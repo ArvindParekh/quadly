@@ -10845,6 +10845,7 @@ export namespace Prisma {
 
   export type PostInterestsWhereUniqueInput = Prisma.AtLeast<{
     id?: string
+    postId_interestId?: PostInterestsPostIdInterestIdCompoundUniqueInput
     AND?: PostInterestsWhereInput | PostInterestsWhereInput[]
     OR?: PostInterestsWhereInput[]
     NOT?: PostInterestsWhereInput | PostInterestsWhereInput[]
@@ -10852,7 +10853,7 @@ export namespace Prisma {
     interestId?: StringFilter<"PostInterests"> | string
     post?: XOR<PostsScalarRelationFilter, PostsWhereInput>
     interest?: XOR<InterestsScalarRelationFilter, InterestsWhereInput>
-  }, "id">
+  }, "id" | "postId_interestId">
 
   export type PostInterestsOrderByWithAggregationInput = {
     id?: SortOrder
@@ -11805,6 +11806,11 @@ export namespace Prisma {
   export type InterestsScalarRelationFilter = {
     is?: InterestsWhereInput
     isNot?: InterestsWhereInput
+  }
+
+  export type PostInterestsPostIdInterestIdCompoundUniqueInput = {
+    postId: string
+    interestId: string
   }
 
   export type PostInterestsCountOrderByAggregateInput = {

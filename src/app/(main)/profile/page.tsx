@@ -13,6 +13,13 @@ export default async function Profile() {
   const userDetails = await prisma.userDetails.findUnique({
     where: {
       userId: session.user.id 
+    },
+    include: {
+      userInterests: {
+        include: {
+          interest: true
+        }
+      }
     }
   })
 
