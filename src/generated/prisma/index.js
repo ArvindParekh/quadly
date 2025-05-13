@@ -219,11 +219,12 @@ const config = {
     "db"
   ],
   "activeProvider": "postgresql",
+  "postinstall": false,
   "inlineDatasources": {
     "db": {
       "url": {
         "fromEnvVar": "DATABASE_URL",
-        "value": "postgresql://quadly_owner:npg_6GEC1fQiuOJp@ep-yellow-fire-a4om1o3i-pooler.us-east-1.aws.neon.tech/quadly?sslmode=require"
+        "value": null
       }
     }
   },

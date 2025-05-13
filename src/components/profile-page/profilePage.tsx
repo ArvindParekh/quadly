@@ -14,7 +14,6 @@ import { Textarea } from "@/components/ui/textarea";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { BookOpen, Camera, Plus, Save, Sparkles, X } from "lucide-react";
-import { UserDetails } from "@/generated/prisma";
 import { useEffect, useState, startTransition } from "react";
 import { useActionState } from "react";
 import { UserDetailsClient } from "@/types/userDetails";
@@ -23,7 +22,13 @@ import { toast } from "sonner";
 import { Toaster } from "@/components/ui/sonner";
 import { InterestTag } from "../interest-tag";
 import { DialogDescription, DialogTrigger } from "@radix-ui/react-dialog";
-import { Dialog, DialogContent, DialogFooter, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import {
+   Dialog,
+   DialogContent,
+   DialogFooter,
+   DialogHeader,
+   DialogTitle,
+} from "@/components/ui/dialog";
 import {
    Command,
    CommandEmpty,
@@ -31,16 +36,17 @@ import {
    CommandInput,
    CommandItem,
    CommandList,
- } from "@/components/ui/command"
- import {
+} from "@/components/ui/command";
+import {
    Popover,
    PopoverContent,
    PopoverTrigger,
- } from "@/components/ui/popover"
+} from "@/components/ui/popover";
+import { ToggleGroup, ToggleGroupItem } from "../ui/toggle-group";
 
 export default function ProfilePage({
-    userDetails,
-    userId,
+   userDetails,
+   userId,
 }: {
    userDetails: UserDetailsClient | null;
    userId: string;
@@ -58,13 +64,13 @@ export default function ProfilePage({
    });
 
    const allInterests = [
-      "Distributed Systems", 
-      "Algorithms", 
-      "Machine Learning", 
-      "Web Development", 
-      "Coffee", 
-      "Reading", 
-      "Hiking", 
+      "Distributed Systems",
+      "Algorithms",
+      "Machine Learning",
+      "Web Development",
+      "Coffee",
+      "Reading",
+      "Hiking",
       "Photography",
       "Cloud Computing",
       "DevOps",
@@ -72,10 +78,12 @@ export default function ProfilePage({
       "Data Science",
       "Artificial Intelligence",
       "Blockchain",
-      "Quantum Computing"
+      "Quantum Computing",
    ];
    const [selectedInterests, setSelectedInterests] = useState<string[]>(
-      userDetails?.userInterests.map(userInterest => userInterest.interest.name) || []
+      userDetails?.userInterests.map(
+         (userInterest) => userInterest.interest.name
+      ) || []
    );
    const [popoverOpen, setPopoverOpen] = useState(false);
    const [searchTerm, setSearchTerm] = useState("");
@@ -84,17 +92,21 @@ export default function ProfilePage({
       if (!selectedInterests.includes(interest)) {
          setSelectedInterests([...selectedInterests, interest]);
       }
-      setSearchTerm(""); 
+      setSearchTerm("");
       // setPopoverOpen(false); // Keep popover open for multi-select if desired, or close it.
       // For this iteration, let's keep it open to allow easier multiple selections.
    };
 
    const handleRemoveInterest = (interestToRemove: string) => {
-      setSelectedInterests(selectedInterests.filter(interest => interest !== interestToRemove));
+      setSelectedInterests(
+         selectedInterests.filter((interest) => interest !== interestToRemove)
+      );
    };
 
    const filteredInterests = allInterests.filter(
-      interest => !selectedInterests.includes(interest) && interest.toLowerCase().includes(searchTerm.toLowerCase())
+      (interest) =>
+         !selectedInterests.includes(interest) &&
+         interest.toLowerCase().includes(searchTerm.toLowerCase())
    );
 
    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -105,7 +117,9 @@ export default function ProfilePage({
       const updatedData = Object.fromEntries(updateFormData);
       const { userId, ...updatedDataWithoutUserId } = updatedData;
 
-      if (JSON.stringify(updatedDataWithoutUserId) === JSON.stringify(formData)) {
+      if (
+         JSON.stringify(updatedDataWithoutUserId) === JSON.stringify(formData)
+      ) {
          toast.error("No changes made");
          return;
       }
@@ -114,7 +128,7 @@ export default function ProfilePage({
       startTransition(() => {
          formAction(updateFormData);
       });
-   }
+   };
 
    useEffect(() => {
       if (state?.success) {
@@ -137,34 +151,33 @@ export default function ProfilePage({
       }
    }, [state]);
 
-   const handleInterestsSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+   const handleInterestsSubmit = async (
+      e: React.FormEvent<HTMLFormElement>
+   ) => {
       e.preventDefault();
 
-      const newInterests = selectedInterests.map(interest => ({
+      const newInterests = selectedInterests.map((interest) => ({
          interest: {
-            name: interest
-         }
+            name: interest,
+         },
       }));
 
       const updatedData = new FormData();
       updatedData.append("userId", userId);
       updatedData.append("interests", JSON.stringify(newInterests));
 
-
       console.log(updatedData);
       startTransition(() => {
          formAction(updatedData);
       });
-      
-   }
+   };
 
    return (
-    
       <div className='min-h-screen bg-background'>
          <Toaster />
          <main className='container py-6 mx-auto'>
             <form onSubmit={handleSubmit}>
-               <Input type="hidden" name="userId" value={userId} />
+               <Input type='hidden' name='userId' value={userId} />
                <div className='max-w-3xl mx-auto space-y-6'>
                   <div className='flex items-center justify-between'>
                      <h1 className='text-3xl font-bold tracking-tight'>
@@ -283,15 +296,17 @@ export default function ProfilePage({
                               Interests
                            </label>
                            <div className='flex flex-wrap gap-2'>
-                              {userDetails?.userInterests.map((userInterest) => (
-                                 <InterestTag
-                                    key={userInterest.interest.id}
-                                    name={userInterest.interest.name}
-                                    color="pink"   
-                                    removable={true}
-                                    interactive={true}
-                                 />
-                              ))}
+                              {userDetails?.userInterests.map(
+                                 (userInterest) => (
+                                    <InterestTag
+                                       key={userInterest.interest.id}
+                                       name={userInterest.interest.name}
+                                       color='pink'
+                                       removable={true}
+                                       interactive={true}
+                                    />
+                                 )
+                              )}
                               {/* <div className='flex items-center gap-1 bg-pink-500/10 rounded-full border border-pink-500/20 px-3 py-1 text-sm text-pink-500'>
                                  <span>Distributed Systems</span>
                                  <Button
@@ -350,95 +365,161 @@ export default function ProfilePage({
                               </div> */}
                               <Dialog>
                                  <DialogTrigger asChild>
-                                    <Button variant='outline' size='sm' className='rounded-full border-blue-500/20 hover:bg-blue-500/10 hover:text-blue-500'>
+                                    <Button
+                                       variant='outline'
+                                       size='sm'
+                                       className='rounded-full border-blue-500/20 hover:bg-blue-500/10 hover:text-blue-500'
+                                    >
                                        <Plus className='h-3 w-3 mr-1' />
                                        Add Interest
                                     </Button>
                                  </DialogTrigger>
                                  <DialogContent>
-                                 <DialogHeader>
-                                    <DialogTitle>Add Interest</DialogTitle>
-                                    <DialogDescription>
-                                       Select interests to add to your profile. Click an interest to add it, click the 'X' on a tag to remove it.
-                                    </DialogDescription>
-                                 </DialogHeader>
+                                    <DialogHeader>
+                                       <DialogTitle>Add Interest</DialogTitle>
+                                       <DialogDescription>
+                                          Select interests to add to your
+                                          profile. Click an interest to add it,
+                                          click the 'X' on a tag to remove it.
+                                       </DialogDescription>
+                                    </DialogHeader>
 
-                                 {/* Display selected interests as tags */}
-                                 <div className="flex flex-wrap gap-2 mb-4 pt-2">
-                                    {selectedInterests.map((interest) => (
-                                       <div key={interest} className='flex items-center gap-1 bg-blue-500/10 rounded-full border border-blue-500/20 px-3 py-1 text-sm text-blue-500'>
-                                          <span>{interest}</span>
-                                          <Button
-                                             variant='ghost'
-                                             size='icon'
-                                             className='h-4 w-4 ml-1 hover:bg-blue-500/20 rounded-full'
-                                             onClick={() => handleRemoveInterest(interest)}
+                                    {/* Display selected interests as tags */}
+                                    <div className='flex flex-wrap gap-2 mb-4 pt-2'>
+                                       {selectedInterests.map((interest) => (
+                                          <div
+                                             key={interest}
+                                             className='flex items-center gap-1 bg-blue-500/10 rounded-full border border-blue-500/20 px-3 py-1 text-sm text-blue-500'
                                           >
-                                             <X className='h-3 w-3' />
-                                             <span className='sr-only'>Remove {interest}</span>
-                                          </Button>
-                                       </div>
-                                    ))}
-                                 </div>
+                                             <span>{interest}</span>
+                                             <Button
+                                                variant='ghost'
+                                                size='icon'
+                                                className='h-4 w-4 ml-1 hover:bg-blue-500/20 rounded-full'
+                                                onClick={() =>
+                                                   handleRemoveInterest(
+                                                      interest
+                                                   )
+                                                }
+                                             >
+                                                <X className='h-3 w-3' />
+                                                <span className='sr-only'>
+                                                   Remove {interest}
+                                                </span>
+                                             </Button>
+                                          </div>
+                                       ))}
+                                    </div>
 
-                                 <Popover open={popoverOpen} onOpenChange={setPopoverOpen}>
-                                    <PopoverTrigger asChild>
-                                       <Button
-                                          variant="outline"
-                                          role="combobox"
-                                          aria-expanded={popoverOpen}
-                                          className="w-full justify-between border-pink-500/20 focus-visible:ring-pink-500 text-muted-foreground hover:text-muted-foreground"
-                                          onClick={() => setPopoverOpen(!popoverOpen)} // Toggle popover
-                                       >
-                                          {selectedInterests.length > 0 ? "Add more interests..." : "Select interests..."}
-                                          <Plus className="ml-2 h-4 w-4 shrink-0 opacity-50" />
-                                       </Button>
-                                    </PopoverTrigger>
-                                    <PopoverContent className="w-[--radix-popover-trigger-width] p-0">
-                                       <Command>
-                                          <CommandInput 
-                                             placeholder="Search interests..." 
-                                             value={searchTerm}
-                                             onValueChange={setSearchTerm}
-                                          />
-                                          <CommandList>
-                                             <CommandEmpty>{searchTerm ? "No interest found." : "Type to search or add new."}</CommandEmpty>
-                                             <CommandGroup heading={filteredInterests.length > 0 ? "Suggestions" : undefined}>
-                                                {filteredInterests.map((interest) => (
-                                                   <CommandItem
-                                                      key={interest}
-                                                      value={interest}
-                                                      onSelect={() => {
-                                                         handleSelectInterest(interest);
-                                                      }}
-                                                   >
-                                                      <span>{interest}</span>
-                                                   </CommandItem>
-                                                ))}
-                                             </CommandGroup>
-                                             {searchTerm && !allInterests.map(i => i.toLowerCase()).includes(searchTerm.toLowerCase()) && (
-                                                <CommandGroup heading="New Interest">
-                                                   <CommandItem 
-                                                      onSelect={() => handleSelectInterest(searchTerm.trim())} 
-                                                      className="italic"
-                                                   >
-                                                      Add "{searchTerm.trim()}"
-                                                   </CommandItem>
+                                    <Popover
+                                       open={popoverOpen}
+                                       onOpenChange={setPopoverOpen}
+                                    >
+                                       <PopoverTrigger asChild>
+                                          <Button
+                                             variant='outline'
+                                             role='combobox'
+                                             aria-expanded={popoverOpen}
+                                             className='w-full justify-between border-pink-500/20 focus-visible:ring-pink-500 text-muted-foreground hover:text-muted-foreground'
+                                             onClick={() =>
+                                                setPopoverOpen(!popoverOpen)
+                                             } // Toggle popover
+                                          >
+                                             {selectedInterests.length > 0
+                                                ? "Add more interests..."
+                                                : "Select interests..."}
+                                             <Plus className='ml-2 h-4 w-4 shrink-0 opacity-50' />
+                                          </Button>
+                                       </PopoverTrigger>
+                                       <PopoverContent className='w-[--radix-popover-trigger-width] p-0'>
+                                          <Command>
+                                             <CommandInput
+                                                placeholder='Search interests...'
+                                                value={searchTerm}
+                                                onValueChange={setSearchTerm}
+                                             />
+                                             <CommandList>
+                                                <CommandEmpty>
+                                                   {searchTerm
+                                                      ? "No interest found."
+                                                      : "Type to search or add new."}
+                                                </CommandEmpty>
+                                                <CommandGroup
+                                                   heading={
+                                                      filteredInterests.length >
+                                                      0
+                                                         ? "Suggestions"
+                                                         : undefined
+                                                   }
+                                                >
+                                                   {filteredInterests.map(
+                                                      (interest) => (
+                                                         <CommandItem
+                                                            key={interest}
+                                                            value={interest}
+                                                            onSelect={() => {
+                                                               handleSelectInterest(
+                                                                  interest
+                                                               );
+                                                            }}
+                                                         >
+                                                            <span>
+                                                               {interest}
+                                                            </span>
+                                                         </CommandItem>
+                                                      )
+                                                   )}
                                                 </CommandGroup>
-                                             )}
-                                          </CommandList>
-                                       </Command>
-                                    </PopoverContent>
-                                 </Popover>
-                                 <DialogFooter className="mt-4">
-                                    <Button variant="outline" onClick={() => {/* Close dialog */}}>Cancel</Button>
-                                    <Button className='bg-gradient-to-r from-pink-500 to-yellow-400 text-black hover:opacity-90' onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
-                                       handleInterestsSubmit(e as unknown as React.FormEvent<HTMLFormElement>);
-                                    }}>Add Selected</Button>
-                                 </DialogFooter>
-                              </DialogContent>
+                                                {searchTerm &&
+                                                   !allInterests
+                                                      .map((i) =>
+                                                         i.toLowerCase()
+                                                      )
+                                                      .includes(
+                                                         searchTerm.toLowerCase()
+                                                      ) && (
+                                                      <CommandGroup heading='New Interest'>
+                                                         <CommandItem
+                                                            onSelect={() =>
+                                                               handleSelectInterest(
+                                                                  searchTerm.trim()
+                                                               )
+                                                            }
+                                                            className='italic'
+                                                         >
+                                                            Add "
+                                                            {searchTerm.trim()}"
+                                                         </CommandItem>
+                                                      </CommandGroup>
+                                                   )}
+                                             </CommandList>
+                                          </Command>
+                                       </PopoverContent>
+                                    </Popover>
+                                    <DialogFooter className='mt-4'>
+                                       <Button
+                                          variant='outline'
+                                          onClick={() => {
+                                             /* Close dialog */
+                                          }}
+                                       >
+                                          Cancel
+                                       </Button>
+                                       <Button
+                                          className='bg-gradient-to-r from-pink-500 to-yellow-400 text-black hover:opacity-90'
+                                          onClick={(
+                                             e: React.MouseEvent<HTMLButtonElement>
+                                          ) => {
+                                             handleInterestsSubmit(
+                                                e as unknown as React.FormEvent<HTMLFormElement>
+                                             );
+                                          }}
+                                       >
+                                          Add Selected
+                                       </Button>
+                                    </DialogFooter>
+                                 </DialogContent>
                               </Dialog>
-                              
                            </div>
                         </div>
 
@@ -471,45 +552,38 @@ export default function ProfilePage({
                         </CardDescription>
                      </CardHeader>
                      <CardContent className='space-y-4 pt-6'>
-                        <div className='space-y-2'>
+                        <div className='space-y-32'>
                            <label className='text-sm font-medium'>
                               I'm open to:
                            </label>
                            <div className='flex flex-wrap gap-2'>
-                              <Badge
-                                 variant='outline'
-                                 className='bg-pink-500/10 border-pink-500/20 hover:bg-pink-500/20 cursor-pointer'
-                              >
-                                 Coffee Chats
-                              </Badge>
-                              <Badge
-                                 variant='outline'
-                                 className='bg-yellow-400/10 border-yellow-400/20 hover:bg-yellow-400/20 cursor-pointer'
-                              >
-                                 Study Groups
-                              </Badge>
-                              <Badge
-                                 variant='outline'
-                                 className='bg-blue-500/10 border-blue-500/20 hover:bg-blue-500/20 cursor-pointer'
-                              >
-                                 Project Collaboration
-                              </Badge>
-                              <Badge
-                                 variant='outline'
-                                 className='bg-pink-500/10 border-pink-500/20 hover:bg-pink-500/20 cursor-pointer'
-                              >
-                                 Mentorship
-                              </Badge>
-                              <Badge
-                                 variant='outline'
-                                 className='bg-yellow-400/10 border-yellow-400/20 hover:bg-yellow-400/20 cursor-pointer'
-                              >
-                                 Book Discussions
-                              </Badge>
+                              <ToggleGroup type='multiple'>
+                                 
+                                    {/* <Badge
+                                       variant='outline'
+                                       className='bg-pink-500/10 border-pink-500/20 hover:bg-pink-500/20 cursor-pointer'
+                                 > */}
+                                    <ToggleGroupItem value='coffee' className='rounded-full px-2.5 py-0.5 text-xs font-semibold border text-pink-700 bg-pink-500/10 border-pink-500/20 hover:bg-pink-500/20 data-[state=on]:bg-pink-500 data-[state=on]:text-white data-[state=on]:border-pink-500 cursor-pointer'>
+                                    Coffee Chats
+                                    </ToggleGroupItem>
+                                 {/* </Badge> */}
+                                 <ToggleGroupItem value='study' className='rounded-full px-2.5 py-0.5 text-xs font-semibold border text-yellow-700 bg-yellow-400/10 border-yellow-400/20 hover:bg-yellow-400/20 data-[state=on]:bg-yellow-400 data-[state=on]:text-black data-[state=on]:border-yellow-400 cursor-pointer'>
+                                       Study Groups
+                                 </ToggleGroupItem>
+                                 <ToggleGroupItem value='collaboration' className='rounded-full px-2.5 py-0.5 text-xs font-semibold border text-blue-700 bg-blue-500/10 border-blue-500/20 hover:bg-blue-500/20 data-[state=on]:bg-blue-500 data-[state=on]:text-white data-[state=on]:border-blue-500 cursor-pointer'>
+                                       Project Collaboration
+                                 </ToggleGroupItem>
+                                 <ToggleGroupItem value='mentorship' className='rounded-full px-2.5 py-0.5 text-xs font-semibold border text-pink-700 bg-pink-500/10 border-pink-500/20 hover:bg-pink-500/20 data-[state=on]:bg-pink-500 data-[state=on]:text-white data-[state=on]:border-pink-500 cursor-pointer'>
+                                       Mentorship
+                                 </ToggleGroupItem>
+                                 <ToggleGroupItem value='book-discussions' className='rounded-full px-2.5 py-0.5 text-xs font-semibold border text-yellow-700 bg-yellow-400/10 border-yellow-400/20 hover:bg-yellow-400/20 data-[state=on]:bg-yellow-400 data-[state=on]:text-black data-[state=on]:border-yellow-400 cursor-pointer'>
+                                       Book Discussions
+                                 </ToggleGroupItem>
+                              </ToggleGroup>
                            </div>
                         </div>
 
-                        <div className='space-y-1'>
+                        <div className='space-y-32'>
                            <label
                               htmlFor='availability'
                               className='text-sm font-medium'
