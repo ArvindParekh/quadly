@@ -15,7 +15,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { BookOpen, Camera, Plus, Save, Sparkles, X } from "lucide-react";
 import { UserDetails } from "@/generated/prisma";
-import { useEffect, useState } from "react";
+import { useEffect, useState, startTransition } from "react";
 import { useActionState } from "react";
 import { updateUserDetails } from "@/actions/user";
 import { toast } from "sonner";
@@ -43,19 +43,20 @@ export default function ProfilePage({
    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
       e.preventDefault();
 
-      // compare formData with userDetails
-      const updateFormData = new FormData(e.target as HTMLFormElement)
+      // Compare formData with userDetails
+      const updateFormData = new FormData(e.target as HTMLFormElement);
       const updatedData = Object.fromEntries(updateFormData);
-      const {userId, ...updatedDataWithoutUserId} = updatedData;
-      console.log(updatedDataWithoutUserId);
-      console.log(formData);
+      const { userId, ...updatedDataWithoutUserId } = updatedData;
 
       if (JSON.stringify(updatedDataWithoutUserId) === JSON.stringify(formData)) {
          toast.error("No changes made");
          return;
       }
 
-      formAction(updateFormData);
+      // Wrap formAction in startTransition
+      startTransition(() => {
+         formAction(updateFormData);
+      });
    }
 
    useEffect(() => {
