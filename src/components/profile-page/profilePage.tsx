@@ -18,6 +18,8 @@ import { UserDetails } from "@/generated/prisma";
 import { useEffect, useState } from "react";
 import { useActionState } from "react";
 import { updateUserDetails } from "@/actions/user";
+import { toast } from "sonner";
+import { Toaster } from "@/components/ui/sonner";
 
 export default function ProfilePage({
     userDetails,
@@ -38,6 +40,24 @@ export default function ProfilePage({
       availability: userDetails?.availability,
    });
 
+   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+      e.preventDefault();
+
+      // compare formData with userDetails
+      const updateFormData = new FormData(e.target as HTMLFormElement)
+      const updatedData = Object.fromEntries(updateFormData);
+      const {userId, ...updatedDataWithoutUserId} = updatedData;
+      console.log(updatedDataWithoutUserId);
+      console.log(formData);
+
+      if (JSON.stringify(updatedDataWithoutUserId) === JSON.stringify(formData)) {
+         toast.error("No changes made");
+         return;
+      }
+
+      formAction(updateFormData);
+   }
+
    useEffect(() => {
       if (state?.success) {
          setFormData({
@@ -51,12 +71,20 @@ export default function ProfilePage({
       }
    }, [state, userDetails]);
 
+   useEffect(() => {
+      if (state?.success) {
+         toast.success(state.message || "Profile updated successfully!");
+      } else if (state?.error) {
+         toast.error(state.error || "Failed to update profile.");
+      }
+   }, [state]);
+
    return (
     
       <div className='min-h-screen bg-background'>
-        {state?.success? <div>{state?.message}</div> : <div>{state?.error}</div>}
+         <Toaster />
          <main className='container py-6 mx-auto'>
-            <form action={formAction}>
+            <form onSubmit={handleSubmit}>
                <Input type="hidden" name="userId" value={userId} />
                <div className='max-w-3xl mx-auto space-y-6'>
                   <div className='flex items-center justify-between'>

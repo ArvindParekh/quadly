@@ -17,6 +17,7 @@ const UserDetailsSchema = z.object({
   });
 
 export async function updateUserDetails(prevState: any, formData: FormData) {
+    console.log("formData", formData);
     const data = Object.fromEntries(formData);
     console.log(data);
     const parsedUserDetails = UserDetailsSchema.safeParse(data);
