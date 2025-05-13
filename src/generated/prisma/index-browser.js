@@ -143,11 +143,16 @@ exports.Prisma.UserDetailsScalarFieldEnum = {
 
 exports.Prisma.PostsScalarFieldEnum = {
   id: 'id',
-  title: 'title',
   content: 'content',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt',
   userId: 'userId'
+};
+
+exports.Prisma.PostInterestsScalarFieldEnum = {
+  id: 'id',
+  postId: 'postId',
+  interestId: 'interestId'
 };
 
 exports.Prisma.ReactionsScalarFieldEnum = {
@@ -196,6 +201,7 @@ exports.Prisma.ModelName = {
   User: 'User',
   UserDetails: 'UserDetails',
   Posts: 'Posts',
+  PostInterests: 'PostInterests',
   Reactions: 'Reactions',
   Matches: 'Matches',
   Interests: 'Interests',

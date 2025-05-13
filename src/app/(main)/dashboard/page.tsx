@@ -31,7 +31,7 @@ export default async function DashboardPage() {
           <div className="space-y-6">
             <div className="flex items-center justify-between">
               <h1 className="text-3xl font-bold tracking-tight">Your Garden 🌱</h1>
-              <CreatePostButton />
+              <CreatePostButton userId={session.user?.id} />
             </div>
 
             <Tabs defaultValue="feed" className="w-full">
@@ -258,18 +258,23 @@ export default async function DashboardPage() {
                   </div>
                   <div className="text-center">
                     <h3 className="text-lg font-medium">{user?.username}</h3>
-                    <p className="text-sm text-muted-foreground">Computer Science, Year 2</p>
+                    <p className="text-sm text-muted-foreground">{user?.userDetails?.department}, {user?.userDetails?.year}</p>
                   </div>
                 </div>
 
                 <div>
                   <h4 className="text-sm font-medium mb-2">Your Interests</h4>
                   <div className="flex flex-wrap gap-2">
-                    <Badge className="bg-pink-500 hover:bg-pink-600">Distributed Systems</Badge>
+                    {user?.userDetails?.userInterests.map((interest) => (
+                      <Badge key={interest.id} className="bg-pink-500 hover:bg-pink-600">
+                        {interest.interest.name}
+                      </Badge>
+                    ))}
+                    {/* <Badge className="bg-pink-500 hover:bg-pink-600">Distributed Systems</Badge>
                     <Badge className="bg-yellow-400 text-black hover:bg-yellow-500">Algorithms</Badge>
                     <Badge className="bg-blue-500 hover:bg-blue-600">Machine Learning</Badge>
                     <Badge className="bg-pink-500 hover:bg-pink-600">Web Development</Badge>
-                    <Badge className="bg-yellow-400 text-black hover:bg-yellow-500">Coffee</Badge>
+                    <Badge className="bg-yellow-400 text-black hover:bg-yellow-500">Coffee</Badge> */}
                   </div>
                 </div>
 
@@ -277,7 +282,7 @@ export default async function DashboardPage() {
                   <h4 className="text-sm font-medium mb-2">Currently Reading</h4>
                   <div className="flex items-center gap-2">
                     <BookOpen className="h-4 w-4 text-pink-500" />
-                    <span className="text-sm">Designing Data-Intensive Applications</span>
+                    <span className="text-sm">{user?.userDetails?.reading}</span>
                   </div>
                 </div>
               </CardContent>

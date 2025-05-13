@@ -43,14 +43,22 @@ model UserDetails {
 }
 
 model Posts {
-  id        String      @id @default(uuid())
-  title     String
-  content   String
-  createdAt DateTime    @default(now())
-  updatedAt DateTime    @updatedAt
-  userId    String
-  user      User        @relation(fields: [userId], references: [id])
-  reactions Reactions[]
+  id            String          @id @default(uuid())
+  content       String
+  createdAt     DateTime        @default(now())
+  updatedAt     DateTime        @updatedAt
+  userId        String
+  user          User            @relation(fields: [userId], references: [id])
+  postInterests PostInterests[]
+  reactions     Reactions[]
+}
+
+model PostInterests {
+  id         String    @id @default(uuid())
+  postId     String
+  interestId String
+  post       Posts     @relation(fields: [postId], references: [id])
+  interest   Interests @relation(fields: [interestId], references: [id])
 }
 
 model Reactions {
@@ -74,17 +82,26 @@ model Matches {
 }
 
 model Interests {
-  id        String   @id @default(uuid())
-  name      String
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  id            String          @id @default(uuid())
+  name          String          @unique
+  createdAt     DateTime        @default(now())
+  updatedAt     DateTime        @updatedAt
+  userInterests UserInterests[]
+  postInterests PostInterests[]
 }
 
 model UserInterests {
-  id            String      @id @default(uuid())
+  id            String @id @default(uuid())
   userDetailsId String
   interestId    String
-  createdAt     DateTime    @default(now())
-  updatedAt     DateTime    @updatedAt
-  UserDetails   UserDetails @relation(fields: [userDetailsId], references: [id])
+
+  userDetails UserDetails @relation(fields: [userDetailsId], references: [id], onDelete: Cascade)
+  interest    Interests   @relation(fields: [interestId], references: [id], onDelete: Cascade)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@unique([userDetailsId, interestId])
+  @@index([userDetailsId])
+  @@index([interestId])
 }

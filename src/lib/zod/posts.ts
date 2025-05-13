@@ -2,12 +2,12 @@ import { z } from "zod";
 
 const PostSchema = z.object({
     id: z.string().uuid(),
-    title: z.string(),
     content: z.string(),
     createdAt: z.date(),
     updatedAt: z.date(),
     userId: z.string().uuid(),
     reactions: z.array(z.any()),
+    postInterests: z.array(z.any()),
 })
 
 const createPostSchema = PostSchema.omit({
@@ -15,6 +15,7 @@ const createPostSchema = PostSchema.omit({
     createdAt: true,
     updatedAt: true,
     reactions: true,
+    postInterests: true,
 })
 
 const updatePostSchema = PostSchema.partial().omit({
@@ -23,6 +24,7 @@ const updatePostSchema = PostSchema.partial().omit({
     updatedAt: true,
     reactions: true,
     userId: true,
+    postInterests: true,
 })
 
 export { PostSchema, createPostSchema, updatePostSchema };
