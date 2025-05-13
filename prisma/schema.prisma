@@ -25,6 +25,20 @@ model User {
   reactions     Reactions[]
   matches       Matches[]       @relation("UserMatches")
   matchedWith   Matches[]       @relation("MatchUserMatches")
+  userDetails   UserDetails?
+}
+
+model UserDetails {
+  id        String   @id @default(uuid())
+  userId    String   @unique
+  user      User     @relation(fields: [userId], references: [id])
+  name      String
+  bio       String
+  department String
+  year      String
+  image     String
+  reading   String
+  availability String
   userInterests UserInterests[]
 }
 
@@ -68,9 +82,9 @@ model Interests {
 
 model UserInterests {
   id         String   @id @default(uuid())
-  userId     String
+  userDetailsId     String
   interestId String
   createdAt  DateTime @default(now())
   updatedAt  DateTime @updatedAt
-  User       User     @relation(fields: [userId], references: [id])
+  UserDetails       UserDetails     @relation(fields: [userDetailsId], references: [id])
 }

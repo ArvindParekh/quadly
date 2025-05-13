@@ -1,15 +1,12 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import DashboardHeader from "@/components/dashboard-header/dashboard-header"
 import MatchAlgorithmDemo from "@/components/match-algorithm-demo"
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/lib/auth";
 import { redirect } from "next/navigation";
-import { getUser } from "@/lib/data/user";
+import { sessionType } from "@/types/session";
 export default async function MatchesPage() {
 
-  const session = await getServerSession(authOptions);
-
-  const user = await getUser(session?.user?.id);
+  const session: sessionType | null = await getServerSession(authOptions);
 
   if (!session) {
     redirect("/login");

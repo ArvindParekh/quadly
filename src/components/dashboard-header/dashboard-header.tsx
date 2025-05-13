@@ -1,23 +1,18 @@
+"use client"
+
 import { Button } from "@/components/ui/button"
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu"
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
+
 import { Bell, Menu, Search } from "lucide-react"
 import Link from "next/link"
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
-import LogOutButton from "../signup/logOutButton"
 import SearchComponent from "./searchComponent"
 import DropdownMenuComponent from "./dropdownMenu"
 import { User } from "@/generated/prisma"
-// export the search logic to another component
+import { usePathname } from "next/navigation"
 
-export default function DashboardHeader({ user }: { user: User }) {
+export default function DashboardHeader({user}: {user: User}) {
+
+  const activePage = usePathname();
 
   return (
     <header className="sticky top-0 z-50 w-full backdrop-blur supports-[backdrop-filter]:bg-background/60">
@@ -63,25 +58,25 @@ export default function DashboardHeader({ user }: { user: User }) {
           <nav className="hidden md:flex items-center gap-6 ml-6">
             <Link
               href="/dashboard"
-              className="text-sm font-medium text-foreground transition-colors hover:text-pink-500"
+              className={`text-sm font-medium  transition-colors hover:text-pink-500 ${activePage === "/dashboard" ? "text-foreground" : "text-muted-foreground"}`}
             >
               Dashboard
             </Link>
             <Link
               href="/matches"
-              className="text-sm font-medium text-muted-foreground transition-colors hover:text-pink-500"
+              className={`text-sm font-medium  transition-colors hover:text-pink-500 ${activePage === "/matches" ? "text-foreground" : "text-muted-foreground"}`}
             >
               Matches
             </Link>
             <Link
               href="/messages"
-              className="text-sm font-medium text-muted-foreground transition-colors hover:text-pink-500"
+              className={`text-sm font-medium  transition-colors hover:text-pink-500 ${activePage === "/messages" ? "text-foreground" : "text-muted-foreground"}`}
             >
               Messages
             </Link>
             <Link
               href="/discover"
-              className="text-sm font-medium text-muted-foreground transition-colors hover:text-pink-500"
+              className={`text-sm font-medium  transition-colors hover:text-pink-500 ${activePage === "/discover" ? "text-foreground" : "text-muted-foreground"}`}
             >
               Discover
             </Link>

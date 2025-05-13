@@ -129,6 +129,18 @@ exports.Prisma.UserScalarFieldEnum = {
   updatedAt: 'updatedAt'
 };
 
+exports.Prisma.UserDetailsScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  name: 'name',
+  bio: 'bio',
+  department: 'department',
+  year: 'year',
+  image: 'image',
+  reading: 'reading',
+  availability: 'availability'
+};
+
 exports.Prisma.PostsScalarFieldEnum = {
   id: 'id',
   title: 'title',
@@ -163,7 +175,7 @@ exports.Prisma.InterestsScalarFieldEnum = {
 
 exports.Prisma.UserInterestsScalarFieldEnum = {
   id: 'id',
-  userId: 'userId',
+  userDetailsId: 'userDetailsId',
   interestId: 'interestId',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
@@ -182,6 +194,7 @@ exports.Prisma.QueryMode = {
 
 exports.Prisma.ModelName = {
   User: 'User',
+  UserDetails: 'UserDetails',
   Posts: 'Posts',
   Reactions: 'Reactions',
   Matches: 'Matches',

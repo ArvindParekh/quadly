@@ -15,16 +15,30 @@ datasource db {
 }
 
 model User {
+  id          String       @id @default(uuid())
+  email       String       @unique
+  username    String       @unique @default(dbgenerated("concat('user_', substr(md5(random()::text), 1, 8))")) //random default username like "user_a1b2c3d4"
+  password    String
+  createdAt   DateTime     @default(now())
+  updatedAt   DateTime     @updatedAt
+  posts       Posts[]
+  reactions   Reactions[]
+  matches     Matches[]    @relation("UserMatches")
+  matchedWith Matches[]    @relation("MatchUserMatches")
+  userDetails UserDetails?
+}
+
+model UserDetails {
   id            String          @id @default(uuid())
-  email         String          @unique
-  username      String          @unique @default(dbgenerated("concat('user_', substr(md5(random()::text), 1, 8))")) //random default username like "user_a1b2c3d4"
-  password      String
-  createdAt     DateTime        @default(now())
-  updatedAt     DateTime        @updatedAt
-  posts         Posts[]
-  reactions     Reactions[]
-  matches       Matches[]       @relation("UserMatches")
-  matchedWith   Matches[]       @relation("MatchUserMatches")
+  userId        String          @unique
+  user          User            @relation(fields: [userId], references: [id])
+  name          String
+  bio           String
+  department    String
+  year          String
+  image         String
+  reading       String
+  availability  String
   userInterests UserInterests[]
 }
 
@@ -67,10 +81,10 @@ model Interests {
 }
 
 model UserInterests {
-  id         String   @id @default(uuid())
-  userId     String
-  interestId String
-  createdAt  DateTime @default(now())
-  updatedAt  DateTime @updatedAt
-  User       User     @relation(fields: [userId], references: [id])
+  id            String      @id @default(uuid())
+  userDetailsId String
+  interestId    String
+  createdAt     DateTime    @default(now())
+  updatedAt     DateTime    @updatedAt
+  UserDetails   UserDetails @relation(fields: [userDetailsId], references: [id])
 }

@@ -3,13 +3,14 @@ import { getServerSession } from "next-auth";
 import { redirect } from "next/navigation";
 import { getUser } from "@/lib/data/user";
 import DashboardHeader from "@/components/dashboard-header/dashboard-header";
+import { sessionType } from "@/types/session";
 
 export default async function MainLayout({
    children,
 }: {
    children: React.ReactNode;
 }) {
-   const session = await getServerSession(authOptions);
+   const session: sessionType | null = await getServerSession(authOptions);
 
    if (!session) {
       redirect("/login");

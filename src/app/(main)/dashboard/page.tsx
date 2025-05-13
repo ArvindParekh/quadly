@@ -12,10 +12,10 @@ import CreatePostButton from "@/components/create-post-button"
 import { getServerSession } from "next-auth"
 import { authOptions } from "@/lib/auth"
 import { getUser } from "@/lib/data/user"
-
+import { sessionType } from "@/types/session"
 export default async function DashboardPage() {
 
-  const session = await getServerSession(authOptions);
+  const session: sessionType | null = await getServerSession(authOptions);
   console.log("session", session);
   if (!session) {
     redirect("/login");
@@ -24,7 +24,7 @@ export default async function DashboardPage() {
   const user = await getUser(session.user?.id);
 
   return (
-    <div className="min-h-screen bg-background">
+      <div className="min-h-screen bg-background">
 
       <main className="container py-6 mx-auto">
         <div className="grid gap-6 md:grid-cols-[1fr_300px]">
@@ -251,7 +251,7 @@ export default async function DashboardPage() {
                     <Avatar className="h-20 w-20 border-2 border-pink-500">
                       <AvatarImage src="/placeholder.svg?height=80&width=80" alt="Profile" />
                       <AvatarFallback className="bg-gradient-to-br from-pink-500 to-yellow-400 text-black">
-                        YP
+                        {user?.username?.charAt(0)}
                       </AvatarFallback>
                     </Avatar>
                     <span className="absolute bottom-0 right-0 h-5 w-5 rounded-full bg-green-500 border-2 border-background"></span>
