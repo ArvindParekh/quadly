@@ -29,6 +29,7 @@ import { z } from "zod";
 
 // solve this
 
-export const createInterestSchema = z.array(z.object({
-    name: z.string().min(1),
-}))
+export const createInterestSchema = z.object({
+    interestsString: z.string().min(1),
+    userId: z.string().min(1),
+});

@@ -43,6 +43,7 @@ import {
    PopoverTrigger,
 } from "@/components/ui/popover";
 import { ToggleGroup, ToggleGroupItem } from "../ui/toggle-group";
+import { createInterests } from "@/actions/interest";
 
 export default function ProfilePage({
    userDetails,
@@ -52,6 +53,7 @@ export default function ProfilePage({
    userId: string;
 }) {
    const [state, formAction] = useActionState(updateUserDetails, null);
+   const [stateInterests, formActionInterests] = useActionState(createInterests, null);
 
    // State for controlled inputs
    const [formData, setFormData] = useState({
@@ -187,6 +189,8 @@ export default function ProfilePage({
    ) => {
       e.preventDefault();
 
+      console.log("handleInterestsSubmit called!!");
+
       const newInterests = selectedInterests.map((interest) => ({
          interest: {
             name: interest,
@@ -195,11 +199,11 @@ export default function ProfilePage({
 
       const updatedData = new FormData();
       updatedData.append("userId", userId);
-      updatedData.append("interests", JSON.stringify(newInterests));
+      updatedData.append("interestsString", JSON.stringify(selectedInterests));
 
       console.log(updatedData);
       startTransition(() => {
-         formAction(updatedData);
+         formActionInterests(updatedData);
       });
    };
 
@@ -656,6 +660,7 @@ export default function ProfilePage({
 
 // Helper to extract interest names as string[]
 function getInitialSelectedInterests(userDetails: UserDetailsClient | null): string[] {
+   console.log(userDetails?.interests);
    if (
       userDetails?.interests &&
       Array.isArray(userDetails.interests) &&
