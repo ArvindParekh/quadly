@@ -48,7 +48,7 @@ export default function ProfilePage({
    userDetails,
    userId,
 }: {
-   userDetails: UserDetailsClient;
+   userDetails: UserDetailsClient | null;
    userId: string;
 }) {
    const [state, formAction] = useActionState(updateUserDetails, null);

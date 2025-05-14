@@ -1,21 +1,26 @@
 // define resusable post data that can be used in server components and server actions
 import { z } from "zod";
 import { prisma } from "../prisma";
-import { PostSchema, createPostSchema, updatePostSchema } from "../zod/posts";
+import { createPostSchema, updatePostSchema } from "../zod/posts";
+import { Post, Prisma } from "@/generated/prisma";
 
     
 // infer type
-type Post = z.infer<typeof PostSchema>;
+
 type CreatePost = z.infer<typeof createPostSchema>;
 type UpdatePost = z.infer<typeof updatePostSchema>;
 
-export const getPost = async (id: string): Promise<Post> => {
-    const post = await prisma.posts.findUnique({
+export const getPost = async (id: string): Promise<Prisma.PostGetPayload<{
+    include: {
+        reaction: true,
+    }
+}>> => {
+    const post = await prisma.post.findUnique({
         where: {
             id: id, 
         },
         include: {
-            reactions: true,
+            reaction: true,
         }
     });
 
@@ -23,25 +28,33 @@ export const getPost = async (id: string): Promise<Post> => {
         throw new Error("Post not found");
     }
 
-    return PostSchema.parse(post);
+    return post;
 }
 
-export const getAllPosts = async () => {
-    const posts = await prisma.posts.findMany({
-        include: {
-            reactions: true,
-            postInterests: {
-                include: {
-                    interest: true
+export const getAllPosts = async (): Promise<Prisma.PostGetPayload<{
+    include: {
+        reaction: true,
+        postTags: true,
+        author: {
+            include: {
+                user: {
+                    select: {
+                        userDetails: true
+                    }
                 }
-            },
-            user: {
+            }
+        }
+    }
+}>[]> => {
+    const posts = await prisma.post.findMany({
+        include: {
+            reaction: true,
+            postTags: true,
+            author: {
                 include: {
-                    userDetails: {
+                    user: {
                         select: {
-                            name: true,
-                            image: true,
-                            department: true,
+                            userDetails: true
                         }
                     }
                 }
@@ -60,7 +73,7 @@ export const getAllPosts = async () => {
 }
 
 export const createPost = async (data: CreatePost): Promise<string> => {
-    const post = await prisma.posts.create({
+    const post = await prisma.post.create({
         data: data,
     })
 
@@ -72,7 +85,7 @@ export const createPost = async (data: CreatePost): Promise<string> => {
 }
 
 export const updatePost = async (id: string, data: UpdatePost): Promise<string> => {
-    const post = await prisma.posts.update({
+    const post = await prisma.post.update({
         where: {
             id: id,
         },

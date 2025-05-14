@@ -61,20 +61,20 @@ export default async function DashboardPage() {
               </TabsList>
               <TabsContent value="feed" className="space-y-4 mt-6">
                 {posts.map((post, index)=> {
-                  console.log(post.postInterests);
+                  console.log(post.postTags.map((tag)=> tag.tagName));
                   return (
                     <InterestPost
                     key={index}
                     user={{
-                      name: post.user.userDetails.name,
-                      avatar: post.user.userDetails.profilePicture,
-                      department: post.user.userDetails.department,
+                      name: post.author.name,
+                      avatar: post.author.profilePicture || "/placeholder.svg?height=40&width=40",
+                      department: post.author.department || "",
                     }}
                     content={post.content}
-                    interests={post.postInterests.map((interest)=> interest.interest.name)}
+                    interests={post.postTags.map((tag)=> tag.tagName)}
                     timestamp={post.createdAt.toLocaleString()}
-                    likes={post.reactions.filter((reaction) => reaction.type === "like").length}
-                    comments={post.reactions.filter((reaction) => reaction.type === "comment").length}
+                    likes={post.reaction?.likes || 0}
+                    comments={post.commentCount}
                   />
                   )
                 })}
@@ -287,9 +287,9 @@ export default async function DashboardPage() {
                 <div>
                   <h4 className="text-sm font-medium mb-2">Your Interests</h4>
                   <div className="flex flex-wrap gap-2">
-                    {user?.userDetails?.userInterests.map((interest) => (
+                    {user?.userDetails?.interests.map((interest) => (
                       <Badge key={interest.id} className="bg-pink-500 hover:bg-pink-600">
-                        {interest.interest.name}
+                        {interest.interestName}
                       </Badge>
                     ))}
                     {/* <Badge className="bg-pink-500 hover:bg-pink-600">Distributed Systems</Badge>

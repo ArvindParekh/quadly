@@ -9,26 +9,23 @@ import { z } from "zod";
 //     postInterests PostInterests[]
 //   }
 
-export const interestSchema = z.array(z.object({
-    name: z.string().min(1),
-    id: z.string().uuid(),
-    createdAt: z.date(),
-    updatedAt: z.date(),
-    userInterests: z.array(z.object({
-        id: z.string().uuid(),
-        userId: z.string().uuid(),
-        interestId: z.string().uuid(),
-        createdAt: z.date(),
-        updatedAt: z.date(),
-    })),
-    postInterests: z.array(z.object({
-        id: z.string().uuid(),
-        postId: z.string().uuid(),
-        interestId: z.string().uuid(),
-        createdAt: z.date(),
-        updatedAt: z.date(),
-    })),
-}))
+
+// {
+//     interests: {
+//         id: string;
+//         interestName: string;
+//     }[];
+// } & {
+//     name: string;
+//     id: string;
+//     userId: string;
+//     department: string | null;
+//     year: string | null;
+//     profilePicture: string | null;
+//     bio: string | null;
+//     availability: string | null;
+//     reading: string | null;
+// }) | null
 
 // solve this
 
