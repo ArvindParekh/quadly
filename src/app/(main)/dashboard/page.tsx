@@ -75,6 +75,8 @@ export default async function DashboardPage() {
                     timestamp={post.createdAt.toLocaleString()}
                     likes={post.reaction?.likes || 0}
                     comments={post.commentCount}
+                    postId={post.id}
+                    userId={user.userDetails?.id as string}
                   />
                   )
                 })}
@@ -89,6 +91,8 @@ export default async function DashboardPage() {
                   timestamp="2 hours ago"
                   likes={12}
                   comments={3}
+                  postId={""}
+                  userId={""}
                 />
 
                 <InterestPost
@@ -102,6 +106,8 @@ export default async function DashboardPage() {
                   timestamp="5 hours ago"
                   likes={8}
                   comments={7}
+                  postId={""}
+                  userId={""}
                 />
 
                 <InterestPost
@@ -115,6 +121,8 @@ export default async function DashboardPage() {
                   timestamp="Yesterday"
                   likes={15}
                   comments={4}
+                  postId={""}
+                  userId={""}
                 />
               </TabsContent>
 

@@ -38,6 +38,15 @@ export const createUser = async (data: CreateUser): Promise<string> => {
         }
     });
 
+    if (user) {
+        const userDetails = await prisma.userDetails.create({
+            data: {
+                name: user.username,
+                userId: user.id
+            }
+        })
+    }
+
     if (!user) {
         throw new Error("Failed to create user");
     }

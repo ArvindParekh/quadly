@@ -133,7 +133,7 @@ export const authOptions = {
       async session({ session, token }: { session: Session; token: JWT }) {
          if (session.user) {
             // @ts-ignore
-            session.user.id = token.sub;
+            session.user.id = token.id;
             session.user.name = token.name;
          }
          return session;
@@ -142,6 +142,14 @@ export const authOptions = {
          if (user) {
             token.id = user.id;
             token.name = user.name;
+         } else if (token.email) {
+            const dbUser = await prisma.user.findUnique({
+               where: { email: token.email as string },
+            });
+            if (dbUser) {
+               token.id = dbUser.id;
+               token.name = dbUser.username;
+            }
          }
          return token;
       },

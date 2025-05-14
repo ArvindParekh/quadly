@@ -44,3 +44,25 @@ export const createPost = async (prevState: any, formData: FormData) => {
       return { error: error, success: false, message: "Error creating post" };
    }
 };
+
+export const likePost = async (postId: string, userId: string) => {
+   try{
+      const reaction = await prisma.reaction.upsert({
+         where: {
+            postId: postId,
+         },
+         update: {
+            likes: {
+               increment: 1
+            }
+         },
+         create: {
+            postId: postId,
+            likes: 1
+         }
+      })
+   } catch (error) {
+      console.log("error", error);
+      return { error: error, success: false, message: "Error liking post" };
+   }
+}
