@@ -15,11 +15,7 @@ export default async function Profile() {
       userId: session.user.id 
     },
     include: {
-      userInterests: {
-        include: {
-          interest: true
-        }
-      }
+      interests: true
     }
   })
 

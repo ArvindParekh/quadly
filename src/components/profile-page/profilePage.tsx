@@ -48,7 +48,7 @@ export default function ProfilePage({
    userDetails,
    userId,
 }: {
-   userDetails: UserDetailsClient | null;
+   userDetails: UserDetailsClient;
    userId: string;
 }) {
    const [state, formAction] = useActionState(updateUserDetails, null);
@@ -81,8 +81,8 @@ export default function ProfilePage({
       "Quantum Computing",
    ];
    const [selectedInterests, setSelectedInterests] = useState<string[]>(
-      userDetails?.userInterests.map(
-         (userInterest) => userInterest.interest.name
+      userDetails?.interests.map(
+         (userInterest) => userInterest.interestName
       ) || []
    );
    const [popoverOpen, setPopoverOpen] = useState(false);
@@ -204,7 +204,7 @@ export default function ProfilePage({
                            <div className='relative'>
                               <Avatar className='h-32 w-32 border-2 border-pink-500'>
                                  <AvatarImage
-                                    src={userDetails?.image}
+                                    src={userDetails?.profilePicture as string}
                                     alt='Profile'
                                  />
                                  <AvatarFallback className='text-4xl bg-gradient-to-br from-pink-500 to-yellow-400 text-black'>
@@ -246,7 +246,7 @@ export default function ProfilePage({
                                  <Input
                                     id='department'
                                     name='department'
-                                    defaultValue={formData.department}
+                                    defaultValue={formData.department as string}
                                     className='border-pink-500/20 focus-visible:ring-pink-500'
                                  />
                               </div>
@@ -260,7 +260,7 @@ export default function ProfilePage({
                                  <Input
                                     id='year'
                                     name='year'
-                                    defaultValue={formData.year}
+                                    defaultValue={formData.year as string}
                                     className='border-pink-500/20 focus-visible:ring-pink-500'
                                  />
                               </div>
@@ -287,7 +287,7 @@ export default function ProfilePage({
                               name='bio'
                               placeholder='Grad student passionate about distributed systems and software architecture. Always looking to connect with fellow tech enthusiasts over coffee! ☕'
                               className='min-h-[120px] border-pink-500/20 focus-visible:ring-pink-500'
-                              defaultValue={formData.bio}
+                              defaultValue={formData.bio as string}
                            />
                         </div>
 
@@ -296,11 +296,11 @@ export default function ProfilePage({
                               Interests
                            </label>
                            <div className='flex flex-wrap gap-2'>
-                              {userDetails?.userInterests.map(
+                              {userDetails?.interests.map(
                                  (userInterest) => (
                                     <InterestTag
-                                       key={userInterest.interest.id}
-                                       name={userInterest.interest.name}
+                                       key={userInterest.id}
+                                       name={userInterest.interestName}
                                        color='pink'
                                        removable={true}
                                        interactive={true}
@@ -536,7 +536,7 @@ export default function ProfilePage({
                                  id='reading'
                                  name='reading'
                                  placeholder='Designing Data-Intensive Applications'
-                                 defaultValue={formData.reading}
+                                 defaultValue={formData.reading as string}
                                  className='flex-1 border-pink-500/20 focus-visible:ring-pink-500'
                               />
                            </div>
@@ -595,7 +595,7 @@ export default function ProfilePage({
                               name='availability'
                               placeholder='Weekday afternoons and evenings. Coffee chats on campus preferred.'
                               className='min-h-[80px] border-pink-500/20 focus-visible:ring-pink-500'
-                              defaultValue={formData.availability}
+                              defaultValue={formData.availability as string}
                            />
                         </div>
                      </CardContent>

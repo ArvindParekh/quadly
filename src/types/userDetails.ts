@@ -1,22 +1,26 @@
 export interface Interest {
-    id: string;
-    name: string;
-  }
-  
-  export interface UserInterest {
-    id: string;
-    interest: Interest;
-  }
-  
-  export interface UserDetailsClient {
-    id: string;
-    userId: string;
-    name: string;
-    bio: string;
-    department: string;
-    year: string;
-    image: string;
-    reading: string;
-    availability: string;
-    userInterests: UserInterest[];
-  }
+   id: string;
+   name: string;
+}
+
+export interface UserInterest {
+   id: string;
+   interest: Interest;
+}
+
+export type UserDetailsClient = {
+   interests: {
+      id: string;
+      interestName: string;
+   }[];
+} & {
+   name: string;
+   id: string;
+   userId: string;
+   department: string | null;
+   year: string | null;
+   profilePicture: string | null;
+   bio: string | null;
+   availability: string | null;
+   reading: string | null;
+};
