@@ -18,7 +18,7 @@ export async function createInterests(prevState: any, formData: FormData) {
 
    if (!parsedInterests.success) {
       console.log(parsedInterests.error);
-      return { error: "Invalid data", success: false };
+      return { error: "Invalid data", success: false, message: "Invalid data" };
    }
 
    const { interestsString, userId } = parsedInterests.data;
@@ -51,8 +51,8 @@ export async function createInterests(prevState: any, formData: FormData) {
             },
          });
 
-      return { success: true };
+      return { success: true, message: "Interests updated successfully" };
    } catch (error) {
-      return { error: "Error creating interests", success: false };
+      return { error: "Error updating interests", success: false, message: "Error updating interests" };
    }
 }

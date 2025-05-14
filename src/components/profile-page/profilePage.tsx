@@ -95,7 +95,6 @@ export default function ProfilePage({
       }
       setSearchTerm("");
       // setPopoverOpen(false); // Keep popover open for multi-select if desired, or close it.
-      // For this iteration, let's keep it open to allow easier multiple selections.
    };
 
    const handleRemoveInterest = (interestToRemove: string) => {
@@ -163,7 +162,7 @@ export default function ProfilePage({
    };
 
    useEffect(() => {
-      if (state?.success) {
+      if (state?.success || stateInterests?.success) {
          setFormData({
             name: userDetails?.name,
             department: userDetails?.department,
@@ -171,10 +170,10 @@ export default function ProfilePage({
             bio: userDetails?.bio,
             reading: userDetails?.reading,
             availability: userDetails?.availability,
-            interests: selectedInterests,
+            interests: userDetails?.interests.map((interest) => interest.interestName) as string[],
          });
       }
-   }, [state, userDetails, selectedInterests]);
+   }, [state, userDetails, stateInterests]);
 
    useEffect(() => {
       if (state?.success) {
@@ -183,6 +182,14 @@ export default function ProfilePage({
          toast.error(state.error || "Failed to update profile.");
       }
    }, [state]);
+
+   useEffect(() => {
+      if (stateInterests?.success) {
+         toast.success(stateInterests.message || "Interests updated successfully!");
+      } else if (stateInterests?.error) {
+         toast.error(stateInterests.error || "Failed to update interests.");
+      }
+   }, [stateInterests]);
 
    const handleInterestsSubmit = async (
       e: React.FormEvent<HTMLFormElement>
@@ -332,73 +339,18 @@ export default function ProfilePage({
                               Interests
                            </label>
                            <div className='flex flex-wrap gap-2'>
-                              {userDetails?.interests.map(
-                                 (userInterest) => (
+                              {selectedInterests.map(
+                                 (interest) => (
                                     <InterestTag
-                                       key={userInterest.id}
-                                       name={userInterest.interestName}
+                                       key={interest}
+                                       name={interest}
                                        color='pink'
                                        removable={true}
                                        interactive={true}
+                                       onRemove={() => handleRemoveInterest(interest)}
                                     />
                                  )
                               )}
-                              {/* <div className='flex items-center gap-1 bg-pink-500/10 rounded-full border border-pink-500/20 px-3 py-1 text-sm text-pink-500'>
-                                 <span>Distributed Systems</span>
-                                 <Button
-                                    variant='ghost'
-                                    size='icon'
-                                    className='h-4 w-4 ml-1 hover:bg-pink-500/20'
-                                 >
-                                    <X className='h-3 w-3' />
-                                    <span className='sr-only'>Remove</span>
-                                 </Button>
-                              </div>
-                              <div className='flex items-center gap-1 bg-yellow-400/10 rounded-full border border-yellow-400/20 px-3 py-1 text-sm text-yellow-400'>
-                                 <span>Algorithms</span>
-                                 <Button
-                                    variant='ghost'
-                                    size='icon'
-                                    className='h-4 w-4 ml-1 hover:bg-yellow-400/20'
-                                 >
-                                    <X className='h-3 w-3' />
-                                    <span className='sr-only'>Remove</span>
-                                 </Button>
-                              </div>
-                              <div className='flex items-center gap-1 bg-blue-500/10 rounded-full border border-blue-500/20 px-3 py-1 text-sm text-blue-500'>
-                                 <span>Machine Learning</span>
-                                 <Button
-                                    variant='ghost'
-                                    size='icon'
-                                    className='h-4 w-4 ml-1 hover:bg-blue-500/20'
-                                 >
-                                    <X className='h-3 w-3' />
-                                    <span className='sr-only'>Remove</span>
-                                 </Button>
-                              </div>
-                              <div className='flex items-center gap-1 bg-pink-500/10 rounded-full border border-pink-500/20 px-3 py-1 text-sm text-pink-500'>
-                                 <span>Web Development</span>
-                                 <Button
-                                    variant='ghost'
-                                    size='icon'
-                                    className='h-4 w-4 ml-1 hover:bg-pink-500/20'
-
-                                 >
-                                    <X className='h-3 w-3' />
-                                    <span className='sr-only'>Remove</span>
-                                 </Button>
-                              </div>
-                              <div className='flex items-center gap-1 bg-yellow-400/10 rounded-full border border-yellow-400/20 px-3 py-1 text-sm text-yellow-400'>
-                                 <span>Coffee</span>
-                                 <Button
-                                    variant='ghost'
-                                    size='icon'
-                                    className='h-4 w-4 ml-1 hover:bg-yellow-400/20'
-                                 >
-                                    <X className='h-3 w-3' />
-                                    <span className='sr-only'>Remove</span>
-                                 </Button>
-                              </div> */}
                               <Dialog>
                                  <DialogTrigger asChild>
                                     <Button
@@ -537,6 +489,7 @@ export default function ProfilePage({
                                           variant='outline'
                                           onClick={() => {
                                              /* Close dialog */
+                                             
                                           }}
                                        >
                                           Cancel
@@ -551,7 +504,7 @@ export default function ProfilePage({
                                              );
                                           }}
                                        >
-                                          Add Selected
+                                          Update Selected
                                        </Button>
                                     </DialogFooter>
                                  </DialogContent>
