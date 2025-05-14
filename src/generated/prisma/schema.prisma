@@ -14,98 +14,260 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+// I'm trying to do a overhaul of the schema to make it more efficient and scalable.
+// I'm also trying to add some new features that will make the app more user friendly and engaging.
+// I'm also trying to make the schema more normalized and denormalized.
+// I'm also trying to make the schema more flexible and scalable.
+// I'm also trying to make the schema more secure and robust.
+// I'm also trying to make the schema more maintainable and readable.
+
 model User {
-  id          String       @id @default(uuid())
-  email       String       @unique
-  username    String       @unique @default(dbgenerated("concat('user_', substr(md5(random()::text), 1, 8))")) //random default username like "user_a1b2c3d4"
-  password    String
-  createdAt   DateTime     @default(now())
-  updatedAt   DateTime     @updatedAt
-  posts       Posts[]
-  reactions   Reactions[]
-  matches     Matches[]    @relation("UserMatches")
-  matchedWith Matches[]    @relation("MatchUserMatches")
+  id String @id @default(uuid())
+
+  email    String @unique
+  username String @unique @default(dbgenerated("concat('user_', substr(md5(random()::text), 1, 8))")) //random default username like "user_a1b2c3d4"
+  password String
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
   userDetails UserDetails?
 }
 
 model UserDetails {
-  id            String          @id @default(uuid())
-  userId        String          @unique
-  user          User            @relation(fields: [userId], references: [id])
-  name          String
-  bio           String
-  department    String
-  year          String
-  image         String
-  reading       String
-  availability  String
-  userInterests UserInterests[]
+  id String @id @default(uuid())
+
+  userId String @unique
+  user   User   @relation(fields: [userId], references: [id])
+
+  name           String // set this to the username of the user when creating a new user
+  department     String?
+  year           String?
+  profilePicture String?
+  bio            String?
+  availability   String?
+  reading        String?
+
+  posts                 Post[] // oncascade: delete
+  comments              Comment[]
+  notifications         Notification[]
+  interests             Interest[]
+  matchesSent           Match[]          @relation("Inviter")
+  matchesReceived       Match[]          @relation("Invitee")
+  currentUserSimilarity UserSimilarity[] @relation("CurrentUser")
+  otherUserSimilarity   UserSimilarity[] @relation("OtherUser")
+  asEventAttendee       Event[]          @relation("EventAttendees")
+  asEventOrganizer      Event[]          @relation("EventOrganizers")
+  coffeeChatsSent       CoffeeChat[]     @relation("Inviter")
+  coffeeChatsReceived   CoffeeChat[]     @relation("Invitee")
+  chatsAsUser1          Chat[]           @relation("User1")
+  chatsAsUser2          Chat[]           @relation("User2")
+  messagesSent          Message[]
 }
 
-model Posts {
-  id            String          @id @default(uuid())
-  content       String
-  createdAt     DateTime        @default(now())
-  updatedAt     DateTime        @updatedAt
-  userId        String
-  user          User            @relation(fields: [userId], references: [id])
-  postInterests PostInterests[]
-  reactions     Reactions[]
-}
+model Post {
+  id String @id @default(uuid())
 
-model PostInterests {
-  id         String    @id @default(uuid())
-  postId     String
-  interestId String
-  post       Posts     @relation(fields: [postId], references: [id], onDelete: Cascade)
-  interest   Interests @relation(fields: [interestId], references: [id], onDelete: Cascade)
+  authorId String
+  author   UserDetails @relation(fields: [authorId], references: [id])
 
-  @@unique([postId, interestId])
-  @@index([postId])
-  @@index([interestId])
-}
+  content      String
+  commentCount Int    @default(0)
 
-model Reactions {
-  id        String   @id @default(uuid())
-  postId    String
-  userId    String
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
-  User      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
-  post      Posts    @relation(fields: [postId], references: [id], onDelete: Cascade)
+
+  reaction Reaction?
+  postTags PostTag[]
+  comments Comment[]
 }
 
-model Matches {
-  id          String   @id @default(uuid())
-  userId      String
-  matchUserId String
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
-  User        User     @relation("UserMatches", fields: [userId], references: [id])
-  matchUser   User     @relation("MatchUserMatches", fields: [matchUserId], references: [id])
+model Reaction {
+  id String @id @default(uuid())
+
+  postId String @unique
+  post   Post   @relation(fields: [postId], references: [id])
+
+  likes Int @default(0)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
 
-model Interests {
-  id            String          @id @default(uuid())
-  name          String          @unique
-  createdAt     DateTime        @default(now())
-  updatedAt     DateTime        @updatedAt
-  userInterests UserInterests[]
-  postInterests PostInterests[]
+model Comment {
+  id String @id @default(uuid())
+
+  postId String
+  post   Post   @relation(fields: [postId], references: [id])
+
+  authorId String
+  author   UserDetails @relation(fields: [authorId], references: [id])
+
+  commentContent String
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
 
-model UserInterests {
-  id            String @id @default(uuid())
+model PostTag {
+  id String @id @default(uuid())
+
+  tagName String @unique
+
+  posts Post[]
+}
+
+model Notification {
+  id String @id @default(uuid())
+
   userDetailsId String
-  interestId    String
+  userDetails   UserDetails @relation(fields: [userDetailsId], references: [id])
 
-  userDetails UserDetails @relation(fields: [userDetailsId], references: [id], onDelete: Cascade)
-  interest    Interests   @relation(fields: [interestId], references: [id], onDelete: Cascade)
+  notificationType NotificationType
+  notificationData String
+  read             Boolean          @default(false) // keep deleting read notifications
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+enum NotificationType {
+  LIKE
+  COMMENT
+  MATCH
+  MESSAGE
+  EVENT_REMINDER
+  SYSTEM_MESSAGE
+}
+
+model Interest {
+  id String @id @default(uuid())
+
+  interestName String @unique
+  // assign weight to each interest for matching?
+
+  userDetails UserDetails[]
+}
+
+model Match {
+  id String @id @default(uuid())
+
+  inviterId String
+  inviter   UserDetails @relation("Inviter", fields: [inviterId], references: [id])
+
+  inviteeId String
+  invitee   UserDetails @relation("Invitee", fields: [inviteeId], references: [id])
+
+  matchScore  Int
+  matchStatus MatchStatus @default(PENDING) // keep deleting old rejected matches
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  @@unique([userDetailsId, interestId])
-  @@index([userDetailsId])
-  @@index([interestId])
+  @@unique([inviterId, inviteeId])
 }
+
+enum MatchStatus {
+  PENDING
+  ACCEPTED
+  REJECTED
+}
+
+model UserSimilarity {
+  id String @id @default(uuid())
+
+  currentUserId String
+  currentUser   UserDetails @relation("CurrentUser", fields: [currentUserId], references: [id])
+
+  otherUserId String
+  otherUser   UserDetails @relation("OtherUser", fields: [otherUserId], references: [id])
+
+  similarityScore Int
+  factors         Json? // keeping it temporarily optional for now
+
+  // do we need a createdAt and updatedAt?
+  createdAt DateTime @default(now()) // for cleanup cron jobs
+  // keep deleting old rows in this table
+
+  @@unique([currentUserId, otherUserId])
+}
+
+model Event {
+  id String @id @default(uuid())
+
+  title       String
+  description String
+  location    String?
+  date        DateTime
+  time        DateTime?
+  category    String?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  organizers UserDetails[] @relation("EventOrganizers")
+  attendees  UserDetails[] @relation("EventAttendees")
+
+  @@unique([title, description, location, date, time])
+}
+
+model CoffeeChat {
+  id String @id @default(uuid())
+
+  inviterId String
+  inviter   UserDetails @relation("Inviter", fields: [inviterId], references: [id])
+
+  inviteeId String
+  invitee   UserDetails @relation("Invitee", fields: [inviteeId], references: [id])
+
+  scheduledAt DateTime?
+  // location String?
+  status      CoffeeChatStatus @default(PENDING)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // allow duplicate [inviterId, inviteeId] fields here?
+}
+
+enum CoffeeChatStatus {
+  PENDING
+  ACCEPTED
+  REJECTED
+}
+
+model Chat {
+  id String @id @default(uuid())
+
+  user1Id String
+  user1   UserDetails @relation("User1", fields: [user1Id], references: [id])
+
+  user2Id String
+  user2   UserDetails @relation("User2", fields: [user2Id], references: [id])
+
+  name String?
+
+  messages Message[]
+
+  @@unique([user1Id, user2Id])
+}
+
+model Message {
+  id String @id @default(uuid())
+
+  chatId String
+  chat   Chat   @relation(fields: [chatId], references: [id])
+
+  senderId String
+  sender   UserDetails @relation(fields: [senderId], references: [id])
+
+  content String
+  // read Boolean @default(false)
+
+  createdAt DateTime @default(now())
+  // no updatedAt yet
+}
+
+// todo: add indexes on frequently queried fields
+// todo: repetitive relation names in UserDetails
+// todo: keep comment counts in sync with comments - using something called prisma.$transaction() in code

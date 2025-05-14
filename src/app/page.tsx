@@ -10,9 +10,9 @@ import { sessionType } from "@/types/session";
 
 export default async function LandingPage() {
    const session: sessionType | null = await getServerSession(authOptions);
-   let user: User | null = null;
+   let user = null;
    if (session) {
-      user = await getUser(session?.user.id as string);
+      user = await getUser(session.user.id as string);
    }
 
    return (

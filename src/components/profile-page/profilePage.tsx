@@ -221,8 +221,8 @@ export default function ProfilePage({
                                  </span>
                               </Button>
                            </div>
-                           <div className='space-y-2 flex-1'>
-                              <div className='space-y-1'>
+                           <div className='flex flex-col space-y-2 flex-1'>
+                              <div className='flex flex-col space-y-1'>
                                  <label
                                     htmlFor='name'
                                     className='text-sm font-medium'
@@ -236,7 +236,7 @@ export default function ProfilePage({
                                     className='border-pink-500/20 focus-visible:ring-pink-500'
                                  />
                               </div>
-                              <div className='space-y-1'>
+                              <div className='flex flex-col space-y-1'>
                                  <label
                                     htmlFor='department'
                                     className='text-sm font-medium'
@@ -250,7 +250,7 @@ export default function ProfilePage({
                                     className='border-pink-500/20 focus-visible:ring-pink-500'
                                  />
                               </div>
-                              <div className='space-y-1'>
+                              <div className='flex flex-col space-y-1'>
                                  <label
                                     htmlFor='year'
                                     className='text-sm font-medium'
@@ -278,7 +278,7 @@ export default function ProfilePage({
                         </CardDescription>
                      </CardHeader>
                      <CardContent className='space-y-4 pt-6'>
-                        <div className='space-y-1'>
+                        <div className='flex flex-col space-y-2'>
                            <label htmlFor='bio' className='text-sm font-medium'>
                               Bio
                            </label>
@@ -291,7 +291,7 @@ export default function ProfilePage({
                            />
                         </div>
 
-                        <div className='space-y-2'>
+                        <div className='flex flex-col space-y-2'>
                            <label className='text-sm font-medium'>
                               Interests
                            </label>
@@ -523,7 +523,7 @@ export default function ProfilePage({
                            </div>
                         </div>
 
-                        <div className='space-y-2'>
+                        <div className='flex flex-col space-y-2'>
                            <label
                               htmlFor='reading'
                               className='text-sm font-medium'
@@ -552,7 +552,7 @@ export default function ProfilePage({
                         </CardDescription>
                      </CardHeader>
                      <CardContent className='space-y-4 pt-6'>
-                        <div className='space-y-32'>
+                        <div className='flex flex-col space-y-2'>
                            <label className='text-sm font-medium'>
                               I'm open to:
                            </label>
@@ -583,7 +583,7 @@ export default function ProfilePage({
                            </div>
                         </div>
 
-                        <div className='space-y-32'>
+                        <div className='flex flex-col space-y-2'>
                            <label
                               htmlFor='availability'
                               className='text-sm font-medium'

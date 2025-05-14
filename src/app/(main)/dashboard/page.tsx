@@ -67,7 +67,7 @@ export default async function DashboardPage() {
                     key={index}
                     user={{
                       name: post.user.userDetails.name,
-                      avatar: post.user.userDetails.image,
+                      avatar: post.user.userDetails.profilePicture,
                       department: post.user.userDetails.department,
                     }}
                     content={post.content}

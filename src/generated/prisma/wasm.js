@@ -133,57 +133,114 @@ exports.Prisma.UserDetailsScalarFieldEnum = {
   id: 'id',
   userId: 'userId',
   name: 'name',
-  bio: 'bio',
   department: 'department',
   year: 'year',
-  image: 'image',
-  reading: 'reading',
-  availability: 'availability'
+  profilePicture: 'profilePicture',
+  bio: 'bio',
+  availability: 'availability',
+  reading: 'reading'
 };
 
-exports.Prisma.PostsScalarFieldEnum = {
+exports.Prisma.PostScalarFieldEnum = {
   id: 'id',
+  authorId: 'authorId',
   content: 'content',
+  commentCount: 'commentCount',
   createdAt: 'createdAt',
-  updatedAt: 'updatedAt',
-  userId: 'userId'
+  updatedAt: 'updatedAt'
 };
 
-exports.Prisma.PostInterestsScalarFieldEnum = {
+exports.Prisma.ReactionScalarFieldEnum = {
   id: 'id',
   postId: 'postId',
-  interestId: 'interestId'
+  likes: 'likes',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
 };
 
-exports.Prisma.ReactionsScalarFieldEnum = {
+exports.Prisma.CommentScalarFieldEnum = {
   id: 'id',
   postId: 'postId',
-  userId: 'userId',
+  authorId: 'authorId',
+  commentContent: 'commentContent',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 };
 
-exports.Prisma.MatchesScalarFieldEnum = {
+exports.Prisma.PostTagScalarFieldEnum = {
   id: 'id',
-  userId: 'userId',
-  matchUserId: 'matchUserId',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
+  tagName: 'tagName'
 };
 
-exports.Prisma.InterestsScalarFieldEnum = {
-  id: 'id',
-  name: 'name',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
-};
-
-exports.Prisma.UserInterestsScalarFieldEnum = {
+exports.Prisma.NotificationScalarFieldEnum = {
   id: 'id',
   userDetailsId: 'userDetailsId',
-  interestId: 'interestId',
+  notificationType: 'notificationType',
+  notificationData: 'notificationData',
+  read: 'read',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
+};
+
+exports.Prisma.InterestScalarFieldEnum = {
+  id: 'id',
+  interestName: 'interestName'
+};
+
+exports.Prisma.MatchScalarFieldEnum = {
+  id: 'id',
+  inviterId: 'inviterId',
+  inviteeId: 'inviteeId',
+  matchScore: 'matchScore',
+  matchStatus: 'matchStatus',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.UserSimilarityScalarFieldEnum = {
+  id: 'id',
+  currentUserId: 'currentUserId',
+  otherUserId: 'otherUserId',
+  similarityScore: 'similarityScore',
+  factors: 'factors',
+  createdAt: 'createdAt'
+};
+
+exports.Prisma.EventScalarFieldEnum = {
+  id: 'id',
+  title: 'title',
+  description: 'description',
+  location: 'location',
+  date: 'date',
+  time: 'time',
+  category: 'category',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.CoffeeChatScalarFieldEnum = {
+  id: 'id',
+  inviterId: 'inviterId',
+  inviteeId: 'inviteeId',
+  scheduledAt: 'scheduledAt',
+  status: 'status',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.ChatScalarFieldEnum = {
+  id: 'id',
+  user1Id: 'user1Id',
+  user2Id: 'user2Id',
+  name: 'name'
+};
+
+exports.Prisma.MessageScalarFieldEnum = {
+  id: 'id',
+  chatId: 'chatId',
+  senderId: 'senderId',
+  content: 'content',
+  createdAt: 'createdAt'
 };
 
 exports.Prisma.SortOrder = {
@@ -191,21 +248,62 @@ exports.Prisma.SortOrder = {
   desc: 'desc'
 };
 
+exports.Prisma.NullableJsonNullValueInput = {
+  DbNull: Prisma.DbNull,
+  JsonNull: Prisma.JsonNull
+};
+
 exports.Prisma.QueryMode = {
   default: 'default',
   insensitive: 'insensitive'
 };
 
+exports.Prisma.NullsOrder = {
+  first: 'first',
+  last: 'last'
+};
+
+exports.Prisma.JsonNullValueFilter = {
+  DbNull: Prisma.DbNull,
+  JsonNull: Prisma.JsonNull,
+  AnyNull: Prisma.AnyNull
+};
+exports.NotificationType = exports.$Enums.NotificationType = {
+  LIKE: 'LIKE',
+  COMMENT: 'COMMENT',
+  MATCH: 'MATCH',
+  MESSAGE: 'MESSAGE',
+  EVENT_REMINDER: 'EVENT_REMINDER',
+  SYSTEM_MESSAGE: 'SYSTEM_MESSAGE'
+};
+
+exports.MatchStatus = exports.$Enums.MatchStatus = {
+  PENDING: 'PENDING',
+  ACCEPTED: 'ACCEPTED',
+  REJECTED: 'REJECTED'
+};
+
+exports.CoffeeChatStatus = exports.$Enums.CoffeeChatStatus = {
+  PENDING: 'PENDING',
+  ACCEPTED: 'ACCEPTED',
+  REJECTED: 'REJECTED'
+};
 
 exports.Prisma.ModelName = {
   User: 'User',
   UserDetails: 'UserDetails',
-  Posts: 'Posts',
-  PostInterests: 'PostInterests',
-  Reactions: 'Reactions',
-  Matches: 'Matches',
-  Interests: 'Interests',
-  UserInterests: 'UserInterests'
+  Post: 'Post',
+  Reaction: 'Reaction',
+  Comment: 'Comment',
+  PostTag: 'PostTag',
+  Notification: 'Notification',
+  Interest: 'Interest',
+  Match: 'Match',
+  UserSimilarity: 'UserSimilarity',
+  Event: 'Event',
+  CoffeeChat: 'CoffeeChat',
+  Chat: 'Chat',
+  Message: 'Message'
 };
 
 /**

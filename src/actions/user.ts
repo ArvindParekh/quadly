@@ -11,7 +11,7 @@ const UserDetailsSchema = z.object({
     bio: z.string().optional(),
     department: z.string().optional(),
     year: z.string().optional(),
-    image: z.string().url().optional().or(z.literal("")), 
+    profilePicture: z.string().url().optional().or(z.literal("")), 
     reading: z.string().optional(),
     availability: z.string().optional(),
   });
@@ -26,7 +26,7 @@ export async function updateUserDetails(prevState: any, formData: FormData) {
         return { error: "Invalid data", success: false }
     }
 
-    const { userId, name, bio, department, year, image, reading, availability } = parsedUserDetails.data;
+    const { userId, name, bio, department, year, profilePicture, reading, availability } = parsedUserDetails.data;
     
     try {
         const updatedUserDetails = await prisma.userDetails.upsert({
@@ -38,7 +38,7 @@ export async function updateUserDetails(prevState: any, formData: FormData) {
                 bio,
                 department,
                 year,
-                image,
+                profilePicture: profilePicture || "",
                 reading,
                 availability
             },
@@ -48,7 +48,7 @@ export async function updateUserDetails(prevState: any, formData: FormData) {
                 bio: bio || "",
                 department: department || "",
                 year: year || "",
-                image: image || "",
+                profilePicture: profilePicture || "",
                 reading: reading || "",
                 availability: availability || ""
             }

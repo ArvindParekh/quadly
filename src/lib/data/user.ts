@@ -17,11 +17,7 @@ export const getUser = async (id: string) => {
         include: {
             userDetails: {
                 include: {
-                    userInterests: {
-                        include: {
-                            interest: true
-                        }
-                    }
+                    interests: true
                 }
             }
         }
