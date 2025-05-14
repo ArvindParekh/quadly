@@ -11,48 +11,36 @@ export const createPost = async (prevState: any, formData: FormData) => {
    const parsedPost = createPostSchema.safeParse(data);
    console.log("parsedPost", parsedPost);
    if (!parsedPost.success) {
-      return { error: "Invalid data", success: false };
+      return { error: "Invalid data", success: false, message: parsedPost.error.issues[0].message };
    }
 
-   const { userId, ...postData } = parsedPost.data;
-
+   const { userId, content, interests: postTags } = parsedPost.data;
+   const postTagsArray = postTags ? postTags.split(",") : [];
+   console.log("postTagsArray", postTagsArray);
    try {
-      const post = await prisma.posts.create({
+      const post = await prisma.post.create({
          data: {
-            userId,
-            ...postData,
+            authorId: userId,
+            content,
+            postTags: {
+               connectOrCreate: postTagsArray.map((tag: string) => ({
+                  where: { 
+                     tagName: tag,
+                  },
+                  create: {
+                     tagName: tag,
+                  },
+               })),
+            },
          },
       });
 
-      const { interests } = parsedPost.data;
-
-      if (interests) {
-         console.log("interests", interests);
-         const interestsArray = interests.split(",");
-         interestsArray.map(async (interestName: string) => {
-            const interest = await prisma.interests.upsert({
-               where: {
-                  name: interestName,
-               },
-               update: {},
-               create: {
-                  name: interestName,
-               },
-            });
-
-            await prisma.postInterests.create({
-               data: {
-                  postId: post.id,
-                  interestId: interest.id,
-               },
-            });
-         });
-      }
 
       revalidatePath("/dashboard");
 
-      return { success: true, data: post };
+      return { success: true, message: "Post created successfully", data: post };
    } catch (error) {
-      return { error: error, success: false };
+      console.log("error", error);
+      return { error: error, success: false, message: "Error creating post" };
    }
 };

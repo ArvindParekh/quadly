@@ -8406,16 +8406,22 @@ export namespace Prisma {
   export type PostTagMinAggregateOutputType = {
     id: string | null
     tagName: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
   }
 
   export type PostTagMaxAggregateOutputType = {
     id: string | null
     tagName: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
   }
 
   export type PostTagCountAggregateOutputType = {
     id: number
     tagName: number
+    createdAt: number
+    updatedAt: number
     _all: number
   }
 
@@ -8423,16 +8429,22 @@ export namespace Prisma {
   export type PostTagMinAggregateInputType = {
     id?: true
     tagName?: true
+    createdAt?: true
+    updatedAt?: true
   }
 
   export type PostTagMaxAggregateInputType = {
     id?: true
     tagName?: true
+    createdAt?: true
+    updatedAt?: true
   }
 
   export type PostTagCountAggregateInputType = {
     id?: true
     tagName?: true
+    createdAt?: true
+    updatedAt?: true
     _all?: true
   }
 
@@ -8511,6 +8523,8 @@ export namespace Prisma {
   export type PostTagGroupByOutputType = {
     id: string
     tagName: string
+    createdAt: Date
+    updatedAt: Date
     _count: PostTagCountAggregateOutputType | null
     _min: PostTagMinAggregateOutputType | null
     _max: PostTagMaxAggregateOutputType | null
@@ -8533,6 +8547,8 @@ export namespace Prisma {
   export type PostTagSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     tagName?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
     posts?: boolean | PostTag$postsArgs<ExtArgs>
     _count?: boolean | PostTagCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["postTag"]>
@@ -8540,19 +8556,25 @@ export namespace Prisma {
   export type PostTagSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     tagName?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
   }, ExtArgs["result"]["postTag"]>
 
   export type PostTagSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     tagName?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
   }, ExtArgs["result"]["postTag"]>
 
   export type PostTagSelectScalar = {
     id?: boolean
     tagName?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
   }
 
-  export type PostTagOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "tagName", ExtArgs["result"]["postTag"]>
+  export type PostTagOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "tagName" | "createdAt" | "updatedAt", ExtArgs["result"]["postTag"]>
   export type PostTagInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     posts?: boolean | PostTag$postsArgs<ExtArgs>
     _count?: boolean | PostTagCountOutputTypeDefaultArgs<ExtArgs>
@@ -8568,6 +8590,8 @@ export namespace Prisma {
     scalars: $Extensions.GetPayloadResult<{
       id: string
       tagName: string
+      createdAt: Date
+      updatedAt: Date
     }, ExtArgs["result"]["postTag"]>
     composites: {}
   }
@@ -8994,6 +9018,8 @@ export namespace Prisma {
   interface PostTagFieldRefs {
     readonly id: FieldRef<"PostTag", 'String'>
     readonly tagName: FieldRef<"PostTag", 'String'>
+    readonly createdAt: FieldRef<"PostTag", 'DateTime'>
+    readonly updatedAt: FieldRef<"PostTag", 'DateTime'>
   }
     
 
@@ -18243,7 +18269,9 @@ export namespace Prisma {
 
   export const PostTagScalarFieldEnum: {
     id: 'id',
-    tagName: 'tagName'
+    tagName: 'tagName',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
   };
 
   export type PostTagScalarFieldEnum = (typeof PostTagScalarFieldEnum)[keyof typeof PostTagScalarFieldEnum]
@@ -18889,12 +18917,16 @@ export namespace Prisma {
     NOT?: PostTagWhereInput | PostTagWhereInput[]
     id?: StringFilter<"PostTag"> | string
     tagName?: StringFilter<"PostTag"> | string
+    createdAt?: DateTimeFilter<"PostTag"> | Date | string
+    updatedAt?: DateTimeFilter<"PostTag"> | Date | string
     posts?: PostListRelationFilter
   }
 
   export type PostTagOrderByWithRelationInput = {
     id?: SortOrder
     tagName?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
     posts?: PostOrderByRelationAggregateInput
   }
 
@@ -18904,12 +18936,16 @@ export namespace Prisma {
     AND?: PostTagWhereInput | PostTagWhereInput[]
     OR?: PostTagWhereInput[]
     NOT?: PostTagWhereInput | PostTagWhereInput[]
+    createdAt?: DateTimeFilter<"PostTag"> | Date | string
+    updatedAt?: DateTimeFilter<"PostTag"> | Date | string
     posts?: PostListRelationFilter
   }, "id" | "tagName">
 
   export type PostTagOrderByWithAggregationInput = {
     id?: SortOrder
     tagName?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
     _count?: PostTagCountOrderByAggregateInput
     _max?: PostTagMaxOrderByAggregateInput
     _min?: PostTagMinOrderByAggregateInput
@@ -18921,6 +18957,8 @@ export namespace Prisma {
     NOT?: PostTagScalarWhereWithAggregatesInput | PostTagScalarWhereWithAggregatesInput[]
     id?: StringWithAggregatesFilter<"PostTag"> | string
     tagName?: StringWithAggregatesFilter<"PostTag"> | string
+    createdAt?: DateTimeWithAggregatesFilter<"PostTag"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"PostTag"> | Date | string
   }
 
   export type NotificationWhereInput = {
@@ -19830,40 +19868,54 @@ export namespace Prisma {
   export type PostTagCreateInput = {
     id?: string
     tagName: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
     posts?: PostCreateNestedManyWithoutPostTagsInput
   }
 
   export type PostTagUncheckedCreateInput = {
     id?: string
     tagName: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
     posts?: PostUncheckedCreateNestedManyWithoutPostTagsInput
   }
 
   export type PostTagUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     tagName?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     posts?: PostUpdateManyWithoutPostTagsNestedInput
   }
 
   export type PostTagUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     tagName?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     posts?: PostUncheckedUpdateManyWithoutPostTagsNestedInput
   }
 
   export type PostTagCreateManyInput = {
     id?: string
     tagName: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
   }
 
   export type PostTagUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
     tagName?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type PostTagUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
     tagName?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type NotificationCreateInput = {
@@ -20786,16 +20838,22 @@ export namespace Prisma {
   export type PostTagCountOrderByAggregateInput = {
     id?: SortOrder
     tagName?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
   }
 
   export type PostTagMaxOrderByAggregateInput = {
     id?: SortOrder
     tagName?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
   }
 
   export type PostTagMinOrderByAggregateInput = {
     id?: SortOrder
     tagName?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
   }
 
   export type EnumNotificationTypeFilter<$PrismaModel = never> = {
@@ -23678,11 +23736,15 @@ export namespace Prisma {
   export type PostTagCreateWithoutPostsInput = {
     id?: string
     tagName: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
   }
 
   export type PostTagUncheckedCreateWithoutPostsInput = {
     id?: string
     tagName: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
   }
 
   export type PostTagCreateOrConnectWithoutPostsInput = {
@@ -23826,6 +23888,8 @@ export namespace Prisma {
     NOT?: PostTagScalarWhereInput | PostTagScalarWhereInput[]
     id?: StringFilter<"PostTag"> | string
     tagName?: StringFilter<"PostTag"> | string
+    createdAt?: DateTimeFilter<"PostTag"> | Date | string
+    updatedAt?: DateTimeFilter<"PostTag"> | Date | string
   }
 
   export type CommentUpsertWithWhereUniqueWithoutPostInput = {
@@ -26141,16 +26205,22 @@ export namespace Prisma {
   export type PostTagUpdateWithoutPostsInput = {
     id?: StringFieldUpdateOperationsInput | string
     tagName?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type PostTagUncheckedUpdateWithoutPostsInput = {
     id?: StringFieldUpdateOperationsInput | string
     tagName?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type PostTagUncheckedUpdateManyWithoutPostsInput = {
     id?: StringFieldUpdateOperationsInput | string
     tagName?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type CommentUpdateWithoutPostInput = {

@@ -114,6 +114,9 @@ model PostTag {
 
   tagName String @unique
 
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt // keep deleting old tags
+
   posts Post[]
 }
 

@@ -169,7 +169,9 @@ exports.Prisma.CommentScalarFieldEnum = {
 
 exports.Prisma.PostTagScalarFieldEnum = {
   id: 'id',
-  tagName: 'tagName'
+  tagName: 'tagName',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
 };
 
 exports.Prisma.NotificationScalarFieldEnum = {

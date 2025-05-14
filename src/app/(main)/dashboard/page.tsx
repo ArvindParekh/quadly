@@ -35,7 +35,7 @@ export default async function DashboardPage() {
           <div className="space-y-6">
             <div className="flex items-center justify-between">
               <h1 className="text-3xl font-bold tracking-tight">Your Garden 🌱</h1>
-              <CreatePostButton userId={session.user?.id} />
+              <CreatePostButton userId={user.userDetails?.id as string} />
             </div>
 
             <Tabs defaultValue="feed" className="w-full">

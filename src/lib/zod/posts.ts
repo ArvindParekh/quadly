@@ -18,12 +18,13 @@ import { z } from "zod";
 //   }
 
 const createPostSchema = z.object({
-    authorId: z.string(),
-    content: z.string(),
+    userId: z.string(),
+    content: z.string().min(1, "Content cannot be empty!"),
+    interests: z.string().optional(),
 })
 
 const updatePostSchema = createPostSchema.partial().omit({
-    authorId: true,
-})
+    userId: true,
+})  
 
 export { createPostSchema, updatePostSchema };
