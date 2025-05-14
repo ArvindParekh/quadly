@@ -14,19 +14,27 @@ const UserDetailsSchema = z.object({
     profilePicture: z.string().url().optional().or(z.literal("")), 
     reading: z.string().optional(),
     availability: z.string().optional(),
+    interests: z.string().optional(),
   });
 
 export async function updateUserDetails(prevState: any, formData: FormData) {
-    console.log("formData", formData);
     const data = Object.fromEntries(formData);
-    console.log(data);
     const parsedUserDetails = UserDetailsSchema.safeParse(data);
 
     if (!parsedUserDetails.success) {
         return { error: "Invalid data", success: false }
     }
 
-    const { userId, name, bio, department, year, profilePicture, reading, availability } = parsedUserDetails.data;
+    const { userId, name, bio, department, year, profilePicture, reading, availability, interests } = parsedUserDetails.data;
+    const interestsArray = interests ? JSON.parse(interests) : [];
+
+    const interestsConnectOrCreate = interestsArray.map((item: any) => {
+        let name = typeof item === "string" ? item : (item.interest.name || item.name || "");
+        return {
+            where: { interestName: name },
+            create: { interestName: name },
+        };
+    });
     
     try {
         const updatedUserDetails = await prisma.userDetails.upsert({
@@ -40,7 +48,11 @@ export async function updateUserDetails(prevState: any, formData: FormData) {
                 year,
                 profilePicture: profilePicture || "",
                 reading,
-                availability
+                availability,
+                interests: {
+                    set: [], // Remove all previous interests
+                    connectOrCreate: interestsConnectOrCreate,
+                },
             },
             create: {
                 userId,
@@ -50,7 +62,10 @@ export async function updateUserDetails(prevState: any, formData: FormData) {
                 year: year || "",
                 profilePicture: profilePicture || "",
                 reading: reading || "",
-                availability: availability || ""
+                availability: availability || "",
+                interests: {
+                    connectOrCreate: interestsConnectOrCreate,
+                },
             }
         })
 

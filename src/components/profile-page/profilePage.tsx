@@ -61,6 +61,7 @@ export default function ProfilePage({
       bio: userDetails?.bio,
       reading: userDetails?.reading,
       availability: userDetails?.availability,
+      interests: getInitialSelectedInterests(userDetails),
    });
 
    const allInterests = [
@@ -81,9 +82,7 @@ export default function ProfilePage({
       "Quantum Computing",
    ];
    const [selectedInterests, setSelectedInterests] = useState<string[]>(
-      userDetails?.interests.map(
-         (userInterest) => userInterest.interestName
-      ) || []
+      getInitialSelectedInterests(userDetails)
    );
    const [popoverOpen, setPopoverOpen] = useState(false);
    const [searchTerm, setSearchTerm] = useState("");
@@ -117,9 +116,40 @@ export default function ProfilePage({
       const updatedData = Object.fromEntries(updateFormData);
       const { userId, ...updatedDataWithoutUserId } = updatedData;
 
-      if (
-         JSON.stringify(updatedDataWithoutUserId) === JSON.stringify(formData)
-      ) {
+      // Parse interests from both updatedData and formData for comparison
+      let updatedInterests: string[] = [];
+      try {
+         updatedInterests = JSON.parse(updatedDataWithoutUserId.interests as string);
+      } catch {
+         updatedInterests = [];
+      }
+      let formInterests: string[] = [];
+      if (Array.isArray(formData.interests)) {
+         // formData.interests could be array of objects or strings
+         if (typeof formData.interests[0] === "string") {
+            formInterests = formData.interests as string[];
+         } else if (typeof formData.interests[0] === "object" && formData.interests[0] !== null && "interestName" in formData.interests[0]) {
+            formInterests = (formData.interests as any[]).map(i => i.interestName);
+         }
+      }
+
+      // Compare interests as sets
+      const interestsChanged =
+         updatedInterests.length !== formInterests.length ||
+         updatedInterests.some((i) => !formInterests.includes(i)) ||
+         formInterests.some((i) => !updatedInterests.includes(i));
+
+      // Compare other fields
+      const fieldsToCompare = ["name", "department", "year", "bio", "reading", "availability"];
+      let otherFieldsChanged = false;
+      for (const field of fieldsToCompare) {
+         if ((updatedDataWithoutUserId as any)[field] !== (formData as any)[field]) {
+            otherFieldsChanged = true;
+            break;
+         }
+      }
+
+      if (!otherFieldsChanged && !interestsChanged) {
          toast.error("No changes made");
          return;
       }
@@ -139,9 +169,10 @@ export default function ProfilePage({
             bio: userDetails?.bio,
             reading: userDetails?.reading,
             availability: userDetails?.availability,
+            interests: selectedInterests,
          });
       }
-   }, [state, userDetails]);
+   }, [state, userDetails, selectedInterests]);
 
    useEffect(() => {
       if (state?.success) {
@@ -178,6 +209,7 @@ export default function ProfilePage({
          <main className='container py-6 mx-auto'>
             <form onSubmit={handleSubmit}>
                <Input type='hidden' name='userId' value={userId} />
+               <Input type='hidden' name='interests' value={JSON.stringify(selectedInterests)} />
                <div className='max-w-3xl mx-auto space-y-6'>
                   <div className='flex items-center justify-between'>
                      <h1 className='text-3xl font-bold tracking-tight'>
@@ -620,4 +652,18 @@ export default function ProfilePage({
          </main>
       </div>
    );
+}
+
+// Helper to extract interest names as string[]
+function getInitialSelectedInterests(userDetails: UserDetailsClient | null): string[] {
+   if (
+      userDetails?.interests &&
+      Array.isArray(userDetails.interests) &&
+      userDetails.interests.length > 0 &&
+      typeof userDetails.interests[0] === 'object' &&
+      'interestName' in userDetails.interests[0]
+   ) {
+      return (userDetails.interests as any[]).map((userInterest) => userInterest.interestName);
+   }
+   return [];
 }
