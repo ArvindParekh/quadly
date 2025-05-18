@@ -38,7 +38,15 @@ export const signup = async (prevState: any, formData: FormData) => {
         
     } catch (error) {
         console.error("Error creating user", error);
-        return { error: "Error creating user", success: false, message: "Error creating user" };
+
+        let errorMessage = "Error creating user";
+
+        if (error instanceof Error) {
+            if (error.message.includes("Unique constraint") && error.message.includes("email")) {
+                errorMessage = "Email already in use";
+            }
+        }
+        return { error: errorMessage, success: false, message: errorMessage };
     }
 
 

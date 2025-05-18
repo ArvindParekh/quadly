@@ -50,6 +50,9 @@ export default function SignupPage() {
          toast.success("User created successfully");
          router.push("/login");
       }
+      if (state?.error) {
+         toast.error(state.message);
+      }
    }, [state]);
 
    
