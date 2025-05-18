@@ -36,9 +36,9 @@
 		{
 			"id": "pointer:pointer",
 			"typeName": "pointer",
-			"x": 2192.4276854029918,
-			"y": 183.29097914137122,
-			"lastActivityTimestamp": 1747174421736,
+			"x": 40.80047780517884,
+			"y": 697.0553329223181,
+			"lastActivityTimestamp": 1747528197312,
 			"meta": {}
 		},
 		{
@@ -631,12 +631,134 @@
 			"typeName": "shape"
 		},
 		{
-			"x": -1785.0608220744894,
-			"y": 111.47040977112226,
-			"z": 0.9058174172169643,
+			"x": -705.9440505548703,
+			"y": 716.4512946979038,
+			"rotation": 0,
+			"isLocked": false,
+			"opacity": 1,
+			"meta": {},
+			"id": "shape:Qxld3xqs65spo9yPhtddl",
+			"type": "text",
+			"props": {
+				"color": "black",
+				"size": "m",
+				"w": 538.84375,
+				"font": "draw",
+				"textAlign": "start",
+				"autoSize": true,
+				"scale": 1,
+				"richText": {
+					"type": "doc",
+					"content": [
+						{
+							"type": "paragraph",
+							"attrs": {
+								"dir": "auto"
+							},
+							"content": [
+								{
+									"type": "text",
+									"text": "Sitbacks:"
+								}
+							]
+						},
+						{
+							"type": "bulletList",
+							"content": [
+								{
+									"type": "listItem",
+									"content": [
+										{
+											"type": "paragraph",
+											"attrs": {
+												"dir": "auto"
+											},
+											"content": [
+												{
+													"type": "text",
+													"text": "currently, can't tell who liked the post"
+												}
+											]
+										}
+									]
+								}
+							]
+						}
+					]
+				}
+			},
+			"parentId": "page:page",
+			"index": "aH9h3",
+			"typeName": "shape"
+		},
+		{
+			"x": 1643.4155363748457,
+			"y": -160.43372379778052,
+			"z": 0.6186854840632227,
 			"meta": {},
 			"id": "camera:page:page",
 			"typeName": "camera"
+		},
+		{
+			"x": -549.1600262022193,
+			"y": 423.8955379161529,
+			"rotation": 0,
+			"isLocked": false,
+			"opacity": 1,
+			"meta": {},
+			"id": "shape:NC5vaj8I6Zv2SmAk7Nk1r",
+			"type": "text",
+			"props": {
+				"color": "black",
+				"size": "m",
+				"w": 353.09375,
+				"font": "draw",
+				"textAlign": "start",
+				"autoSize": true,
+				"scale": 1,
+				"richText": {
+					"type": "doc",
+					"content": [
+						{
+							"type": "paragraph",
+							"attrs": {
+								"dir": "auto"
+							},
+							"content": [
+								{
+									"type": "text",
+									"text": "Things I need to implement:"
+								}
+							]
+						},
+						{
+							"type": "bulletList",
+							"content": [
+								{
+									"type": "listItem",
+									"content": [
+										{
+											"type": "paragraph",
+											"attrs": {
+												"dir": "auto"
+											},
+											"content": [
+												{
+													"type": "text",
+													"text": "leaderboard"
+												}
+											]
+										}
+									]
+								}
+							]
+						}
+					]
+				}
+			},
+			"parentId": "page:page",
+			"index": "aGAVZ",
+			"typeName": "shape"
 		},
 		{
 			"x": 887,
@@ -678,7 +800,9 @@
 		{
 			"editingShapeId": null,
 			"croppingShapeId": null,
-			"selectedShapeIds": [],
+			"selectedShapeIds": [
+				"shape:Qxld3xqs65spo9yPhtddl"
+			],
 			"hoveredShapeId": null,
 			"erasingShapeIds": [],
 			"hintingShapeIds": [],
@@ -1037,8 +1161,8 @@
 			"typeName": "shape"
 		},
 		{
-			"x": -587.951949753391,
-			"y": 580.6795622688039,
+			"x": -1156.900161837238,
+			"y": 370.5566430332922,
 			"rotation": 0,
 			"isLocked": false,
 			"opacity": 1,
@@ -1375,9 +1499,7 @@
 		{
 			"followingUserId": null,
 			"opacityForNextShape": 1,
-			"stylesForNextShape": {
-				"tldraw:geo": "rectangle"
-			},
+			"stylesForNextShape": {},
 			"brush": null,
 			"scribbles": [],
 			"cursor": {
