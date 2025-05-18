@@ -36,9 +36,9 @@
 		{
 			"id": "pointer:pointer",
 			"typeName": "pointer",
-			"x": 40.80047780517884,
-			"y": 697.0553329223181,
-			"lastActivityTimestamp": 1747528197312,
+			"x": -309.94316430332924,
+			"y": 475.61810265104805,
+			"lastActivityTimestamp": 1747530788312,
 			"meta": {}
 		},
 		{
@@ -692,8 +692,8 @@
 			"typeName": "shape"
 		},
 		{
-			"x": 1643.4155363748457,
-			"y": -160.43372379778052,
+			"x": 1643.415536374846,
+			"y": -354.39334155363747,
 			"z": 0.6186854840632227,
 			"meta": {},
 			"id": "camera:page:page",
@@ -750,6 +750,23 @@
 											]
 										}
 									]
+								},
+								{
+									"type": "listItem",
+									"content": [
+										{
+											"type": "paragraph",
+											"attrs": {
+												"dir": "auto"
+											},
+											"content": [
+												{
+													"type": "text",
+													"text": "profile page of user"
+												}
+											]
+										}
+									]
 								}
 							]
 						}
@@ -798,12 +815,12 @@
 			"typeName": "shape"
 		},
 		{
-			"editingShapeId": null,
+			"editingShapeId": "shape:NC5vaj8I6Zv2SmAk7Nk1r",
 			"croppingShapeId": null,
 			"selectedShapeIds": [
-				"shape:Qxld3xqs65spo9yPhtddl"
+				"shape:NC5vaj8I6Zv2SmAk7Nk1r"
 			],
-			"hoveredShapeId": null,
+			"hoveredShapeId": "shape:NC5vaj8I6Zv2SmAk7Nk1r",
 			"erasingShapeIds": [],
 			"hintingShapeIds": [],
 			"focusedGroupId": null,
@@ -1513,8 +1530,8 @@
 			"screenBounds": {
 				"x": 0,
 				"y": 0,
-				"w": 1664,
-				"h": 939
+				"w": 1239,
+				"h": 600
 			},
 			"insets": [
 				false,
@@ -1578,6 +1595,224 @@
 			},
 			"parentId": "page:page",
 			"index": "aC4Cd",
+			"typeName": "shape"
+		},
+		{
+			"x": -2005.4734895191123,
+			"y": 674.4267108508014,
+			"rotation": 0,
+			"isLocked": false,
+			"opacity": 1,
+			"meta": {},
+			"id": "shape:dGewjfIUlKWWDaYLOvw_R",
+			"type": "text",
+			"props": {
+				"color": "black",
+				"size": "m",
+				"w": 1268.3125,
+				"font": "draw",
+				"textAlign": "start",
+				"autoSize": true,
+				"scale": 1,
+				"richText": {
+					"type": "doc",
+					"content": [
+						{
+							"type": "paragraph",
+							"attrs": {
+								"dir": "auto"
+							},
+							"content": [
+								{
+									"type": "text",
+									"text": "Further steps:"
+								}
+							]
+						},
+						{
+							"type": "bulletList",
+							"content": [
+								{
+									"type": "listItem",
+									"content": [
+										{
+											"type": "paragraph",
+											"attrs": {
+												"dir": "auto"
+											},
+											"content": [
+												{
+													"type": "text",
+													"text": "Chat"
+												}
+											]
+										},
+										{
+											"type": "bulletList",
+											"content": [
+												{
+													"type": "listItem",
+													"content": [
+														{
+															"type": "paragraph",
+															"attrs": {
+																"dir": "auto"
+															},
+															"content": [
+																{
+																	"type": "text",
+																	"text": "create a new websocket server"
+																}
+															]
+														}
+													]
+												},
+												{
+													"type": "listItem",
+													"content": [
+														{
+															"type": "paragraph",
+															"attrs": {
+																"dir": "auto"
+															},
+															"content": [
+																{
+																	"type": "text",
+																	"text": "create a chat b/w user1 and user2"
+																}
+															]
+														}
+													]
+												},
+												{
+													"type": "listItem",
+													"content": [
+														{
+															"type": "paragraph",
+															"attrs": {
+																"dir": "auto"
+															},
+															"content": [
+																{
+																	"type": "text",
+																	"text": "redirect to /messages page with the new chat"
+																}
+															]
+														}
+													]
+												},
+												{
+													"type": "listItem",
+													"content": [
+														{
+															"type": "paragraph",
+															"attrs": {
+																"dir": "auto"
+															},
+															"content": [
+																{
+																	"type": "text",
+																	"text": "connect both to the same websocket server"
+																}
+															]
+														}
+													]
+												},
+												{
+													"type": "listItem",
+													"content": [
+														{
+															"type": "paragraph",
+															"attrs": {
+																"dir": "auto"
+															},
+															"content": [
+																{
+																	"type": "text",
+																	"text": "chat successful"
+																}
+															]
+														}
+													]
+												}
+											]
+										}
+									]
+								},
+								{
+									"type": "listItem",
+									"content": [
+										{
+											"type": "paragraph",
+											"attrs": {
+												"dir": "auto"
+											},
+											"content": [
+												{
+													"type": "text",
+													"text": "Match users"
+												}
+											]
+										},
+										{
+											"type": "bulletList",
+											"content": [
+												{
+													"type": "listItem",
+													"content": [
+														{
+															"type": "paragraph",
+															"attrs": {
+																"dir": "auto"
+															},
+															"content": [
+																{
+																	"type": "text",
+																	"text": "runs batch jobs (daily/nightly) to calculate similarity scores for each user with another user?"
+																}
+															]
+														}
+													]
+												},
+												{
+													"type": "listItem",
+													"content": [
+														{
+															"type": "paragraph",
+															"attrs": {
+																"dir": "auto"
+															},
+															"content": [
+																{
+																	"type": "text",
+																	"text": "or store interests in a vector db?"
+																}
+															]
+														}
+													]
+												},
+												{
+													"type": "listItem",
+													"content": [
+														{
+															"type": "paragraph",
+															"attrs": {
+																"dir": "auto"
+															}
+														}
+													]
+												}
+											]
+										}
+									]
+								}
+							]
+						}
+					]
+				}
+			},
+			"parentId": "page:page",
+			"index": "aI1qy",
 			"typeName": "shape"
 		}
 	]
