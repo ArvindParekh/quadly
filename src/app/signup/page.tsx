@@ -47,8 +47,10 @@ export default function SignupPage() {
 
    useEffect(() => {
       if (state?.success) {
-         toast.success("User created successfully");
-         router.push("/login");
+         toast.success("User created successfully! Redirecting you to login page :)");
+         setTimeout(() => {
+            router.push("/login");
+         }, 3000);
       }
       if (state?.error) {
          toast.error(state.message);
