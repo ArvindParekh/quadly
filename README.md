@@ -10,6 +10,7 @@
 		- Pairs people with overlapping interests
 		- Lets them react (e.g., "I'd love to chat about this!")
 		- Suggests gentle nudges to meet (e.g., “grab coffee this week?”)
+		- Implements a leaderboard
 	
 		Think: Subtle matchmaking for friendships.
 
