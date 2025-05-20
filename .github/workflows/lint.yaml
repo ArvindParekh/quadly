@@ -1,6 +1,7 @@
 # github action to lint the code
 
 name: lint
+version: 1.0.0
 
 on:
   push:
@@ -16,5 +17,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - uses: pnpm/action-setup@v2
+        with:
+          version: 8
       - run: pnpm install
       - run: pnpm lint
