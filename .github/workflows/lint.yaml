@@ -1,7 +1,6 @@
 # github action to lint the code
 
 name: lint
-version: 1.0.0
 
 on:
   push:
