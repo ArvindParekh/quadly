@@ -13,6 +13,7 @@ import { EmojiPicker } from "@/components/emoji-picker";
 import { useSession } from "next-auth/react";
 import Link from "next/link";
 import { useParams, useRouter } from "next/navigation";
+import ChatArea from "@/components/messages/chat-area";
 
 export default function MessagePage() {
   const [socket, setSocket] = useState<WebSocket | null>(null);
@@ -68,7 +69,7 @@ export default function MessagePage() {
 
       <div className="grid grid-cols-1 md:grid-cols-[300px_1fr] gap-6 h-[calc(100vh-12rem)]">
         {/* Conversations List */}
-        <Card className="border-pink-500/20 overflow-hidden h-full">
+        {/* <Card className="border-pink-500/20 overflow-hidden h-full">
           <CardHeader className="bg-gradient-to-r from-pink-500/10 to-yellow-400/10 p-4">
             <div className="flex items-center justify-between">
               <CardTitle className="text-lg">Conversations</CardTitle>
@@ -125,66 +126,11 @@ export default function MessagePage() {
               </TabsContent>
             </Tabs>
           </CardContent>
-        </Card>
+        </Card> */}
+        <ConversationList />
 
         {/* Chat Area */}
-        <Card className="border-pink-500/20 overflow-hidden h-full flex flex-col">
-          <CardHeader className="bg-gradient-to-r from-blue-500/10 to-pink-500/10 p-4 flex-shrink-0">
-            <div className="flex items-center gap-3">
-              <Avatar className="h-10 w-10 border border-pink-500/20">
-                <AvatarImage src="/placeholder.svg?height=40&width=40&text=TK" alt="Taylor Kim" />
-                <AvatarFallback className="bg-gradient-to-br from-pink-500 to-yellow-400 text-black">
-                  TK
-                </AvatarFallback>
-              </Avatar>
-              <div>
-                <CardTitle className="text-lg">Taylor Kim</CardTitle>
-                <p className="text-xs text-muted-foreground">Computer Science • Online</p>
-              </div>
-            </div>
-          </CardHeader>
-          <CardContent className="p-0 flex-grow flex flex-col">
-            <ScrollArea className="flex-grow p-4">
-              <ChatMessages />
-            </ScrollArea>
-            <Separator className="bg-pink-500/10" />
-            <div className="p-4 flex gap-2 items-end">
-              <Button
-                variant="ghost"
-                size="icon"
-                className="h-8 w-8 rounded-full flex-shrink-0 hover:bg-pink-500/10 hover:text-pink-500"
-              >
-                <Paperclip className="h-4 w-4" />
-                <span className="sr-only">Attach file</span>
-              </Button>
-              <Button
-                variant="ghost"
-                size="icon"
-                className="h-8 w-8 rounded-full flex-shrink-0 hover:bg-pink-500/10 hover:text-pink-500"
-              >
-                <ImagePlus className="h-4 w-4" />
-                <span className="sr-only">Add image</span>
-              </Button>
-              <EmojiPicker />
-              <div className="flex-grow relative">
-                <Input
-                  placeholder="Type a message..."
-                  className="pr-10 border-pink-500/20 focus-visible:ring-pink-500"
-                  value={message}
-                  onChange={(e)=> setMessage(e.target.value)}
-                />
-                <Button
-                  size="icon"
-                  className="absolute right-1 top-1 h-6 w-6 rounded-full bg-gradient-to-r from-pink-500 to-yellow-400 text-black hover:opacity-90"
-                  onClick={()=> handleSendMessage(userId as string)}
-                >
-                  <Send className="h-3 w-3" />
-                  <span className="sr-only">Send</span>
-                </Button>
-              </div>
-            </div>
-          </CardContent>
-        </Card>
+        <ChatArea messages={messages} />
       </div>
     </main>
   </div>
