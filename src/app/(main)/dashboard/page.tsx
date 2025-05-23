@@ -138,7 +138,9 @@ export default async function DashboardPage() {
                         name: "Taylor Kim",
                         avatar: "/placeholder.svg?height=40&width=40",
                         department: "Computer Science",
+                        id: "c65d8193-1adc-47dc-9157-16c0cf0564f7",
                       }}
+                      currentUserId={user.userDetails?.id as string}
                       matchReason="Both interested in Distributed Systems"
                       commonInterests={["Distributed Systems", "Algorithms"]}
                       matchPercentage={92}
@@ -149,7 +151,9 @@ export default async function DashboardPage() {
                         name: "Jordan Smith",
                         avatar: "/placeholder.svg?height=40&width=40",
                         department: "Data Science",
+                        id: "2",
                       }}
+                      currentUserId={user.userDetails?.id as string}
                       matchReason="Both reading 'Designing Data-Intensive Applications'"
                       commonInterests={["Databases", "Big Data"]}
                       matchPercentage={85}
@@ -160,7 +164,9 @@ export default async function DashboardPage() {
                         name: "Casey Wong",
                         avatar: "/placeholder.svg?height=40&width=40",
                         department: "Computer Engineering",
+                        id: "3",
                       }}
+                      currentUserId={user.userDetails?.id as string}
                       matchReason="Both interested in Software Architecture"
                       commonInterests={["Software Architecture", "System Design"]}
                       matchPercentage={78}

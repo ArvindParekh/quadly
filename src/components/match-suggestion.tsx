@@ -5,23 +5,36 @@ import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { Coffee, MessageSquare, X } from "lucide-react"
 import { useState } from "react"
+import { useSession } from "next-auth/react"
+import { getOrCreateChat } from "@/actions/chat"
+import { useRouter } from "next/navigation"
 
 interface MatchSuggestionProps {
   user: {
     name: string
     avatar: string
     department: string
+    id: string
   }
   matchReason: string
   commonInterests: string[]
   matchPercentage: number
+  currentUserId: string
 }
 
-export default function MatchSuggestion({ user, matchReason, commonInterests, matchPercentage }: MatchSuggestionProps) {
+export default function MatchSuggestion({ user, matchReason, commonInterests, matchPercentage, currentUserId }: MatchSuggestionProps) {
   const [dismissed, setDismissed] = useState(false)
-
+  const { data: session } = useSession()
+  const router = useRouter()
+  
   if (dismissed) {
     return null
+  }
+
+  const handleMessage = async (userId1: string, userId2: string) => {
+    console.log(userId1, userId2)
+    const chat = await getOrCreateChat(userId1, userId2)
+    router.push(`/messages/${chat.id}`)
   }
 
   return (
@@ -72,6 +85,7 @@ export default function MatchSuggestion({ user, matchReason, commonInterests, ma
             size="sm"
             variant="outline"
             className="h-8 text-xs flex-1 border-blue-500/20 hover:bg-blue-500/10 hover:text-blue-500"
+            onClick={() => handleMessage(currentUserId, user.id)}
           >
             <MessageSquare className="h-3 w-3 mr-1" />
             Message
