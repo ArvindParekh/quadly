@@ -1,3 +1,5 @@
+"use client";
+
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
@@ -7,8 +9,73 @@ import { EmojiPicker } from "@/components/emoji-picker"
 import { ImagePlus, Paperclip, Send, Sparkles } from "lucide-react"
 import { ScrollArea } from "@/components/ui/scroll-area"
 import { Separator } from "@/components/ui/separator"
+import Link from "next/link"
+import { useEffect, useState, useCallback } from "react";
+import { getWsClient } from "@/lib/wsClient";
+import { useSession } from "next-auth/react";
+
 
 export default function MessagesPage() {
+  const { data: session, status } = useSession();
+  const [socket, setSocket] = useState<WebSocket | null>(null);
+
+  // This function gets the authentication token for the WebSocket
+  const getAuthToken = useCallback(async () => {
+    if (status !== "authenticated") return null;
+    
+    try {
+      // NextAuth stores session in cookies, so when we make this fetch request,
+      // the cookies are automatically sent, authenticating the request
+      const response = await fetch("/api/auth/session");
+      const data = await response.json();
+      
+      // The session ID is a reliable token to use
+      return data.user?.email || session?.user?.email;
+    } catch (error) {
+      console.error("Error getting auth token:", error);
+      return null;
+    }
+  }, [session, status]);
+
+  useEffect(() => {
+    if (status !== "authenticated") return;
+    
+    const connectWebSocket = async () => {
+      try {
+        const authToken = await getAuthToken();
+        if (!authToken) {
+          console.error("No authentication token available");
+          return null;
+        }
+        
+        const socket = await getWsClient(authToken);
+        
+        socket.onopen = () => {
+          console.log("Connected to server");
+          setSocket(socket);
+        };
+        
+        socket.onmessage = (event) => {
+          console.log("Received message:", event.data);
+        };
+        
+        return socket;
+      } catch (error) {
+        console.error("WebSocket connection error:", error);
+        return null;
+      }
+    };
+
+    let wsConnection: WebSocket | null = null;
+    connectWebSocket().then(ws => {
+      wsConnection = ws;
+    });
+    
+    return () => {
+      if (wsConnection) wsConnection.close();
+    };
+  }, [status, getAuthToken]);
+
   return (
     <div className="min-h-screen bg-background">
 
@@ -78,58 +145,14 @@ export default function MessagesPage() {
             </CardContent>
           </Card>
 
-          {/* Chat Area */}
+          {/* Chat Area - empty state */}
           <Card className="border-pink-500/20 overflow-hidden h-full flex flex-col">
-            <CardHeader className="bg-gradient-to-r from-blue-500/10 to-pink-500/10 p-4 flex-shrink-0">
-              <div className="flex items-center gap-3">
-                <Avatar className="h-10 w-10 border border-pink-500/20">
-                  <AvatarImage src="/placeholder.svg?height=40&width=40&text=TK" alt="Taylor Kim" />
-                  <AvatarFallback className="bg-gradient-to-br from-pink-500 to-yellow-400 text-black">
-                    TK
-                  </AvatarFallback>
-                </Avatar>
-                <div>
-                  <CardTitle className="text-lg">Taylor Kim</CardTitle>
-                  <p className="text-xs text-muted-foreground">Computer Science • Online</p>
-                </div>
-              </div>
-            </CardHeader>
-            <CardContent className="p-0 flex-grow flex flex-col">
-              <ScrollArea className="flex-grow p-4">
-                <ChatMessages />
-              </ScrollArea>
-              <Separator className="bg-pink-500/10" />
-              <div className="p-4 flex gap-2 items-end">
-                <Button
-                  variant="ghost"
-                  size="icon"
-                  className="h-8 w-8 rounded-full flex-shrink-0 hover:bg-pink-500/10 hover:text-pink-500"
-                >
-                  <Paperclip className="h-4 w-4" />
-                  <span className="sr-only">Attach file</span>
-                </Button>
-                <Button
-                  variant="ghost"
-                  size="icon"
-                  className="h-8 w-8 rounded-full flex-shrink-0 hover:bg-pink-500/10 hover:text-pink-500"
-                >
-                  <ImagePlus className="h-4 w-4" />
-                  <span className="sr-only">Add image</span>
-                </Button>
-                <EmojiPicker />
-                <div className="flex-grow relative">
-                  <Input
-                    placeholder="Type a message..."
-                    className="pr-10 border-pink-500/20 focus-visible:ring-pink-500"
-                  />
-                  <Button
-                    size="icon"
-                    className="absolute right-1 top-1 h-6 w-6 rounded-full bg-gradient-to-r from-pink-500 to-yellow-400 text-black hover:opacity-90"
-                  >
-                    <Send className="h-3 w-3" />
-                    <span className="sr-only">Send</span>
-                  </Button>
-                </div>
+            <CardContent className="flex items-center justify-center h-full">
+              <div className="text-center">
+                <h3 className="text-xl font-medium mb-2">Select a Conversation</h3>
+                <p className="text-muted-foreground mb-4">
+                  Choose a conversation from the list to start chatting
+                </p>
               </div>
             </CardContent>
           </Card>
@@ -186,7 +209,7 @@ function ConversationList() {
   return (
     <div>
       {conversations.map((conversation, index) => (
-        <div key={conversation.id}>
+        <Link href={`/messages/${conversation.id}`} key={conversation.id}>
           <div
             className={`flex items-center gap-3 p-3 hover:bg-pink-500/5 cursor-pointer ${
               conversation.id === "1" ? "bg-pink-500/10" : ""
@@ -223,7 +246,7 @@ function ConversationList() {
             </div>
           </div>
           {index < conversations.length - 1 && <Separator className="bg-pink-500/5" />}
-        </div>
+        </Link>
       ))}
     </div>
   )
