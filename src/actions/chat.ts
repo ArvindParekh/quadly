@@ -38,7 +38,7 @@ export const getOrCreateChat = async (userId1: string, userId2: string) => {
 
 // get all chats for a user
 export const getChats = async (userId: string) => {
-    
+
     const chats = await prisma.chat.findMany({
         where: {
             OR: [
@@ -49,6 +49,12 @@ export const getChats = async (userId: string) => {
         include: {
             user1: true,
             user2: true,
+            messages: {
+                orderBy: {
+                    createdAt: "desc",
+                },
+                take: 1,
+            }
         }
     });
 
