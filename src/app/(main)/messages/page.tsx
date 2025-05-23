@@ -11,70 +11,43 @@ import { ScrollArea } from "@/components/ui/scroll-area"
 import { Separator } from "@/components/ui/separator"
 import Link from "next/link"
 import { useEffect, useState, useCallback } from "react";
-import { getWsClient } from "@/lib/wsClient";
 import { useSession } from "next-auth/react";
+import { useRouter } from "next/navigation";
 
 
 export default function MessagesPage() {
-  const { data: session, status } = useSession();
   const [socket, setSocket] = useState<WebSocket | null>(null);
+  const { data: session, status } = useSession();
+  const router = useRouter();
 
-  // This function gets the authentication token for the WebSocket
-  const getAuthToken = useCallback(async () => {
-    if (status !== "authenticated") return null;
-    
-    try {
-      // NextAuth stores session in cookies, so when we make this fetch request,
-      // the cookies are automatically sent, authenticating the request
-      const response = await fetch("/api/auth/session");
-      const data = await response.json();
-      
-      // The session ID is a reliable token to use
-      return data.user?.email || session?.user?.email;
-    } catch (error) {
-      console.error("Error getting auth token:", error);
-      return null;
-    }
-  }, [session, status]);
+  if (status === "unauthenticated"){
+    router.push("/");
+  }
 
   useEffect(() => {
-    if (status !== "authenticated") return;
-    
-    const connectWebSocket = async () => {
-      try {
-        const authToken = await getAuthToken();
-        if (!authToken) {
-          console.error("No authentication token available");
-          return null;
-        }
-        
-        const socket = await getWsClient(authToken);
-        
-        socket.onopen = () => {
-          console.log("Connected to server");
-          setSocket(socket);
-        };
-        
-        socket.onmessage = (event) => {
-          console.log("Received message:", event.data);
-        };
-        
-        return socket;
-      } catch (error) {
-        console.error("WebSocket connection error:", error);
-        return null;
-      }
-    };
+    const socket = new WebSocket(`${process.env.NEXT_PUBLIC_WS_URL}`);
 
-    let wsConnection: WebSocket | null = null;
-    connectWebSocket().then(ws => {
-      wsConnection = ws;
-    });
-    
+    socket.onopen = () => {
+      console.log("Connected to server");
+      setSocket(socket);
+      socket.send(JSON.stringify({
+        type: "login",
+        // @ts-ignore
+        userId: session?.user?.id,
+      }))
+    }
+
     return () => {
-      if (wsConnection) wsConnection.close();
-    };
-  }, [status, getAuthToken]);
+      if (socket) {
+        socket.close();
+      }
+    }
+    
+  }, [session]);
+
+  if (status === "loading"){
+    return <div>Loading...</div>;
+  }
 
   return (
     <div className="min-h-screen bg-background">

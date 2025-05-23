@@ -1,8 +1,6 @@
 "use client";
 
-import { getWsClient } from "@/lib/wsClient";
-import { useParams } from "next/navigation";
-import { useEffect, useState, useCallback } from "react";
+import { useEffect, useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { ImagePlus, Paperclip, Send, Sparkles } from "lucide-react";
@@ -12,85 +10,52 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Separator } from "@/components/ui/separator";
 import { Input } from "@/components/ui/input";
 import { EmojiPicker } from "@/components/emoji-picker";
-import Link from "next/link";
 import { useSession } from "next-auth/react";
-
+import Link from "next/link";
+import { useParams, useRouter } from "next/navigation";
 
 export default function MessagePage() {
-  const { data: session, status } = useSession();
-  const { userId } = useParams();
   const [socket, setSocket] = useState<WebSocket | null>(null);
   const [message, setMessage] = useState<string>("");
+  const { data: session, status } = useSession();
+  const { userId } = useParams();
+  const router = useRouter();
 
-  // This function gets the authentication token for the WebSocket
-  const getAuthToken = useCallback(async () => {
-    if (status !== "authenticated") return null;
-    
-    try {
-      // NextAuth stores session in cookies, so when we make this fetch request,
-      // the cookies are automatically sent, authenticating the request
-      const response = await fetch("/api/auth/session");
-      const data = await response.json();
-      
-      // The session ID is a reliable token to use
-      return data.user?.email || session?.user?.email;
-    } catch (error) {
-      console.error("Error getting auth token:", error);
-      return null;
-    }
-  }, [session, status]);
+  if (status === "unauthenticated"){
+    router.push("/");
+  }
 
   useEffect(() => {
-    if (status !== "authenticated") return;
-    
-    const connectWebSocket = async () => {
-      try {
-        const authToken = await getAuthToken();
-        if (!authToken) {
-          console.error("No authentication token available");
-          return null;
-        }
-        
-        const socket = await getWsClient(authToken);
-        
-        socket.onopen = () => {
-          console.log("Connected to server");
-          setSocket(socket);
-        };
-        
-        socket.onmessage = (event) => {
-          console.log("Received message:", event.data);
-        };
-        
-        return socket;
-      } catch (error) {
-        console.error("WebSocket connection error:", error);
-        return null;
-      }
-    };
+    const socket = new WebSocket(`${process.env.NEXT_PUBLIC_WS_URL}`);
+    socket.onopen = () => {
+      console.log("Connected to server");
+      setSocket(socket);
+    }
 
-    let wsConnection: WebSocket | null = null;
-    connectWebSocket().then(ws => {
-      wsConnection = ws;
-    });
-    
     return () => {
-      if (wsConnection) wsConnection.close();
-    };
-  }, [status, getAuthToken]);
+      if (socket) {
+        socket.close();
+      }
+    }
+  }, []);
 
-  const handleSendMessage = () => {
+  const handleSendMessage = (userId: string) => {
     if (socket) {
       socket.send(JSON.stringify({
         type: "message",
         message: message,
-        sender: session?.user?.email || "unknown",
+        // @ts-ignore
+        sender: session?.user?.id,
         receiver: userId,
         timestamp: Date.now(),
       }));
       setMessage("");
       console.log("Sent message:", message);
     }
+  }
+
+    if (status === "loading"){
+    return <div>Loading...</div>;
   }
 
   return (
@@ -211,7 +176,7 @@ export default function MessagePage() {
                 <Button
                   size="icon"
                   className="absolute right-1 top-1 h-6 w-6 rounded-full bg-gradient-to-r from-pink-500 to-yellow-400 text-black hover:opacity-90"
-                  onClick={()=> handleSendMessage()}
+                  onClick={()=> handleSendMessage(userId as string)}
                 >
                   <Send className="h-3 w-3" />
                   <span className="sr-only">Send</span>
