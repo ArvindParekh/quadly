@@ -24,6 +24,9 @@ const fontSpaceGrotesk = FontSansSpaceGrotesque({
 export const metadata: Metadata = {
   title: "Quadly",
   description: "Connect with fellow students through shared interests",
+  icons: {
+    icon: "/icon.svg"
+  }
 }
 
 export default function RootLayout({
