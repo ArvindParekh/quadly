@@ -12,11 +12,11 @@ import { Separator } from "../ui/separator";
 import { ScrollArea } from "../ui/scroll-area";
 import ChatMessages from "./chat-message";
 
-export default function ChatArea({ messages }: { messages: Prisma.MessageGetPayload<{
+export default function ChatArea({ messages, sender }: { messages: Prisma.MessageGetPayload<{
     include: {
         sender: true,
     }
-}>[] }) {
+}>[], sender: string }) {
    return messages.length === 0 ? (
       <Card className='border-pink-500/20 overflow-hidden h-full flex flex-col'>
          <CardContent className='flex items-center justify-center h-full'>
@@ -48,7 +48,7 @@ export default function ChatArea({ messages }: { messages: Prisma.MessageGetPayl
     </CardHeader>
     <CardContent className="p-0 flex-grow flex flex-col">
       <ScrollArea className="flex-grow p-4">
-        <ChatMessages messages={messages} />
+        <ChatMessages messages={messages} sender={sender} />
       </ScrollArea>
       <Separator className="bg-pink-500/10" />
       <div className="p-4 flex gap-2 items-end">
@@ -69,7 +69,7 @@ export default function ChatArea({ messages }: { messages: Prisma.MessageGetPayl
           <span className="sr-only">Add image</span>
         </Button>
         <EmojiPicker />
-        <div className="flex-grow relative">
+        {/* <div className="flex-grow relative">
           <Input
             placeholder="Type a message..."
             className="pr-10 border-pink-500/20 focus-visible:ring-pink-500"
@@ -84,7 +84,7 @@ export default function ChatArea({ messages }: { messages: Prisma.MessageGetPayl
             <Send className="h-3 w-3" />
             <span className="sr-only">Send</span>
           </Button>
-        </div>
+        </div> */}
       </div>
     </CardContent>
   </Card>

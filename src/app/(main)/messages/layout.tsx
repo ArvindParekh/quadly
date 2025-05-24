@@ -6,7 +6,6 @@ import { sessionType } from "@/types/session";
 import { getServerSession } from "next-auth";
 import { redirect } from "next/navigation";
 
-
 export default async function MessagesLayout({ children }: { children: React.ReactNode }) {
     const session: sessionType | null = await getServerSession(authOptions);
     const user = await getUser(session?.user?.id as string);
@@ -92,9 +91,9 @@ export default async function MessagesLayout({ children }: { children: React.Rea
             {/* Chat Area - empty state */}
             {/* <ChatArea messages={[]} /> */}
             {children}
-          </div>
-        </main>
-      </div>
+            </div>
+          </main>
+        </div>
     )
 
 }

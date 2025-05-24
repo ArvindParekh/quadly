@@ -18,15 +18,15 @@ import ChatArea from "@/components/messages/chat-area";
 import { Prisma } from "@/generated/prisma";
 import ConversationList from "@/components/messages/conversation-list";
 
-export default function ChatPageClient({ messages, loading}: {messages: Prisma.MessageGetPayload<{
+export default function ChatPageClient({ messages, userId}: {messages: Prisma.MessageGetPayload<{
     include: {
         sender: true,
     }
-}>[], loading: boolean}) {
+}>[], userId: string}) {
   const [socket, setSocket] = useState<WebSocket | null>(null);
   const [message, setMessage] = useState<string>("");
   const { data: session, status } = useSession();
-  const { userId } = useParams();
+  // const { userId } = useParams();
   const router = useRouter();
 
   if (status === "unauthenticated"){
@@ -142,7 +142,7 @@ export default function ChatPageClient({ messages, loading}: {messages: Prisma.M
   //   </main>
   // </div>
 
-  <ChatArea messages={messages} />
+  <ChatArea messages={messages} sender={userId} />
   );
 }
 
