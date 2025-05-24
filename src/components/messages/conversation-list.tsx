@@ -1,19 +1,23 @@
-import { Chat } from "@/generated/prisma";
+import { Prisma } from "@/generated/prisma";
 import Link from "next/link";
-import { Avatar } from "../ui/avatar";
-import { AvatarImage } from "../ui/avatar";
-import { AvatarFallback } from "../ui/avatar";
+import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
 import { Separator } from "../ui/separator";
 
 
-export default function ConversationList({ chats }: { chats: Chat[] }) {
+export default function ConversationList({ chats }: { chats: Prisma.ChatGetPayload<{
+    include: {
+        user1: true,
+        user2: true,
+        messages: true,
+    }
+}>[] }) {
     console.log(chats);
     const conversations = chats.map((chat) => ({
         id: chat.id,
         name: chat.user1.name,
-        avatar: chat.user.image,
-        lastMessage: chat.messages[0].content,
-        time: chat.messages[0].createdAt,
+        avatar: chat.user1.profilePicture,
+        lastMessage: chat.messages[0]?.content,
+        time: chat.messages[0]?.createdAt?.toLocaleString(),
         unread: chat.messages.length > 1,
     }));
     // const conversations = [

@@ -1,4 +1,4 @@
-import { Message } from "@/generated/prisma";
+import { Message, Prisma } from "@/generated/prisma";
 import { Card, CardContent, CardHeader } from "../ui/card";
 import { Button } from "../ui/button";
 import { ImagePlus, Paperclip, Send } from "lucide-react";
@@ -12,8 +12,12 @@ import { Separator } from "../ui/separator";
 import { ScrollArea } from "../ui/scroll-area";
 import ChatMessages from "./chat-message";
 
-export default function ChatArea({ messages }: { messages: Message[] }) {
-   return messages ? (
+export default function ChatArea({ messages }: { messages: Prisma.MessageGetPayload<{
+    include: {
+        sender: true,
+    }
+}>[] }) {
+   return messages.length === 0 ? (
       <Card className='border-pink-500/20 overflow-hidden h-full flex flex-col'>
          <CardContent className='flex items-center justify-center h-full'>
             <div className='text-center'>
