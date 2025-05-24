@@ -36,9 +36,9 @@
 		{
 			"id": "pointer:pointer",
 			"typeName": "pointer",
-			"x": -309.94316430332924,
-			"y": 475.61810265104805,
-			"lastActivityTimestamp": 1747530788312,
+			"x": -253.1665495879381,
+			"y": 497.762806226302,
+			"lastActivityTimestamp": 1748105477674,
 			"meta": {}
 		},
 		{
@@ -692,9 +692,9 @@
 			"typeName": "shape"
 		},
 		{
-			"x": 1643.415536374846,
-			"y": -354.39334155363747,
-			"z": 0.6186854840632227,
+			"x": 2150.180127139235,
+			"y": 705.1111189909686,
+			"z": 0.4422741143914204,
 			"meta": {},
 			"id": "camera:page:page",
 			"typeName": "camera"
@@ -711,7 +711,7 @@
 			"props": {
 				"color": "black",
 				"size": "m",
-				"w": 353.09375,
+				"w": 390.921875,
 				"font": "draw",
 				"textAlign": "start",
 				"autoSize": true,
@@ -763,6 +763,23 @@
 												{
 													"type": "text",
 													"text": "profile page of user"
+												}
+											]
+										}
+									]
+								},
+								{
+									"type": "listItem",
+									"content": [
+										{
+											"type": "paragraph",
+											"attrs": {
+												"dir": "auto"
+											},
+											"content": [
+												{
+													"type": "text",
+													"text": "encrypt chats (AES, crypto)"
 												}
 											]
 										}
@@ -1530,8 +1547,8 @@
 			"screenBounds": {
 				"x": 0,
 				"y": 0,
-				"w": 1239,
-				"h": 600
+				"w": 1620,
+				"h": 939
 			},
 			"insets": [
 				false,
