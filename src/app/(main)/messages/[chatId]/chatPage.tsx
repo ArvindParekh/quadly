@@ -142,7 +142,7 @@ export default function ChatPageClient({ messages, userId}: {messages: Prisma.Me
   //   </main>
   // </div>
 
-  <ChatArea messages={messages} sender={userId} />
+  <ChatArea messages={messages} userId={userId} />
   );
 }
 

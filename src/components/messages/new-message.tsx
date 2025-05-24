@@ -3,13 +3,39 @@
 import { Send } from "lucide-react";
 import { Button } from "../ui/button";
 import { Input } from "../ui/input";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { getWsClient } from "@/lib/wsClient";
 
-export default function NewMessage({userId}: {userId: string}) {
+export default function NewMessage({userId, chatId}: {userId: string, chatId: string}) {
     const [message, setMessage] = useState("");
+    const [socket, setSocket] = useState<WebSocket | null>(null);
+
+    useEffect(()=> {
+      const socket = getWsClient();
+      setSocket(socket);
+      
+    }, []);
 
     const handleSendMessage = (userId: string) => {
-        console.log(message);
+        console.log("Sending message: ", {
+          type: "message",
+          content: message,
+          senderId: userId,
+          // receiverId: userId,
+          chatId: chatId,
+        });
+
+        try {
+          socket?.send(JSON.stringify({
+            type: "message",
+            content: message,
+            senderId: userId,
+            // receiverId: userId,
+            chatId: chatId,
+          }))
+        } catch (error) {
+          console.error("Error sending message: ", error);
+        }
     }
     
 

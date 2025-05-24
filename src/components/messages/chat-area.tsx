@@ -13,11 +13,11 @@ import { ScrollArea } from "../ui/scroll-area";
 import ChatMessages from "./chat-message";
 import NewMessage from "./new-message";
 
-export default function ChatArea({ messages, sender }: { messages: Prisma.MessageGetPayload<{
+export default function ChatArea({ messages, userId }: { messages: Prisma.MessageGetPayload<{
     include: {
         sender: true,
     }
-}>[], sender: string }) {
+}>[], userId: string }) {
    return messages.length === 0 ? (
       <Card className='border-pink-500/20 overflow-hidden h-full flex flex-col'>
          <CardContent className='flex items-center justify-center h-full'>
@@ -49,7 +49,7 @@ export default function ChatArea({ messages, sender }: { messages: Prisma.Messag
     </CardHeader>
     <CardContent className="p-0 flex-grow flex flex-col">
       <ScrollArea className="flex-grow p-4">
-        <ChatMessages messages={messages} sender={sender} />
+        <ChatMessages messages={messages} sender={userId} />
       </ScrollArea>
       <Separator className="bg-pink-500/10" />
       <div className="p-4 flex gap-2 items-end">
@@ -70,7 +70,7 @@ export default function ChatArea({ messages, sender }: { messages: Prisma.Messag
           <span className="sr-only">Add image</span>
         </Button>
         <EmojiPicker />
-        <NewMessage userId={sender} />
+        <NewMessage chatId={messages[0].chatId} userId={userId} />
       </div>
     </CardContent>
   </Card>
