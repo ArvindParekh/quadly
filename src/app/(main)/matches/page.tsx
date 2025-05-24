@@ -1,5 +1,5 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import MatchAlgorithmDemo from "@/components/match-algorithm-demo"
+// import MatchAlgorithmDemo from "@/components/match-algorithm-demo"
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/lib/auth";
 import { redirect } from "next/navigation";
@@ -21,7 +21,7 @@ export default async function MatchesPage() {
             <h1 className="text-3xl font-bold tracking-tight">Your Matches ✨</h1>
           </div>
 
-          <MatchAlgorithmDemo />
+          {/* <MatchAlgorithmDemo /> */}
 
           <Card className="border-pink-500/20">
             <CardHeader>
