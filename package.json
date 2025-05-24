@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
-    "build": "next build --tsconfig tsconfig.prod.json",
+    "build": "next build",
     "start": "next start",
     "lint": "next lint",
     "dev:docker": "prisma migrate dev && next dev --turbopack --port 3000"
