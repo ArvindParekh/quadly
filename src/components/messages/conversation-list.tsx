@@ -2,20 +2,29 @@ import { Prisma } from "@/generated/prisma";
 import Link from "next/link";
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
 import { Separator } from "../ui/separator";
+import { sessionType } from "@/types/session";
+import { getServerSession } from "next-auth";
+import { authOptions } from "@/lib/auth";
+import { getUser } from "@/lib/data/user";
 
 
-export default function ConversationList({ chats }: { chats: Prisma.ChatGetPayload<{
+export default async function ConversationList({ chats }: { chats: Prisma.ChatGetPayload<{
     include: {
         user1: true,
         user2: true,
         messages: true,
     }
 }>[] }) {
-    console.log(chats);
+    const session: sessionType | null = await getServerSession(authOptions);
+    const user = await getUser(session?.user?.id as string);
+
+    console.log("user details id: ", user.userDetails?.id);
+    console.log("chat user id: ", chats[0].user1.id);
+    console.log("chat user id: ", chats[0].user2.id);
     const conversations = chats.map((chat) => ({
         id: chat.id,
-        name: chat.user1.name,
-        avatar: chat.user1.profilePicture,
+        name: user.userDetails?.id === chat.user1.id ? chat.user2.name : chat.user1.name,
+        avatar: user.userDetails?.id === chat.user1.id ? chat.user2.profilePicture : chat.user1.profilePicture,
         lastMessage: chat.messages[0]?.content,
         time: chat.messages[0]?.createdAt?.toLocaleString(),
         unread: chat.messages.length > 1,
