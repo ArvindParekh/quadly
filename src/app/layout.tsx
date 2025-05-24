@@ -5,6 +5,7 @@ import { Space_Grotesk as FontSansSpaceGrotesque } from "next/font/google"
 import "./globals.css"
 import { cn } from "@/lib/utils"
 import Providers from "./providers"
+import { Analytics } from '@vercel/analytics/next';
 
 const fontSans = FontSans({
   subsets: ["latin"],
@@ -40,6 +41,7 @@ export default function RootLayout({
         <Providers>
           {children}
         </Providers>
+        <Analytics />
       </body>
     </html>
   )
