@@ -39,12 +39,16 @@ export default function ChatArea({ messages, userId, receiverId }: { messages: P
       console.log("event: ", event);
       const message = JSON.parse(event.data);
       console.log("message received: ", message);
+
+      if (message.type === "message") {
+        setMessages((prevMessages) => [...prevMessages, message.payload]);
+      }
     }
 
   }, [])
 
 
-   return messages.length === 0 ? (
+   return chatMessages.length === 0 ? (
       <Card className='border-pink-500/20 overflow-hidden h-full flex flex-col'>
          <CardContent className='flex items-center justify-center h-full'>
             <div className='text-center'>
@@ -75,7 +79,7 @@ export default function ChatArea({ messages, userId, receiverId }: { messages: P
     </CardHeader>
     <CardContent className="p-0 flex-grow flex flex-col">
       <ScrollArea className="flex-grow p-4">
-        <ChatMessages messages={messages} sender={userId} />
+        <ChatMessages messages={chatMessages} sender={userId} />
       </ScrollArea>
       <Separator className="bg-pink-500/10" />
       <div className="p-4 flex gap-2 items-end">
@@ -96,7 +100,7 @@ export default function ChatArea({ messages, userId, receiverId }: { messages: P
           <span className="sr-only">Add image</span>
         </Button>
         <EmojiPicker />
-        <NewMessage chatId={messages[0].chatId} userId={userId} receiverId={receiverId} />
+        <NewMessage chatId={chatMessages[0].chatId} userId={userId} receiverId={receiverId} />
       </div>
     </CardContent>
   </Card>

@@ -2,6 +2,7 @@ import { WebSocket, WebSocketServer } from "ws";
 import express from "express";
 //  store online users in memory
 import { Redis } from "ioredis";
+import { prisma } from "./lib/prisma";
 
 const app = express();
 const server = app.listen(8000);
@@ -114,19 +115,40 @@ const handleMessage = async (message: any) => {
       console.log("User is online");
       const receiver = onlineUsers.get(message.receiverId);
       if (receiver) {
-         receiver.send(JSON.stringify({
-            type: "message",
-            content: message.content,
-            senderId: message.senderId,
-            receiverId: message.receiverId,
-            chatId: message.chatId,
-         }));
+         try {
+
+            const newMessage = await createMessage(message);
+
+            receiver.send(
+               JSON.stringify({
+                  type: "message",
+                  payload: newMessage,
+               })
+            );
+         } catch (error) {
+            console.error("Error sending message to user: ", error);
+         }
       }
-   }
-   else {
-    //TODO: store in db and send to user when they are online
+   } else {
+      //TODO: store in db and send to user when they are online
    }
 };
+
+const createMessage = async (message: any) => {
+   try {
+      const newMessage = await prisma.message.create({
+         data: {
+            content: message.content,
+            chatId: message.chatId,
+            senderId: message.senderId,
+         }
+      })
+
+      return newMessage;
+   } catch (error) {
+      console.error("Error creating message: ", error);
+   }
+}
 
 // Handle application shutdown
 process.on("SIGINT", () => {
