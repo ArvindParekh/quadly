@@ -17,12 +17,13 @@ import { useParams, useRouter } from "next/navigation";
 import ChatArea from "@/components/messages/chat-area";
 import { Prisma } from "@/generated/prisma";
 import ConversationList from "@/components/messages/conversation-list";
+import { getWsClient } from "@/lib/wsClient";
 
-export default function ChatPageClient({ messages, userId}: {messages: Prisma.MessageGetPayload<{
+export default function ChatPageClient({ messages, userId, receiverId}: {messages: Prisma.MessageGetPayload<{
     include: {
         sender: true,
     }
-}>[], userId: string}) {
+}>[], userId: string, receiverId: string}) {
   const [socket, setSocket] = useState<WebSocket | null>(null);
   const [message, setMessage] = useState<string>("");
   const { data: session, status } = useSession();
@@ -34,10 +35,17 @@ export default function ChatPageClient({ messages, userId}: {messages: Prisma.Me
   }
 
   useEffect(() => {
-    const socket = new WebSocket(`${process.env.NEXT_PUBLIC_WS_URL}`);
+    const socket = getWsClient();
+    // setSocket(socket);
+
     socket.onopen = () => {
       console.log("Connected to server");
       setSocket(socket);
+
+      socket.send(JSON.stringify({
+        type: "login",
+        userId: userId,
+      }));
     }
 
     return () => {
@@ -53,8 +61,8 @@ export default function ChatPageClient({ messages, userId}: {messages: Prisma.Me
         type: "message",
         message: message,
         // @ts-ignore
-        sender: session?.user?.id,
-        receiver: userId,
+        sender: userId,
+        receiver: receiverId,
         timestamp: Date.now(),
       }));
       setMessage("");
@@ -142,7 +150,7 @@ export default function ChatPageClient({ messages, userId}: {messages: Prisma.Me
   //   </main>
   // </div>
 
-  <ChatArea messages={messages} userId={userId} />
+  <ChatArea messages={messages} userId={userId} receiverId={receiverId} />
   );
 }
 

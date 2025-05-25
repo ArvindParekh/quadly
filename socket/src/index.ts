@@ -68,7 +68,7 @@ wss.on("connection", async (ws: WebSocket, req: Request) => {
       }
    });
 
-   ws.send("Welcome to the server");
+   // ws.send("Welcome to the server");
 });
 
 const handleLogin = async (userId: string, ws: WebSocket) => {
@@ -107,14 +107,20 @@ const handleLogin = async (userId: string, ws: WebSocket) => {
    console.log(`User ${userId} logged in`);
 };
 
-const handleMessage = async (data: any) => {
-   console.log(`User ${data.sender} sent message: ${data.message} to ${data.receiver}`);
-   const isOnline = await redisClient.get(`user:${data.receiver}:online`);
+const handleMessage = async (message: any) => {
+   console.log("message received: ", message);
+   const isOnline = await redisClient.get(`user:${message.receiverId}:online`);
    if (isOnline) {
       console.log("User is online");
-      const receiver = onlineUsers.get(data.receiver);
+      const receiver = onlineUsers.get(message.receiverId);
       if (receiver) {
-         receiver.send(JSON.stringify(data));
+         receiver.send(JSON.stringify({
+            type: "message",
+            content: message.content,
+            senderId: message.senderId,
+            receiverId: message.receiverId,
+            chatId: message.chatId,
+         }));
       }
    }
    else {

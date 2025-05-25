@@ -1,3 +1,5 @@
+"use client";
+
 import { Message, Prisma } from "@/generated/prisma";
 import { Card, CardContent, CardHeader } from "../ui/card";
 import { Button } from "../ui/button";
@@ -12,12 +14,36 @@ import { Separator } from "../ui/separator";
 import { ScrollArea } from "../ui/scroll-area";
 import ChatMessages from "./chat-message";
 import NewMessage from "./new-message";
+import { useEffect, useState } from "react";
+import { getWsClient } from "@/lib/wsClient";
 
-export default function ChatArea({ messages, userId }: { messages: Prisma.MessageGetPayload<{
+export default function ChatArea({ messages, userId, receiverId }: { messages: Prisma.MessageGetPayload<{
     include: {
         sender: true,
     }
-}>[], userId: string }) {
+}>[], userId: string, receiverId: string }) {
+
+  const [socket, setSocket] = useState<WebSocket | null>(null);
+  const [chatMessages, setMessages] = useState<Prisma.MessageGetPayload<{
+    include: {
+        sender: true,
+    }
+}>[]>(messages);
+  
+  useEffect(()=> {
+    const socket = getWsClient();
+    setSocket(socket);
+
+
+    socket.onmessage = (event) => {
+      console.log("event: ", event);
+      const message = JSON.parse(event.data);
+      console.log("message received: ", message);
+    }
+
+  }, [])
+
+
    return messages.length === 0 ? (
       <Card className='border-pink-500/20 overflow-hidden h-full flex flex-col'>
          <CardContent className='flex items-center justify-center h-full'>
@@ -70,7 +96,7 @@ export default function ChatArea({ messages, userId }: { messages: Prisma.Messag
           <span className="sr-only">Add image</span>
         </Button>
         <EmojiPicker />
-        <NewMessage chatId={messages[0].chatId} userId={userId} />
+        <NewMessage chatId={messages[0].chatId} userId={userId} receiverId={receiverId} />
       </div>
     </CardContent>
   </Card>

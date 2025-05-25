@@ -6,7 +6,7 @@ import { Input } from "../ui/input";
 import { useEffect, useState } from "react";
 import { getWsClient } from "@/lib/wsClient";
 
-export default function NewMessage({userId, chatId}: {userId: string, chatId: string}) {
+export default function NewMessage({userId, chatId, receiverId}: {userId: string, chatId: string, receiverId: string}) {
     const [message, setMessage] = useState("");
     const [socket, setSocket] = useState<WebSocket | null>(null);
 
@@ -21,7 +21,7 @@ export default function NewMessage({userId, chatId}: {userId: string, chatId: st
           type: "message",
           content: message,
           senderId: userId,
-          // receiverId: userId,
+          receiverId: receiverId,
           chatId: chatId,
         });
 
@@ -30,7 +30,7 @@ export default function NewMessage({userId, chatId}: {userId: string, chatId: st
             type: "message",
             content: message,
             senderId: userId,
-            // receiverId: userId,
+            receiverId: receiverId,
             chatId: chatId,
           }))
         } catch (error) {
