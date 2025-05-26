@@ -16,7 +16,7 @@ const emojiCategories = {
   symbols: ["❤️", "🧡", "💛", "💚", "💙", "💜", "🖤", "🤍", "🤎", "💔", "❣️", "💕", "💞", "💓", "💗", "💖", "💘"],
 }
 
-export function EmojiPicker() {
+export function EmojiPicker({onEmojiSelect}: {onEmojiSelect: (emoji: string) => void}) {
   return (
     <Popover>
       <PopoverTrigger asChild>
@@ -91,6 +91,7 @@ export function EmojiPicker() {
                     <button
                       key={emoji}
                       className="h-8 w-8 flex items-center justify-center text-lg hover:bg-pink-500/10 rounded-md"
+                      onClick={() => onEmojiSelect(emoji)}
                     >
                       {emoji}
                     </button>

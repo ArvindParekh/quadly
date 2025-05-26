@@ -7,16 +7,16 @@ import { getServerSession } from "next-auth";
 import { redirect } from "next/navigation";
 
 export default async function MessagesPage() {
-  // const session: sessionType | null = await getServerSession(authOptions);
-  // const user = await getUser(session?.user?.id as string);
+  const session: sessionType | null = await getServerSession(authOptions);
+  const user = await getUser(session?.user?.id as string);
 
-  // if(!session){
-  //   redirect("/");
-  // }
+  if(!session){
+    redirect("/");
+  }
 
   // const chats = await getChats(user.userDetails?.id as string);
 
   // console.log(chats);
 
-  return <ChatClient/>;
+  return <ChatClient userId={user.userDetails?.id as string} />;
 }

@@ -18,11 +18,10 @@ import ConversationList from "./conversation-list";
 
 
 
-export default function ChatClient() {
+export default function ChatClient({userId} : {userId: string}) {
   const [socket, setSocket] = useState<WebSocket | null>(null);
   const { data: session } = useSession();
   
-  // console.log(session?.user?.id);
 
   useEffect(() => {
     const socket = new WebSocket(`${process.env.NEXT_PUBLIC_WS_URL}`);
@@ -32,7 +31,7 @@ export default function ChatClient() {
       setSocket(socket);
       socket.send(JSON.stringify({
         type: "login",
-        userId: "",
+        userId: userId,
       }))
     }
 

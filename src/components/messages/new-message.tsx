@@ -64,6 +64,10 @@ export default function NewMessage({
       }
    };
 
+   const onEmojiSelect = (emoji: string) => {
+      setMessage(message + emoji);
+   };
+
    return (
       <div className='p-4 flex gap-2 items-end flex-shrink-0'>
          <Button
@@ -82,7 +86,7 @@ export default function NewMessage({
             <ImagePlus className='h-4 w-4' />
             <span className='sr-only'>Add image</span>
          </Button>
-         <EmojiPicker />
+         <EmojiPicker onEmojiSelect={onEmojiSelect} />
          <div className='flex-grow relative'>
             <Input
                placeholder='Type a message...'

@@ -36,9 +36,9 @@
 		{
 			"id": "pointer:pointer",
 			"typeName": "pointer",
-			"x": -735.201273562494,
-			"y": 1329.1397723230273,
-			"lastActivityTimestamp": 1748283671048,
+			"x": -848.0835781465461,
+			"y": 1397.2136283047985,
+			"lastActivityTimestamp": 1748284486780,
 			"meta": {}
 		},
 		{
@@ -692,9 +692,9 @@
 			"typeName": "shape"
 		},
 		{
-			"x": 1538.327398218289,
-			"y": -896.8839918554178,
-			"z": 0.7819444302962366,
+			"x": 1397.9947781497178,
+			"y": -994.9530042009983,
+			"z": 0.8601388733258603,
 			"meta": {},
 			"id": "camera:page:page",
 			"typeName": "camera"
@@ -1587,7 +1587,7 @@
 				"x": 0,
 				"y": 0,
 				"w": 1620,
-				"h": 939
+				"h": 628
 			},
 			"insets": [
 				false,
@@ -1951,11 +1951,6 @@
 											"content": [
 												{
 													"type": "text",
-													"marks": [
-														{
-															"type": "highlight"
-														}
-													],
 													"text": "websocket server is unable to login user at /messages page"
 												}
 											]
@@ -1996,6 +1991,50 @@
 														}
 													],
 													"text": "extra inputs in messages are not supported"
+												}
+											]
+										}
+									]
+								},
+								{
+									"type": "listItem",
+									"content": [
+										{
+											"type": "paragraph",
+											"attrs": {
+												"dir": "auto"
+											},
+											"content": [
+												{
+													"type": "text",
+													"marks": [
+														{
+															"type": "highlight"
+														}
+													],
+													"text": "implement images and attachments functionality in messages"
+												}
+											]
+										}
+									]
+								},
+								{
+									"type": "listItem",
+									"content": [
+										{
+											"type": "paragraph",
+											"attrs": {
+												"dir": "auto"
+											},
+											"content": [
+												{
+													"type": "text",
+													"marks": [
+														{
+															"type": "highlight"
+														}
+													],
+													"text": "show different screens for /messages and /message/[chatId]"
 												}
 											]
 										}
