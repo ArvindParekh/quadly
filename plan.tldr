@@ -36,9 +36,9 @@
 		{
 			"id": "pointer:pointer",
 			"typeName": "pointer",
-			"x": -253.1665495879381,
-			"y": 497.762806226302,
-			"lastActivityTimestamp": 1748105477674,
+			"x": -96.9677405349828,
+			"y": 1944.1445713098447,
+			"lastActivityTimestamp": 1748293785604,
 			"meta": {}
 		},
 		{
@@ -692,9 +692,9 @@
 			"typeName": "shape"
 		},
 		{
-			"x": 2150.180127139235,
-			"y": 705.1111189909686,
-			"z": 0.4422741143914204,
+			"x": 1565.3228930027183,
+			"y": -1085.2953311872068,
+			"z": 0.8662754360634491,
 			"meta": {},
 			"id": "camera:page:page",
 			"typeName": "camera"
@@ -832,12 +832,12 @@
 			"typeName": "shape"
 		},
 		{
-			"editingShapeId": "shape:NC5vaj8I6Zv2SmAk7Nk1r",
+			"editingShapeId": null,
 			"croppingShapeId": null,
 			"selectedShapeIds": [
-				"shape:NC5vaj8I6Zv2SmAk7Nk1r"
+				"shape:fShRwa6XG5cN3mcD7OPFl"
 			],
-			"hoveredShapeId": "shape:NC5vaj8I6Zv2SmAk7Nk1r",
+			"hoveredShapeId": null,
 			"erasingShapeIds": [],
 			"hintingShapeIds": [],
 			"focusedGroupId": null,
@@ -881,6 +881,57 @@
 			},
 			"parentId": "page:page",
 			"index": "aB7Pp",
+			"typeName": "shape"
+		},
+		{
+			"x": -298.3045548582693,
+			"y": 2032.7278421905028,
+			"rotation": 0,
+			"isLocked": false,
+			"opacity": 1,
+			"meta": {},
+			"id": "shape:fShRwa6XG5cN3mcD7OPFl",
+			"type": "text",
+			"props": {
+				"color": "black",
+				"size": "m",
+				"w": 873.28125,
+				"font": "draw",
+				"textAlign": "start",
+				"autoSize": true,
+				"scale": 1,
+				"richText": {
+					"type": "doc",
+					"content": [
+						{
+							"type": "paragraph",
+							"attrs": {
+								"dir": "auto"
+							},
+							"content": [
+								{
+									"type": "text",
+									"text": "store new message in prisma in nextjs itself or let websockets do it??"
+								}
+							]
+						},
+						{
+							"type": "paragraph",
+							"attrs": {
+								"dir": "auto"
+							},
+							"content": [
+								{
+									"type": "text",
+									"text": "Answer: Websockets"
+								}
+							]
+						}
+					]
+				}
+			},
+			"parentId": "page:page",
+			"index": "aK4mO",
 			"typeName": "shape"
 		},
 		{
@@ -1830,6 +1881,240 @@
 			},
 			"parentId": "page:page",
 			"index": "aI1qy",
+			"typeName": "shape"
+		},
+		{
+			"x": -1314.6052191950087,
+			"y": 1307.2252883846306,
+			"rotation": 0,
+			"isLocked": false,
+			"opacity": 1,
+			"meta": {},
+			"id": "shape:XIPj65FmnTs3gR8lZ5ku2",
+			"type": "text",
+			"props": {
+				"color": "black",
+				"size": "m",
+				"w": 1685.171875,
+				"font": "draw",
+				"textAlign": "start",
+				"autoSize": true,
+				"scale": 1,
+				"richText": {
+					"type": "doc",
+					"content": [
+						{
+							"type": "paragraph",
+							"attrs": {
+								"dir": "auto"
+							},
+							"content": [
+								{
+									"type": "text",
+									"text": "Current problems:"
+								}
+							]
+						},
+						{
+							"type": "bulletList",
+							"content": [
+								{
+									"type": "listItem",
+									"content": [
+										{
+											"type": "paragraph",
+											"attrs": {
+												"dir": "auto"
+											},
+											"content": [
+												{
+													"type": "text",
+													"text": "the message user is sending is not populated on the screen instantly"
+												}
+											]
+										}
+									]
+								},
+								{
+									"type": "listItem",
+									"content": [
+										{
+											"type": "paragraph",
+											"attrs": {
+												"dir": "auto"
+											},
+											"content": [
+												{
+													"type": "text",
+													"text": "the message being returned from the server is not being mapped to the correct chat, instead it populates in the chat that is open"
+												}
+											]
+										}
+									]
+								},
+								{
+									"type": "listItem",
+									"content": [
+										{
+											"type": "paragraph",
+											"attrs": {
+												"dir": "auto"
+											},
+											"content": [
+												{
+													"type": "text",
+													"text": "websocket server is unable to login user at /messages page"
+												}
+											]
+										}
+									]
+								},
+								{
+									"type": "listItem",
+									"content": [
+										{
+											"type": "paragraph",
+											"attrs": {
+												"dir": "auto"
+											},
+											"content": [
+												{
+													"type": "text",
+													"text": "message in input box do not clear after the message has been sent"
+												}
+											]
+										}
+									]
+								},
+								{
+									"type": "listItem",
+									"content": [
+										{
+											"type": "paragraph",
+											"attrs": {
+												"dir": "auto"
+											},
+											"content": [
+												{
+													"type": "text",
+													"marks": [
+														{
+															"type": "highlight"
+														}
+													],
+													"text": "implement images and attachments functionality in messages"
+												}
+											]
+										}
+									]
+								},
+								{
+									"type": "listItem",
+									"content": [
+										{
+											"type": "paragraph",
+											"attrs": {
+												"dir": "auto"
+											},
+											"content": [
+												{
+													"type": "text",
+													"text": "show different screens for /messages and /message/[chatId]"
+												}
+											]
+										}
+									]
+								},
+								{
+									"type": "listItem",
+									"content": [
+										{
+											"type": "paragraph",
+											"attrs": {
+												"dir": "auto"
+											},
+											"content": [
+												{
+													"type": "text",
+													"text": "if got a new message, highlight it in the conversation list"
+												}
+											]
+										}
+									]
+								},
+								{
+									"type": "listItem",
+									"content": [
+										{
+											"type": "paragraph",
+											"attrs": {
+												"dir": "auto"
+											},
+											"content": [
+												{
+													"type": "text",
+													"marks": [
+														{
+															"type": "highlight"
+														}
+													],
+													"text": "save message in db if user is not online"
+												}
+											]
+										}
+									]
+								},
+								{
+									"type": "listItem",
+									"content": [
+										{
+											"type": "paragraph",
+											"attrs": {
+												"dir": "auto"
+											},
+											"content": [
+												{
+													"type": "text",
+													"marks": [
+														{
+															"type": "highlight"
+														}
+													],
+													"text": "mark as read when user opens that chat"
+												}
+											]
+										}
+									]
+								},
+								{
+									"type": "listItem",
+									"content": [
+										{
+											"type": "paragraph",
+											"attrs": {
+												"dir": "auto"
+											},
+											"content": [
+												{
+													"type": "text",
+													"marks": [
+														{
+															"type": "highlight"
+														}
+													],
+													"text": "update time of conversation in /messages when new message is received"
+												}
+											]
+										}
+									]
+								}
+							]
+						}
+					]
+				}
+			},
+			"parentId": "page:page",
+			"index": "aJ7it",
 			"typeName": "shape"
 		}
 	]

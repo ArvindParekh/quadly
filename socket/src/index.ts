@@ -2,6 +2,7 @@ import { WebSocket, WebSocketServer } from "ws";
 import express from "express";
 //  store online users in memory
 import { Redis } from "ioredis";
+import { prisma } from "./lib/prisma";
 
 const app = express();
 const server = app.listen(8000);
@@ -68,7 +69,7 @@ wss.on("connection", async (ws: WebSocket, req: Request) => {
       }
    });
 
-   ws.send("Welcome to the server");
+   // ws.send("Welcome to the server");
 });
 
 const handleLogin = async (userId: string, ws: WebSocket) => {
@@ -107,20 +108,51 @@ const handleLogin = async (userId: string, ws: WebSocket) => {
    console.log(`User ${userId} logged in`);
 };
 
-const handleMessage = async (data: any) => {
-   console.log(`User ${data.sender} sent message: ${data.message} to ${data.receiver}`);
-   const isOnline = await redisClient.get(`user:${data.receiver}:online`);
+const handleMessage = async (message: any) => {
+   console.log("message received: ", message);
+   const isOnline = await redisClient.get(`user:${message.receiverId}:online`);
+
    if (isOnline) {
+
       console.log("User is online");
-      const receiver = onlineUsers.get(data.receiver);
+      const receiver = onlineUsers.get(message.receiverId);
+
       if (receiver) {
-         receiver.send(JSON.stringify(data));
+         try {
+            const newMessage = await createMessage(message);
+
+            receiver.send(
+               JSON.stringify({
+                  type: "message",
+                  payload: newMessage,
+               })
+            );
+            
+         } catch (error) {
+            console.error("Error sending message to user: ", error);
+         }
       }
-   }
-   else {
-    //TODO: store in db and send to user when they are online
+   } else {
+      const newMessage = await createMessage(message);
+      console.log("Message stored in db: ", newMessage);
    }
 };
+
+const createMessage = async (message: any) => {
+   try {
+      const newMessage = await prisma.message.create({
+         data: {
+            content: message.content,
+            chatId: message.chatId,
+            senderId: message.senderId,
+         }
+      })
+
+      return newMessage;
+   } catch (error) {
+      console.error("Error creating message: ", error);
+   }
+}
 
 // Handle application shutdown
 process.on("SIGINT", () => {

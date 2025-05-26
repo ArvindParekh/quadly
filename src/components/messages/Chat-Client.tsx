@@ -18,31 +18,30 @@ import ConversationList from "./conversation-list";
 
 
 
-export default function ChatClient() {
-  const [socket, setSocket] = useState<WebSocket | null>(null);
-  const { data: session } = useSession();
+export default function ChatClient({userId} : {userId: string}) {
+  // const [socket, setSocket] = useState<WebSocket | null>(null);
+  // const { data: session } = useSession();
   
-  // console.log(session?.user?.id);
 
-  useEffect(() => {
-    const socket = new WebSocket(`${process.env.NEXT_PUBLIC_WS_URL}`);
+  // useEffect(() => {
+  //   const socket = new WebSocket(`${process.env.NEXT_PUBLIC_WS_URL}`);
 
-    socket.onopen = () => {
-      console.log("Connected to server");
-      setSocket(socket);
-      socket.send(JSON.stringify({
-        type: "login",
-        userId: "",
-      }))
-    }
+  //   socket.onopen = () => {
+  //     console.log("Connected to server");
+  //     setSocket(socket);
+  //     socket.send(JSON.stringify({
+  //       type: "login",
+  //       userId: userId,
+  //     }))
+  //   }
 
-    return () => {
-      if (socket) {
-        socket.close();
-      }
-    }
+  //   return () => {
+  //     if (socket) {
+  //       socket.close();
+  //     }
+  //   }
     
-  }, []);
+  // }, []);
 
   return (
     // <div className="min-h-screen bg-background">
