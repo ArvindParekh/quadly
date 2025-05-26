@@ -36,9 +36,9 @@
 		{
 			"id": "pointer:pointer",
 			"typeName": "pointer",
-			"x": -253.1665495879381,
-			"y": 497.762806226302,
-			"lastActivityTimestamp": 1748105477674,
+			"x": -131.07032409595968,
+			"y": 1656.779952518033,
+			"lastActivityTimestamp": 1748148370036,
 			"meta": {}
 		},
 		{
@@ -693,8 +693,8 @@
 		},
 		{
 			"x": 2150.180127139235,
-			"y": 705.1111189909686,
-			"z": 0.4422741143914204,
+			"y": -51.44069141979605,
+			"z": 0.44227411439142045,
 			"meta": {},
 			"id": "camera:page:page",
 			"typeName": "camera"
@@ -832,12 +832,12 @@
 			"typeName": "shape"
 		},
 		{
-			"editingShapeId": "shape:NC5vaj8I6Zv2SmAk7Nk1r",
+			"editingShapeId": null,
 			"croppingShapeId": null,
 			"selectedShapeIds": [
-				"shape:NC5vaj8I6Zv2SmAk7Nk1r"
+				"shape:fShRwa6XG5cN3mcD7OPFl"
 			],
-			"hoveredShapeId": "shape:NC5vaj8I6Zv2SmAk7Nk1r",
+			"hoveredShapeId": null,
 			"erasingShapeIds": [],
 			"hintingShapeIds": [],
 			"focusedGroupId": null,
@@ -881,6 +881,45 @@
 			},
 			"parentId": "page:page",
 			"index": "aB7Pp",
+			"typeName": "shape"
+		},
+		{
+			"x": -1177.9324056290352,
+			"y": 1656.404116007734,
+			"rotation": 0,
+			"isLocked": false,
+			"opacity": 1,
+			"meta": {},
+			"id": "shape:fShRwa6XG5cN3mcD7OPFl",
+			"type": "text",
+			"props": {
+				"color": "black",
+				"size": "m",
+				"w": 873.28125,
+				"font": "draw",
+				"textAlign": "start",
+				"autoSize": true,
+				"scale": 1,
+				"richText": {
+					"type": "doc",
+					"content": [
+						{
+							"type": "paragraph",
+							"attrs": {
+								"dir": "auto"
+							},
+							"content": [
+								{
+									"type": "text",
+									"text": "store new message in prisma in nextjs itself or let websockets do it??"
+								}
+							]
+						}
+					]
+				}
+			},
+			"parentId": "page:page",
+			"index": "aK4mO",
 			"typeName": "shape"
 		},
 		{
@@ -1830,6 +1869,84 @@
 			},
 			"parentId": "page:page",
 			"index": "aI1qy",
+			"typeName": "shape"
+		},
+		{
+			"x": -1046.792015285799,
+			"y": 1361.48054952141,
+			"rotation": 0,
+			"isLocked": false,
+			"opacity": 1,
+			"meta": {},
+			"id": "shape:XIPj65FmnTs3gR8lZ5ku2",
+			"type": "text",
+			"props": {
+				"color": "black",
+				"size": "m",
+				"w": 1685.171875,
+				"font": "draw",
+				"textAlign": "start",
+				"autoSize": true,
+				"scale": 1,
+				"richText": {
+					"type": "doc",
+					"content": [
+						{
+							"type": "paragraph",
+							"attrs": {
+								"dir": "auto"
+							},
+							"content": [
+								{
+									"type": "text",
+									"text": "Current problems:"
+								}
+							]
+						},
+						{
+							"type": "bulletList",
+							"content": [
+								{
+									"type": "listItem",
+									"content": [
+										{
+											"type": "paragraph",
+											"attrs": {
+												"dir": "auto"
+											},
+											"content": [
+												{
+													"type": "text",
+													"text": "the message user is sending is not populated on the screen instantly"
+												}
+											]
+										}
+									]
+								},
+								{
+									"type": "listItem",
+									"content": [
+										{
+											"type": "paragraph",
+											"attrs": {
+												"dir": "auto"
+											},
+											"content": [
+												{
+													"type": "text",
+													"text": "the message being returned from the server is not being mapped to the correct chat, instead it populates in the chat that is open"
+												}
+											]
+										}
+									]
+								}
+							]
+						}
+					]
+				}
+			},
+			"parentId": "page:page",
+			"index": "aJ7it",
 			"typeName": "shape"
 		}
 	]

@@ -24,31 +24,31 @@ export default function ChatArea({ messages, userId, receiverId }: { messages: P
 }>[], userId: string, receiverId: string }) {
 
   const [socket, setSocket] = useState<WebSocket | null>(null);
-  const [chatMessages, setMessages] = useState<Prisma.MessageGetPayload<{
-    include: {
-        sender: true,
-    }
-}>[]>(messages);
+  // const [chatMessages, setMessages] = useState<Prisma.MessageGetPayload<{
+  //   include: {
+  //       sender: true,
+  //   }
+// }>[]>(messages);
   
-  useEffect(()=> {
-    const socket = getWsClient();
-    setSocket(socket);
+  // useEffect(()=> {
+  //   const socket = getWsClient();
+  //   setSocket(socket);
 
 
-    socket.onmessage = (event) => {
-      console.log("event: ", event);
-      const message = JSON.parse(event.data);
-      console.log("message received: ", message);
+  //   socket.onmessage = (event) => {
+  //     console.log("event: ", event);
+  //     const message = JSON.parse(event.data);
+  //     console.log("message received: ", message);
 
-      if (message.type === "message") {
-        setMessages((prevMessages) => [...prevMessages, message.payload]);
-      }
-    }
+  //     if (message.type === "message") {
+  //       setMessages((prevMessages) => [...prevMessages, message.payload]);
+  //     }
+  //   }
 
-  }, [])
+  // }, [])
 
 
-   return chatMessages.length === 0 ? (
+   return messages.length === 0 ? (
       <Card className='border-pink-500/20 overflow-hidden h-full flex flex-col'>
          <CardContent className='flex items-center justify-center h-full'>
             <div className='text-center'>
@@ -79,7 +79,7 @@ export default function ChatArea({ messages, userId, receiverId }: { messages: P
     </CardHeader>
     <CardContent className="p-0 flex-grow flex flex-col">
       <ScrollArea className="flex-grow p-4">
-        <ChatMessages messages={chatMessages} sender={userId} />
+        <ChatMessages messages={messages} sender={userId} />
       </ScrollArea>
       <Separator className="bg-pink-500/10" />
       <div className="p-4 flex gap-2 items-end">
@@ -100,7 +100,7 @@ export default function ChatArea({ messages, userId, receiverId }: { messages: P
           <span className="sr-only">Add image</span>
         </Button>
         <EmojiPicker />
-        <NewMessage chatId={chatMessages[0].chatId} userId={userId} receiverId={receiverId} />
+        <NewMessage chatId={messages[0].chatId} userId={userId} receiverId={receiverId} />
       </div>
     </CardContent>
   </Card>

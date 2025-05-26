@@ -111,12 +111,14 @@ const handleLogin = async (userId: string, ws: WebSocket) => {
 const handleMessage = async (message: any) => {
    console.log("message received: ", message);
    const isOnline = await redisClient.get(`user:${message.receiverId}:online`);
+
    if (isOnline) {
+
       console.log("User is online");
       const receiver = onlineUsers.get(message.receiverId);
+
       if (receiver) {
          try {
-
             const newMessage = await createMessage(message);
 
             receiver.send(
@@ -125,6 +127,7 @@ const handleMessage = async (message: any) => {
                   payload: newMessage,
                })
             );
+            
          } catch (error) {
             console.error("Error sending message to user: ", error);
          }
