@@ -36,9 +36,9 @@
 		{
 			"id": "pointer:pointer",
 			"typeName": "pointer",
-			"x": -96.9677405349828,
-			"y": 1944.1445713098447,
-			"lastActivityTimestamp": 1748293785604,
+			"x": 34.54372746096374,
+			"y": 1707.2551076371747,
+			"lastActivityTimestamp": 1748295303275,
 			"meta": {}
 		},
 		{
@@ -692,9 +692,9 @@
 			"typeName": "shape"
 		},
 		{
-			"x": 1565.3228930027183,
-			"y": -1085.2953311872068,
-			"z": 0.8662754360634491,
+			"x": 1437.6166459129086,
+			"y": -1001.961544728019,
+			"z": 0.7145960583010695,
 			"meta": {},
 			"id": "camera:page:page",
 			"typeName": "camera"
@@ -832,12 +832,12 @@
 			"typeName": "shape"
 		},
 		{
-			"editingShapeId": null,
+			"editingShapeId": "shape:XIPj65FmnTs3gR8lZ5ku2",
 			"croppingShapeId": null,
 			"selectedShapeIds": [
-				"shape:fShRwa6XG5cN3mcD7OPFl"
+				"shape:XIPj65FmnTs3gR8lZ5ku2"
 			],
-			"hoveredShapeId": null,
+			"hoveredShapeId": "shape:XIPj65FmnTs3gR8lZ5ku2",
 			"erasingShapeIds": [],
 			"hintingShapeIds": [],
 			"focusedGroupId": null,
@@ -1599,7 +1599,7 @@
 				"x": 0,
 				"y": 0,
 				"w": 1620,
-				"h": 939
+				"h": 628
 			},
 			"insets": [
 				false,
@@ -2097,12 +2097,51 @@
 											"content": [
 												{
 													"type": "text",
+													"text": "update time of conversation in /messages when new message is received"
+												}
+											]
+										}
+									]
+								},
+								{
+									"type": "listItem",
+									"content": [
+										{
+											"type": "paragraph",
+											"attrs": {
+												"dir": "auto"
+											},
+											"content": [
+												{
+													"type": "text",
 													"marks": [
 														{
 															"type": "highlight"
 														}
 													],
-													"text": "update time of conversation in /messages when new message is received"
+													"text": "when opening a chat at /messages/[chatId], by default show the view should be most scrolled-down to the latest message"
+												}
+											]
+										}
+									]
+								},
+								{
+									"type": "listItem",
+									"content": [
+										{
+											"type": "paragraph",
+											"attrs": {
+												"dir": "auto"
+											},
+											"content": [
+												{
+													"type": "text",
+													"marks": [
+														{
+															"type": "highlight"
+														}
+													],
+													"text": "also after sending a new message, scroll the scrollarea down to make the new message visible; same for the other person"
 												}
 											]
 										}
