@@ -36,9 +36,9 @@
 		{
 			"id": "pointer:pointer",
 			"typeName": "pointer",
-			"x": -409.60780408340725,
-			"y": 1582.5900078147215,
-			"lastActivityTimestamp": 1748277526766,
+			"x": -735.201273562494,
+			"y": 1329.1397723230273,
+			"lastActivityTimestamp": 1748283671048,
 			"meta": {}
 		},
 		{
@@ -692,9 +692,9 @@
 			"typeName": "shape"
 		},
 		{
-			"x": 1984.112273069233,
-			"y": -801.2953577990523,
-			"z": 0.5874864239641147,
+			"x": 1538.327398218289,
+			"y": -896.8839918554178,
+			"z": 0.7819444302962366,
 			"meta": {},
 			"id": "camera:page:page",
 			"typeName": "camera"
@@ -837,7 +837,7 @@
 			"selectedShapeIds": [
 				"shape:XIPj65FmnTs3gR8lZ5ku2"
 			],
-			"hoveredShapeId": null,
+			"hoveredShapeId": "shape:XIPj65FmnTs3gR8lZ5ku2",
 			"erasingShapeIds": [],
 			"hintingShapeIds": [],
 			"focusedGroupId": null,
@@ -1587,7 +1587,7 @@
 				"x": 0,
 				"y": 0,
 				"w": 1620,
-				"h": 628
+				"h": 939
 			},
 			"insets": [
 				false,
@@ -1604,7 +1604,7 @@
 			"isFocused": true,
 			"devicePixelRatio": 1,
 			"isCoarsePointer": false,
-			"isHoveringCanvas": true,
+			"isHoveringCanvas": false,
 			"openMenus": [],
 			"isChangingStyle": false,
 			"isReadonly": false,
@@ -1917,11 +1917,6 @@
 											"content": [
 												{
 													"type": "text",
-													"marks": [
-														{
-															"type": "highlight"
-														}
-													],
 													"text": "the message user is sending is not populated on the screen instantly"
 												}
 											]

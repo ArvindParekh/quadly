@@ -71,7 +71,7 @@ export default function ChatArea({
 
             <Separator className='bg-pink-500/10' />
 
-            <div className='p-4 flex gap-2 items-end flex-shrink-0'>
+            {/* <div className='p-4 flex gap-2 items-end flex-shrink-0'>
                <Button
                   variant='ghost'
                   size='icon'
@@ -95,7 +95,13 @@ export default function ChatArea({
                   receiverId={receiverId}
                   onSendMessage={onSendMessage}
                />
-            </div>
+            </div> */}
+            <NewMessage
+                  chatId={messages[0].chatId}
+                  userId={userId}
+                  receiverId={receiverId}
+                  onSendMessage={onSendMessage}
+               />
          </CardContent>
       </Card>
    );
