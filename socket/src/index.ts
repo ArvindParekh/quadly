@@ -133,7 +133,8 @@ const handleMessage = async (message: any) => {
          }
       }
    } else {
-      //TODO: store in db and send to user when they are online
+      const newMessage = await createMessage(message);
+      console.log("Message stored in db: ", newMessage);
    }
 };
 

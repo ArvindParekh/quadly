@@ -36,9 +36,9 @@
 		{
 			"id": "pointer:pointer",
 			"typeName": "pointer",
-			"x": -853.8965929457339,
-			"y": 1573.9292782001094,
-			"lastActivityTimestamp": 1748286426316,
+			"x": -602.7743536208183,
+			"y": 1857.604400400477,
+			"lastActivityTimestamp": 1748286484940,
 			"meta": {}
 		},
 		{
@@ -837,7 +837,7 @@
 			"selectedShapeIds": [
 				"shape:XIPj65FmnTs3gR8lZ5ku2"
 			],
-			"hoveredShapeId": "shape:XIPj65FmnTs3gR8lZ5ku2",
+			"hoveredShapeId": null,
 			"erasingShapeIds": [],
 			"hintingShapeIds": [],
 			"focusedGroupId": null,
@@ -1587,7 +1587,7 @@
 				"x": 0,
 				"y": 0,
 				"w": 1620,
-				"h": 939
+				"h": 628
 			},
 			"insets": [
 				false,
@@ -1604,7 +1604,7 @@
 			"isFocused": true,
 			"devicePixelRatio": 1,
 			"isCoarsePointer": false,
-			"isHoveringCanvas": true,
+			"isHoveringCanvas": false,
 			"openMenus": [],
 			"isChangingStyle": false,
 			"isReadonly": false,
@@ -2007,11 +2007,6 @@
 											"content": [
 												{
 													"type": "text",
-													"marks": [
-														{
-															"type": "highlight"
-														}
-													],
 													"text": "show different screens for /messages and /message/[chatId]"
 												}
 											]
