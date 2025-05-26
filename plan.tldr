@@ -36,9 +36,9 @@
 		{
 			"id": "pointer:pointer",
 			"typeName": "pointer",
-			"x": -131.07032409595968,
-			"y": 1656.779952518033,
-			"lastActivityTimestamp": 1748148370036,
+			"x": -409.60780408340725,
+			"y": 1582.5900078147215,
+			"lastActivityTimestamp": 1748277526766,
 			"meta": {}
 		},
 		{
@@ -692,9 +692,9 @@
 			"typeName": "shape"
 		},
 		{
-			"x": 2150.180127139235,
-			"y": -51.44069141979605,
-			"z": 0.44227411439142045,
+			"x": 1984.112273069233,
+			"y": -801.2953577990523,
+			"z": 0.5874864239641147,
 			"meta": {},
 			"id": "camera:page:page",
 			"typeName": "camera"
@@ -832,10 +832,10 @@
 			"typeName": "shape"
 		},
 		{
-			"editingShapeId": null,
+			"editingShapeId": "shape:XIPj65FmnTs3gR8lZ5ku2",
 			"croppingShapeId": null,
 			"selectedShapeIds": [
-				"shape:fShRwa6XG5cN3mcD7OPFl"
+				"shape:XIPj65FmnTs3gR8lZ5ku2"
 			],
 			"hoveredShapeId": null,
 			"erasingShapeIds": [],
@@ -1587,7 +1587,7 @@
 				"x": 0,
 				"y": 0,
 				"w": 1620,
-				"h": 939
+				"h": 628
 			},
 			"insets": [
 				false,
@@ -1872,8 +1872,8 @@
 			"typeName": "shape"
 		},
 		{
-			"x": -1046.792015285799,
-			"y": 1361.48054952141,
+			"x": -1314.6052191950087,
+			"y": 1307.2252883846306,
 			"rotation": 0,
 			"isLocked": false,
 			"opacity": 1,
@@ -1917,6 +1917,11 @@
 											"content": [
 												{
 													"type": "text",
+													"marks": [
+														{
+															"type": "highlight"
+														}
+													],
 													"text": "the message user is sending is not populated on the screen instantly"
 												}
 											]
@@ -1935,6 +1940,67 @@
 												{
 													"type": "text",
 													"text": "the message being returned from the server is not being mapped to the correct chat, instead it populates in the chat that is open"
+												}
+											]
+										}
+									]
+								},
+								{
+									"type": "listItem",
+									"content": [
+										{
+											"type": "paragraph",
+											"attrs": {
+												"dir": "auto"
+											},
+											"content": [
+												{
+													"type": "text",
+													"marks": [
+														{
+															"type": "highlight"
+														}
+													],
+													"text": "websocket server is unable to login user at /messages page"
+												}
+											]
+										}
+									]
+								},
+								{
+									"type": "listItem",
+									"content": [
+										{
+											"type": "paragraph",
+											"attrs": {
+												"dir": "auto"
+											},
+											"content": [
+												{
+													"type": "text",
+													"text": "message in input box do not clear after the message has been sent"
+												}
+											]
+										}
+									]
+								},
+								{
+									"type": "listItem",
+									"content": [
+										{
+											"type": "paragraph",
+											"attrs": {
+												"dir": "auto"
+											},
+											"content": [
+												{
+													"type": "text",
+													"marks": [
+														{
+															"type": "highlight"
+														}
+													],
+													"text": "extra inputs in messages are not supported"
 												}
 											]
 										}

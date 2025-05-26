@@ -33,6 +33,8 @@ export default function NewMessage({userId, chatId, receiverId}: {userId: string
             receiverId: receiverId,
             chatId: chatId,
           }))
+
+          setMessage("");
         } catch (error) {
           console.error("Error sending message: ", error);
         }
