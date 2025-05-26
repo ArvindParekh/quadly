@@ -14,6 +14,7 @@ import { getCommonInterests } from "@/lib/data/interests"
 import { redirect } from "next/navigation"
 import { getPostsByUserId } from "@/lib/data/posts"
 import SendMessageButton from "@/components/profile-page/sendMessageButton"
+import { ShareProfileModal } from "@/components/share-profile-modal"
 
 interface UserProfileProps {
   params: {
@@ -144,10 +145,16 @@ export default async function UserProfilePage({ params }: UserProfileProps) {
                   Coffee Chat
                 </Button>
                 <SendMessageButton thisUserId={thisUser.userDetails?.id as string} userId={user.userDetails?.id as string} />
-                <Button variant="ghost" size="icon" className="rounded-full hover:bg-pink-500/10 hover:text-pink-500">
-                  <Share className="h-4 w-4" />
-                  <span className="sr-only">Share Profile</span>
-                </Button>
+                <ShareProfileModal
+                  user={{
+                    name: user.userDetails?.name as string,
+                    username: user.username as string,
+                    avatar: user.userDetails?.profilePicture as string,
+                    department: user.userDetails?.department as string,
+                    year: user.userDetails?.year as string,
+                    matchPercentage: 40,
+                  }}
+                />
               </div>
             </div>
 
