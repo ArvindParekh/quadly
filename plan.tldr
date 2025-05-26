@@ -36,9 +36,9 @@
 		{
 			"id": "pointer:pointer",
 			"typeName": "pointer",
-			"x": -848.0835781465461,
-			"y": 1397.2136283047985,
-			"lastActivityTimestamp": 1748284486780,
+			"x": -853.8965929457339,
+			"y": 1573.9292782001094,
+			"lastActivityTimestamp": 1748286426316,
 			"meta": {}
 		},
 		{
@@ -693,7 +693,7 @@
 		},
 		{
 			"x": 1397.9947781497178,
-			"y": -994.9530042009983,
+			"y": -1134.465359381507,
 			"z": 0.8601388733258603,
 			"meta": {},
 			"id": "camera:page:page",
@@ -1587,7 +1587,7 @@
 				"x": 0,
 				"y": 0,
 				"w": 1620,
-				"h": 628
+				"h": 939
 			},
 			"insets": [
 				false,
@@ -1604,7 +1604,7 @@
 			"isFocused": true,
 			"devicePixelRatio": 1,
 			"isCoarsePointer": false,
-			"isHoveringCanvas": false,
+			"isHoveringCanvas": true,
 			"openMenus": [],
 			"isChangingStyle": false,
 			"isReadonly": false,
@@ -1990,28 +1990,6 @@
 															"type": "highlight"
 														}
 													],
-													"text": "extra inputs in messages are not supported"
-												}
-											]
-										}
-									]
-								},
-								{
-									"type": "listItem",
-									"content": [
-										{
-											"type": "paragraph",
-											"attrs": {
-												"dir": "auto"
-											},
-											"content": [
-												{
-													"type": "text",
-													"marks": [
-														{
-															"type": "highlight"
-														}
-													],
 													"text": "implement images and attachments functionality in messages"
 												}
 											]
@@ -2035,6 +2013,50 @@
 														}
 													],
 													"text": "show different screens for /messages and /message/[chatId]"
+												}
+											]
+										}
+									]
+								},
+								{
+									"type": "listItem",
+									"content": [
+										{
+											"type": "paragraph",
+											"attrs": {
+												"dir": "auto"
+											},
+											"content": [
+												{
+													"type": "text",
+													"marks": [
+														{
+															"type": "highlight"
+														}
+													],
+													"text": "if got a new message, highlight it in the conversation list"
+												}
+											]
+										}
+									]
+								},
+								{
+									"type": "listItem",
+									"content": [
+										{
+											"type": "paragraph",
+											"attrs": {
+												"dir": "auto"
+											},
+											"content": [
+												{
+													"type": "text",
+													"marks": [
+														{
+															"type": "highlight"
+														}
+													],
+													"text": "save message in db if user is not online"
 												}
 											]
 										}

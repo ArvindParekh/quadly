@@ -15,34 +15,43 @@ import ChatMessages from "./chat-message";
 import NewMessage from "./new-message";
 import { useEffect, useState } from "react";
 import { getWsClient } from "@/lib/wsClient";
+import { useParams, usePathname } from "next/navigation";
 
 export default function ChatArea({
    messages,
    userId,
    receiverId,
    onSendMessage,
+   chatId,
 }: {
    messages: Prisma.MessageGetPayload<{}>[];
    userId: string;
    receiverId: string;
    onSendMessage: (content: string) => void; // Changed to just pass content
+   chatId: string;
 }) {
    const [socket, setSocket] = useState<WebSocket | null>(null);
+   const url = usePathname();
+   console.log(url);
 
-   return messages.length === 0 ? (
-      <Card className='border-pink-500/20 overflow-hidden h-full flex flex-col'>
-         <CardContent className='flex items-center justify-center h-full'>
-            <div className='text-center'>
-               <h3 className='text-xl font-medium mb-2'>
-                  Select a Conversation
-               </h3>
-               <p className='text-muted-foreground mb-4'>
-                  Choose a conversation from the list to start chatting
-               </p>
-            </div>
-         </CardContent>
-      </Card>
-   ) : (
+   if (url === "/messages") {
+      return (
+         <Card className='border-pink-500/20 overflow-hidden h-full flex flex-col'>
+            <CardContent className='flex items-center justify-center h-full'>
+               <div className='text-center'>
+                  <h3 className='text-xl font-medium mb-2'>
+                     Select a Conversation
+                  </h3>
+                  <p className='text-muted-foreground mb-4'>
+                     Choose a conversation from the list to start chatting
+                  </p>
+               </div>
+            </CardContent>
+         </Card>
+      );
+   }
+
+   return (
       <Card className='border-pink-500/20 overflow-hidden h-full flex flex-col'>
          <CardHeader className='bg-gradient-to-r from-blue-500/10 to-pink-500/10 p-4 flex-shrink-0'>
             <div className='flex items-center gap-3'>
@@ -66,7 +75,13 @@ export default function ChatArea({
 
          <CardContent className='p-0 flex flex-col flex-1 min-h-0'>
             <ScrollArea className='flex-1 p-4'>
-               <ChatMessages messages={messages} sender={userId} />
+               {messages.length > 0 ? (
+                  <ChatMessages messages={messages} sender={userId} />
+               ) : (
+                  <div className='flex items-center justify-center h-full'>
+                     <p className='text-muted-foreground'>No messages yet</p>
+                  </div>
+               )}
             </ScrollArea>
 
             <Separator className='bg-pink-500/10' />
@@ -97,11 +112,11 @@ export default function ChatArea({
                />
             </div> */}
             <NewMessage
-                  chatId={messages[0].chatId}
-                  userId={userId}
-                  receiverId={receiverId}
-                  onSendMessage={onSendMessage}
-               />
+               chatId={chatId}
+               userId={userId}
+               receiverId={receiverId}
+               onSendMessage={onSendMessage}
+            />
          </CardContent>
       </Card>
    );

@@ -102,6 +102,7 @@ export default function ChatPageClient({
       messages={chatMessages} 
       userId={userId} 
       receiverId={receiverId} 
+      chatId={chatId}
       onSendMessage={handleOptimisticMessage}
     />
   );
