@@ -86,7 +86,7 @@ export default async function MessagesLayout({ children }: { children: React.Rea
                 </Tabs>
               </CardContent>
             </Card> */}
-            <ConversationList chats={chats} />
+            <ConversationList chats={chats} userId={user.userDetails?.id as string} />
   
             {/* Chat Area - empty state */}
             {/* <ChatArea messages={[]} /> */}

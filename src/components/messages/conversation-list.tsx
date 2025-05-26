@@ -1,3 +1,5 @@
+"use client";
+
 import { Prisma } from "@/generated/prisma";
 import Link from "next/link";
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
@@ -6,29 +8,73 @@ import { sessionType } from "@/types/session";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/lib/auth";
 import { getUser } from "@/lib/data/user";
+import { useEffect, useState } from "react";
+import { getWsClient } from "@/lib/wsClient";
 
 
-export default async function ConversationList({ chats }: { chats: Prisma.ChatGetPayload<{
+export default function ConversationList({ chats, userId }: { chats: Prisma.ChatGetPayload<{
     include: {
         user1: true,
         user2: true,
         messages: true,
     }
-}>[] }) {
-    const session: sessionType | null = await getServerSession(authOptions);
-    const user = await getUser(session?.user?.id as string);
+}>[], userId: string }) {
 
-    console.log("user details id: ", user.userDetails?.id);
-    console.log("chat user id: ", chats[0].user1.id);
-    console.log("chat user id: ", chats[0].user2.id);
-    const conversations = chats.map((chat) => ({
-        id: chat.id,
-        name: user.userDetails?.id === chat.user1.id ? chat.user2.name : chat.user1.name,
-        avatar: user.userDetails?.id === chat.user1.id ? chat.user2.profilePicture : chat.user1.profilePicture,
-        lastMessage: chat.messages[0]?.content,
-        time: chat.messages[0]?.createdAt?.toLocaleString(),
-        unread: chat.messages.length > 1,
-    }));
+    const [conversations, setConversations] = useState<{
+        id: string;
+        name: string;
+        avatar: string | null;
+        lastMessage: string;
+        time: string;
+        unread: boolean;
+    }[]>(chats.map((chat) => ({
+      id: chat.id,
+      name: userId === chat.user1.id ? chat.user2.name : chat.user1.name,
+      avatar: userId === chat.user1.id ? chat.user2.profilePicture : chat.user1.profilePicture,
+      lastMessage: chat.messages[0]?.content,
+      time: chat.messages[0]?.createdAt?.toLocaleString(),
+      unread: chat.messages.length > 1,
+  })));
+
+  useEffect(()=> {
+    const socket = getWsClient();
+    socket.onopen = () => {
+      console.log("Connected to server");
+      // setSocket(socket);
+      socket.send(JSON.stringify({
+        type: "login",
+        userId: userId,
+      }))
+    }
+
+    socket.onmessage = (event) => {
+      const data = JSON.parse(event.data as string);
+
+      if (data.type === "message") {
+        const newMessage = data.payload;
+        const conversation = conversations.find(conversation => conversation.id === newMessage.chatId);
+        if (conversation) {
+          setConversations(prev => prev.map(c => c.id === conversation.id ? {...c, unread: true} : c));
+        }
+      }
+    }
+
+    return () => {
+      if (socket) {
+        socket.close();
+      }
+    }
+  }, [])
+
+
+    // const conversations = chats.map((chat) => ({
+    //     id: chat.id,
+    //     name: userId === chat.user1.id ? chat.user2.name : chat.user1.name,
+    //     avatar: userId === chat.user1.id ? chat.user2.profilePicture : chat.user1.profilePicture,
+    //     lastMessage: chat.messages[0]?.content,
+    //     time: chat.messages[0]?.createdAt?.toLocaleString(),
+    //     unread: chat.messages.length > 1,
+    // }));
     // const conversations = [
     //   {
     //      id: "1",
