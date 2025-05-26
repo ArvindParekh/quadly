@@ -20,14 +20,12 @@ export default function ChatArea({
    messages,
    userId,
    receiverId,
+   onSendMessage,
 }: {
-   messages: Prisma.MessageGetPayload<{
-      include: {
-         sender: true;
-      };
-   }>[];
+   messages: Prisma.MessageGetPayload<{}>[];
    userId: string;
    receiverId: string;
+   onSendMessage: (content: string) => void; // Changed to just pass content
 }) {
    const [socket, setSocket] = useState<WebSocket | null>(null);
 
@@ -95,6 +93,7 @@ export default function ChatArea({
                   chatId={messages[0].chatId}
                   userId={userId}
                   receiverId={receiverId}
+                  onSendMessage={onSendMessage}
                />
             </div>
          </CardContent>

@@ -9,10 +9,12 @@ export default function NewMessage({
    userId,
    chatId,
    receiverId,
+   onSendMessage,
 }: {
    userId: string;
    chatId: string;
    receiverId: string;
+   onSendMessage: (content: string) => void; // Simplified callback
 }) {
    const [message, setMessage] = useState("");
    const [socket, setSocket] = useState<WebSocket | null>(null);
@@ -25,9 +27,11 @@ export default function NewMessage({
    const handleSendMessage = (userId: string) => {
       if (!message.trim()) return;
 
+      const messageContent = message;
+
       console.log("Sending message: ", {
          type: "message",
-         content: message,
+         content: messageContent,
          senderId: userId,
          receiverId: receiverId,
          chatId: chatId,
@@ -37,12 +41,15 @@ export default function NewMessage({
          socket?.send(
             JSON.stringify({
                type: "message",
-               content: message,
+               content: messageContent,
                senderId: userId,
                receiverId: receiverId,
                chatId: chatId,
             })
          );
+
+         // Immediately show the message optimistically
+         onSendMessage(messageContent);
          setMessage("");
       } catch (error) {
          console.error("Error sending message: ", error);
@@ -51,7 +58,7 @@ export default function NewMessage({
 
    const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
       if (e.key === "Enter" && !e.shiftKey) {
-         e.preventDefault(); 
+         e.preventDefault();
          handleSendMessage(userId);
       }
    };

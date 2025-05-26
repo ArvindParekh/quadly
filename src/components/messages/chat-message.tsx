@@ -6,11 +6,7 @@ import { sessionType } from "@/types/session";
 
 
 
-export default function ChatMessages({messages, sender} : {messages: Prisma.MessageGetPayload<{
-include: {
-  sender: true,
-} 
-}>[], sender: string}) {
+export default function ChatMessages({messages, sender} : {messages: Prisma.MessageGetPayload<{}>[], sender: string}) {
     // const messages = [
     //   {
     //     id: "1",
