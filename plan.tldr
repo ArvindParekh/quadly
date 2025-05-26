@@ -36,9 +36,9 @@
 		{
 			"id": "pointer:pointer",
 			"typeName": "pointer",
-			"x": -602.7743536208183,
-			"y": 1857.604400400477,
-			"lastActivityTimestamp": 1748286484940,
+			"x": -96.9677405349828,
+			"y": 1944.1445713098447,
+			"lastActivityTimestamp": 1748293785604,
 			"meta": {}
 		},
 		{
@@ -692,9 +692,9 @@
 			"typeName": "shape"
 		},
 		{
-			"x": 1397.9947781497178,
-			"y": -1134.465359381507,
-			"z": 0.8601388733258603,
+			"x": 1565.3228930027183,
+			"y": -1085.2953311872068,
+			"z": 0.8662754360634491,
 			"meta": {},
 			"id": "camera:page:page",
 			"typeName": "camera"
@@ -832,10 +832,10 @@
 			"typeName": "shape"
 		},
 		{
-			"editingShapeId": "shape:XIPj65FmnTs3gR8lZ5ku2",
+			"editingShapeId": null,
 			"croppingShapeId": null,
 			"selectedShapeIds": [
-				"shape:XIPj65FmnTs3gR8lZ5ku2"
+				"shape:fShRwa6XG5cN3mcD7OPFl"
 			],
 			"hoveredShapeId": null,
 			"erasingShapeIds": [],
@@ -884,8 +884,8 @@
 			"typeName": "shape"
 		},
 		{
-			"x": -1177.9324056290352,
-			"y": 1656.404116007734,
+			"x": -298.3045548582693,
+			"y": 2032.7278421905028,
 			"rotation": 0,
 			"isLocked": false,
 			"opacity": 1,
@@ -912,6 +912,18 @@
 								{
 									"type": "text",
 									"text": "store new message in prisma in nextjs itself or let websockets do it??"
+								}
+							]
+						},
+						{
+							"type": "paragraph",
+							"attrs": {
+								"dir": "auto"
+							},
+							"content": [
+								{
+									"type": "text",
+									"text": "Answer: Websockets"
 								}
 							]
 						}
@@ -1587,7 +1599,7 @@
 				"x": 0,
 				"y": 0,
 				"w": 1620,
-				"h": 628
+				"h": 939
 			},
 			"insets": [
 				false,
@@ -1604,7 +1616,7 @@
 			"isFocused": true,
 			"devicePixelRatio": 1,
 			"isCoarsePointer": false,
-			"isHoveringCanvas": false,
+			"isHoveringCanvas": true,
 			"openMenus": [],
 			"isChangingStyle": false,
 			"isReadonly": false,
@@ -2024,11 +2036,6 @@
 											"content": [
 												{
 													"type": "text",
-													"marks": [
-														{
-															"type": "highlight"
-														}
-													],
 													"text": "if got a new message, highlight it in the conversation list"
 												}
 											]
@@ -2052,6 +2059,50 @@
 														}
 													],
 													"text": "save message in db if user is not online"
+												}
+											]
+										}
+									]
+								},
+								{
+									"type": "listItem",
+									"content": [
+										{
+											"type": "paragraph",
+											"attrs": {
+												"dir": "auto"
+											},
+											"content": [
+												{
+													"type": "text",
+													"marks": [
+														{
+															"type": "highlight"
+														}
+													],
+													"text": "mark as read when user opens that chat"
+												}
+											]
+										}
+									]
+								},
+								{
+									"type": "listItem",
+									"content": [
+										{
+											"type": "paragraph",
+											"attrs": {
+												"dir": "auto"
+											},
+											"content": [
+												{
+													"type": "text",
+													"marks": [
+														{
+															"type": "highlight"
+														}
+													],
+													"text": "update time of conversation in /messages when new message is received"
 												}
 											]
 										}

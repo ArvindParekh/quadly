@@ -49,12 +49,13 @@ export default function ConversationList({ chats, userId }: { chats: Prisma.Chat
 
     socket.onmessage = (event) => {
       const data = JSON.parse(event.data as string);
+      console.log("data received: ", data);
 
       if (data.type === "message") {
         const newMessage = data.payload;
         const conversation = conversations.find(conversation => conversation.id === newMessage.chatId);
         if (conversation) {
-          setConversations(prev => prev.map(c => c.id === conversation.id ? {...c, unread: true} : c));
+          setConversations(prev => prev.map(c => c.id === conversation.id ? {...c, unread: true, lastMessage: newMessage.content, time: new Date(newMessage.createdAt).toLocaleString('en-US')} : c));
         }
       }
     }
