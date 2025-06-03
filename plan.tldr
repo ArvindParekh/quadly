@@ -36,9 +36,9 @@
 		{
 			"id": "pointer:pointer",
 			"typeName": "pointer",
-			"x": 34.54372746096374,
-			"y": 1707.2551076371747,
-			"lastActivityTimestamp": 1748295303275,
+			"x": -1912.993370605288,
+			"y": 2276.2903275126,
+			"lastActivityTimestamp": 1748301413165,
 			"meta": {}
 		},
 		{
@@ -692,9 +692,9 @@
 			"typeName": "shape"
 		},
 		{
-			"x": 1437.6166459129086,
-			"y": -1001.961544728019,
-			"z": 0.7145960583010695,
+			"x": 4231.912099108171,
+			"y": -532.270200451057,
+			"z": 0.20699302399006145,
 			"meta": {},
 			"id": "camera:page:page",
 			"typeName": "camera"
@@ -832,12 +832,12 @@
 			"typeName": "shape"
 		},
 		{
-			"editingShapeId": "shape:XIPj65FmnTs3gR8lZ5ku2",
+			"editingShapeId": null,
 			"croppingShapeId": null,
 			"selectedShapeIds": [
-				"shape:XIPj65FmnTs3gR8lZ5ku2"
+				"shape:BdZXWdY16yDjcl_gxvEdd"
 			],
-			"hoveredShapeId": "shape:XIPj65FmnTs3gR8lZ5ku2",
+			"hoveredShapeId": null,
 			"erasingShapeIds": [],
 			"hintingShapeIds": [],
 			"focusedGroupId": null,
@@ -971,6 +971,66 @@
 			},
 			"parentId": "page:page",
 			"index": "a2C5n",
+			"typeName": "shape"
+		},
+		{
+			"x": -2975.83112116911,
+			"y": 1757.6548113369754,
+			"rotation": 0,
+			"isLocked": false,
+			"opacity": 1,
+			"meta": {},
+			"id": "shape:BdZXWdY16yDjcl_gxvEdd",
+			"type": "text",
+			"props": {
+				"color": "black",
+				"size": "m",
+				"w": 1374.84375,
+				"font": "draw",
+				"textAlign": "start",
+				"autoSize": true,
+				"scale": 1,
+				"richText": {
+					"type": "doc",
+					"content": [
+						{
+							"type": "paragraph",
+							"attrs": {
+								"dir": "auto"
+							},
+							"content": [
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "bold"
+										}
+									],
+									"text": "Themed or Topic-Based Chats:"
+								},
+								{
+									"type": "text",
+									"text": " Introduce the option for users to join or create Coffee Chats based on specific "
+								}
+							]
+						},
+						{
+							"type": "paragraph",
+							"attrs": {
+								"dir": "auto"
+							},
+							"content": [
+								{
+									"type": "text",
+									"text": "themes or topics, such as 'Study Groups,' 'Gaming,' or 'Movie Nights,' to foster more targeted connections."
+								}
+							]
+						}
+					]
+				}
+			},
+			"parentId": "page:page",
+			"index": "aL1ut",
 			"typeName": "shape"
 		},
 		{
