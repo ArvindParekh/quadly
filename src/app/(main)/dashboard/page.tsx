@@ -14,6 +14,7 @@ import { authOptions } from "@/lib/auth"
 import { getUser } from "@/lib/data/user"
 import { sessionType } from "@/types/session"
 import { getAllPosts } from "@/lib/data/posts"
+import CoffeeChatSidebar from "@/components/dashboard/coffee-chat-sidebar"
 
 export default async function DashboardPage() {
 
@@ -76,7 +77,7 @@ export default async function DashboardPage() {
                     likes={post.reaction?.likes || 0}
                     comments={post.commentCount}
                     postId={post.id}
-                    userId={user.userDetails?.id as string}
+                    userId={user.id as string}
                   />
                   )
                 })}
@@ -138,7 +139,7 @@ export default async function DashboardPage() {
                         name: "Taylor Kim",
                         avatar: "/placeholder.svg?height=40&width=40",
                         department: "Computer Science",
-                        id: "c65d8193-1adc-47dc-9157-16c0cf0564f7",
+                        id: user.id,
                       }}
                       currentUserId={user.userDetails?.id as string}
                       matchReason="Both interested in Distributed Systems"
@@ -335,7 +336,7 @@ export default async function DashboardPage() {
               </CardFooter>
             </Card>
 
-            <Card className="border-pink-500/20 overflow-hidden">
+            {/* <Card className="border-pink-500/20 overflow-hidden">
               <CardHeader className="bg-gradient-to-r from-yellow-400/10 to-blue-500/10">
                 <CardTitle>Coffee Chats</CardTitle>
                 <CardDescription>Upcoming meetups</CardDescription>
@@ -372,7 +373,8 @@ export default async function DashboardPage() {
                   Schedule New Chat
                 </Button>
               </CardFooter>
-            </Card>
+            </Card> */}
+            <CoffeeChatSidebar />
           </div>
         </div>
       </main>

@@ -72,6 +72,29 @@ export const getAllPosts = async (): Promise<Prisma.PostGetPayload<{
     return posts;
 }
 
+export const getPostsByUserId = async (userId: string): Promise<Prisma.PostGetPayload<{
+    include: {
+        reaction: true,
+        postTags: true,
+    }
+}>[]> => {
+    const posts = await prisma.post.findMany({
+        where: {
+            authorId: userId,
+        },
+        include: {
+            reaction: true,
+            postTags: true,
+        }
+    })
+
+    if (!posts) {
+        throw new Error("Failed to fetch posts");
+    }
+
+    return posts;
+}   
+
 export const createPost = async (data: CreatePost): Promise<string> => {
     const post = await prisma.post.create({
         data: data,

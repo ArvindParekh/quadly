@@ -18,6 +18,7 @@ import {
    DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { likePost } from "@/actions/post";
+import Link from "next/link";
 interface InterestPostProps {
    user: {
       name: string;
@@ -90,17 +91,21 @@ export default function InterestPost({
       <Card className='overflow-hidden transition-all hover:shadow-md border-pink-500/20 rounded-xl'>
          <CardHeader className='flex flex-row items-start justify-between space-y-0 pb-2'>
             <div className='flex space-x-3'>
-               <Avatar className='border border-pink-500/20'>
-                  <AvatarImage
-                     src={user.avatar || "/placeholder.svg"}
-                     alt={user.name}
-                  />
-                  <AvatarFallback className='bg-gradient-to-br from-pink-500 to-yellow-400 text-black'>
-                     {user.name.charAt(0)}
-                  </AvatarFallback>
-               </Avatar>
+               <Link href={`/user/${userId}`}>
+                  <Avatar className='border border-pink-500/20'>
+                     <AvatarImage
+                        src={user.avatar || "/placeholder.svg"}
+                        alt={user.name}
+                     />
+                     <AvatarFallback className='bg-gradient-to-br from-pink-500 to-yellow-400 text-black'>
+                        {user.name.charAt(0)}
+                     </AvatarFallback>
+                  </Avatar>
+               </Link>
                <div>
-                  <div className='font-semibold'>{user.name}</div>
+                  <Link href={`/user/${userId}`} className='font-semibold'>
+                     {user.name}
+                  </Link>
                   <div className='text-xs text-muted-foreground flex items-center gap-1'>
                      <span>{user.department}</span>
                      <span>•</span>
@@ -157,9 +162,7 @@ export default function InterestPost({
                      className={`flex items-center gap-1 hover:bg-pink-500/10 hover:text-pink-500 text-pink-500`}
                      onClick={handleLike}
                   >
-                     <Heart
-                        className={`h-4 w-4 fill-pink-500`}
-                     />
+                     <Heart className={`h-4 w-4 fill-pink-500`} />
                      <span>{optimisticState.likes}</span>
                   </Button>
                ) : (
@@ -169,9 +172,7 @@ export default function InterestPost({
                      className={`flex items-center gap-1 hover:bg-pink-500/10 hover:text-pink-500`}
                      onClick={handleLike}
                   >
-                     <Heart
-                        className={`h-4 w-4`}
-                     />
+                     <Heart className={`h-4 w-4`} />
                      <span>{optimisticState.likes}</span>
                   </Button>
                )}
