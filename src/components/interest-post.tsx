@@ -19,11 +19,13 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { likePost } from "@/actions/post";
 import Link from "next/link";
+import { CoffeeChatInviteModal } from "./coffee-chat/coffee-chat-invite-modal";
 interface InterestPostProps {
    user: {
       name: string;
       avatar: string;
       department: string;
+      id: string;
    };
    content: string;
    interests: string[];
@@ -186,14 +188,24 @@ export default function InterestPost({
                   <span>{comments}</span>
                </Button>
             </div>
+            <CoffeeChatInviteModal
+                  user={{
+                     id: userId,
+                     name: user.name,
+                     avatar: user.avatar,
+                     department: user.department,
+               }}
+               sharedInterests={interests}
+            >
             <Button
                variant='outline'
                size='sm'
                className='flex items-center gap-1 border-yellow-400/20 hover:bg-yellow-400/10 hover:text-yellow-400'
             >
                <Coffee className='h-4 w-4' />
-               <span>Coffee Chat</span>
-            </Button>
+                  <span>Coffee Chat</span>
+               </Button>
+            </CoffeeChatInviteModal>
          </CardFooter>
       </Card>
    );
