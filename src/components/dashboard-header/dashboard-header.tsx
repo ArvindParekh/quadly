@@ -39,6 +39,9 @@ export default function DashboardHeader({user}: {user: User}) {
                 <Link href="/messages" className="text-sm font-medium hover:text-pink-500 transition-colors">
                   Messages
                 </Link>
+                <Link href="/coffee-chats" className="text-sm font-medium hover:text-pink-500 transition-colors">
+                  Coffee Chats
+                </Link>
                 <Link href="/settings" className="text-sm font-medium hover:text-pink-500 transition-colors">
                   Settings
                 </Link>
@@ -73,6 +76,12 @@ export default function DashboardHeader({user}: {user: User}) {
               className={`text-sm font-medium  transition-colors hover:text-pink-500 ${activePage === "/messages" ? "text-foreground" : "text-muted-foreground"}`}
             >
               Messages
+            </Link>
+            <Link
+              href="/coffee-chats"
+              className="text-sm font-medium text-muted-foreground transition-colors hover:text-pink-500"
+            >
+              Coffee Chats
             </Link>
             <Link
               href="/discover"

@@ -15,6 +15,7 @@ import { redirect } from "next/navigation"
 import { getPostsByUserId } from "@/lib/data/posts"
 import SendMessageButton from "@/components/profile-page/sendMessageButton"
 import { ShareProfileModal } from "@/components/share-profile-modal"
+import { CoffeeChatInviteModal } from "@/components/coffee-chat/coffee-chat-invite-modal"
 
 interface UserProfileProps {
   params: {
@@ -140,10 +141,21 @@ export default async function UserProfilePage({ params }: UserProfileProps) {
                 {user.userDetails?.department}, Year {user.userDetails?.year}
               </p>
               <div className="flex flex-wrap justify-center md:justify-start gap-2">
-                <Button className="bg-gradient-to-r from-pink-500 to-yellow-400 text-black hover:opacity-90">
-                  <Coffee className="mr-2 h-4 w-4" />
-                  Coffee Chat
-                </Button>
+                <CoffeeChatInviteModal
+                  user={{
+                    id: user.userDetails?.id as string,
+                    name: user.userDetails?.name as string,
+                    avatar: user.userDetails?.profilePicture as string,
+                    department: user.userDetails?.department as string,
+                    interests: commonInterests.map((interest) => interest.interestName),
+                  }}
+                  sharedInterests={commonInterests.map((interest) => interest.interestName)}
+                >
+                  <Button className="bg-gradient-to-r from-pink-500 to-yellow-400 text-black hover:opacity-90">
+                    <Coffee className="mr-2 h-4 w-4" />
+                    Coffee Chat
+                  </Button>
+                </CoffeeChatInviteModal>
                 <SendMessageButton thisUserId={thisUser.userDetails?.id as string} userId={user.userDetails?.id as string} />
                 <ShareProfileModal
                   user={{
