@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { Coffee, Calendar, Clock, Users, Sparkles } from "lucide-react"
+import { Coffee, Calendar, Clock, Users, Sparkles, Send } from "lucide-react"
 import { CoffeeChatCard } from "@/components/coffee-chat/coffee-chat-card"
 import type { CoffeeChatInvitation } from "@/lib/coffee-chat/types"
 import { campusVenues } from "@/lib/coffee-chat/venue"
@@ -241,7 +241,7 @@ export default async function CoffeeChatsPage() {
               value="invitations-sent"
               className="rounded-lg data-[state=active]:bg-pink-500 data-[state=active]:text-black"
             >
-              <Coffee className="h-4 w-4 mr-2" />
+              <Send className="h-4 w-4 mr-2" />
               Invitations sent ({invitedByMe.length})
             </TabsTrigger>
           </TabsList>
@@ -344,8 +344,8 @@ export default async function CoffeeChatsPage() {
             ) : (
               <Card className="border-pink-500/20">
                 <CardContent className="flex flex-col items-center justify-center py-12">
-                  <Coffee className="h-12 w-12 text-muted-foreground/50 mb-4" />
-                  <h3 className="text-lg font-medium mb-2">No coffee chats invited by you</h3>
+                  <Send className="h-12 w-12 text-muted-foreground/50 mb-4" />
+                  <h3 className="text-lg font-medium mb-2">No pending coffee chats invitations by you</h3>
                   <p className="text-muted-foreground text-center mb-4">
                     When you invite someone for coffee, it will appear here.
                   </p>
