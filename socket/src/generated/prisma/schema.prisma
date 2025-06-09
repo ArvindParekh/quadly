@@ -16,7 +16,7 @@ generator client_socket {
 
 datasource db {
   provider = "postgresql"
-  url      = env("DATABASE_URL")
+  url      = env("DIRECT_DATABASE_URL")
 }
 
 // I'm trying to do a overhaul of the schema to make it more efficient and scalable.
@@ -228,14 +228,64 @@ model CoffeeChat {
   inviteeId String
   invitee   UserDetails @relation("Invitee", fields: [inviteeId], references: [id])
 
-  scheduledAt DateTime?
+  purposeId String
+  purpose   CoffeeChatPurpose @relation(fields: [purposeId], references: [id])
+
+  venueId String
+  venue   CoffeeChatVenue @relation(fields: [venueId], references: [id])
+
+  scheduledAt     DateTime?
   // location String?
-  status      CoffeeChatStatus @default(PENDING)
+  duration        Int // in minutes
+  personalMessage String?
+  status          CoffeeChatStatus @default(PENDING)
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
   // allow duplicate [inviterId, inviteeId] fields here?
+}
+
+model CoffeeChatPurpose {
+  id String @id @default(uuid())
+
+  purposeName String @unique
+  description String
+  timeLimit   Int // in minutes
+
+  coffeeChats CoffeeChat[]
+}
+
+model CoffeeChatVenue {
+  id String @id @default(uuid())
+
+  venueName   String                    @unique
+  noiseLevel  CoffeeChatVenueNoiseLevel
+  description String
+  location    String
+  rating      Int // out of 5
+  tags        CoffeeChatVenueTags[]
+
+  coffeeChats CoffeeChat[]
+}
+
+enum CoffeeChatVenueNoiseLevel {
+  QUIET
+  MODERATE
+  LIVELY
+}
+
+enum CoffeeChatVenueTags {
+  OUTDOOR
+  SCENIC
+  FRESH_AIR
+  WIFI
+  OUTLETS
+  WHITEBOARDS
+  PRIVATE
+  FOOD
+  COMFORTABLE_SEATING
+  BOOKS
 }
 
 enum CoffeeChatStatus {
