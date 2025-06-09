@@ -36,10 +36,105 @@
 		{
 			"id": "pointer:pointer",
 			"typeName": "pointer",
-			"x": -2387.5993502514657,
-			"y": 885.3785691676637,
-			"lastActivityTimestamp": 1749481351313,
+			"x": -438.5020228296703,
+			"y": 2039.8092988509857,
+			"lastActivityTimestamp": 1749503711122,
 			"meta": {}
+		},
+		{
+			"x": -1223.5609291630758,
+			"y": 1925.0889777620878,
+			"rotation": 0,
+			"isLocked": false,
+			"opacity": 1,
+			"meta": {},
+			"id": "shape:BP12rcGMUqnxgew9Eg9bp",
+			"type": "text",
+			"props": {
+				"color": "black",
+				"size": "m",
+				"w": 1251.953125,
+				"font": "draw",
+				"textAlign": "start",
+				"autoSize": true,
+				"scale": 1,
+				"richText": {
+					"type": "doc",
+					"content": [
+						{
+							"type": "paragraph",
+							"attrs": {
+								"dir": "auto"
+							},
+							"content": [
+								{
+									"type": "text",
+									"text": "current problems:"
+								}
+							]
+						},
+						{
+							"type": "bulletList",
+							"content": [
+								{
+									"type": "listItem",
+									"content": [
+										{
+											"type": "paragraph",
+											"attrs": {
+												"dir": "auto"
+											},
+											"content": [
+												{
+													"type": "text",
+													"text": "on accepting/declining a coffee chat, there's no change in ui, until the user refreshes"
+												}
+											]
+										}
+									]
+								},
+								{
+									"type": "listItem",
+									"content": [
+										{
+											"type": "paragraph",
+											"attrs": {
+												"dir": "auto"
+											},
+											"content": [
+												{
+													"type": "text",
+													"text": "remove the \"connections\" stat? or figure out a way to show the correct stat"
+												}
+											]
+										}
+									]
+								},
+								{
+									"type": "listItem",
+									"content": [
+										{
+											"type": "paragraph",
+											"attrs": {
+												"dir": "auto"
+											},
+											"content": [
+												{
+													"type": "text",
+													"text": "\"message\" or \"find people to connect with\" or \"schedule a coffee chat\" buttons are not patched"
+												}
+											]
+										}
+									]
+								}
+							]
+						}
+					]
+				}
+			},
+			"parentId": "page:page",
+			"index": "aaBbY",
+			"typeName": "shape"
 		},
 		{
 			"x": 913,
@@ -692,12 +787,51 @@
 			"typeName": "shape"
 		},
 		{
-			"x": 3219.253285476542,
-			"y": -511.6112635555597,
-			"z": 1.1531238648446478,
+			"x": 1489.865224840878,
+			"y": -1230.1210934953558,
+			"z": 0.6496327802736995,
 			"meta": {},
 			"id": "camera:page:page",
 			"typeName": "camera"
+		},
+		{
+			"x": -1352.8647490297544,
+			"y": 1277.0305472398059,
+			"rotation": 0,
+			"isLocked": false,
+			"opacity": 1,
+			"meta": {},
+			"id": "shape:XOxWbW8J4rtZDiyeU9UKJ",
+			"type": "text",
+			"props": {
+				"color": "black",
+				"size": "m",
+				"w": 58.875,
+				"font": "draw",
+				"textAlign": "start",
+				"autoSize": true,
+				"scale": 1,
+				"richText": {
+					"type": "doc",
+					"content": [
+						{
+							"type": "paragraph",
+							"attrs": {
+								"dir": "auto"
+							},
+							"content": [
+								{
+									"type": "text",
+									"text": "Chat"
+								}
+							]
+						}
+					]
+				}
+			},
+			"parentId": "page:page",
+			"index": "aY8B8",
+			"typeName": "shape"
 		},
 		{
 			"x": -3261.2074420169483,
@@ -982,12 +1116,12 @@
 			"typeName": "shape"
 		},
 		{
-			"editingShapeId": null,
+			"editingShapeId": "shape:BP12rcGMUqnxgew9Eg9bp",
 			"croppingShapeId": null,
 			"selectedShapeIds": [
-				"shape:1pEShz0YKRX5eeZMv9Jty"
+				"shape:BP12rcGMUqnxgew9Eg9bp"
 			],
-			"hoveredShapeId": "shape:1pEShz0YKRX5eeZMv9Jty",
+			"hoveredShapeId": "shape:BP12rcGMUqnxgew9Eg9bp",
 			"erasingShapeIds": [],
 			"hintingShapeIds": [],
 			"focusedGroupId": null,
@@ -1080,8 +1214,8 @@
 			"typeName": "shape"
 		},
 		{
-			"x": -298.3045548582693,
-			"y": 2032.7278421905028,
+			"x": 497.5296697973595,
+			"y": 1461.6359711126727,
 			"rotation": 0,
 			"isLocked": false,
 			"opacity": 1,
@@ -2043,6 +2177,45 @@
 			"typeName": "shape"
 		},
 		{
+			"x": -1320.5387940630847,
+			"y": 1875.8303797176388,
+			"rotation": 0,
+			"isLocked": false,
+			"opacity": 1,
+			"meta": {},
+			"id": "shape:xJXD2F76CNUjivVx3yc5i",
+			"type": "text",
+			"props": {
+				"color": "black",
+				"size": "m",
+				"w": 150.984375,
+				"font": "draw",
+				"textAlign": "start",
+				"autoSize": true,
+				"scale": 1,
+				"richText": {
+					"type": "doc",
+					"content": [
+						{
+							"type": "paragraph",
+							"attrs": {
+								"dir": "auto"
+							},
+							"content": [
+								{
+									"type": "text",
+									"text": "CoffeeChats"
+								}
+							]
+						}
+					]
+				}
+			},
+			"parentId": "page:page",
+			"index": "aZAFT",
+			"typeName": "shape"
+		},
+		{
 			"x": -3395.924657553559,
 			"y": 672.2453779661682,
 			"rotation": 0,
@@ -2166,9 +2339,7 @@
 		{
 			"followingUserId": null,
 			"opacityForNextShape": 1,
-			"stylesForNextShape": {
-				"tldraw:geo": "rectangle"
-			},
+			"stylesForNextShape": {},
 			"brush": null,
 			"scribbles": [],
 			"cursor": {
