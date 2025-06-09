@@ -21,9 +21,10 @@ import {
    RotateCcw,
 } from "lucide-react";
 import type { CoffeeChatInvitation } from "@/lib/coffee-chat/types";
-import { CoffeeChatVenueTags, Prisma } from "@/generated/prisma";
+import { Prisma } from "@/generated/prisma";
 import { toast } from "sonner";
-
+import { Toaster } from "@/components/ui/sonner";
+import { acceptCoffeeChat, declineCoffeeChat } from "@/actions/coffeeChat";
 interface CoffeeChatCardProps {
    invitation: Prisma.CoffeeChatGetPayload<{
       include: {
@@ -75,6 +76,13 @@ export function CoffeeChatCard({
       }).format(date);
    };
 
+   const getDisplayStatus = (status: string, scheduledAt: Date | null) => {
+      if (status === "ACCEPTED" && scheduledAt && scheduledAt < new Date()) {
+         return "COMPLETED";
+      }
+      return status;
+   };
+
    const getStatusColor = (status: string) => {
       switch (status) {
          case "PENDING":
@@ -85,8 +93,6 @@ export function CoffeeChatCard({
             return "bg-red-500/10 text-red-500 border-red-500/20";
          case "COMPLETED":
             return "bg-blue-500/10 text-blue-500 border-blue-500/20";
-         case "CANCELLED":
-            return "bg-gray-500/10 text-gray-500 border-gray-500/20";
          default:
             return "bg-gray-500/10 text-gray-500 border-gray-500/20";
       }
@@ -102,8 +108,6 @@ export function CoffeeChatCard({
             return <XCircle className='h-4 w-4' />;
          case "COMPLETED":
             return <Coffee className='h-4 w-4' />;
-         case "CANCELLED":
-            return <XCircle className='h-4 w-4' />;
          default:
             return <Clock className='h-4 w-4' />;
       }
@@ -126,19 +130,29 @@ export function CoffeeChatCard({
       }
    };
 
-   const handleAccept = () => {
-      onStatusChange?.(invitation.id, "accepted");
-      toast.success(`Coffee chat with ${otherUser.name} accepted! ☕`);
+   const handleAccept = async () => {
+      // onStatusChange?.(invitation.id, "accepted");
+      const { success, message } = await acceptCoffeeChat(invitation.id);
+      if (success) {
+         toast.success(`Coffee chat with ${otherUser.name} accepted! ☕`);
+      } else {
+         toast.error(message);
+      }
    };
 
-   const handleDecline = () => {
-      onStatusChange?.(invitation.id, "declined");
-      toast.success("Coffee chat invitation declined");
+   const handleDecline = async () => {
+      // onStatusChange?.(invitation.id, "declined");
+      const { success, message } = await declineCoffeeChat(invitation.id);
+      if (success) {
+         toast.success("Coffee chat invitation declined");
+      } else {
+         toast.error(message);
+      }
    };
 
    const handleReschedule = () => {
       // This would open a reschedule modal
-      toast.info("Reschedule feature coming soon!");
+      toast("Reschedule feature coming soon!");
    };
 
    const handleMessage = () => {
@@ -146,13 +160,9 @@ export function CoffeeChatCard({
       toast.info("Opening message thread...");
    };
 
-   const handleMarkCompleted = () => {
-      onStatusChange?.(invitation.id, "completed");
-      toast.success("Coffee chat marked as completed! 🎉");
-   };
-
    return (
       <Card className='border-pink-500/20 overflow-hidden hover:shadow-md transition-all'>
+         <Toaster />
          <CardHeader className='pb-3'>
             <div className='flex items-start justify-between'>
                <div className='flex items-center gap-3'>
@@ -185,11 +195,11 @@ export function CoffeeChatCard({
                   </span>
                   <Badge
                      variant='outline'
-                     className={getStatusColor(invitation.status)}
+                     className={getStatusColor(getDisplayStatus(invitation.status, invitation.scheduledAt))}
                   >
-                     {getStatusIcon(invitation.status)}
+                     {getStatusIcon(getDisplayStatus(invitation.status, invitation.scheduledAt))}
                      <span className='ml-1 capitalize'>
-                        {invitation.status}
+                        {getDisplayStatus(invitation.status, invitation.scheduledAt).toLowerCase()}
                      </span>
                   </Badge>
                </div>
@@ -275,15 +285,6 @@ export function CoffeeChatCard({
                         >
                            <RotateCcw className='h-4 w-4 mr-2' />
                            Reschedule
-                        </Button>
-                        <Button
-                           size='sm'
-                           variant='outline'
-                           onClick={handleMarkCompleted}
-                           className='border-green-500/20 hover:bg-green-500/10 hover:text-green-500'
-                        >
-                           <Coffee className='h-4 w-4 mr-2' />
-                           Complete
                         </Button>
                      </>
                   )}

@@ -2,7 +2,6 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Coffee, Calendar, Clock, Users, Sparkles } from "lucide-react"
-import DashboardHeader from "@/components/dashboard-header/dashboard-header"
 import { CoffeeChatCard } from "@/components/coffee-chat/coffee-chat-card"
 import type { CoffeeChatInvitation } from "@/lib/coffee-chat/types"
 import { campusVenues } from "@/lib/coffee-chat/venue"
@@ -11,6 +10,7 @@ import { sessionType } from "@/types/session"
 import { getServerSession } from "next-auth"
 import { authOptions } from "@/lib/auth"
 import { getInvitedByMeCoffeeChats, getPastCoffeeChats, getPendingCoffeeChats, getUpcomingCoffeeChats } from "@/lib/data/coffeeChat"
+import { redirect } from "next/navigation"
 
 // Mock data for demonstration
 const mockInvitations: CoffeeChatInvitation[] = [
@@ -112,7 +112,12 @@ const mockInvitations: CoffeeChatInvitation[] = [
 ]
 
 export default async function CoffeeChatsPage() {
-  const session: sessionType | null = await getServerSession(authOptions)
+  const session: sessionType | null = await getServerSession(authOptions);
+
+  if (!session) {
+    redirect("/login");
+  }
+
   const user = await getUser(session?.user?.id as string);
   const currentUserId = user.userDetails?.id as string
 

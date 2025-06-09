@@ -128,3 +128,55 @@ export async function createCoffeeChat(data: z.infer<typeof createCoffeeChatSche
         }
     }
 }
+
+export async function acceptCoffeeChat(coffeeChatId: string) {
+  try {
+    const coffeeChat = await prisma.coffeeChat.update({
+      where: {
+        id: coffeeChatId
+      },
+      data: {
+        status: "ACCEPTED"
+      }
+    })
+
+    return {
+      success: true,
+      message: "Coffee chat accepted",
+      coffeeChat,
+    }
+  } catch (error) {
+    console.error(error);
+    return {
+      error: "Failed to accept coffee chat",
+      message: "Failed to accept coffee chat. Please try again.",
+      success: false,
+    }
+  }
+}
+
+export async function declineCoffeeChat(coffeeChatId: string) {
+  try {
+    const coffeeChat = await prisma.coffeeChat.update({
+      where: {
+        id: coffeeChatId
+      },
+      data: {
+        status: "REJECTED"
+      }
+    })
+
+    return {
+      success: true,
+      message: "Coffee chat declined",
+      coffeeChat,
+    }
+  } catch (error) {
+    console.error(error);
+    return {
+      error: "Failed to decline coffee chat",
+      message: "Failed to decline coffee chat. Please try again.",
+      success: false,
+    }
+  }
+}
