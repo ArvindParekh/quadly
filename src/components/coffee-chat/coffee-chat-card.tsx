@@ -134,7 +134,7 @@ export function CoffeeChatCard({
       // onStatusChange?.(invitation.id, "accepted");
       const { success, message } = await acceptCoffeeChat(invitation.id);
       if (success) {
-         toast.success(`Coffee chat with ${otherUser.name} accepted! ☕`);
+         toast.success(`Coffee chat with ${otherUser.name} accepted! 🎉`);
       } else {
          toast.error(message);
       }
