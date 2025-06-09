@@ -114,7 +114,7 @@ export function CoffeeChatInviteModal({
             venue: {
                name: selectedVenue.name,
                description: selectedVenue.description,
-               tags: selectedVenue.features,
+               tags: selectedVenue.features.slice(0, 3),
                rating: selectedVenue.rating,
                location: selectedVenue.location,
                hours: selectedVenue.hours,
@@ -128,12 +128,12 @@ export function CoffeeChatInviteModal({
 
          console.log("sending coffee chat data", coffeeChatData);
 
-        //  const result = await createCoffeeChat(coffeeChatData);
+         const result = await createCoffeeChat(coffeeChatData);
 
-        const result = {
-          success: true,
-          message: "Coffee chat invitation sent to " + user.name + "! ☕",
-        }
+      //   const result = {
+      //     success: true,
+      //     message: "Coffee chat invitation sent to " + user.name + "! ☕",
+      //   }
 
          if (result.success) {
             toast.success(`Coffee chat invitation sent to ${user.name}! ☕`);

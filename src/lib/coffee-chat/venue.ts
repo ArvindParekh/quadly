@@ -30,7 +30,7 @@ export const campusVenues: Venue[] = [
     name: "Library Collaboration Pods",
     type: "library",
     description: "Small group study rooms perfect for project discussions",
-    features: ["wifi", "private", "whiteboard", "outlets"],
+    features: ["wifi", "private", "whiteboards", "outlets"],
     rating: 4.7,
     location: "Main Library, 3rd Floor",
     hours: "6:00 AM - 12:00 AM",
