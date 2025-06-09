@@ -39,7 +39,12 @@ export const getUserWithPosts = async (id: string) => {
          userDetails: {
             include: {
                interests: true,
-               posts: true,
+               posts: {
+                  include: {
+                     postTags: true,
+                     reaction: true,
+                  }
+               },
                comments: true,
                asEventOrganizer: true,
             },
