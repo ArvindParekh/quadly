@@ -27,6 +27,7 @@ interface InterestPostProps {
       department: string;
       id: string;
    };
+   userDetailsId: string;
    content: string;
    interests: string[];
    timestamp: string;
@@ -38,6 +39,7 @@ interface InterestPostProps {
 
 export default function InterestPost({
    user,
+   userDetailsId,
    content,
    interests,
    timestamp,
@@ -189,20 +191,21 @@ export default function InterestPost({
                </Button>
             </div>
             <CoffeeChatInviteModal
-                  user={{
-                     id: userId,
-                     name: user.name,
-                     avatar: user.avatar,
-                     department: user.department,
+               user={{
+                  id: user.id,
+                  currentUserId: userDetailsId,
+                  name: user.name,
+                  avatar: user.avatar,
+                  department: user.department,
                }}
                sharedInterests={interests}
             >
-            <Button
-               variant='outline'
-               size='sm'
-               className='flex items-center gap-1 border-yellow-400/20 hover:bg-yellow-400/10 hover:text-yellow-400'
-            >
-               <Coffee className='h-4 w-4' />
+               <Button
+                  variant='outline'
+                  size='sm'
+                  className='flex items-center gap-1 border-yellow-400/20 hover:bg-yellow-400/10 hover:text-yellow-400'
+               >
+                  <Coffee className='h-4 w-4' />
                   <span>Coffee Chat</span>
                </Button>
             </CoffeeChatInviteModal>
