@@ -70,7 +70,8 @@ export default async function DashboardPage() {
                       name: post.author.name,
                       avatar: post.author.profilePicture || "/placeholder.svg?height=40&width=40",
                       department: post.author.department || "",
-                      id: post.authorId
+                      id: post.authorId,
+                      authorId: post.author.userId
                     }}
                     userDetailsId={user.userDetails?.id as string}
                     content={post.content}
@@ -88,7 +89,8 @@ export default async function DashboardPage() {
                     name: "Alex Johnson",
                     avatar: "/placeholder.svg?height=40&width=40",
                     department: "Computer Science",
-                    id: user.userDetails?.id as string
+                    id: user.userDetails?.id as string,
+                    authorId: user.id as string
                   }}
                   userDetailsId={user.userDetails?.id as string}
                   content="I've been reading 'Designing Data-Intensive Applications' and would love to discuss distributed systems with anyone interested. Coffee's on me! ☕"
@@ -105,7 +107,8 @@ export default async function DashboardPage() {
                     name: "Morgan Lee",
                     avatar: "/placeholder.svg?height=40&width=40",
                     department: "Psychology",
-                    id: user.userDetails?.id as string
+                    id: user.userDetails?.id as string,
+                    authorId: user.id as string
                   }}
                   userDetailsId={user.userDetails?.id as string}
                   content="Working on my thesis about cognitive biases in decision making. Would appreciate any recommendations on recent papers in this area! 🧠 #GradSchoolProblems"
@@ -122,7 +125,8 @@ export default async function DashboardPage() {
                     name: "Jamie Rivera",
                     avatar: "/placeholder.svg?height=40&width=40",
                     department: "Literature",
-                    id: user.userDetails?.id as string
+                    id: user.userDetails?.id as string,
+                    authorId: user.id as string
                   }}
                   userDetailsId={user.userDetails?.id as string}
                   content="Just finished 'The Overstory' by Richard Powers. It's changed how I think about nature and our relationship with trees. Anyone else read it? 📚 This book hit different fr"

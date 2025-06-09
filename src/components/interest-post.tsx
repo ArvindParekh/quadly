@@ -26,6 +26,7 @@ interface InterestPostProps {
       avatar: string;
       department: string;
       id: string;
+      authorId: string;
    };
    userDetailsId: string;
    content: string;
@@ -95,7 +96,7 @@ export default function InterestPost({
       <Card className='overflow-hidden transition-all hover:shadow-md border-pink-500/20 rounded-xl'>
          <CardHeader className='flex flex-row items-start justify-between space-y-0 pb-2'>
             <div className='flex space-x-3'>
-               <Link href={`/user/${userId}`}>
+               <Link href={`/user/${user.authorId}`}>
                   <Avatar className='border border-pink-500/20'>
                      <AvatarImage
                         src={user.avatar || "/placeholder.svg"}
@@ -107,7 +108,7 @@ export default function InterestPost({
                   </Avatar>
                </Link>
                <div>
-                  <Link href={`/user/${userId}`} className='font-semibold'>
+                  <Link href={`/user/${user.authorId}`} className='font-semibold'>
                      {user.name}
                   </Link>
                   <div className='text-xs text-muted-foreground flex items-center gap-1'>
