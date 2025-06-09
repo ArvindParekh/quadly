@@ -90,6 +90,7 @@ export default async function DashboardPage() {
                     department: "Computer Science",
                     id: user.userDetails?.id as string
                   }}
+                  userDetailsId={user.userDetails?.id as string}
                   content="I've been reading 'Designing Data-Intensive Applications' and would love to discuss distributed systems with anyone interested. Coffee's on me! ☕"
                   interests={["Distributed Systems", "Software Architecture", "Databases"]}
                   timestamp="2 hours ago"
@@ -106,6 +107,7 @@ export default async function DashboardPage() {
                     department: "Psychology",
                     id: user.userDetails?.id as string
                   }}
+                  userDetailsId={user.userDetails?.id as string}
                   content="Working on my thesis about cognitive biases in decision making. Would appreciate any recommendations on recent papers in this area! 🧠 #GradSchoolProblems"
                   interests={["Cognitive Psychology", "Decision Making", "Research Methods"]}
                   timestamp="5 hours ago"
@@ -122,6 +124,7 @@ export default async function DashboardPage() {
                     department: "Literature",
                     id: user.userDetails?.id as string
                   }}
+                  userDetailsId={user.userDetails?.id as string}
                   content="Just finished 'The Overstory' by Richard Powers. It's changed how I think about nature and our relationship with trees. Anyone else read it? 📚 This book hit different fr"
                   interests={["Contemporary Literature", "Environmental Studies", "Book Club"]}
                   timestamp="Yesterday"

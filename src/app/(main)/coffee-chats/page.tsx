@@ -10,6 +10,7 @@ import { getUser } from "@/lib/data/user"
 import { sessionType } from "@/types/session"
 import { getServerSession } from "next-auth"
 import { authOptions } from "@/lib/auth"
+import { getInvitedByMeCoffeeChats, getPastCoffeeChats, getPendingCoffeeChats, getUpcomingCoffeeChats } from "@/lib/data/coffeeChat"
 
 // Mock data for demonstration
 const mockInvitations: CoffeeChatInvitation[] = [
@@ -115,11 +116,17 @@ export default async function CoffeeChatsPage() {
   const user = await getUser(session?.user?.id as string);
   const currentUserId = user.userDetails?.id as string
 
-  const pendingInvitations = mockInvitations.filter((inv) => inv.status === "pending")
-  const upcomingChats = mockInvitations.filter((inv) => inv.status === "accepted")
-  const pastChats = mockInvitations.filter(
-    (inv) => inv.status === "completed" || inv.status === "declined" || inv.status === "cancelled",
-  )
+  // const pendingInvitations = mockInvitations.filter((inv) => inv.status === "pending")
+  // const upcomingChats = mockInvitations.filter((inv) => inv.status === "accepted")
+  // const pastChats = mockInvitations.filter(
+  //   (inv) => inv.status === "completed" || inv.status === "declined" || inv.status === "cancelled",
+  // )
+
+  const pendingInvitations = await getPendingCoffeeChats(currentUserId);
+  const upcomingChats = await getUpcomingCoffeeChats(currentUserId);
+  const pastChats = await getPastCoffeeChats(currentUserId);
+  const invitedByMe = await getInvitedByMeCoffeeChats(currentUserId);
+
 
   const handleStatusChange = (invitationId: string, newStatus: string) => {
     // In a real app, this would update the backend
@@ -177,7 +184,7 @@ export default async function CoffeeChatsPage() {
                   <Coffee className="h-5 w-5 text-blue-500" />
                 </div>
                 <div>
-                  <p className="text-2xl font-bold">{pastChats.filter((c) => c.status === "completed").length}</p>
+                  <p className="text-2xl font-bold">{pastChats.filter(chat => chat.status === "ACCEPTED").length}</p>
                   <p className="text-sm text-muted-foreground">Completed</p>
                 </div>
               </div>
@@ -203,7 +210,7 @@ export default async function CoffeeChatsPage() {
 
         {/* Coffee Chats Tabs */}
         <Tabs defaultValue="pending" className="w-full">
-          <TabsList className="grid w-full grid-cols-3 rounded-xl p-1 bg-pink-500/10 mb-6">
+          <TabsList className="grid w-full grid-cols-4 rounded-xl p-1 bg-pink-500/10 mb-6">
             <TabsTrigger
               value="pending"
               className="rounded-lg data-[state=active]:bg-yellow-400 data-[state=active]:text-black"
@@ -224,6 +231,13 @@ export default async function CoffeeChatsPage() {
             >
               <Coffee className="h-4 w-4 mr-2" />
               History ({pastChats.length})
+            </TabsTrigger>
+            <TabsTrigger
+              value="invitations-sent"
+              className="rounded-lg data-[state=active]:bg-pink-500 data-[state=active]:text-black"
+            >
+              <Coffee className="h-4 w-4 mr-2" />
+              Invitations sent ({invitedByMe.length})
             </TabsTrigger>
           </TabsList>
 
@@ -309,7 +323,34 @@ export default async function CoffeeChatsPage() {
               </Card>
             )}
           </TabsContent>
+
+          <TabsContent value="invitations-sent" className="space-y-4">
+            {invitedByMe.length > 0 ? (
+              <div className="space-y-4">
+                {invitedByMe.map((invitation) => (
+                  <CoffeeChatCard
+                    key={invitation.id}
+                    invitation={invitation}
+                    currentUserId={currentUserId}
+                    // onStatusChange={handleStatusChange}
+                  />
+                ))}
+              </div>
+            ) : (
+              <Card className="border-pink-500/20">
+                <CardContent className="flex flex-col items-center justify-center py-12">
+                  <Coffee className="h-12 w-12 text-muted-foreground/50 mb-4" />
+                  <h3 className="text-lg font-medium mb-2">No coffee chats invited by you</h3>
+                  <p className="text-muted-foreground text-center mb-4">
+                    When you invite someone for coffee, it will appear here.
+                  </p>
+                </CardContent>
+              </Card>
+            )}
+          </TabsContent>
         </Tabs>
+
+        
       </main>
     </div>
   )

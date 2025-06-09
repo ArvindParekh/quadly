@@ -118,6 +118,7 @@ export default function MatchSuggestion({
                      name: user.name,
                      avatar: user.avatar,
                      department: user.department,
+                     currentUserId: currentUserId,
                   }}
                   sharedInterests={commonInterests}
                >
