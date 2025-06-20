@@ -11,7 +11,7 @@ export default function AboutPage() {
   return (
     <div className="min-h-screen bg-background">
       <header className="sticky top-0 z-50 w-full backdrop-blur supports-[backdrop-filter]:bg-background/60">
-        <div className="container flex h-16 items-center justify-between">
+        <div className="container flex h-16 items-center justify-between mx-auto">
           <div className="flex items-center gap-2">
             <div className="relative h-8 w-8">
               <div className="absolute inset-0 rounded-full bg-gradient-to-br from-pink-500 to-yellow-400" />
@@ -52,7 +52,7 @@ export default function AboutPage() {
         </div>
       </header>
 
-      <main className="container py-12">
+      <main className="container py-12 mx-auto">
         <div className="max-w-4xl mx-auto space-y-12">
           <div className="text-center space-y-4">
             <h1 className="text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl">
@@ -305,7 +305,7 @@ export default function AboutPage() {
       </main>
 
       <footer className="bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-        <div className="container py-10">
+        <div className="container py-10 mx-auto">
           <div className="flex flex-col items-center justify-between gap-4 md:flex-row">
             <div className="flex items-center gap-2">
               <div className="relative h-8 w-8">
