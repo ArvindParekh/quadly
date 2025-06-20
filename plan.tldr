@@ -28,7 +28,7 @@
 			"com.tldraw.shape.highlight": 1,
 			"com.tldraw.shape.embed": 4,
 			"com.tldraw.shape.image": 5,
-			"com.tldraw.shape.video": 3,
+			"com.tldraw.shape.video": 4,
 			"com.tldraw.binding.arrow": 1
 		}
 	},
@@ -36,9 +36,9 @@
 		{
 			"id": "pointer:pointer",
 			"typeName": "pointer",
-			"x": -438.5020228296703,
-			"y": 2039.8092988509857,
-			"lastActivityTimestamp": 1749503711122,
+			"x": -866.5774574222523,
+			"y": 2525.6515836798308,
+			"lastActivityTimestamp": 1750449861295,
 			"meta": {}
 		},
 		{
@@ -787,9 +787,9 @@
 			"typeName": "shape"
 		},
 		{
-			"x": 1489.865224840878,
-			"y": -1230.1210934953558,
-			"z": 0.6496327802736995,
+			"x": 1684.3969443170806,
+			"y": -2069.194195645508,
+			"z": 0.8412614409718473,
 			"meta": {},
 			"id": "camera:page:page",
 			"typeName": "camera"
@@ -987,6 +987,186 @@
 			"typeName": "shape"
 		},
 		{
+			"x": -1327.789609915266,
+			"y": 2300.9889630066878,
+			"rotation": 0,
+			"isLocked": false,
+			"opacity": 1,
+			"meta": {},
+			"id": "shape:aTYscHc38BDvy4oIRf3uJ",
+			"type": "text",
+			"props": {
+				"color": "black",
+				"size": "m",
+				"w": 1066.625,
+				"font": "draw",
+				"textAlign": "start",
+				"autoSize": true,
+				"scale": 1,
+				"richText": {
+					"type": "doc",
+					"content": [
+						{
+							"type": "paragraph",
+							"attrs": {
+								"dir": "auto"
+							},
+							"content": [
+								{
+									"type": "text",
+									"text": "current things to do:"
+								}
+							]
+						},
+						{
+							"type": "bulletList",
+							"content": [
+								{
+									"type": "listItem",
+									"content": [
+										{
+											"type": "paragraph",
+											"attrs": {
+												"dir": "auto"
+											},
+											"content": [
+												{
+													"type": "text",
+													"text": "on profile settings, need a way to upload image from pc"
+												}
+											]
+										}
+									]
+								},
+								{
+									"type": "listItem",
+									"content": [
+										{
+											"type": "paragraph",
+											"attrs": {
+												"dir": "auto"
+											},
+											"content": [
+												{
+													"type": "text",
+													"text": "discrepancy between profile image on setting's page and profile image in navbar"
+												}
+											]
+										}
+									]
+								},
+								{
+									"type": "listItem",
+									"content": [
+										{
+											"type": "paragraph",
+											"attrs": {
+												"dir": "auto"
+											},
+											"content": [
+												{
+													"type": "text",
+													"text": "matches feature yet to be implemented"
+												}
+											]
+										}
+									]
+								},
+								{
+									"type": "listItem",
+									"content": [
+										{
+											"type": "paragraph",
+											"attrs": {
+												"dir": "auto"
+											},
+											"content": [
+												{
+													"type": "text",
+													"text": "discover feature yet to be implemented"
+												}
+											]
+										}
+									]
+								},
+								{
+									"type": "listItem",
+									"content": [
+										{
+											"type": "paragraph",
+											"attrs": {
+												"dir": "auto"
+											},
+											"content": [
+												{
+													"type": "text",
+													"text": "notifications feature yet to be implemented"
+												}
+											]
+										}
+									]
+								},
+								{
+									"type": "listItem",
+									"content": [
+										{
+											"type": "paragraph",
+											"attrs": {
+												"dir": "auto"
+											},
+											"content": [
+												{
+													"type": "text",
+													"text": "comments feature yet to be implemented"
+												}
+											]
+										}
+									]
+								},
+								{
+									"type": "listItem",
+									"content": [
+										{
+											"type": "paragraph",
+											"attrs": {
+												"dir": "auto"
+											},
+											"content": [
+												{
+													"type": "text",
+													"text": "search feature yet to be implemented"
+												}
+											]
+										}
+									]
+								},
+								{
+									"type": "listItem",
+									"content": [
+										{
+											"type": "paragraph",
+											"attrs": {
+												"dir": "auto"
+											},
+											"content": [
+												{
+													"type": "text",
+													"text": "no \"src\" for images on homepage"
+												}
+											]
+										}
+									]
+								}
+							]
+						}
+					]
+				}
+			},
+			"parentId": "page:page",
+			"index": "ab7Ke",
+			"typeName": "shape"
+		},
+		{
 			"x": -3247.5494754648503,
 			"y": 791.4421769663023,
 			"rotation": 0,
@@ -1116,12 +1296,12 @@
 			"typeName": "shape"
 		},
 		{
-			"editingShapeId": "shape:BP12rcGMUqnxgew9Eg9bp",
+			"editingShapeId": "shape:aTYscHc38BDvy4oIRf3uJ",
 			"croppingShapeId": null,
 			"selectedShapeIds": [
-				"shape:BP12rcGMUqnxgew9Eg9bp"
+				"shape:aTYscHc38BDvy4oIRf3uJ"
 			],
-			"hoveredShapeId": "shape:BP12rcGMUqnxgew9Eg9bp",
+			"hoveredShapeId": "shape:aTYscHc38BDvy4oIRf3uJ",
 			"erasingShapeIds": [],
 			"hintingShapeIds": [],
 			"focusedGroupId": null,
@@ -2353,8 +2533,8 @@
 			"screenBounds": {
 				"x": 0,
 				"y": 0,
-				"w": 1620,
-				"h": 939
+				"w": 1682,
+				"h": 659
 			},
 			"insets": [
 				false,
