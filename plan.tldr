@@ -36,9 +36,9 @@
 		{
 			"id": "pointer:pointer",
 			"typeName": "pointer",
-			"x": -866.5774574222523,
-			"y": 2525.6515836798308,
-			"lastActivityTimestamp": 1750449861295,
+			"x": -904.7830921976837,
+			"y": 2575.911274709378,
+			"lastActivityTimestamp": 1750460706899,
 			"meta": {}
 		},
 		{
@@ -787,9 +787,9 @@
 			"typeName": "shape"
 		},
 		{
-			"x": 1684.3969443170806,
-			"y": -2069.194195645508,
-			"z": 0.8412614409718473,
+			"x": 1497.2019955603103,
+			"y": -2039.4328560296003,
+			"z": 1.090444609942799,
 			"meta": {},
 			"id": "camera:page:page",
 			"typeName": "camera"
@@ -1151,6 +1151,11 @@
 											"content": [
 												{
 													"type": "text",
+													"marks": [
+														{
+															"type": "highlight"
+														}
+													],
 													"text": "no \"src\" for images on homepage"
 												}
 											]
@@ -2534,7 +2539,7 @@
 				"x": 0,
 				"y": 0,
 				"w": 1682,
-				"h": 659
+				"h": 939
 			},
 			"insets": [
 				false,
