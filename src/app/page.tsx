@@ -7,6 +7,7 @@ import { authOptions } from "@/lib/auth";
 import DropdownMenuComponent from "@/components/dashboard-header/dropdownMenu";
 import { getUser } from "@/lib/data/user";
 import { sessionType } from "@/types/session";
+import Image from "next/image";
 
 export default async function LandingPage() {
    const session: sessionType | null = await getServerSession(authOptions);
@@ -41,6 +42,12 @@ export default async function LandingPage() {
                      className='text-sm font-medium text-muted-foreground transition-colors hover:text-foreground'
                   >
                      How It Works
+                  </Link>
+                  <Link
+                     href='/about'
+                     className='text-sm font-medium text-muted-foreground transition-colors hover:text-foreground'
+                  >
+                     About
                   </Link>
                </nav>
                <div className='flex items-center gap-2'>
@@ -108,10 +115,12 @@ export default async function LandingPage() {
                   </div>
                   <div className='relative w-full max-w-4xl overflow-hidden rounded-3xl border border-pink-500/20 bg-background/50 shadow-xl'>
                      <div className='absolute inset-0 bg-gradient-to-tr from-pink-500/10 to-yellow-400/10' />
-                     <img
-                        src='/placeholder.svg?height=800&width=1200'
+                     <Image
+                        src='/illustration-1.png'
                         alt='Quadly Dashboard Preview'
                         className='w-full h-auto'
+                        width={1000}
+                        height={1000}
                      />
                   </div>
                </div>
@@ -246,11 +255,13 @@ export default async function LandingPage() {
                      </ul>
                   </div>
                   <div className='relative aspect-video overflow-hidden rounded-3xl border border-pink-500/20 bg-background/50 shadow-xl'>
-                     <div className='absolute inset-0 bg-gradient-to-tr from-pink-500/10 to-yellow-400/10' />
-                     <img
-                        src='/placeholder.svg?height=600&width=800'
+                     <div className='absolute inset-0 bg-gradient-to-tr ' />
+                     <Image
+                        src='/image.png'
                         alt='How Quadly works'
                         className='w-full h-auto'
+                        width={1000}
+                        height={1000}
                      />
                   </div>
                </div>

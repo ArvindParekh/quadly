@@ -5,6 +5,7 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 import { BookOpen, Coffee, Users } from "lucide-react"
 import Link from "next/link"
 import { Separator } from "@/components/ui/separator"
+import Image from "next/image"
 
 export default function AboutPage() {
   return (
@@ -80,7 +81,13 @@ export default function AboutPage() {
             </div>
             <div className="relative aspect-video overflow-hidden rounded-3xl border border-pink-500/20 bg-background/50 shadow-xl">
               <div className="absolute inset-0 bg-gradient-to-tr from-pink-500/10 to-yellow-400/10" />
-              <img src="/placeholder.svg?height=600&width=800" alt="Students connecting" className="w-full h-auto" />
+              <Image
+                src="/people-connecting.jpg"
+                alt="Students connecting"
+                className="w-full h-auto"
+                width={1000}
+                height={1000}
+              />
             </div>
           </div>
 
