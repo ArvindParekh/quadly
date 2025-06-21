@@ -364,8 +364,10 @@ export default async function DashboardPage() {
                            <div className='relative'>
                               <Avatar className='h-20 w-20 border-2 border-pink-500'>
                                  <AvatarImage
-                                    src='/placeholder.svg?height=80&width=80'
+                                    src={user?.userDetails?.profilePicture || "/placeholder.svg?height=80&width=80"}
                                     alt='Profile'
+                                    width={80}
+                                    height={80}
                                  />
                                  <AvatarFallback className='bg-gradient-to-br from-pink-500 to-yellow-400 text-black'>
                                     {user?.username?.charAt(0)}

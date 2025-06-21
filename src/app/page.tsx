@@ -52,7 +52,7 @@ export default async function LandingPage() {
                </nav>
                <div className='flex items-center gap-2'>
                   {session ? (
-                    <DropdownMenuComponent name={user?.username as string} email={user?.email as string} />
+                    <DropdownMenuComponent name={user?.username as string} email={user?.email as string} profilePicture={user?.userDetails?.profilePicture || null} />
                   ) : (
                      <>
                         <LoginButton variant='outline' size='sm' />

@@ -7,10 +7,18 @@ import Link from "next/link"
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
 import SearchComponent from "./searchComponent"
 import DropdownMenuComponent from "./dropdownMenu"
-import { User } from "@/generated/prisma"
 import { usePathname } from "next/navigation"
+import { Prisma } from "@/generated/prisma"
 
-export default function DashboardHeader({user}: {user: User}) {
+export default function DashboardHeader({user}: {user: Prisma.UserGetPayload<{
+  include: {
+    userDetails: {
+      include: {
+        interests: true,
+      }
+    }
+  }
+}>}) {
 
   const activePage = usePathname();
 
@@ -103,7 +111,7 @@ export default function DashboardHeader({user}: {user: User}) {
             </Button>
           </Link>
 
-          <DropdownMenuComponent name={user.username} email={user.email} />
+          <DropdownMenuComponent name={user.username} email={user.email} profilePicture={user.userDetails?.profilePicture || null} />
         </div>
       </div>
     </header>
