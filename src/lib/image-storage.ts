@@ -7,10 +7,10 @@ class ImageStorage {
 
     private constructor() {
         this.awsClient = new AwsClient({
-            accessKeyId: process.env.AWS_ACCESS_KEY_ID!,
-            secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY!,
+            accessKeyId: process.env.R2_ACCESS_KEY_ID!,
+            secretAccessKey: process.env.R2_SECRET_ACCESS_KEY!,
             service: "s3",
-            region: "us-east-1",
+            region: "auto",
         });
     }
 
@@ -23,19 +23,21 @@ class ImageStorage {
 
     async uploadImage(key: string, image: File) {
         // key is userId
-        const formData = new FormData();
-        formData.append("file", image);
+        console.log(`upload image called with key ${key} and image ${image}`);
+        const arrayBuffer = await image.arrayBuffer();
 
         const response = await this.awsClient.fetch(
-            `https://r2.cloudflarestorage.com/v1/object/upload/${key}`,
+            `${process.env.R2_ENDPOINT}/${process.env.R2_BUCKET}/${key}`,
             {
-                method: "POST",
-                body: formData,
+                method: "PUT",
+                body: arrayBuffer,
                 headers: {
-                    "Content-Type": "multipart/form-data",
+                    "Content-Type": image.type,
+                    "Content-Length": image.size.toString(),
                 },
             }
         );
+        console.log("response", response);
 
         if (!response.ok) {
             throw new Error("Failed to upload image");
@@ -47,7 +49,7 @@ class ImageStorage {
 
     async getImageUrl(key: string) {
         const response = await this.awsClient.fetch(
-            `https://r2.cloudflarestorage.com/v1/object/get/${key}`,
+            `${process.env.R2_ENDPOINT}/${process.env.R2_BUCKET}/${key}`,
             {
                 method: "GET",
             }

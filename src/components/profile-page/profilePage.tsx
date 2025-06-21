@@ -55,6 +55,22 @@ export default function ProfilePage({
    const [state, formAction] = useActionState(updateUserDetails, null);
    const [stateInterests, formActionInterests] = useActionState(createInterests, null);
 
+   // open a file picker to upload profile image
+   const [profileImage, setProfileImage] = useState<File | null>(null);
+   const handleProfileImageChange = () => {
+      const input = document.createElement("input");
+      input.type = "file";
+      input.accept = "image/*";
+      input.onchange = (e) => {
+         const file = (e.target as HTMLInputElement).files?.[0];
+         if (file) {
+            console.log("file", file);
+            setProfileImage(file);
+         }
+      };
+      input.click();
+   };
+
    // State for controlled inputs
    const [formData, setFormData] = useState({
       name: userDetails?.name,
@@ -64,6 +80,7 @@ export default function ProfilePage({
       reading: userDetails?.reading,
       availability: userDetails?.availability,
       interests: getInitialSelectedInterests(userDetails),
+      profilePicture: userDetails?.profilePicture,
    });
 
    const allInterests = [
@@ -112,9 +129,16 @@ export default function ProfilePage({
    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
       e.preventDefault();
 
+
       // Compare formData with userDetails
       const updateFormData = new FormData(e.target as HTMLFormElement);
+      // if profileImage is not null, add it to the form data
+      if (profileImage) {
+         updateFormData.append("profilePicture", profileImage);
+      }
+
       const updatedData = Object.fromEntries(updateFormData);
+      console.log("updatedData", updatedData.profilePicture);
       const { userId, ...updatedDataWithoutUserId } = updatedData;
 
       // Parse interests from both updatedData and formData for comparison
@@ -141,7 +165,7 @@ export default function ProfilePage({
          formInterests.some((i) => !updatedInterests.includes(i));
 
       // Compare other fields
-      const fieldsToCompare = ["name", "department", "year", "bio", "reading", "availability"];
+      const fieldsToCompare = ["name", "department", "year", "bio", "reading", "availability", "profilePicture"];
       let otherFieldsChanged = false;
       for (const field of fieldsToCompare) {
          if ((updatedDataWithoutUserId as any)[field] !== (formData as any)[field]) {
@@ -154,6 +178,12 @@ export default function ProfilePage({
          toast.error("No changes made");
          return;
       }
+
+      // if (profileImage) {
+      //    startTransition(() => {
+      //       formActionProfileImage(profileImage);
+      //    });
+      // }
 
       // Wrap formAction in startTransition
       startTransition(() => {
@@ -171,6 +201,7 @@ export default function ProfilePage({
             reading: userDetails?.reading,
             availability: userDetails?.availability,
             interests: userDetails?.interests.map((interest) => interest.interestName) as string[],
+            profilePicture: userDetails?.profilePicture,
          });
       }
    }, [state, userDetails, stateInterests]);
@@ -257,6 +288,7 @@ export default function ProfilePage({
                               <Button
                                  size='icon'
                                  className='absolute bottom-0 right-0 h-8 w-8 rounded-full bg-gradient-to-r from-pink-500 to-yellow-400 text-black hover:opacity-90'
+                                 onClick={handleProfileImageChange}
                               >
                                  <Camera className='h-4 w-4' />
                                  <span className='sr-only'>
