@@ -1,0 +1,7 @@
+{
+    "functions": {
+      "app/**/*.tsx": {
+        "includeFiles": "src/generated/prisma/**"
+      }
+    }
+  }
