@@ -19,8 +19,6 @@ export default async function Profile() {
     }
   })
 
-  console.log(userDetails?.interests);
-
   return (
     <ProfilePage userDetails={userDetails} userId={session.user.id} />
   )

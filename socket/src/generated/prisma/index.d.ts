@@ -74,6 +74,16 @@ export type Event = $Result.DefaultSelection<Prisma.$EventPayload>
  */
 export type CoffeeChat = $Result.DefaultSelection<Prisma.$CoffeeChatPayload>
 /**
+ * Model CoffeeChatPurpose
+ * 
+ */
+export type CoffeeChatPurpose = $Result.DefaultSelection<Prisma.$CoffeeChatPurposePayload>
+/**
+ * Model CoffeeChatVenue
+ * 
+ */
+export type CoffeeChatVenue = $Result.DefaultSelection<Prisma.$CoffeeChatVenuePayload>
+/**
  * Model Chat
  * 
  */
@@ -109,6 +119,31 @@ export const MatchStatus: {
 export type MatchStatus = (typeof MatchStatus)[keyof typeof MatchStatus]
 
 
+export const CoffeeChatVenueNoiseLevel: {
+  QUIET: 'QUIET',
+  MODERATE: 'MODERATE',
+  LIVELY: 'LIVELY'
+};
+
+export type CoffeeChatVenueNoiseLevel = (typeof CoffeeChatVenueNoiseLevel)[keyof typeof CoffeeChatVenueNoiseLevel]
+
+
+export const CoffeeChatVenueTags: {
+  OUTDOOR: 'OUTDOOR',
+  SCENIC: 'SCENIC',
+  FRESH_AIR: 'FRESH_AIR',
+  WIFI: 'WIFI',
+  OUTLETS: 'OUTLETS',
+  WHITEBOARDS: 'WHITEBOARDS',
+  PRIVATE: 'PRIVATE',
+  FOOD: 'FOOD',
+  COMFORTABLE_SEATING: 'COMFORTABLE_SEATING',
+  BOOKS: 'BOOKS'
+};
+
+export type CoffeeChatVenueTags = (typeof CoffeeChatVenueTags)[keyof typeof CoffeeChatVenueTags]
+
+
 export const CoffeeChatStatus: {
   PENDING: 'PENDING',
   ACCEPTED: 'ACCEPTED',
@@ -126,6 +161,14 @@ export const NotificationType: typeof $Enums.NotificationType
 export type MatchStatus = $Enums.MatchStatus
 
 export const MatchStatus: typeof $Enums.MatchStatus
+
+export type CoffeeChatVenueNoiseLevel = $Enums.CoffeeChatVenueNoiseLevel
+
+export const CoffeeChatVenueNoiseLevel: typeof $Enums.CoffeeChatVenueNoiseLevel
+
+export type CoffeeChatVenueTags = $Enums.CoffeeChatVenueTags
+
+export const CoffeeChatVenueTags: typeof $Enums.CoffeeChatVenueTags
 
 export type CoffeeChatStatus = $Enums.CoffeeChatStatus
 
@@ -377,6 +420,26 @@ export class PrismaClient<
   get coffeeChat(): Prisma.CoffeeChatDelegate<ExtArgs, ClientOptions>;
 
   /**
+   * `prisma.coffeeChatPurpose`: Exposes CRUD operations for the **CoffeeChatPurpose** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more CoffeeChatPurposes
+    * const coffeeChatPurposes = await prisma.coffeeChatPurpose.findMany()
+    * ```
+    */
+  get coffeeChatPurpose(): Prisma.CoffeeChatPurposeDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.coffeeChatVenue`: Exposes CRUD operations for the **CoffeeChatVenue** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more CoffeeChatVenues
+    * const coffeeChatVenues = await prisma.coffeeChatVenue.findMany()
+    * ```
+    */
+  get coffeeChatVenue(): Prisma.CoffeeChatVenueDelegate<ExtArgs, ClientOptions>;
+
+  /**
    * `prisma.chat`: Exposes CRUD operations for the **Chat** model.
     * Example usage:
     * ```ts
@@ -453,8 +516,8 @@ export namespace Prisma {
   export import Exact = $Public.Exact
 
   /**
-   * Prisma Client JS version: 6.8.2
-   * Query Engine version: 2060c79ba17c6bb9f5823312b6f6b7f4a845738e
+   * Prisma Client JS version: 6.9.0
+   * Query Engine version: 81e4af48011447c3cc503a190e86995b66d2a28e
    */
   export type PrismaVersion = {
     client: string
@@ -847,6 +910,8 @@ export namespace Prisma {
     UserSimilarity: 'UserSimilarity',
     Event: 'Event',
     CoffeeChat: 'CoffeeChat',
+    CoffeeChatPurpose: 'CoffeeChatPurpose',
+    CoffeeChatVenue: 'CoffeeChatVenue',
     Chat: 'Chat',
     Message: 'Message'
   };
@@ -867,7 +932,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "user" | "userDetails" | "post" | "reaction" | "comment" | "postTag" | "notification" | "interest" | "match" | "userSimilarity" | "event" | "coffeeChat" | "chat" | "message"
+      modelProps: "user" | "userDetails" | "post" | "reaction" | "comment" | "postTag" | "notification" | "interest" | "match" | "userSimilarity" | "event" | "coffeeChat" | "coffeeChatPurpose" | "coffeeChatVenue" | "chat" | "message"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -1759,6 +1824,154 @@ export namespace Prisma {
           }
         }
       }
+      CoffeeChatPurpose: {
+        payload: Prisma.$CoffeeChatPurposePayload<ExtArgs>
+        fields: Prisma.CoffeeChatPurposeFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.CoffeeChatPurposeFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CoffeeChatPurposePayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.CoffeeChatPurposeFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CoffeeChatPurposePayload>
+          }
+          findFirst: {
+            args: Prisma.CoffeeChatPurposeFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CoffeeChatPurposePayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.CoffeeChatPurposeFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CoffeeChatPurposePayload>
+          }
+          findMany: {
+            args: Prisma.CoffeeChatPurposeFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CoffeeChatPurposePayload>[]
+          }
+          create: {
+            args: Prisma.CoffeeChatPurposeCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CoffeeChatPurposePayload>
+          }
+          createMany: {
+            args: Prisma.CoffeeChatPurposeCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.CoffeeChatPurposeCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CoffeeChatPurposePayload>[]
+          }
+          delete: {
+            args: Prisma.CoffeeChatPurposeDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CoffeeChatPurposePayload>
+          }
+          update: {
+            args: Prisma.CoffeeChatPurposeUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CoffeeChatPurposePayload>
+          }
+          deleteMany: {
+            args: Prisma.CoffeeChatPurposeDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.CoffeeChatPurposeUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.CoffeeChatPurposeUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CoffeeChatPurposePayload>[]
+          }
+          upsert: {
+            args: Prisma.CoffeeChatPurposeUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CoffeeChatPurposePayload>
+          }
+          aggregate: {
+            args: Prisma.CoffeeChatPurposeAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateCoffeeChatPurpose>
+          }
+          groupBy: {
+            args: Prisma.CoffeeChatPurposeGroupByArgs<ExtArgs>
+            result: $Utils.Optional<CoffeeChatPurposeGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.CoffeeChatPurposeCountArgs<ExtArgs>
+            result: $Utils.Optional<CoffeeChatPurposeCountAggregateOutputType> | number
+          }
+        }
+      }
+      CoffeeChatVenue: {
+        payload: Prisma.$CoffeeChatVenuePayload<ExtArgs>
+        fields: Prisma.CoffeeChatVenueFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.CoffeeChatVenueFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CoffeeChatVenuePayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.CoffeeChatVenueFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CoffeeChatVenuePayload>
+          }
+          findFirst: {
+            args: Prisma.CoffeeChatVenueFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CoffeeChatVenuePayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.CoffeeChatVenueFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CoffeeChatVenuePayload>
+          }
+          findMany: {
+            args: Prisma.CoffeeChatVenueFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CoffeeChatVenuePayload>[]
+          }
+          create: {
+            args: Prisma.CoffeeChatVenueCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CoffeeChatVenuePayload>
+          }
+          createMany: {
+            args: Prisma.CoffeeChatVenueCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.CoffeeChatVenueCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CoffeeChatVenuePayload>[]
+          }
+          delete: {
+            args: Prisma.CoffeeChatVenueDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CoffeeChatVenuePayload>
+          }
+          update: {
+            args: Prisma.CoffeeChatVenueUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CoffeeChatVenuePayload>
+          }
+          deleteMany: {
+            args: Prisma.CoffeeChatVenueDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.CoffeeChatVenueUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.CoffeeChatVenueUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CoffeeChatVenuePayload>[]
+          }
+          upsert: {
+            args: Prisma.CoffeeChatVenueUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CoffeeChatVenuePayload>
+          }
+          aggregate: {
+            args: Prisma.CoffeeChatVenueAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateCoffeeChatVenue>
+          }
+          groupBy: {
+            args: Prisma.CoffeeChatVenueGroupByArgs<ExtArgs>
+            result: $Utils.Optional<CoffeeChatVenueGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.CoffeeChatVenueCountArgs<ExtArgs>
+            result: $Utils.Optional<CoffeeChatVenueCountAggregateOutputType> | number
+          }
+        }
+      }
       Chat: {
         payload: Prisma.$ChatPayload<ExtArgs>
         fields: Prisma.ChatFieldRefs
@@ -2003,6 +2216,8 @@ export namespace Prisma {
     userSimilarity?: UserSimilarityOmit
     event?: EventOmit
     coffeeChat?: CoffeeChatOmit
+    coffeeChatPurpose?: CoffeeChatPurposeOmit
+    coffeeChatVenue?: CoffeeChatVenueOmit
     chat?: ChatOmit
     message?: MessageOmit
   }
@@ -2390,6 +2605,68 @@ export namespace Prisma {
    */
   export type EventCountOutputTypeCountAttendeesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: UserDetailsWhereInput
+  }
+
+
+  /**
+   * Count Type CoffeeChatPurposeCountOutputType
+   */
+
+  export type CoffeeChatPurposeCountOutputType = {
+    coffeeChats: number
+  }
+
+  export type CoffeeChatPurposeCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    coffeeChats?: boolean | CoffeeChatPurposeCountOutputTypeCountCoffeeChatsArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * CoffeeChatPurposeCountOutputType without action
+   */
+  export type CoffeeChatPurposeCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CoffeeChatPurposeCountOutputType
+     */
+    select?: CoffeeChatPurposeCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * CoffeeChatPurposeCountOutputType without action
+   */
+  export type CoffeeChatPurposeCountOutputTypeCountCoffeeChatsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: CoffeeChatWhereInput
+  }
+
+
+  /**
+   * Count Type CoffeeChatVenueCountOutputType
+   */
+
+  export type CoffeeChatVenueCountOutputType = {
+    coffeeChats: number
+  }
+
+  export type CoffeeChatVenueCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    coffeeChats?: boolean | CoffeeChatVenueCountOutputTypeCountCoffeeChatsArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * CoffeeChatVenueCountOutputType without action
+   */
+  export type CoffeeChatVenueCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CoffeeChatVenueCountOutputType
+     */
+    select?: CoffeeChatVenueCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * CoffeeChatVenueCountOutputType without action
+   */
+  export type CoffeeChatVenueCountOutputTypeCountCoffeeChatsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: CoffeeChatWhereInput
   }
 
 
@@ -14956,15 +15233,29 @@ export namespace Prisma {
 
   export type AggregateCoffeeChat = {
     _count: CoffeeChatCountAggregateOutputType | null
+    _avg: CoffeeChatAvgAggregateOutputType | null
+    _sum: CoffeeChatSumAggregateOutputType | null
     _min: CoffeeChatMinAggregateOutputType | null
     _max: CoffeeChatMaxAggregateOutputType | null
+  }
+
+  export type CoffeeChatAvgAggregateOutputType = {
+    duration: number | null
+  }
+
+  export type CoffeeChatSumAggregateOutputType = {
+    duration: number | null
   }
 
   export type CoffeeChatMinAggregateOutputType = {
     id: string | null
     inviterId: string | null
     inviteeId: string | null
+    purposeId: string | null
+    venueId: string | null
     scheduledAt: Date | null
+    duration: number | null
+    personalMessage: string | null
     status: $Enums.CoffeeChatStatus | null
     createdAt: Date | null
     updatedAt: Date | null
@@ -14974,7 +15265,11 @@ export namespace Prisma {
     id: string | null
     inviterId: string | null
     inviteeId: string | null
+    purposeId: string | null
+    venueId: string | null
     scheduledAt: Date | null
+    duration: number | null
+    personalMessage: string | null
     status: $Enums.CoffeeChatStatus | null
     createdAt: Date | null
     updatedAt: Date | null
@@ -14984,7 +15279,11 @@ export namespace Prisma {
     id: number
     inviterId: number
     inviteeId: number
+    purposeId: number
+    venueId: number
     scheduledAt: number
+    duration: number
+    personalMessage: number
     status: number
     createdAt: number
     updatedAt: number
@@ -14992,11 +15291,23 @@ export namespace Prisma {
   }
 
 
+  export type CoffeeChatAvgAggregateInputType = {
+    duration?: true
+  }
+
+  export type CoffeeChatSumAggregateInputType = {
+    duration?: true
+  }
+
   export type CoffeeChatMinAggregateInputType = {
     id?: true
     inviterId?: true
     inviteeId?: true
+    purposeId?: true
+    venueId?: true
     scheduledAt?: true
+    duration?: true
+    personalMessage?: true
     status?: true
     createdAt?: true
     updatedAt?: true
@@ -15006,7 +15317,11 @@ export namespace Prisma {
     id?: true
     inviterId?: true
     inviteeId?: true
+    purposeId?: true
+    venueId?: true
     scheduledAt?: true
+    duration?: true
+    personalMessage?: true
     status?: true
     createdAt?: true
     updatedAt?: true
@@ -15016,7 +15331,11 @@ export namespace Prisma {
     id?: true
     inviterId?: true
     inviteeId?: true
+    purposeId?: true
+    venueId?: true
     scheduledAt?: true
+    duration?: true
+    personalMessage?: true
     status?: true
     createdAt?: true
     updatedAt?: true
@@ -15061,6 +15380,18 @@ export namespace Prisma {
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
+     * Select which fields to average
+    **/
+    _avg?: CoffeeChatAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: CoffeeChatSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
      * Select which fields to find the minimum value
     **/
     _min?: CoffeeChatMinAggregateInputType
@@ -15091,6 +15422,8 @@ export namespace Prisma {
     take?: number
     skip?: number
     _count?: CoffeeChatCountAggregateInputType | true
+    _avg?: CoffeeChatAvgAggregateInputType
+    _sum?: CoffeeChatSumAggregateInputType
     _min?: CoffeeChatMinAggregateInputType
     _max?: CoffeeChatMaxAggregateInputType
   }
@@ -15099,11 +15432,17 @@ export namespace Prisma {
     id: string
     inviterId: string
     inviteeId: string
+    purposeId: string
+    venueId: string
     scheduledAt: Date | null
+    duration: number
+    personalMessage: string | null
     status: $Enums.CoffeeChatStatus
     createdAt: Date
     updatedAt: Date
     _count: CoffeeChatCountAggregateOutputType | null
+    _avg: CoffeeChatAvgAggregateOutputType | null
+    _sum: CoffeeChatSumAggregateOutputType | null
     _min: CoffeeChatMinAggregateOutputType | null
     _max: CoffeeChatMaxAggregateOutputType | null
   }
@@ -15126,60 +15465,88 @@ export namespace Prisma {
     id?: boolean
     inviterId?: boolean
     inviteeId?: boolean
+    purposeId?: boolean
+    venueId?: boolean
     scheduledAt?: boolean
+    duration?: boolean
+    personalMessage?: boolean
     status?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     inviter?: boolean | UserDetailsDefaultArgs<ExtArgs>
     invitee?: boolean | UserDetailsDefaultArgs<ExtArgs>
+    purpose?: boolean | CoffeeChatPurposeDefaultArgs<ExtArgs>
+    venue?: boolean | CoffeeChatVenueDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["coffeeChat"]>
 
   export type CoffeeChatSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     inviterId?: boolean
     inviteeId?: boolean
+    purposeId?: boolean
+    venueId?: boolean
     scheduledAt?: boolean
+    duration?: boolean
+    personalMessage?: boolean
     status?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     inviter?: boolean | UserDetailsDefaultArgs<ExtArgs>
     invitee?: boolean | UserDetailsDefaultArgs<ExtArgs>
+    purpose?: boolean | CoffeeChatPurposeDefaultArgs<ExtArgs>
+    venue?: boolean | CoffeeChatVenueDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["coffeeChat"]>
 
   export type CoffeeChatSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     inviterId?: boolean
     inviteeId?: boolean
+    purposeId?: boolean
+    venueId?: boolean
     scheduledAt?: boolean
+    duration?: boolean
+    personalMessage?: boolean
     status?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     inviter?: boolean | UserDetailsDefaultArgs<ExtArgs>
     invitee?: boolean | UserDetailsDefaultArgs<ExtArgs>
+    purpose?: boolean | CoffeeChatPurposeDefaultArgs<ExtArgs>
+    venue?: boolean | CoffeeChatVenueDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["coffeeChat"]>
 
   export type CoffeeChatSelectScalar = {
     id?: boolean
     inviterId?: boolean
     inviteeId?: boolean
+    purposeId?: boolean
+    venueId?: boolean
     scheduledAt?: boolean
+    duration?: boolean
+    personalMessage?: boolean
     status?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }
 
-  export type CoffeeChatOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "inviterId" | "inviteeId" | "scheduledAt" | "status" | "createdAt" | "updatedAt", ExtArgs["result"]["coffeeChat"]>
+  export type CoffeeChatOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "inviterId" | "inviteeId" | "purposeId" | "venueId" | "scheduledAt" | "duration" | "personalMessage" | "status" | "createdAt" | "updatedAt", ExtArgs["result"]["coffeeChat"]>
   export type CoffeeChatInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     inviter?: boolean | UserDetailsDefaultArgs<ExtArgs>
     invitee?: boolean | UserDetailsDefaultArgs<ExtArgs>
+    purpose?: boolean | CoffeeChatPurposeDefaultArgs<ExtArgs>
+    venue?: boolean | CoffeeChatVenueDefaultArgs<ExtArgs>
   }
   export type CoffeeChatIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     inviter?: boolean | UserDetailsDefaultArgs<ExtArgs>
     invitee?: boolean | UserDetailsDefaultArgs<ExtArgs>
+    purpose?: boolean | CoffeeChatPurposeDefaultArgs<ExtArgs>
+    venue?: boolean | CoffeeChatVenueDefaultArgs<ExtArgs>
   }
   export type CoffeeChatIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     inviter?: boolean | UserDetailsDefaultArgs<ExtArgs>
     invitee?: boolean | UserDetailsDefaultArgs<ExtArgs>
+    purpose?: boolean | CoffeeChatPurposeDefaultArgs<ExtArgs>
+    venue?: boolean | CoffeeChatVenueDefaultArgs<ExtArgs>
   }
 
   export type $CoffeeChatPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -15187,12 +15554,18 @@ export namespace Prisma {
     objects: {
       inviter: Prisma.$UserDetailsPayload<ExtArgs>
       invitee: Prisma.$UserDetailsPayload<ExtArgs>
+      purpose: Prisma.$CoffeeChatPurposePayload<ExtArgs>
+      venue: Prisma.$CoffeeChatVenuePayload<ExtArgs>
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
       inviterId: string
       inviteeId: string
+      purposeId: string
+      venueId: string
       scheduledAt: Date | null
+      duration: number
+      personalMessage: string | null
       status: $Enums.CoffeeChatStatus
       createdAt: Date
       updatedAt: Date
@@ -15592,6 +15965,8 @@ export namespace Prisma {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     inviter<T extends UserDetailsDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDetailsDefaultArgs<ExtArgs>>): Prisma__UserDetailsClient<$Result.GetResult<Prisma.$UserDetailsPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     invitee<T extends UserDetailsDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDetailsDefaultArgs<ExtArgs>>): Prisma__UserDetailsClient<$Result.GetResult<Prisma.$UserDetailsPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    purpose<T extends CoffeeChatPurposeDefaultArgs<ExtArgs> = {}>(args?: Subset<T, CoffeeChatPurposeDefaultArgs<ExtArgs>>): Prisma__CoffeeChatPurposeClient<$Result.GetResult<Prisma.$CoffeeChatPurposePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    venue<T extends CoffeeChatVenueDefaultArgs<ExtArgs> = {}>(args?: Subset<T, CoffeeChatVenueDefaultArgs<ExtArgs>>): Prisma__CoffeeChatVenueClient<$Result.GetResult<Prisma.$CoffeeChatVenuePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -15624,7 +15999,11 @@ export namespace Prisma {
     readonly id: FieldRef<"CoffeeChat", 'String'>
     readonly inviterId: FieldRef<"CoffeeChat", 'String'>
     readonly inviteeId: FieldRef<"CoffeeChat", 'String'>
+    readonly purposeId: FieldRef<"CoffeeChat", 'String'>
+    readonly venueId: FieldRef<"CoffeeChat", 'String'>
     readonly scheduledAt: FieldRef<"CoffeeChat", 'DateTime'>
+    readonly duration: FieldRef<"CoffeeChat", 'Int'>
+    readonly personalMessage: FieldRef<"CoffeeChat", 'String'>
     readonly status: FieldRef<"CoffeeChat", 'CoffeeChatStatus'>
     readonly createdAt: FieldRef<"CoffeeChat", 'DateTime'>
     readonly updatedAt: FieldRef<"CoffeeChat", 'DateTime'>
@@ -16039,6 +16418,2223 @@ export namespace Prisma {
      * Choose, which related nodes to fetch as well
      */
     include?: CoffeeChatInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model CoffeeChatPurpose
+   */
+
+  export type AggregateCoffeeChatPurpose = {
+    _count: CoffeeChatPurposeCountAggregateOutputType | null
+    _avg: CoffeeChatPurposeAvgAggregateOutputType | null
+    _sum: CoffeeChatPurposeSumAggregateOutputType | null
+    _min: CoffeeChatPurposeMinAggregateOutputType | null
+    _max: CoffeeChatPurposeMaxAggregateOutputType | null
+  }
+
+  export type CoffeeChatPurposeAvgAggregateOutputType = {
+    timeLimit: number | null
+  }
+
+  export type CoffeeChatPurposeSumAggregateOutputType = {
+    timeLimit: number | null
+  }
+
+  export type CoffeeChatPurposeMinAggregateOutputType = {
+    id: string | null
+    purposeName: string | null
+    description: string | null
+    timeLimit: number | null
+  }
+
+  export type CoffeeChatPurposeMaxAggregateOutputType = {
+    id: string | null
+    purposeName: string | null
+    description: string | null
+    timeLimit: number | null
+  }
+
+  export type CoffeeChatPurposeCountAggregateOutputType = {
+    id: number
+    purposeName: number
+    description: number
+    timeLimit: number
+    _all: number
+  }
+
+
+  export type CoffeeChatPurposeAvgAggregateInputType = {
+    timeLimit?: true
+  }
+
+  export type CoffeeChatPurposeSumAggregateInputType = {
+    timeLimit?: true
+  }
+
+  export type CoffeeChatPurposeMinAggregateInputType = {
+    id?: true
+    purposeName?: true
+    description?: true
+    timeLimit?: true
+  }
+
+  export type CoffeeChatPurposeMaxAggregateInputType = {
+    id?: true
+    purposeName?: true
+    description?: true
+    timeLimit?: true
+  }
+
+  export type CoffeeChatPurposeCountAggregateInputType = {
+    id?: true
+    purposeName?: true
+    description?: true
+    timeLimit?: true
+    _all?: true
+  }
+
+  export type CoffeeChatPurposeAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which CoffeeChatPurpose to aggregate.
+     */
+    where?: CoffeeChatPurposeWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of CoffeeChatPurposes to fetch.
+     */
+    orderBy?: CoffeeChatPurposeOrderByWithRelationInput | CoffeeChatPurposeOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: CoffeeChatPurposeWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` CoffeeChatPurposes from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` CoffeeChatPurposes.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned CoffeeChatPurposes
+    **/
+    _count?: true | CoffeeChatPurposeCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: CoffeeChatPurposeAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: CoffeeChatPurposeSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: CoffeeChatPurposeMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: CoffeeChatPurposeMaxAggregateInputType
+  }
+
+  export type GetCoffeeChatPurposeAggregateType<T extends CoffeeChatPurposeAggregateArgs> = {
+        [P in keyof T & keyof AggregateCoffeeChatPurpose]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateCoffeeChatPurpose[P]>
+      : GetScalarType<T[P], AggregateCoffeeChatPurpose[P]>
+  }
+
+
+
+
+  export type CoffeeChatPurposeGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: CoffeeChatPurposeWhereInput
+    orderBy?: CoffeeChatPurposeOrderByWithAggregationInput | CoffeeChatPurposeOrderByWithAggregationInput[]
+    by: CoffeeChatPurposeScalarFieldEnum[] | CoffeeChatPurposeScalarFieldEnum
+    having?: CoffeeChatPurposeScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: CoffeeChatPurposeCountAggregateInputType | true
+    _avg?: CoffeeChatPurposeAvgAggregateInputType
+    _sum?: CoffeeChatPurposeSumAggregateInputType
+    _min?: CoffeeChatPurposeMinAggregateInputType
+    _max?: CoffeeChatPurposeMaxAggregateInputType
+  }
+
+  export type CoffeeChatPurposeGroupByOutputType = {
+    id: string
+    purposeName: string
+    description: string
+    timeLimit: number
+    _count: CoffeeChatPurposeCountAggregateOutputType | null
+    _avg: CoffeeChatPurposeAvgAggregateOutputType | null
+    _sum: CoffeeChatPurposeSumAggregateOutputType | null
+    _min: CoffeeChatPurposeMinAggregateOutputType | null
+    _max: CoffeeChatPurposeMaxAggregateOutputType | null
+  }
+
+  type GetCoffeeChatPurposeGroupByPayload<T extends CoffeeChatPurposeGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<CoffeeChatPurposeGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof CoffeeChatPurposeGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], CoffeeChatPurposeGroupByOutputType[P]>
+            : GetScalarType<T[P], CoffeeChatPurposeGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type CoffeeChatPurposeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    purposeName?: boolean
+    description?: boolean
+    timeLimit?: boolean
+    coffeeChats?: boolean | CoffeeChatPurpose$coffeeChatsArgs<ExtArgs>
+    _count?: boolean | CoffeeChatPurposeCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["coffeeChatPurpose"]>
+
+  export type CoffeeChatPurposeSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    purposeName?: boolean
+    description?: boolean
+    timeLimit?: boolean
+  }, ExtArgs["result"]["coffeeChatPurpose"]>
+
+  export type CoffeeChatPurposeSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    purposeName?: boolean
+    description?: boolean
+    timeLimit?: boolean
+  }, ExtArgs["result"]["coffeeChatPurpose"]>
+
+  export type CoffeeChatPurposeSelectScalar = {
+    id?: boolean
+    purposeName?: boolean
+    description?: boolean
+    timeLimit?: boolean
+  }
+
+  export type CoffeeChatPurposeOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "purposeName" | "description" | "timeLimit", ExtArgs["result"]["coffeeChatPurpose"]>
+  export type CoffeeChatPurposeInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    coffeeChats?: boolean | CoffeeChatPurpose$coffeeChatsArgs<ExtArgs>
+    _count?: boolean | CoffeeChatPurposeCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type CoffeeChatPurposeIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+  export type CoffeeChatPurposeIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+
+  export type $CoffeeChatPurposePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "CoffeeChatPurpose"
+    objects: {
+      coffeeChats: Prisma.$CoffeeChatPayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      purposeName: string
+      description: string
+      timeLimit: number
+    }, ExtArgs["result"]["coffeeChatPurpose"]>
+    composites: {}
+  }
+
+  type CoffeeChatPurposeGetPayload<S extends boolean | null | undefined | CoffeeChatPurposeDefaultArgs> = $Result.GetResult<Prisma.$CoffeeChatPurposePayload, S>
+
+  type CoffeeChatPurposeCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<CoffeeChatPurposeFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: CoffeeChatPurposeCountAggregateInputType | true
+    }
+
+  export interface CoffeeChatPurposeDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['CoffeeChatPurpose'], meta: { name: 'CoffeeChatPurpose' } }
+    /**
+     * Find zero or one CoffeeChatPurpose that matches the filter.
+     * @param {CoffeeChatPurposeFindUniqueArgs} args - Arguments to find a CoffeeChatPurpose
+     * @example
+     * // Get one CoffeeChatPurpose
+     * const coffeeChatPurpose = await prisma.coffeeChatPurpose.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends CoffeeChatPurposeFindUniqueArgs>(args: SelectSubset<T, CoffeeChatPurposeFindUniqueArgs<ExtArgs>>): Prisma__CoffeeChatPurposeClient<$Result.GetResult<Prisma.$CoffeeChatPurposePayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one CoffeeChatPurpose that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {CoffeeChatPurposeFindUniqueOrThrowArgs} args - Arguments to find a CoffeeChatPurpose
+     * @example
+     * // Get one CoffeeChatPurpose
+     * const coffeeChatPurpose = await prisma.coffeeChatPurpose.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends CoffeeChatPurposeFindUniqueOrThrowArgs>(args: SelectSubset<T, CoffeeChatPurposeFindUniqueOrThrowArgs<ExtArgs>>): Prisma__CoffeeChatPurposeClient<$Result.GetResult<Prisma.$CoffeeChatPurposePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first CoffeeChatPurpose that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CoffeeChatPurposeFindFirstArgs} args - Arguments to find a CoffeeChatPurpose
+     * @example
+     * // Get one CoffeeChatPurpose
+     * const coffeeChatPurpose = await prisma.coffeeChatPurpose.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends CoffeeChatPurposeFindFirstArgs>(args?: SelectSubset<T, CoffeeChatPurposeFindFirstArgs<ExtArgs>>): Prisma__CoffeeChatPurposeClient<$Result.GetResult<Prisma.$CoffeeChatPurposePayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first CoffeeChatPurpose that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CoffeeChatPurposeFindFirstOrThrowArgs} args - Arguments to find a CoffeeChatPurpose
+     * @example
+     * // Get one CoffeeChatPurpose
+     * const coffeeChatPurpose = await prisma.coffeeChatPurpose.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends CoffeeChatPurposeFindFirstOrThrowArgs>(args?: SelectSubset<T, CoffeeChatPurposeFindFirstOrThrowArgs<ExtArgs>>): Prisma__CoffeeChatPurposeClient<$Result.GetResult<Prisma.$CoffeeChatPurposePayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more CoffeeChatPurposes that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CoffeeChatPurposeFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all CoffeeChatPurposes
+     * const coffeeChatPurposes = await prisma.coffeeChatPurpose.findMany()
+     * 
+     * // Get first 10 CoffeeChatPurposes
+     * const coffeeChatPurposes = await prisma.coffeeChatPurpose.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const coffeeChatPurposeWithIdOnly = await prisma.coffeeChatPurpose.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends CoffeeChatPurposeFindManyArgs>(args?: SelectSubset<T, CoffeeChatPurposeFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CoffeeChatPurposePayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a CoffeeChatPurpose.
+     * @param {CoffeeChatPurposeCreateArgs} args - Arguments to create a CoffeeChatPurpose.
+     * @example
+     * // Create one CoffeeChatPurpose
+     * const CoffeeChatPurpose = await prisma.coffeeChatPurpose.create({
+     *   data: {
+     *     // ... data to create a CoffeeChatPurpose
+     *   }
+     * })
+     * 
+     */
+    create<T extends CoffeeChatPurposeCreateArgs>(args: SelectSubset<T, CoffeeChatPurposeCreateArgs<ExtArgs>>): Prisma__CoffeeChatPurposeClient<$Result.GetResult<Prisma.$CoffeeChatPurposePayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many CoffeeChatPurposes.
+     * @param {CoffeeChatPurposeCreateManyArgs} args - Arguments to create many CoffeeChatPurposes.
+     * @example
+     * // Create many CoffeeChatPurposes
+     * const coffeeChatPurpose = await prisma.coffeeChatPurpose.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends CoffeeChatPurposeCreateManyArgs>(args?: SelectSubset<T, CoffeeChatPurposeCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many CoffeeChatPurposes and returns the data saved in the database.
+     * @param {CoffeeChatPurposeCreateManyAndReturnArgs} args - Arguments to create many CoffeeChatPurposes.
+     * @example
+     * // Create many CoffeeChatPurposes
+     * const coffeeChatPurpose = await prisma.coffeeChatPurpose.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many CoffeeChatPurposes and only return the `id`
+     * const coffeeChatPurposeWithIdOnly = await prisma.coffeeChatPurpose.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends CoffeeChatPurposeCreateManyAndReturnArgs>(args?: SelectSubset<T, CoffeeChatPurposeCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CoffeeChatPurposePayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a CoffeeChatPurpose.
+     * @param {CoffeeChatPurposeDeleteArgs} args - Arguments to delete one CoffeeChatPurpose.
+     * @example
+     * // Delete one CoffeeChatPurpose
+     * const CoffeeChatPurpose = await prisma.coffeeChatPurpose.delete({
+     *   where: {
+     *     // ... filter to delete one CoffeeChatPurpose
+     *   }
+     * })
+     * 
+     */
+    delete<T extends CoffeeChatPurposeDeleteArgs>(args: SelectSubset<T, CoffeeChatPurposeDeleteArgs<ExtArgs>>): Prisma__CoffeeChatPurposeClient<$Result.GetResult<Prisma.$CoffeeChatPurposePayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one CoffeeChatPurpose.
+     * @param {CoffeeChatPurposeUpdateArgs} args - Arguments to update one CoffeeChatPurpose.
+     * @example
+     * // Update one CoffeeChatPurpose
+     * const coffeeChatPurpose = await prisma.coffeeChatPurpose.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends CoffeeChatPurposeUpdateArgs>(args: SelectSubset<T, CoffeeChatPurposeUpdateArgs<ExtArgs>>): Prisma__CoffeeChatPurposeClient<$Result.GetResult<Prisma.$CoffeeChatPurposePayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more CoffeeChatPurposes.
+     * @param {CoffeeChatPurposeDeleteManyArgs} args - Arguments to filter CoffeeChatPurposes to delete.
+     * @example
+     * // Delete a few CoffeeChatPurposes
+     * const { count } = await prisma.coffeeChatPurpose.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends CoffeeChatPurposeDeleteManyArgs>(args?: SelectSubset<T, CoffeeChatPurposeDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more CoffeeChatPurposes.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CoffeeChatPurposeUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many CoffeeChatPurposes
+     * const coffeeChatPurpose = await prisma.coffeeChatPurpose.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends CoffeeChatPurposeUpdateManyArgs>(args: SelectSubset<T, CoffeeChatPurposeUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more CoffeeChatPurposes and returns the data updated in the database.
+     * @param {CoffeeChatPurposeUpdateManyAndReturnArgs} args - Arguments to update many CoffeeChatPurposes.
+     * @example
+     * // Update many CoffeeChatPurposes
+     * const coffeeChatPurpose = await prisma.coffeeChatPurpose.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more CoffeeChatPurposes and only return the `id`
+     * const coffeeChatPurposeWithIdOnly = await prisma.coffeeChatPurpose.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends CoffeeChatPurposeUpdateManyAndReturnArgs>(args: SelectSubset<T, CoffeeChatPurposeUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CoffeeChatPurposePayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one CoffeeChatPurpose.
+     * @param {CoffeeChatPurposeUpsertArgs} args - Arguments to update or create a CoffeeChatPurpose.
+     * @example
+     * // Update or create a CoffeeChatPurpose
+     * const coffeeChatPurpose = await prisma.coffeeChatPurpose.upsert({
+     *   create: {
+     *     // ... data to create a CoffeeChatPurpose
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the CoffeeChatPurpose we want to update
+     *   }
+     * })
+     */
+    upsert<T extends CoffeeChatPurposeUpsertArgs>(args: SelectSubset<T, CoffeeChatPurposeUpsertArgs<ExtArgs>>): Prisma__CoffeeChatPurposeClient<$Result.GetResult<Prisma.$CoffeeChatPurposePayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of CoffeeChatPurposes.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CoffeeChatPurposeCountArgs} args - Arguments to filter CoffeeChatPurposes to count.
+     * @example
+     * // Count the number of CoffeeChatPurposes
+     * const count = await prisma.coffeeChatPurpose.count({
+     *   where: {
+     *     // ... the filter for the CoffeeChatPurposes we want to count
+     *   }
+     * })
+    **/
+    count<T extends CoffeeChatPurposeCountArgs>(
+      args?: Subset<T, CoffeeChatPurposeCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], CoffeeChatPurposeCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a CoffeeChatPurpose.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CoffeeChatPurposeAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends CoffeeChatPurposeAggregateArgs>(args: Subset<T, CoffeeChatPurposeAggregateArgs>): Prisma.PrismaPromise<GetCoffeeChatPurposeAggregateType<T>>
+
+    /**
+     * Group by CoffeeChatPurpose.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CoffeeChatPurposeGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends CoffeeChatPurposeGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: CoffeeChatPurposeGroupByArgs['orderBy'] }
+        : { orderBy?: CoffeeChatPurposeGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, CoffeeChatPurposeGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetCoffeeChatPurposeGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the CoffeeChatPurpose model
+   */
+  readonly fields: CoffeeChatPurposeFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for CoffeeChatPurpose.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__CoffeeChatPurposeClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    coffeeChats<T extends CoffeeChatPurpose$coffeeChatsArgs<ExtArgs> = {}>(args?: Subset<T, CoffeeChatPurpose$coffeeChatsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CoffeeChatPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the CoffeeChatPurpose model
+   */
+  interface CoffeeChatPurposeFieldRefs {
+    readonly id: FieldRef<"CoffeeChatPurpose", 'String'>
+    readonly purposeName: FieldRef<"CoffeeChatPurpose", 'String'>
+    readonly description: FieldRef<"CoffeeChatPurpose", 'String'>
+    readonly timeLimit: FieldRef<"CoffeeChatPurpose", 'Int'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * CoffeeChatPurpose findUnique
+   */
+  export type CoffeeChatPurposeFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CoffeeChatPurpose
+     */
+    select?: CoffeeChatPurposeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CoffeeChatPurpose
+     */
+    omit?: CoffeeChatPurposeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CoffeeChatPurposeInclude<ExtArgs> | null
+    /**
+     * Filter, which CoffeeChatPurpose to fetch.
+     */
+    where: CoffeeChatPurposeWhereUniqueInput
+  }
+
+  /**
+   * CoffeeChatPurpose findUniqueOrThrow
+   */
+  export type CoffeeChatPurposeFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CoffeeChatPurpose
+     */
+    select?: CoffeeChatPurposeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CoffeeChatPurpose
+     */
+    omit?: CoffeeChatPurposeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CoffeeChatPurposeInclude<ExtArgs> | null
+    /**
+     * Filter, which CoffeeChatPurpose to fetch.
+     */
+    where: CoffeeChatPurposeWhereUniqueInput
+  }
+
+  /**
+   * CoffeeChatPurpose findFirst
+   */
+  export type CoffeeChatPurposeFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CoffeeChatPurpose
+     */
+    select?: CoffeeChatPurposeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CoffeeChatPurpose
+     */
+    omit?: CoffeeChatPurposeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CoffeeChatPurposeInclude<ExtArgs> | null
+    /**
+     * Filter, which CoffeeChatPurpose to fetch.
+     */
+    where?: CoffeeChatPurposeWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of CoffeeChatPurposes to fetch.
+     */
+    orderBy?: CoffeeChatPurposeOrderByWithRelationInput | CoffeeChatPurposeOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for CoffeeChatPurposes.
+     */
+    cursor?: CoffeeChatPurposeWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` CoffeeChatPurposes from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` CoffeeChatPurposes.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of CoffeeChatPurposes.
+     */
+    distinct?: CoffeeChatPurposeScalarFieldEnum | CoffeeChatPurposeScalarFieldEnum[]
+  }
+
+  /**
+   * CoffeeChatPurpose findFirstOrThrow
+   */
+  export type CoffeeChatPurposeFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CoffeeChatPurpose
+     */
+    select?: CoffeeChatPurposeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CoffeeChatPurpose
+     */
+    omit?: CoffeeChatPurposeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CoffeeChatPurposeInclude<ExtArgs> | null
+    /**
+     * Filter, which CoffeeChatPurpose to fetch.
+     */
+    where?: CoffeeChatPurposeWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of CoffeeChatPurposes to fetch.
+     */
+    orderBy?: CoffeeChatPurposeOrderByWithRelationInput | CoffeeChatPurposeOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for CoffeeChatPurposes.
+     */
+    cursor?: CoffeeChatPurposeWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` CoffeeChatPurposes from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` CoffeeChatPurposes.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of CoffeeChatPurposes.
+     */
+    distinct?: CoffeeChatPurposeScalarFieldEnum | CoffeeChatPurposeScalarFieldEnum[]
+  }
+
+  /**
+   * CoffeeChatPurpose findMany
+   */
+  export type CoffeeChatPurposeFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CoffeeChatPurpose
+     */
+    select?: CoffeeChatPurposeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CoffeeChatPurpose
+     */
+    omit?: CoffeeChatPurposeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CoffeeChatPurposeInclude<ExtArgs> | null
+    /**
+     * Filter, which CoffeeChatPurposes to fetch.
+     */
+    where?: CoffeeChatPurposeWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of CoffeeChatPurposes to fetch.
+     */
+    orderBy?: CoffeeChatPurposeOrderByWithRelationInput | CoffeeChatPurposeOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing CoffeeChatPurposes.
+     */
+    cursor?: CoffeeChatPurposeWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` CoffeeChatPurposes from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` CoffeeChatPurposes.
+     */
+    skip?: number
+    distinct?: CoffeeChatPurposeScalarFieldEnum | CoffeeChatPurposeScalarFieldEnum[]
+  }
+
+  /**
+   * CoffeeChatPurpose create
+   */
+  export type CoffeeChatPurposeCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CoffeeChatPurpose
+     */
+    select?: CoffeeChatPurposeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CoffeeChatPurpose
+     */
+    omit?: CoffeeChatPurposeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CoffeeChatPurposeInclude<ExtArgs> | null
+    /**
+     * The data needed to create a CoffeeChatPurpose.
+     */
+    data: XOR<CoffeeChatPurposeCreateInput, CoffeeChatPurposeUncheckedCreateInput>
+  }
+
+  /**
+   * CoffeeChatPurpose createMany
+   */
+  export type CoffeeChatPurposeCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many CoffeeChatPurposes.
+     */
+    data: CoffeeChatPurposeCreateManyInput | CoffeeChatPurposeCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * CoffeeChatPurpose createManyAndReturn
+   */
+  export type CoffeeChatPurposeCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CoffeeChatPurpose
+     */
+    select?: CoffeeChatPurposeSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the CoffeeChatPurpose
+     */
+    omit?: CoffeeChatPurposeOmit<ExtArgs> | null
+    /**
+     * The data used to create many CoffeeChatPurposes.
+     */
+    data: CoffeeChatPurposeCreateManyInput | CoffeeChatPurposeCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * CoffeeChatPurpose update
+   */
+  export type CoffeeChatPurposeUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CoffeeChatPurpose
+     */
+    select?: CoffeeChatPurposeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CoffeeChatPurpose
+     */
+    omit?: CoffeeChatPurposeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CoffeeChatPurposeInclude<ExtArgs> | null
+    /**
+     * The data needed to update a CoffeeChatPurpose.
+     */
+    data: XOR<CoffeeChatPurposeUpdateInput, CoffeeChatPurposeUncheckedUpdateInput>
+    /**
+     * Choose, which CoffeeChatPurpose to update.
+     */
+    where: CoffeeChatPurposeWhereUniqueInput
+  }
+
+  /**
+   * CoffeeChatPurpose updateMany
+   */
+  export type CoffeeChatPurposeUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update CoffeeChatPurposes.
+     */
+    data: XOR<CoffeeChatPurposeUpdateManyMutationInput, CoffeeChatPurposeUncheckedUpdateManyInput>
+    /**
+     * Filter which CoffeeChatPurposes to update
+     */
+    where?: CoffeeChatPurposeWhereInput
+    /**
+     * Limit how many CoffeeChatPurposes to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * CoffeeChatPurpose updateManyAndReturn
+   */
+  export type CoffeeChatPurposeUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CoffeeChatPurpose
+     */
+    select?: CoffeeChatPurposeSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the CoffeeChatPurpose
+     */
+    omit?: CoffeeChatPurposeOmit<ExtArgs> | null
+    /**
+     * The data used to update CoffeeChatPurposes.
+     */
+    data: XOR<CoffeeChatPurposeUpdateManyMutationInput, CoffeeChatPurposeUncheckedUpdateManyInput>
+    /**
+     * Filter which CoffeeChatPurposes to update
+     */
+    where?: CoffeeChatPurposeWhereInput
+    /**
+     * Limit how many CoffeeChatPurposes to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * CoffeeChatPurpose upsert
+   */
+  export type CoffeeChatPurposeUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CoffeeChatPurpose
+     */
+    select?: CoffeeChatPurposeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CoffeeChatPurpose
+     */
+    omit?: CoffeeChatPurposeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CoffeeChatPurposeInclude<ExtArgs> | null
+    /**
+     * The filter to search for the CoffeeChatPurpose to update in case it exists.
+     */
+    where: CoffeeChatPurposeWhereUniqueInput
+    /**
+     * In case the CoffeeChatPurpose found by the `where` argument doesn't exist, create a new CoffeeChatPurpose with this data.
+     */
+    create: XOR<CoffeeChatPurposeCreateInput, CoffeeChatPurposeUncheckedCreateInput>
+    /**
+     * In case the CoffeeChatPurpose was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<CoffeeChatPurposeUpdateInput, CoffeeChatPurposeUncheckedUpdateInput>
+  }
+
+  /**
+   * CoffeeChatPurpose delete
+   */
+  export type CoffeeChatPurposeDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CoffeeChatPurpose
+     */
+    select?: CoffeeChatPurposeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CoffeeChatPurpose
+     */
+    omit?: CoffeeChatPurposeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CoffeeChatPurposeInclude<ExtArgs> | null
+    /**
+     * Filter which CoffeeChatPurpose to delete.
+     */
+    where: CoffeeChatPurposeWhereUniqueInput
+  }
+
+  /**
+   * CoffeeChatPurpose deleteMany
+   */
+  export type CoffeeChatPurposeDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which CoffeeChatPurposes to delete
+     */
+    where?: CoffeeChatPurposeWhereInput
+    /**
+     * Limit how many CoffeeChatPurposes to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * CoffeeChatPurpose.coffeeChats
+   */
+  export type CoffeeChatPurpose$coffeeChatsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CoffeeChat
+     */
+    select?: CoffeeChatSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CoffeeChat
+     */
+    omit?: CoffeeChatOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CoffeeChatInclude<ExtArgs> | null
+    where?: CoffeeChatWhereInput
+    orderBy?: CoffeeChatOrderByWithRelationInput | CoffeeChatOrderByWithRelationInput[]
+    cursor?: CoffeeChatWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: CoffeeChatScalarFieldEnum | CoffeeChatScalarFieldEnum[]
+  }
+
+  /**
+   * CoffeeChatPurpose without action
+   */
+  export type CoffeeChatPurposeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CoffeeChatPurpose
+     */
+    select?: CoffeeChatPurposeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CoffeeChatPurpose
+     */
+    omit?: CoffeeChatPurposeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CoffeeChatPurposeInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model CoffeeChatVenue
+   */
+
+  export type AggregateCoffeeChatVenue = {
+    _count: CoffeeChatVenueCountAggregateOutputType | null
+    _avg: CoffeeChatVenueAvgAggregateOutputType | null
+    _sum: CoffeeChatVenueSumAggregateOutputType | null
+    _min: CoffeeChatVenueMinAggregateOutputType | null
+    _max: CoffeeChatVenueMaxAggregateOutputType | null
+  }
+
+  export type CoffeeChatVenueAvgAggregateOutputType = {
+    rating: number | null
+  }
+
+  export type CoffeeChatVenueSumAggregateOutputType = {
+    rating: number | null
+  }
+
+  export type CoffeeChatVenueMinAggregateOutputType = {
+    id: string | null
+    venueName: string | null
+    noiseLevel: $Enums.CoffeeChatVenueNoiseLevel | null
+    description: string | null
+    location: string | null
+    rating: number | null
+  }
+
+  export type CoffeeChatVenueMaxAggregateOutputType = {
+    id: string | null
+    venueName: string | null
+    noiseLevel: $Enums.CoffeeChatVenueNoiseLevel | null
+    description: string | null
+    location: string | null
+    rating: number | null
+  }
+
+  export type CoffeeChatVenueCountAggregateOutputType = {
+    id: number
+    venueName: number
+    noiseLevel: number
+    description: number
+    location: number
+    rating: number
+    tags: number
+    _all: number
+  }
+
+
+  export type CoffeeChatVenueAvgAggregateInputType = {
+    rating?: true
+  }
+
+  export type CoffeeChatVenueSumAggregateInputType = {
+    rating?: true
+  }
+
+  export type CoffeeChatVenueMinAggregateInputType = {
+    id?: true
+    venueName?: true
+    noiseLevel?: true
+    description?: true
+    location?: true
+    rating?: true
+  }
+
+  export type CoffeeChatVenueMaxAggregateInputType = {
+    id?: true
+    venueName?: true
+    noiseLevel?: true
+    description?: true
+    location?: true
+    rating?: true
+  }
+
+  export type CoffeeChatVenueCountAggregateInputType = {
+    id?: true
+    venueName?: true
+    noiseLevel?: true
+    description?: true
+    location?: true
+    rating?: true
+    tags?: true
+    _all?: true
+  }
+
+  export type CoffeeChatVenueAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which CoffeeChatVenue to aggregate.
+     */
+    where?: CoffeeChatVenueWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of CoffeeChatVenues to fetch.
+     */
+    orderBy?: CoffeeChatVenueOrderByWithRelationInput | CoffeeChatVenueOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: CoffeeChatVenueWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` CoffeeChatVenues from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` CoffeeChatVenues.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned CoffeeChatVenues
+    **/
+    _count?: true | CoffeeChatVenueCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: CoffeeChatVenueAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: CoffeeChatVenueSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: CoffeeChatVenueMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: CoffeeChatVenueMaxAggregateInputType
+  }
+
+  export type GetCoffeeChatVenueAggregateType<T extends CoffeeChatVenueAggregateArgs> = {
+        [P in keyof T & keyof AggregateCoffeeChatVenue]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateCoffeeChatVenue[P]>
+      : GetScalarType<T[P], AggregateCoffeeChatVenue[P]>
+  }
+
+
+
+
+  export type CoffeeChatVenueGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: CoffeeChatVenueWhereInput
+    orderBy?: CoffeeChatVenueOrderByWithAggregationInput | CoffeeChatVenueOrderByWithAggregationInput[]
+    by: CoffeeChatVenueScalarFieldEnum[] | CoffeeChatVenueScalarFieldEnum
+    having?: CoffeeChatVenueScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: CoffeeChatVenueCountAggregateInputType | true
+    _avg?: CoffeeChatVenueAvgAggregateInputType
+    _sum?: CoffeeChatVenueSumAggregateInputType
+    _min?: CoffeeChatVenueMinAggregateInputType
+    _max?: CoffeeChatVenueMaxAggregateInputType
+  }
+
+  export type CoffeeChatVenueGroupByOutputType = {
+    id: string
+    venueName: string
+    noiseLevel: $Enums.CoffeeChatVenueNoiseLevel
+    description: string
+    location: string
+    rating: number
+    tags: $Enums.CoffeeChatVenueTags[]
+    _count: CoffeeChatVenueCountAggregateOutputType | null
+    _avg: CoffeeChatVenueAvgAggregateOutputType | null
+    _sum: CoffeeChatVenueSumAggregateOutputType | null
+    _min: CoffeeChatVenueMinAggregateOutputType | null
+    _max: CoffeeChatVenueMaxAggregateOutputType | null
+  }
+
+  type GetCoffeeChatVenueGroupByPayload<T extends CoffeeChatVenueGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<CoffeeChatVenueGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof CoffeeChatVenueGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], CoffeeChatVenueGroupByOutputType[P]>
+            : GetScalarType<T[P], CoffeeChatVenueGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type CoffeeChatVenueSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    venueName?: boolean
+    noiseLevel?: boolean
+    description?: boolean
+    location?: boolean
+    rating?: boolean
+    tags?: boolean
+    coffeeChats?: boolean | CoffeeChatVenue$coffeeChatsArgs<ExtArgs>
+    _count?: boolean | CoffeeChatVenueCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["coffeeChatVenue"]>
+
+  export type CoffeeChatVenueSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    venueName?: boolean
+    noiseLevel?: boolean
+    description?: boolean
+    location?: boolean
+    rating?: boolean
+    tags?: boolean
+  }, ExtArgs["result"]["coffeeChatVenue"]>
+
+  export type CoffeeChatVenueSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    venueName?: boolean
+    noiseLevel?: boolean
+    description?: boolean
+    location?: boolean
+    rating?: boolean
+    tags?: boolean
+  }, ExtArgs["result"]["coffeeChatVenue"]>
+
+  export type CoffeeChatVenueSelectScalar = {
+    id?: boolean
+    venueName?: boolean
+    noiseLevel?: boolean
+    description?: boolean
+    location?: boolean
+    rating?: boolean
+    tags?: boolean
+  }
+
+  export type CoffeeChatVenueOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "venueName" | "noiseLevel" | "description" | "location" | "rating" | "tags", ExtArgs["result"]["coffeeChatVenue"]>
+  export type CoffeeChatVenueInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    coffeeChats?: boolean | CoffeeChatVenue$coffeeChatsArgs<ExtArgs>
+    _count?: boolean | CoffeeChatVenueCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type CoffeeChatVenueIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+  export type CoffeeChatVenueIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+
+  export type $CoffeeChatVenuePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "CoffeeChatVenue"
+    objects: {
+      coffeeChats: Prisma.$CoffeeChatPayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      venueName: string
+      noiseLevel: $Enums.CoffeeChatVenueNoiseLevel
+      description: string
+      location: string
+      rating: number
+      tags: $Enums.CoffeeChatVenueTags[]
+    }, ExtArgs["result"]["coffeeChatVenue"]>
+    composites: {}
+  }
+
+  type CoffeeChatVenueGetPayload<S extends boolean | null | undefined | CoffeeChatVenueDefaultArgs> = $Result.GetResult<Prisma.$CoffeeChatVenuePayload, S>
+
+  type CoffeeChatVenueCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<CoffeeChatVenueFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: CoffeeChatVenueCountAggregateInputType | true
+    }
+
+  export interface CoffeeChatVenueDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['CoffeeChatVenue'], meta: { name: 'CoffeeChatVenue' } }
+    /**
+     * Find zero or one CoffeeChatVenue that matches the filter.
+     * @param {CoffeeChatVenueFindUniqueArgs} args - Arguments to find a CoffeeChatVenue
+     * @example
+     * // Get one CoffeeChatVenue
+     * const coffeeChatVenue = await prisma.coffeeChatVenue.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends CoffeeChatVenueFindUniqueArgs>(args: SelectSubset<T, CoffeeChatVenueFindUniqueArgs<ExtArgs>>): Prisma__CoffeeChatVenueClient<$Result.GetResult<Prisma.$CoffeeChatVenuePayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one CoffeeChatVenue that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {CoffeeChatVenueFindUniqueOrThrowArgs} args - Arguments to find a CoffeeChatVenue
+     * @example
+     * // Get one CoffeeChatVenue
+     * const coffeeChatVenue = await prisma.coffeeChatVenue.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends CoffeeChatVenueFindUniqueOrThrowArgs>(args: SelectSubset<T, CoffeeChatVenueFindUniqueOrThrowArgs<ExtArgs>>): Prisma__CoffeeChatVenueClient<$Result.GetResult<Prisma.$CoffeeChatVenuePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first CoffeeChatVenue that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CoffeeChatVenueFindFirstArgs} args - Arguments to find a CoffeeChatVenue
+     * @example
+     * // Get one CoffeeChatVenue
+     * const coffeeChatVenue = await prisma.coffeeChatVenue.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends CoffeeChatVenueFindFirstArgs>(args?: SelectSubset<T, CoffeeChatVenueFindFirstArgs<ExtArgs>>): Prisma__CoffeeChatVenueClient<$Result.GetResult<Prisma.$CoffeeChatVenuePayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first CoffeeChatVenue that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CoffeeChatVenueFindFirstOrThrowArgs} args - Arguments to find a CoffeeChatVenue
+     * @example
+     * // Get one CoffeeChatVenue
+     * const coffeeChatVenue = await prisma.coffeeChatVenue.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends CoffeeChatVenueFindFirstOrThrowArgs>(args?: SelectSubset<T, CoffeeChatVenueFindFirstOrThrowArgs<ExtArgs>>): Prisma__CoffeeChatVenueClient<$Result.GetResult<Prisma.$CoffeeChatVenuePayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more CoffeeChatVenues that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CoffeeChatVenueFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all CoffeeChatVenues
+     * const coffeeChatVenues = await prisma.coffeeChatVenue.findMany()
+     * 
+     * // Get first 10 CoffeeChatVenues
+     * const coffeeChatVenues = await prisma.coffeeChatVenue.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const coffeeChatVenueWithIdOnly = await prisma.coffeeChatVenue.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends CoffeeChatVenueFindManyArgs>(args?: SelectSubset<T, CoffeeChatVenueFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CoffeeChatVenuePayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a CoffeeChatVenue.
+     * @param {CoffeeChatVenueCreateArgs} args - Arguments to create a CoffeeChatVenue.
+     * @example
+     * // Create one CoffeeChatVenue
+     * const CoffeeChatVenue = await prisma.coffeeChatVenue.create({
+     *   data: {
+     *     // ... data to create a CoffeeChatVenue
+     *   }
+     * })
+     * 
+     */
+    create<T extends CoffeeChatVenueCreateArgs>(args: SelectSubset<T, CoffeeChatVenueCreateArgs<ExtArgs>>): Prisma__CoffeeChatVenueClient<$Result.GetResult<Prisma.$CoffeeChatVenuePayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many CoffeeChatVenues.
+     * @param {CoffeeChatVenueCreateManyArgs} args - Arguments to create many CoffeeChatVenues.
+     * @example
+     * // Create many CoffeeChatVenues
+     * const coffeeChatVenue = await prisma.coffeeChatVenue.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends CoffeeChatVenueCreateManyArgs>(args?: SelectSubset<T, CoffeeChatVenueCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many CoffeeChatVenues and returns the data saved in the database.
+     * @param {CoffeeChatVenueCreateManyAndReturnArgs} args - Arguments to create many CoffeeChatVenues.
+     * @example
+     * // Create many CoffeeChatVenues
+     * const coffeeChatVenue = await prisma.coffeeChatVenue.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many CoffeeChatVenues and only return the `id`
+     * const coffeeChatVenueWithIdOnly = await prisma.coffeeChatVenue.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends CoffeeChatVenueCreateManyAndReturnArgs>(args?: SelectSubset<T, CoffeeChatVenueCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CoffeeChatVenuePayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a CoffeeChatVenue.
+     * @param {CoffeeChatVenueDeleteArgs} args - Arguments to delete one CoffeeChatVenue.
+     * @example
+     * // Delete one CoffeeChatVenue
+     * const CoffeeChatVenue = await prisma.coffeeChatVenue.delete({
+     *   where: {
+     *     // ... filter to delete one CoffeeChatVenue
+     *   }
+     * })
+     * 
+     */
+    delete<T extends CoffeeChatVenueDeleteArgs>(args: SelectSubset<T, CoffeeChatVenueDeleteArgs<ExtArgs>>): Prisma__CoffeeChatVenueClient<$Result.GetResult<Prisma.$CoffeeChatVenuePayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one CoffeeChatVenue.
+     * @param {CoffeeChatVenueUpdateArgs} args - Arguments to update one CoffeeChatVenue.
+     * @example
+     * // Update one CoffeeChatVenue
+     * const coffeeChatVenue = await prisma.coffeeChatVenue.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends CoffeeChatVenueUpdateArgs>(args: SelectSubset<T, CoffeeChatVenueUpdateArgs<ExtArgs>>): Prisma__CoffeeChatVenueClient<$Result.GetResult<Prisma.$CoffeeChatVenuePayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more CoffeeChatVenues.
+     * @param {CoffeeChatVenueDeleteManyArgs} args - Arguments to filter CoffeeChatVenues to delete.
+     * @example
+     * // Delete a few CoffeeChatVenues
+     * const { count } = await prisma.coffeeChatVenue.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends CoffeeChatVenueDeleteManyArgs>(args?: SelectSubset<T, CoffeeChatVenueDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more CoffeeChatVenues.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CoffeeChatVenueUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many CoffeeChatVenues
+     * const coffeeChatVenue = await prisma.coffeeChatVenue.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends CoffeeChatVenueUpdateManyArgs>(args: SelectSubset<T, CoffeeChatVenueUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more CoffeeChatVenues and returns the data updated in the database.
+     * @param {CoffeeChatVenueUpdateManyAndReturnArgs} args - Arguments to update many CoffeeChatVenues.
+     * @example
+     * // Update many CoffeeChatVenues
+     * const coffeeChatVenue = await prisma.coffeeChatVenue.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more CoffeeChatVenues and only return the `id`
+     * const coffeeChatVenueWithIdOnly = await prisma.coffeeChatVenue.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends CoffeeChatVenueUpdateManyAndReturnArgs>(args: SelectSubset<T, CoffeeChatVenueUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CoffeeChatVenuePayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one CoffeeChatVenue.
+     * @param {CoffeeChatVenueUpsertArgs} args - Arguments to update or create a CoffeeChatVenue.
+     * @example
+     * // Update or create a CoffeeChatVenue
+     * const coffeeChatVenue = await prisma.coffeeChatVenue.upsert({
+     *   create: {
+     *     // ... data to create a CoffeeChatVenue
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the CoffeeChatVenue we want to update
+     *   }
+     * })
+     */
+    upsert<T extends CoffeeChatVenueUpsertArgs>(args: SelectSubset<T, CoffeeChatVenueUpsertArgs<ExtArgs>>): Prisma__CoffeeChatVenueClient<$Result.GetResult<Prisma.$CoffeeChatVenuePayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of CoffeeChatVenues.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CoffeeChatVenueCountArgs} args - Arguments to filter CoffeeChatVenues to count.
+     * @example
+     * // Count the number of CoffeeChatVenues
+     * const count = await prisma.coffeeChatVenue.count({
+     *   where: {
+     *     // ... the filter for the CoffeeChatVenues we want to count
+     *   }
+     * })
+    **/
+    count<T extends CoffeeChatVenueCountArgs>(
+      args?: Subset<T, CoffeeChatVenueCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], CoffeeChatVenueCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a CoffeeChatVenue.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CoffeeChatVenueAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends CoffeeChatVenueAggregateArgs>(args: Subset<T, CoffeeChatVenueAggregateArgs>): Prisma.PrismaPromise<GetCoffeeChatVenueAggregateType<T>>
+
+    /**
+     * Group by CoffeeChatVenue.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CoffeeChatVenueGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends CoffeeChatVenueGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: CoffeeChatVenueGroupByArgs['orderBy'] }
+        : { orderBy?: CoffeeChatVenueGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, CoffeeChatVenueGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetCoffeeChatVenueGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the CoffeeChatVenue model
+   */
+  readonly fields: CoffeeChatVenueFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for CoffeeChatVenue.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__CoffeeChatVenueClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    coffeeChats<T extends CoffeeChatVenue$coffeeChatsArgs<ExtArgs> = {}>(args?: Subset<T, CoffeeChatVenue$coffeeChatsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CoffeeChatPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the CoffeeChatVenue model
+   */
+  interface CoffeeChatVenueFieldRefs {
+    readonly id: FieldRef<"CoffeeChatVenue", 'String'>
+    readonly venueName: FieldRef<"CoffeeChatVenue", 'String'>
+    readonly noiseLevel: FieldRef<"CoffeeChatVenue", 'CoffeeChatVenueNoiseLevel'>
+    readonly description: FieldRef<"CoffeeChatVenue", 'String'>
+    readonly location: FieldRef<"CoffeeChatVenue", 'String'>
+    readonly rating: FieldRef<"CoffeeChatVenue", 'Int'>
+    readonly tags: FieldRef<"CoffeeChatVenue", 'CoffeeChatVenueTags[]'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * CoffeeChatVenue findUnique
+   */
+  export type CoffeeChatVenueFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CoffeeChatVenue
+     */
+    select?: CoffeeChatVenueSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CoffeeChatVenue
+     */
+    omit?: CoffeeChatVenueOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CoffeeChatVenueInclude<ExtArgs> | null
+    /**
+     * Filter, which CoffeeChatVenue to fetch.
+     */
+    where: CoffeeChatVenueWhereUniqueInput
+  }
+
+  /**
+   * CoffeeChatVenue findUniqueOrThrow
+   */
+  export type CoffeeChatVenueFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CoffeeChatVenue
+     */
+    select?: CoffeeChatVenueSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CoffeeChatVenue
+     */
+    omit?: CoffeeChatVenueOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CoffeeChatVenueInclude<ExtArgs> | null
+    /**
+     * Filter, which CoffeeChatVenue to fetch.
+     */
+    where: CoffeeChatVenueWhereUniqueInput
+  }
+
+  /**
+   * CoffeeChatVenue findFirst
+   */
+  export type CoffeeChatVenueFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CoffeeChatVenue
+     */
+    select?: CoffeeChatVenueSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CoffeeChatVenue
+     */
+    omit?: CoffeeChatVenueOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CoffeeChatVenueInclude<ExtArgs> | null
+    /**
+     * Filter, which CoffeeChatVenue to fetch.
+     */
+    where?: CoffeeChatVenueWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of CoffeeChatVenues to fetch.
+     */
+    orderBy?: CoffeeChatVenueOrderByWithRelationInput | CoffeeChatVenueOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for CoffeeChatVenues.
+     */
+    cursor?: CoffeeChatVenueWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` CoffeeChatVenues from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` CoffeeChatVenues.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of CoffeeChatVenues.
+     */
+    distinct?: CoffeeChatVenueScalarFieldEnum | CoffeeChatVenueScalarFieldEnum[]
+  }
+
+  /**
+   * CoffeeChatVenue findFirstOrThrow
+   */
+  export type CoffeeChatVenueFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CoffeeChatVenue
+     */
+    select?: CoffeeChatVenueSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CoffeeChatVenue
+     */
+    omit?: CoffeeChatVenueOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CoffeeChatVenueInclude<ExtArgs> | null
+    /**
+     * Filter, which CoffeeChatVenue to fetch.
+     */
+    where?: CoffeeChatVenueWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of CoffeeChatVenues to fetch.
+     */
+    orderBy?: CoffeeChatVenueOrderByWithRelationInput | CoffeeChatVenueOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for CoffeeChatVenues.
+     */
+    cursor?: CoffeeChatVenueWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` CoffeeChatVenues from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` CoffeeChatVenues.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of CoffeeChatVenues.
+     */
+    distinct?: CoffeeChatVenueScalarFieldEnum | CoffeeChatVenueScalarFieldEnum[]
+  }
+
+  /**
+   * CoffeeChatVenue findMany
+   */
+  export type CoffeeChatVenueFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CoffeeChatVenue
+     */
+    select?: CoffeeChatVenueSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CoffeeChatVenue
+     */
+    omit?: CoffeeChatVenueOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CoffeeChatVenueInclude<ExtArgs> | null
+    /**
+     * Filter, which CoffeeChatVenues to fetch.
+     */
+    where?: CoffeeChatVenueWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of CoffeeChatVenues to fetch.
+     */
+    orderBy?: CoffeeChatVenueOrderByWithRelationInput | CoffeeChatVenueOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing CoffeeChatVenues.
+     */
+    cursor?: CoffeeChatVenueWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` CoffeeChatVenues from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` CoffeeChatVenues.
+     */
+    skip?: number
+    distinct?: CoffeeChatVenueScalarFieldEnum | CoffeeChatVenueScalarFieldEnum[]
+  }
+
+  /**
+   * CoffeeChatVenue create
+   */
+  export type CoffeeChatVenueCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CoffeeChatVenue
+     */
+    select?: CoffeeChatVenueSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CoffeeChatVenue
+     */
+    omit?: CoffeeChatVenueOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CoffeeChatVenueInclude<ExtArgs> | null
+    /**
+     * The data needed to create a CoffeeChatVenue.
+     */
+    data: XOR<CoffeeChatVenueCreateInput, CoffeeChatVenueUncheckedCreateInput>
+  }
+
+  /**
+   * CoffeeChatVenue createMany
+   */
+  export type CoffeeChatVenueCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many CoffeeChatVenues.
+     */
+    data: CoffeeChatVenueCreateManyInput | CoffeeChatVenueCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * CoffeeChatVenue createManyAndReturn
+   */
+  export type CoffeeChatVenueCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CoffeeChatVenue
+     */
+    select?: CoffeeChatVenueSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the CoffeeChatVenue
+     */
+    omit?: CoffeeChatVenueOmit<ExtArgs> | null
+    /**
+     * The data used to create many CoffeeChatVenues.
+     */
+    data: CoffeeChatVenueCreateManyInput | CoffeeChatVenueCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * CoffeeChatVenue update
+   */
+  export type CoffeeChatVenueUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CoffeeChatVenue
+     */
+    select?: CoffeeChatVenueSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CoffeeChatVenue
+     */
+    omit?: CoffeeChatVenueOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CoffeeChatVenueInclude<ExtArgs> | null
+    /**
+     * The data needed to update a CoffeeChatVenue.
+     */
+    data: XOR<CoffeeChatVenueUpdateInput, CoffeeChatVenueUncheckedUpdateInput>
+    /**
+     * Choose, which CoffeeChatVenue to update.
+     */
+    where: CoffeeChatVenueWhereUniqueInput
+  }
+
+  /**
+   * CoffeeChatVenue updateMany
+   */
+  export type CoffeeChatVenueUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update CoffeeChatVenues.
+     */
+    data: XOR<CoffeeChatVenueUpdateManyMutationInput, CoffeeChatVenueUncheckedUpdateManyInput>
+    /**
+     * Filter which CoffeeChatVenues to update
+     */
+    where?: CoffeeChatVenueWhereInput
+    /**
+     * Limit how many CoffeeChatVenues to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * CoffeeChatVenue updateManyAndReturn
+   */
+  export type CoffeeChatVenueUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CoffeeChatVenue
+     */
+    select?: CoffeeChatVenueSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the CoffeeChatVenue
+     */
+    omit?: CoffeeChatVenueOmit<ExtArgs> | null
+    /**
+     * The data used to update CoffeeChatVenues.
+     */
+    data: XOR<CoffeeChatVenueUpdateManyMutationInput, CoffeeChatVenueUncheckedUpdateManyInput>
+    /**
+     * Filter which CoffeeChatVenues to update
+     */
+    where?: CoffeeChatVenueWhereInput
+    /**
+     * Limit how many CoffeeChatVenues to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * CoffeeChatVenue upsert
+   */
+  export type CoffeeChatVenueUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CoffeeChatVenue
+     */
+    select?: CoffeeChatVenueSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CoffeeChatVenue
+     */
+    omit?: CoffeeChatVenueOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CoffeeChatVenueInclude<ExtArgs> | null
+    /**
+     * The filter to search for the CoffeeChatVenue to update in case it exists.
+     */
+    where: CoffeeChatVenueWhereUniqueInput
+    /**
+     * In case the CoffeeChatVenue found by the `where` argument doesn't exist, create a new CoffeeChatVenue with this data.
+     */
+    create: XOR<CoffeeChatVenueCreateInput, CoffeeChatVenueUncheckedCreateInput>
+    /**
+     * In case the CoffeeChatVenue was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<CoffeeChatVenueUpdateInput, CoffeeChatVenueUncheckedUpdateInput>
+  }
+
+  /**
+   * CoffeeChatVenue delete
+   */
+  export type CoffeeChatVenueDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CoffeeChatVenue
+     */
+    select?: CoffeeChatVenueSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CoffeeChatVenue
+     */
+    omit?: CoffeeChatVenueOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CoffeeChatVenueInclude<ExtArgs> | null
+    /**
+     * Filter which CoffeeChatVenue to delete.
+     */
+    where: CoffeeChatVenueWhereUniqueInput
+  }
+
+  /**
+   * CoffeeChatVenue deleteMany
+   */
+  export type CoffeeChatVenueDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which CoffeeChatVenues to delete
+     */
+    where?: CoffeeChatVenueWhereInput
+    /**
+     * Limit how many CoffeeChatVenues to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * CoffeeChatVenue.coffeeChats
+   */
+  export type CoffeeChatVenue$coffeeChatsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CoffeeChat
+     */
+    select?: CoffeeChatSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CoffeeChat
+     */
+    omit?: CoffeeChatOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CoffeeChatInclude<ExtArgs> | null
+    where?: CoffeeChatWhereInput
+    orderBy?: CoffeeChatOrderByWithRelationInput | CoffeeChatOrderByWithRelationInput[]
+    cursor?: CoffeeChatWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: CoffeeChatScalarFieldEnum | CoffeeChatScalarFieldEnum[]
+  }
+
+  /**
+   * CoffeeChatVenue without action
+   */
+  export type CoffeeChatVenueDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CoffeeChatVenue
+     */
+    select?: CoffeeChatVenueSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CoffeeChatVenue
+     */
+    omit?: CoffeeChatVenueOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CoffeeChatVenueInclude<ExtArgs> | null
   }
 
 
@@ -18342,13 +20938,40 @@ export namespace Prisma {
     id: 'id',
     inviterId: 'inviterId',
     inviteeId: 'inviteeId',
+    purposeId: 'purposeId',
+    venueId: 'venueId',
     scheduledAt: 'scheduledAt',
+    duration: 'duration',
+    personalMessage: 'personalMessage',
     status: 'status',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
   };
 
   export type CoffeeChatScalarFieldEnum = (typeof CoffeeChatScalarFieldEnum)[keyof typeof CoffeeChatScalarFieldEnum]
+
+
+  export const CoffeeChatPurposeScalarFieldEnum: {
+    id: 'id',
+    purposeName: 'purposeName',
+    description: 'description',
+    timeLimit: 'timeLimit'
+  };
+
+  export type CoffeeChatPurposeScalarFieldEnum = (typeof CoffeeChatPurposeScalarFieldEnum)[keyof typeof CoffeeChatPurposeScalarFieldEnum]
+
+
+  export const CoffeeChatVenueScalarFieldEnum: {
+    id: 'id',
+    venueName: 'venueName',
+    noiseLevel: 'noiseLevel',
+    description: 'description',
+    location: 'location',
+    rating: 'rating',
+    tags: 'tags'
+  };
+
+  export type CoffeeChatVenueScalarFieldEnum = (typeof CoffeeChatVenueScalarFieldEnum)[keyof typeof CoffeeChatVenueScalarFieldEnum]
 
 
   export const ChatScalarFieldEnum: {
@@ -18520,6 +21143,34 @@ export namespace Prisma {
    * Reference to a field of type 'CoffeeChatStatus[]'
    */
   export type ListEnumCoffeeChatStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'CoffeeChatStatus[]'>
+    
+
+
+  /**
+   * Reference to a field of type 'CoffeeChatVenueNoiseLevel'
+   */
+  export type EnumCoffeeChatVenueNoiseLevelFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'CoffeeChatVenueNoiseLevel'>
+    
+
+
+  /**
+   * Reference to a field of type 'CoffeeChatVenueNoiseLevel[]'
+   */
+  export type ListEnumCoffeeChatVenueNoiseLevelFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'CoffeeChatVenueNoiseLevel[]'>
+    
+
+
+  /**
+   * Reference to a field of type 'CoffeeChatVenueTags[]'
+   */
+  export type ListEnumCoffeeChatVenueTagsFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'CoffeeChatVenueTags[]'>
+    
+
+
+  /**
+   * Reference to a field of type 'CoffeeChatVenueTags'
+   */
+  export type EnumCoffeeChatVenueTagsFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'CoffeeChatVenueTags'>
     
 
 
@@ -19289,24 +21940,36 @@ export namespace Prisma {
     id?: StringFilter<"CoffeeChat"> | string
     inviterId?: StringFilter<"CoffeeChat"> | string
     inviteeId?: StringFilter<"CoffeeChat"> | string
+    purposeId?: StringFilter<"CoffeeChat"> | string
+    venueId?: StringFilter<"CoffeeChat"> | string
     scheduledAt?: DateTimeNullableFilter<"CoffeeChat"> | Date | string | null
+    duration?: IntFilter<"CoffeeChat"> | number
+    personalMessage?: StringNullableFilter<"CoffeeChat"> | string | null
     status?: EnumCoffeeChatStatusFilter<"CoffeeChat"> | $Enums.CoffeeChatStatus
     createdAt?: DateTimeFilter<"CoffeeChat"> | Date | string
     updatedAt?: DateTimeFilter<"CoffeeChat"> | Date | string
     inviter?: XOR<UserDetailsScalarRelationFilter, UserDetailsWhereInput>
     invitee?: XOR<UserDetailsScalarRelationFilter, UserDetailsWhereInput>
+    purpose?: XOR<CoffeeChatPurposeScalarRelationFilter, CoffeeChatPurposeWhereInput>
+    venue?: XOR<CoffeeChatVenueScalarRelationFilter, CoffeeChatVenueWhereInput>
   }
 
   export type CoffeeChatOrderByWithRelationInput = {
     id?: SortOrder
     inviterId?: SortOrder
     inviteeId?: SortOrder
+    purposeId?: SortOrder
+    venueId?: SortOrder
     scheduledAt?: SortOrderInput | SortOrder
+    duration?: SortOrder
+    personalMessage?: SortOrderInput | SortOrder
     status?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     inviter?: UserDetailsOrderByWithRelationInput
     invitee?: UserDetailsOrderByWithRelationInput
+    purpose?: CoffeeChatPurposeOrderByWithRelationInput
+    venue?: CoffeeChatVenueOrderByWithRelationInput
   }
 
   export type CoffeeChatWhereUniqueInput = Prisma.AtLeast<{
@@ -19316,25 +21979,37 @@ export namespace Prisma {
     NOT?: CoffeeChatWhereInput | CoffeeChatWhereInput[]
     inviterId?: StringFilter<"CoffeeChat"> | string
     inviteeId?: StringFilter<"CoffeeChat"> | string
+    purposeId?: StringFilter<"CoffeeChat"> | string
+    venueId?: StringFilter<"CoffeeChat"> | string
     scheduledAt?: DateTimeNullableFilter<"CoffeeChat"> | Date | string | null
+    duration?: IntFilter<"CoffeeChat"> | number
+    personalMessage?: StringNullableFilter<"CoffeeChat"> | string | null
     status?: EnumCoffeeChatStatusFilter<"CoffeeChat"> | $Enums.CoffeeChatStatus
     createdAt?: DateTimeFilter<"CoffeeChat"> | Date | string
     updatedAt?: DateTimeFilter<"CoffeeChat"> | Date | string
     inviter?: XOR<UserDetailsScalarRelationFilter, UserDetailsWhereInput>
     invitee?: XOR<UserDetailsScalarRelationFilter, UserDetailsWhereInput>
+    purpose?: XOR<CoffeeChatPurposeScalarRelationFilter, CoffeeChatPurposeWhereInput>
+    venue?: XOR<CoffeeChatVenueScalarRelationFilter, CoffeeChatVenueWhereInput>
   }, "id">
 
   export type CoffeeChatOrderByWithAggregationInput = {
     id?: SortOrder
     inviterId?: SortOrder
     inviteeId?: SortOrder
+    purposeId?: SortOrder
+    venueId?: SortOrder
     scheduledAt?: SortOrderInput | SortOrder
+    duration?: SortOrder
+    personalMessage?: SortOrderInput | SortOrder
     status?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     _count?: CoffeeChatCountOrderByAggregateInput
+    _avg?: CoffeeChatAvgOrderByAggregateInput
     _max?: CoffeeChatMaxOrderByAggregateInput
     _min?: CoffeeChatMinOrderByAggregateInput
+    _sum?: CoffeeChatSumOrderByAggregateInput
   }
 
   export type CoffeeChatScalarWhereWithAggregatesInput = {
@@ -19344,10 +22019,133 @@ export namespace Prisma {
     id?: StringWithAggregatesFilter<"CoffeeChat"> | string
     inviterId?: StringWithAggregatesFilter<"CoffeeChat"> | string
     inviteeId?: StringWithAggregatesFilter<"CoffeeChat"> | string
+    purposeId?: StringWithAggregatesFilter<"CoffeeChat"> | string
+    venueId?: StringWithAggregatesFilter<"CoffeeChat"> | string
     scheduledAt?: DateTimeNullableWithAggregatesFilter<"CoffeeChat"> | Date | string | null
+    duration?: IntWithAggregatesFilter<"CoffeeChat"> | number
+    personalMessage?: StringNullableWithAggregatesFilter<"CoffeeChat"> | string | null
     status?: EnumCoffeeChatStatusWithAggregatesFilter<"CoffeeChat"> | $Enums.CoffeeChatStatus
     createdAt?: DateTimeWithAggregatesFilter<"CoffeeChat"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"CoffeeChat"> | Date | string
+  }
+
+  export type CoffeeChatPurposeWhereInput = {
+    AND?: CoffeeChatPurposeWhereInput | CoffeeChatPurposeWhereInput[]
+    OR?: CoffeeChatPurposeWhereInput[]
+    NOT?: CoffeeChatPurposeWhereInput | CoffeeChatPurposeWhereInput[]
+    id?: StringFilter<"CoffeeChatPurpose"> | string
+    purposeName?: StringFilter<"CoffeeChatPurpose"> | string
+    description?: StringFilter<"CoffeeChatPurpose"> | string
+    timeLimit?: IntFilter<"CoffeeChatPurpose"> | number
+    coffeeChats?: CoffeeChatListRelationFilter
+  }
+
+  export type CoffeeChatPurposeOrderByWithRelationInput = {
+    id?: SortOrder
+    purposeName?: SortOrder
+    description?: SortOrder
+    timeLimit?: SortOrder
+    coffeeChats?: CoffeeChatOrderByRelationAggregateInput
+  }
+
+  export type CoffeeChatPurposeWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    purposeName?: string
+    AND?: CoffeeChatPurposeWhereInput | CoffeeChatPurposeWhereInput[]
+    OR?: CoffeeChatPurposeWhereInput[]
+    NOT?: CoffeeChatPurposeWhereInput | CoffeeChatPurposeWhereInput[]
+    description?: StringFilter<"CoffeeChatPurpose"> | string
+    timeLimit?: IntFilter<"CoffeeChatPurpose"> | number
+    coffeeChats?: CoffeeChatListRelationFilter
+  }, "id" | "purposeName">
+
+  export type CoffeeChatPurposeOrderByWithAggregationInput = {
+    id?: SortOrder
+    purposeName?: SortOrder
+    description?: SortOrder
+    timeLimit?: SortOrder
+    _count?: CoffeeChatPurposeCountOrderByAggregateInput
+    _avg?: CoffeeChatPurposeAvgOrderByAggregateInput
+    _max?: CoffeeChatPurposeMaxOrderByAggregateInput
+    _min?: CoffeeChatPurposeMinOrderByAggregateInput
+    _sum?: CoffeeChatPurposeSumOrderByAggregateInput
+  }
+
+  export type CoffeeChatPurposeScalarWhereWithAggregatesInput = {
+    AND?: CoffeeChatPurposeScalarWhereWithAggregatesInput | CoffeeChatPurposeScalarWhereWithAggregatesInput[]
+    OR?: CoffeeChatPurposeScalarWhereWithAggregatesInput[]
+    NOT?: CoffeeChatPurposeScalarWhereWithAggregatesInput | CoffeeChatPurposeScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"CoffeeChatPurpose"> | string
+    purposeName?: StringWithAggregatesFilter<"CoffeeChatPurpose"> | string
+    description?: StringWithAggregatesFilter<"CoffeeChatPurpose"> | string
+    timeLimit?: IntWithAggregatesFilter<"CoffeeChatPurpose"> | number
+  }
+
+  export type CoffeeChatVenueWhereInput = {
+    AND?: CoffeeChatVenueWhereInput | CoffeeChatVenueWhereInput[]
+    OR?: CoffeeChatVenueWhereInput[]
+    NOT?: CoffeeChatVenueWhereInput | CoffeeChatVenueWhereInput[]
+    id?: StringFilter<"CoffeeChatVenue"> | string
+    venueName?: StringFilter<"CoffeeChatVenue"> | string
+    noiseLevel?: EnumCoffeeChatVenueNoiseLevelFilter<"CoffeeChatVenue"> | $Enums.CoffeeChatVenueNoiseLevel
+    description?: StringFilter<"CoffeeChatVenue"> | string
+    location?: StringFilter<"CoffeeChatVenue"> | string
+    rating?: IntFilter<"CoffeeChatVenue"> | number
+    tags?: EnumCoffeeChatVenueTagsNullableListFilter<"CoffeeChatVenue">
+    coffeeChats?: CoffeeChatListRelationFilter
+  }
+
+  export type CoffeeChatVenueOrderByWithRelationInput = {
+    id?: SortOrder
+    venueName?: SortOrder
+    noiseLevel?: SortOrder
+    description?: SortOrder
+    location?: SortOrder
+    rating?: SortOrder
+    tags?: SortOrder
+    coffeeChats?: CoffeeChatOrderByRelationAggregateInput
+  }
+
+  export type CoffeeChatVenueWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    venueName?: string
+    AND?: CoffeeChatVenueWhereInput | CoffeeChatVenueWhereInput[]
+    OR?: CoffeeChatVenueWhereInput[]
+    NOT?: CoffeeChatVenueWhereInput | CoffeeChatVenueWhereInput[]
+    noiseLevel?: EnumCoffeeChatVenueNoiseLevelFilter<"CoffeeChatVenue"> | $Enums.CoffeeChatVenueNoiseLevel
+    description?: StringFilter<"CoffeeChatVenue"> | string
+    location?: StringFilter<"CoffeeChatVenue"> | string
+    rating?: IntFilter<"CoffeeChatVenue"> | number
+    tags?: EnumCoffeeChatVenueTagsNullableListFilter<"CoffeeChatVenue">
+    coffeeChats?: CoffeeChatListRelationFilter
+  }, "id" | "venueName">
+
+  export type CoffeeChatVenueOrderByWithAggregationInput = {
+    id?: SortOrder
+    venueName?: SortOrder
+    noiseLevel?: SortOrder
+    description?: SortOrder
+    location?: SortOrder
+    rating?: SortOrder
+    tags?: SortOrder
+    _count?: CoffeeChatVenueCountOrderByAggregateInput
+    _avg?: CoffeeChatVenueAvgOrderByAggregateInput
+    _max?: CoffeeChatVenueMaxOrderByAggregateInput
+    _min?: CoffeeChatVenueMinOrderByAggregateInput
+    _sum?: CoffeeChatVenueSumOrderByAggregateInput
+  }
+
+  export type CoffeeChatVenueScalarWhereWithAggregatesInput = {
+    AND?: CoffeeChatVenueScalarWhereWithAggregatesInput | CoffeeChatVenueScalarWhereWithAggregatesInput[]
+    OR?: CoffeeChatVenueScalarWhereWithAggregatesInput[]
+    NOT?: CoffeeChatVenueScalarWhereWithAggregatesInput | CoffeeChatVenueScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"CoffeeChatVenue"> | string
+    venueName?: StringWithAggregatesFilter<"CoffeeChatVenue"> | string
+    noiseLevel?: EnumCoffeeChatVenueNoiseLevelWithAggregatesFilter<"CoffeeChatVenue"> | $Enums.CoffeeChatVenueNoiseLevel
+    description?: StringWithAggregatesFilter<"CoffeeChatVenue"> | string
+    location?: StringWithAggregatesFilter<"CoffeeChatVenue"> | string
+    rating?: IntWithAggregatesFilter<"CoffeeChatVenue"> | number
+    tags?: EnumCoffeeChatVenueTagsNullableListFilter<"CoffeeChatVenue">
   }
 
   export type ChatWhereInput = {
@@ -20250,18 +23048,26 @@ export namespace Prisma {
   export type CoffeeChatCreateInput = {
     id?: string
     scheduledAt?: Date | string | null
+    duration: number
+    personalMessage?: string | null
     status?: $Enums.CoffeeChatStatus
     createdAt?: Date | string
     updatedAt?: Date | string
     inviter: UserDetailsCreateNestedOneWithoutCoffeeChatsSentInput
     invitee: UserDetailsCreateNestedOneWithoutCoffeeChatsReceivedInput
+    purpose: CoffeeChatPurposeCreateNestedOneWithoutCoffeeChatsInput
+    venue: CoffeeChatVenueCreateNestedOneWithoutCoffeeChatsInput
   }
 
   export type CoffeeChatUncheckedCreateInput = {
     id?: string
     inviterId: string
     inviteeId: string
+    purposeId: string
+    venueId: string
     scheduledAt?: Date | string | null
+    duration: number
+    personalMessage?: string | null
     status?: $Enums.CoffeeChatStatus
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -20270,18 +23076,26 @@ export namespace Prisma {
   export type CoffeeChatUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     scheduledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    duration?: IntFieldUpdateOperationsInput | number
+    personalMessage?: NullableStringFieldUpdateOperationsInput | string | null
     status?: EnumCoffeeChatStatusFieldUpdateOperationsInput | $Enums.CoffeeChatStatus
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     inviter?: UserDetailsUpdateOneRequiredWithoutCoffeeChatsSentNestedInput
     invitee?: UserDetailsUpdateOneRequiredWithoutCoffeeChatsReceivedNestedInput
+    purpose?: CoffeeChatPurposeUpdateOneRequiredWithoutCoffeeChatsNestedInput
+    venue?: CoffeeChatVenueUpdateOneRequiredWithoutCoffeeChatsNestedInput
   }
 
   export type CoffeeChatUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     inviterId?: StringFieldUpdateOperationsInput | string
     inviteeId?: StringFieldUpdateOperationsInput | string
+    purposeId?: StringFieldUpdateOperationsInput | string
+    venueId?: StringFieldUpdateOperationsInput | string
     scheduledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    duration?: IntFieldUpdateOperationsInput | number
+    personalMessage?: NullableStringFieldUpdateOperationsInput | string | null
     status?: EnumCoffeeChatStatusFieldUpdateOperationsInput | $Enums.CoffeeChatStatus
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -20291,7 +23105,11 @@ export namespace Prisma {
     id?: string
     inviterId: string
     inviteeId: string
+    purposeId: string
+    venueId: string
     scheduledAt?: Date | string | null
+    duration: number
+    personalMessage?: string | null
     status?: $Enums.CoffeeChatStatus
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -20300,6 +23118,8 @@ export namespace Prisma {
   export type CoffeeChatUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
     scheduledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    duration?: IntFieldUpdateOperationsInput | number
+    personalMessage?: NullableStringFieldUpdateOperationsInput | string | null
     status?: EnumCoffeeChatStatusFieldUpdateOperationsInput | $Enums.CoffeeChatStatus
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -20309,10 +23129,141 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     inviterId?: StringFieldUpdateOperationsInput | string
     inviteeId?: StringFieldUpdateOperationsInput | string
+    purposeId?: StringFieldUpdateOperationsInput | string
+    venueId?: StringFieldUpdateOperationsInput | string
     scheduledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    duration?: IntFieldUpdateOperationsInput | number
+    personalMessage?: NullableStringFieldUpdateOperationsInput | string | null
     status?: EnumCoffeeChatStatusFieldUpdateOperationsInput | $Enums.CoffeeChatStatus
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type CoffeeChatPurposeCreateInput = {
+    id?: string
+    purposeName: string
+    description: string
+    timeLimit: number
+    coffeeChats?: CoffeeChatCreateNestedManyWithoutPurposeInput
+  }
+
+  export type CoffeeChatPurposeUncheckedCreateInput = {
+    id?: string
+    purposeName: string
+    description: string
+    timeLimit: number
+    coffeeChats?: CoffeeChatUncheckedCreateNestedManyWithoutPurposeInput
+  }
+
+  export type CoffeeChatPurposeUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    purposeName?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    timeLimit?: IntFieldUpdateOperationsInput | number
+    coffeeChats?: CoffeeChatUpdateManyWithoutPurposeNestedInput
+  }
+
+  export type CoffeeChatPurposeUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    purposeName?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    timeLimit?: IntFieldUpdateOperationsInput | number
+    coffeeChats?: CoffeeChatUncheckedUpdateManyWithoutPurposeNestedInput
+  }
+
+  export type CoffeeChatPurposeCreateManyInput = {
+    id?: string
+    purposeName: string
+    description: string
+    timeLimit: number
+  }
+
+  export type CoffeeChatPurposeUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    purposeName?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    timeLimit?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type CoffeeChatPurposeUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    purposeName?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    timeLimit?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type CoffeeChatVenueCreateInput = {
+    id?: string
+    venueName: string
+    noiseLevel: $Enums.CoffeeChatVenueNoiseLevel
+    description: string
+    location: string
+    rating: number
+    tags?: CoffeeChatVenueCreatetagsInput | $Enums.CoffeeChatVenueTags[]
+    coffeeChats?: CoffeeChatCreateNestedManyWithoutVenueInput
+  }
+
+  export type CoffeeChatVenueUncheckedCreateInput = {
+    id?: string
+    venueName: string
+    noiseLevel: $Enums.CoffeeChatVenueNoiseLevel
+    description: string
+    location: string
+    rating: number
+    tags?: CoffeeChatVenueCreatetagsInput | $Enums.CoffeeChatVenueTags[]
+    coffeeChats?: CoffeeChatUncheckedCreateNestedManyWithoutVenueInput
+  }
+
+  export type CoffeeChatVenueUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    venueName?: StringFieldUpdateOperationsInput | string
+    noiseLevel?: EnumCoffeeChatVenueNoiseLevelFieldUpdateOperationsInput | $Enums.CoffeeChatVenueNoiseLevel
+    description?: StringFieldUpdateOperationsInput | string
+    location?: StringFieldUpdateOperationsInput | string
+    rating?: IntFieldUpdateOperationsInput | number
+    tags?: CoffeeChatVenueUpdatetagsInput | $Enums.CoffeeChatVenueTags[]
+    coffeeChats?: CoffeeChatUpdateManyWithoutVenueNestedInput
+  }
+
+  export type CoffeeChatVenueUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    venueName?: StringFieldUpdateOperationsInput | string
+    noiseLevel?: EnumCoffeeChatVenueNoiseLevelFieldUpdateOperationsInput | $Enums.CoffeeChatVenueNoiseLevel
+    description?: StringFieldUpdateOperationsInput | string
+    location?: StringFieldUpdateOperationsInput | string
+    rating?: IntFieldUpdateOperationsInput | number
+    tags?: CoffeeChatVenueUpdatetagsInput | $Enums.CoffeeChatVenueTags[]
+    coffeeChats?: CoffeeChatUncheckedUpdateManyWithoutVenueNestedInput
+  }
+
+  export type CoffeeChatVenueCreateManyInput = {
+    id?: string
+    venueName: string
+    noiseLevel: $Enums.CoffeeChatVenueNoiseLevel
+    description: string
+    location: string
+    rating: number
+    tags?: CoffeeChatVenueCreatetagsInput | $Enums.CoffeeChatVenueTags[]
+  }
+
+  export type CoffeeChatVenueUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    venueName?: StringFieldUpdateOperationsInput | string
+    noiseLevel?: EnumCoffeeChatVenueNoiseLevelFieldUpdateOperationsInput | $Enums.CoffeeChatVenueNoiseLevel
+    description?: StringFieldUpdateOperationsInput | string
+    location?: StringFieldUpdateOperationsInput | string
+    rating?: IntFieldUpdateOperationsInput | number
+    tags?: CoffeeChatVenueUpdatetagsInput | $Enums.CoffeeChatVenueTags[]
+  }
+
+  export type CoffeeChatVenueUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    venueName?: StringFieldUpdateOperationsInput | string
+    noiseLevel?: EnumCoffeeChatVenueNoiseLevelFieldUpdateOperationsInput | $Enums.CoffeeChatVenueNoiseLevel
+    description?: StringFieldUpdateOperationsInput | string
+    location?: StringFieldUpdateOperationsInput | string
+    rating?: IntFieldUpdateOperationsInput | number
+    tags?: CoffeeChatVenueUpdatetagsInput | $Enums.CoffeeChatVenueTags[]
   }
 
   export type ChatCreateInput = {
@@ -21164,21 +24115,43 @@ export namespace Prisma {
     not?: NestedEnumCoffeeChatStatusFilter<$PrismaModel> | $Enums.CoffeeChatStatus
   }
 
+  export type CoffeeChatPurposeScalarRelationFilter = {
+    is?: CoffeeChatPurposeWhereInput
+    isNot?: CoffeeChatPurposeWhereInput
+  }
+
+  export type CoffeeChatVenueScalarRelationFilter = {
+    is?: CoffeeChatVenueWhereInput
+    isNot?: CoffeeChatVenueWhereInput
+  }
+
   export type CoffeeChatCountOrderByAggregateInput = {
     id?: SortOrder
     inviterId?: SortOrder
     inviteeId?: SortOrder
+    purposeId?: SortOrder
+    venueId?: SortOrder
     scheduledAt?: SortOrder
+    duration?: SortOrder
+    personalMessage?: SortOrder
     status?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+  }
+
+  export type CoffeeChatAvgOrderByAggregateInput = {
+    duration?: SortOrder
   }
 
   export type CoffeeChatMaxOrderByAggregateInput = {
     id?: SortOrder
     inviterId?: SortOrder
     inviteeId?: SortOrder
+    purposeId?: SortOrder
+    venueId?: SortOrder
     scheduledAt?: SortOrder
+    duration?: SortOrder
+    personalMessage?: SortOrder
     status?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -21188,10 +24161,18 @@ export namespace Prisma {
     id?: SortOrder
     inviterId?: SortOrder
     inviteeId?: SortOrder
+    purposeId?: SortOrder
+    venueId?: SortOrder
     scheduledAt?: SortOrder
+    duration?: SortOrder
+    personalMessage?: SortOrder
     status?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+  }
+
+  export type CoffeeChatSumOrderByAggregateInput = {
+    duration?: SortOrder
   }
 
   export type EnumCoffeeChatStatusWithAggregatesFilter<$PrismaModel = never> = {
@@ -21202,6 +24183,96 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedEnumCoffeeChatStatusFilter<$PrismaModel>
     _max?: NestedEnumCoffeeChatStatusFilter<$PrismaModel>
+  }
+
+  export type CoffeeChatPurposeCountOrderByAggregateInput = {
+    id?: SortOrder
+    purposeName?: SortOrder
+    description?: SortOrder
+    timeLimit?: SortOrder
+  }
+
+  export type CoffeeChatPurposeAvgOrderByAggregateInput = {
+    timeLimit?: SortOrder
+  }
+
+  export type CoffeeChatPurposeMaxOrderByAggregateInput = {
+    id?: SortOrder
+    purposeName?: SortOrder
+    description?: SortOrder
+    timeLimit?: SortOrder
+  }
+
+  export type CoffeeChatPurposeMinOrderByAggregateInput = {
+    id?: SortOrder
+    purposeName?: SortOrder
+    description?: SortOrder
+    timeLimit?: SortOrder
+  }
+
+  export type CoffeeChatPurposeSumOrderByAggregateInput = {
+    timeLimit?: SortOrder
+  }
+
+  export type EnumCoffeeChatVenueNoiseLevelFilter<$PrismaModel = never> = {
+    equals?: $Enums.CoffeeChatVenueNoiseLevel | EnumCoffeeChatVenueNoiseLevelFieldRefInput<$PrismaModel>
+    in?: $Enums.CoffeeChatVenueNoiseLevel[] | ListEnumCoffeeChatVenueNoiseLevelFieldRefInput<$PrismaModel>
+    notIn?: $Enums.CoffeeChatVenueNoiseLevel[] | ListEnumCoffeeChatVenueNoiseLevelFieldRefInput<$PrismaModel>
+    not?: NestedEnumCoffeeChatVenueNoiseLevelFilter<$PrismaModel> | $Enums.CoffeeChatVenueNoiseLevel
+  }
+
+  export type EnumCoffeeChatVenueTagsNullableListFilter<$PrismaModel = never> = {
+    equals?: $Enums.CoffeeChatVenueTags[] | ListEnumCoffeeChatVenueTagsFieldRefInput<$PrismaModel> | null
+    has?: $Enums.CoffeeChatVenueTags | EnumCoffeeChatVenueTagsFieldRefInput<$PrismaModel> | null
+    hasEvery?: $Enums.CoffeeChatVenueTags[] | ListEnumCoffeeChatVenueTagsFieldRefInput<$PrismaModel>
+    hasSome?: $Enums.CoffeeChatVenueTags[] | ListEnumCoffeeChatVenueTagsFieldRefInput<$PrismaModel>
+    isEmpty?: boolean
+  }
+
+  export type CoffeeChatVenueCountOrderByAggregateInput = {
+    id?: SortOrder
+    venueName?: SortOrder
+    noiseLevel?: SortOrder
+    description?: SortOrder
+    location?: SortOrder
+    rating?: SortOrder
+    tags?: SortOrder
+  }
+
+  export type CoffeeChatVenueAvgOrderByAggregateInput = {
+    rating?: SortOrder
+  }
+
+  export type CoffeeChatVenueMaxOrderByAggregateInput = {
+    id?: SortOrder
+    venueName?: SortOrder
+    noiseLevel?: SortOrder
+    description?: SortOrder
+    location?: SortOrder
+    rating?: SortOrder
+  }
+
+  export type CoffeeChatVenueMinOrderByAggregateInput = {
+    id?: SortOrder
+    venueName?: SortOrder
+    noiseLevel?: SortOrder
+    description?: SortOrder
+    location?: SortOrder
+    rating?: SortOrder
+  }
+
+  export type CoffeeChatVenueSumOrderByAggregateInput = {
+    rating?: SortOrder
+  }
+
+  export type EnumCoffeeChatVenueNoiseLevelWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.CoffeeChatVenueNoiseLevel | EnumCoffeeChatVenueNoiseLevelFieldRefInput<$PrismaModel>
+    in?: $Enums.CoffeeChatVenueNoiseLevel[] | ListEnumCoffeeChatVenueNoiseLevelFieldRefInput<$PrismaModel>
+    notIn?: $Enums.CoffeeChatVenueNoiseLevel[] | ListEnumCoffeeChatVenueNoiseLevelFieldRefInput<$PrismaModel>
+    not?: NestedEnumCoffeeChatVenueNoiseLevelWithAggregatesFilter<$PrismaModel> | $Enums.CoffeeChatVenueNoiseLevel
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumCoffeeChatVenueNoiseLevelFilter<$PrismaModel>
+    _max?: NestedEnumCoffeeChatVenueNoiseLevelFilter<$PrismaModel>
   }
 
   export type ChatUser1IdUser2IdCompoundUniqueInput = {
@@ -22361,6 +25432,18 @@ export namespace Prisma {
     connect?: UserDetailsWhereUniqueInput
   }
 
+  export type CoffeeChatPurposeCreateNestedOneWithoutCoffeeChatsInput = {
+    create?: XOR<CoffeeChatPurposeCreateWithoutCoffeeChatsInput, CoffeeChatPurposeUncheckedCreateWithoutCoffeeChatsInput>
+    connectOrCreate?: CoffeeChatPurposeCreateOrConnectWithoutCoffeeChatsInput
+    connect?: CoffeeChatPurposeWhereUniqueInput
+  }
+
+  export type CoffeeChatVenueCreateNestedOneWithoutCoffeeChatsInput = {
+    create?: XOR<CoffeeChatVenueCreateWithoutCoffeeChatsInput, CoffeeChatVenueUncheckedCreateWithoutCoffeeChatsInput>
+    connectOrCreate?: CoffeeChatVenueCreateOrConnectWithoutCoffeeChatsInput
+    connect?: CoffeeChatVenueWhereUniqueInput
+  }
+
   export type EnumCoffeeChatStatusFieldUpdateOperationsInput = {
     set?: $Enums.CoffeeChatStatus
   }
@@ -22379,6 +25462,119 @@ export namespace Prisma {
     upsert?: UserDetailsUpsertWithoutCoffeeChatsReceivedInput
     connect?: UserDetailsWhereUniqueInput
     update?: XOR<XOR<UserDetailsUpdateToOneWithWhereWithoutCoffeeChatsReceivedInput, UserDetailsUpdateWithoutCoffeeChatsReceivedInput>, UserDetailsUncheckedUpdateWithoutCoffeeChatsReceivedInput>
+  }
+
+  export type CoffeeChatPurposeUpdateOneRequiredWithoutCoffeeChatsNestedInput = {
+    create?: XOR<CoffeeChatPurposeCreateWithoutCoffeeChatsInput, CoffeeChatPurposeUncheckedCreateWithoutCoffeeChatsInput>
+    connectOrCreate?: CoffeeChatPurposeCreateOrConnectWithoutCoffeeChatsInput
+    upsert?: CoffeeChatPurposeUpsertWithoutCoffeeChatsInput
+    connect?: CoffeeChatPurposeWhereUniqueInput
+    update?: XOR<XOR<CoffeeChatPurposeUpdateToOneWithWhereWithoutCoffeeChatsInput, CoffeeChatPurposeUpdateWithoutCoffeeChatsInput>, CoffeeChatPurposeUncheckedUpdateWithoutCoffeeChatsInput>
+  }
+
+  export type CoffeeChatVenueUpdateOneRequiredWithoutCoffeeChatsNestedInput = {
+    create?: XOR<CoffeeChatVenueCreateWithoutCoffeeChatsInput, CoffeeChatVenueUncheckedCreateWithoutCoffeeChatsInput>
+    connectOrCreate?: CoffeeChatVenueCreateOrConnectWithoutCoffeeChatsInput
+    upsert?: CoffeeChatVenueUpsertWithoutCoffeeChatsInput
+    connect?: CoffeeChatVenueWhereUniqueInput
+    update?: XOR<XOR<CoffeeChatVenueUpdateToOneWithWhereWithoutCoffeeChatsInput, CoffeeChatVenueUpdateWithoutCoffeeChatsInput>, CoffeeChatVenueUncheckedUpdateWithoutCoffeeChatsInput>
+  }
+
+  export type CoffeeChatCreateNestedManyWithoutPurposeInput = {
+    create?: XOR<CoffeeChatCreateWithoutPurposeInput, CoffeeChatUncheckedCreateWithoutPurposeInput> | CoffeeChatCreateWithoutPurposeInput[] | CoffeeChatUncheckedCreateWithoutPurposeInput[]
+    connectOrCreate?: CoffeeChatCreateOrConnectWithoutPurposeInput | CoffeeChatCreateOrConnectWithoutPurposeInput[]
+    createMany?: CoffeeChatCreateManyPurposeInputEnvelope
+    connect?: CoffeeChatWhereUniqueInput | CoffeeChatWhereUniqueInput[]
+  }
+
+  export type CoffeeChatUncheckedCreateNestedManyWithoutPurposeInput = {
+    create?: XOR<CoffeeChatCreateWithoutPurposeInput, CoffeeChatUncheckedCreateWithoutPurposeInput> | CoffeeChatCreateWithoutPurposeInput[] | CoffeeChatUncheckedCreateWithoutPurposeInput[]
+    connectOrCreate?: CoffeeChatCreateOrConnectWithoutPurposeInput | CoffeeChatCreateOrConnectWithoutPurposeInput[]
+    createMany?: CoffeeChatCreateManyPurposeInputEnvelope
+    connect?: CoffeeChatWhereUniqueInput | CoffeeChatWhereUniqueInput[]
+  }
+
+  export type CoffeeChatUpdateManyWithoutPurposeNestedInput = {
+    create?: XOR<CoffeeChatCreateWithoutPurposeInput, CoffeeChatUncheckedCreateWithoutPurposeInput> | CoffeeChatCreateWithoutPurposeInput[] | CoffeeChatUncheckedCreateWithoutPurposeInput[]
+    connectOrCreate?: CoffeeChatCreateOrConnectWithoutPurposeInput | CoffeeChatCreateOrConnectWithoutPurposeInput[]
+    upsert?: CoffeeChatUpsertWithWhereUniqueWithoutPurposeInput | CoffeeChatUpsertWithWhereUniqueWithoutPurposeInput[]
+    createMany?: CoffeeChatCreateManyPurposeInputEnvelope
+    set?: CoffeeChatWhereUniqueInput | CoffeeChatWhereUniqueInput[]
+    disconnect?: CoffeeChatWhereUniqueInput | CoffeeChatWhereUniqueInput[]
+    delete?: CoffeeChatWhereUniqueInput | CoffeeChatWhereUniqueInput[]
+    connect?: CoffeeChatWhereUniqueInput | CoffeeChatWhereUniqueInput[]
+    update?: CoffeeChatUpdateWithWhereUniqueWithoutPurposeInput | CoffeeChatUpdateWithWhereUniqueWithoutPurposeInput[]
+    updateMany?: CoffeeChatUpdateManyWithWhereWithoutPurposeInput | CoffeeChatUpdateManyWithWhereWithoutPurposeInput[]
+    deleteMany?: CoffeeChatScalarWhereInput | CoffeeChatScalarWhereInput[]
+  }
+
+  export type CoffeeChatUncheckedUpdateManyWithoutPurposeNestedInput = {
+    create?: XOR<CoffeeChatCreateWithoutPurposeInput, CoffeeChatUncheckedCreateWithoutPurposeInput> | CoffeeChatCreateWithoutPurposeInput[] | CoffeeChatUncheckedCreateWithoutPurposeInput[]
+    connectOrCreate?: CoffeeChatCreateOrConnectWithoutPurposeInput | CoffeeChatCreateOrConnectWithoutPurposeInput[]
+    upsert?: CoffeeChatUpsertWithWhereUniqueWithoutPurposeInput | CoffeeChatUpsertWithWhereUniqueWithoutPurposeInput[]
+    createMany?: CoffeeChatCreateManyPurposeInputEnvelope
+    set?: CoffeeChatWhereUniqueInput | CoffeeChatWhereUniqueInput[]
+    disconnect?: CoffeeChatWhereUniqueInput | CoffeeChatWhereUniqueInput[]
+    delete?: CoffeeChatWhereUniqueInput | CoffeeChatWhereUniqueInput[]
+    connect?: CoffeeChatWhereUniqueInput | CoffeeChatWhereUniqueInput[]
+    update?: CoffeeChatUpdateWithWhereUniqueWithoutPurposeInput | CoffeeChatUpdateWithWhereUniqueWithoutPurposeInput[]
+    updateMany?: CoffeeChatUpdateManyWithWhereWithoutPurposeInput | CoffeeChatUpdateManyWithWhereWithoutPurposeInput[]
+    deleteMany?: CoffeeChatScalarWhereInput | CoffeeChatScalarWhereInput[]
+  }
+
+  export type CoffeeChatVenueCreatetagsInput = {
+    set: $Enums.CoffeeChatVenueTags[]
+  }
+
+  export type CoffeeChatCreateNestedManyWithoutVenueInput = {
+    create?: XOR<CoffeeChatCreateWithoutVenueInput, CoffeeChatUncheckedCreateWithoutVenueInput> | CoffeeChatCreateWithoutVenueInput[] | CoffeeChatUncheckedCreateWithoutVenueInput[]
+    connectOrCreate?: CoffeeChatCreateOrConnectWithoutVenueInput | CoffeeChatCreateOrConnectWithoutVenueInput[]
+    createMany?: CoffeeChatCreateManyVenueInputEnvelope
+    connect?: CoffeeChatWhereUniqueInput | CoffeeChatWhereUniqueInput[]
+  }
+
+  export type CoffeeChatUncheckedCreateNestedManyWithoutVenueInput = {
+    create?: XOR<CoffeeChatCreateWithoutVenueInput, CoffeeChatUncheckedCreateWithoutVenueInput> | CoffeeChatCreateWithoutVenueInput[] | CoffeeChatUncheckedCreateWithoutVenueInput[]
+    connectOrCreate?: CoffeeChatCreateOrConnectWithoutVenueInput | CoffeeChatCreateOrConnectWithoutVenueInput[]
+    createMany?: CoffeeChatCreateManyVenueInputEnvelope
+    connect?: CoffeeChatWhereUniqueInput | CoffeeChatWhereUniqueInput[]
+  }
+
+  export type EnumCoffeeChatVenueNoiseLevelFieldUpdateOperationsInput = {
+    set?: $Enums.CoffeeChatVenueNoiseLevel
+  }
+
+  export type CoffeeChatVenueUpdatetagsInput = {
+    set?: $Enums.CoffeeChatVenueTags[]
+    push?: $Enums.CoffeeChatVenueTags | $Enums.CoffeeChatVenueTags[]
+  }
+
+  export type CoffeeChatUpdateManyWithoutVenueNestedInput = {
+    create?: XOR<CoffeeChatCreateWithoutVenueInput, CoffeeChatUncheckedCreateWithoutVenueInput> | CoffeeChatCreateWithoutVenueInput[] | CoffeeChatUncheckedCreateWithoutVenueInput[]
+    connectOrCreate?: CoffeeChatCreateOrConnectWithoutVenueInput | CoffeeChatCreateOrConnectWithoutVenueInput[]
+    upsert?: CoffeeChatUpsertWithWhereUniqueWithoutVenueInput | CoffeeChatUpsertWithWhereUniqueWithoutVenueInput[]
+    createMany?: CoffeeChatCreateManyVenueInputEnvelope
+    set?: CoffeeChatWhereUniqueInput | CoffeeChatWhereUniqueInput[]
+    disconnect?: CoffeeChatWhereUniqueInput | CoffeeChatWhereUniqueInput[]
+    delete?: CoffeeChatWhereUniqueInput | CoffeeChatWhereUniqueInput[]
+    connect?: CoffeeChatWhereUniqueInput | CoffeeChatWhereUniqueInput[]
+    update?: CoffeeChatUpdateWithWhereUniqueWithoutVenueInput | CoffeeChatUpdateWithWhereUniqueWithoutVenueInput[]
+    updateMany?: CoffeeChatUpdateManyWithWhereWithoutVenueInput | CoffeeChatUpdateManyWithWhereWithoutVenueInput[]
+    deleteMany?: CoffeeChatScalarWhereInput | CoffeeChatScalarWhereInput[]
+  }
+
+  export type CoffeeChatUncheckedUpdateManyWithoutVenueNestedInput = {
+    create?: XOR<CoffeeChatCreateWithoutVenueInput, CoffeeChatUncheckedCreateWithoutVenueInput> | CoffeeChatCreateWithoutVenueInput[] | CoffeeChatUncheckedCreateWithoutVenueInput[]
+    connectOrCreate?: CoffeeChatCreateOrConnectWithoutVenueInput | CoffeeChatCreateOrConnectWithoutVenueInput[]
+    upsert?: CoffeeChatUpsertWithWhereUniqueWithoutVenueInput | CoffeeChatUpsertWithWhereUniqueWithoutVenueInput[]
+    createMany?: CoffeeChatCreateManyVenueInputEnvelope
+    set?: CoffeeChatWhereUniqueInput | CoffeeChatWhereUniqueInput[]
+    disconnect?: CoffeeChatWhereUniqueInput | CoffeeChatWhereUniqueInput[]
+    delete?: CoffeeChatWhereUniqueInput | CoffeeChatWhereUniqueInput[]
+    connect?: CoffeeChatWhereUniqueInput | CoffeeChatWhereUniqueInput[]
+    update?: CoffeeChatUpdateWithWhereUniqueWithoutVenueInput | CoffeeChatUpdateWithWhereUniqueWithoutVenueInput[]
+    updateMany?: CoffeeChatUpdateManyWithWhereWithoutVenueInput | CoffeeChatUpdateManyWithWhereWithoutVenueInput[]
+    deleteMany?: CoffeeChatScalarWhereInput | CoffeeChatScalarWhereInput[]
   }
 
   export type UserDetailsCreateNestedOneWithoutChatsAsUser1Input = {
@@ -22725,6 +25921,23 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedEnumCoffeeChatStatusFilter<$PrismaModel>
     _max?: NestedEnumCoffeeChatStatusFilter<$PrismaModel>
+  }
+
+  export type NestedEnumCoffeeChatVenueNoiseLevelFilter<$PrismaModel = never> = {
+    equals?: $Enums.CoffeeChatVenueNoiseLevel | EnumCoffeeChatVenueNoiseLevelFieldRefInput<$PrismaModel>
+    in?: $Enums.CoffeeChatVenueNoiseLevel[] | ListEnumCoffeeChatVenueNoiseLevelFieldRefInput<$PrismaModel>
+    notIn?: $Enums.CoffeeChatVenueNoiseLevel[] | ListEnumCoffeeChatVenueNoiseLevelFieldRefInput<$PrismaModel>
+    not?: NestedEnumCoffeeChatVenueNoiseLevelFilter<$PrismaModel> | $Enums.CoffeeChatVenueNoiseLevel
+  }
+
+  export type NestedEnumCoffeeChatVenueNoiseLevelWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.CoffeeChatVenueNoiseLevel | EnumCoffeeChatVenueNoiseLevelFieldRefInput<$PrismaModel>
+    in?: $Enums.CoffeeChatVenueNoiseLevel[] | ListEnumCoffeeChatVenueNoiseLevelFieldRefInput<$PrismaModel>
+    notIn?: $Enums.CoffeeChatVenueNoiseLevel[] | ListEnumCoffeeChatVenueNoiseLevelFieldRefInput<$PrismaModel>
+    not?: NestedEnumCoffeeChatVenueNoiseLevelWithAggregatesFilter<$PrismaModel> | $Enums.CoffeeChatVenueNoiseLevel
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumCoffeeChatVenueNoiseLevelFilter<$PrismaModel>
+    _max?: NestedEnumCoffeeChatVenueNoiseLevelFilter<$PrismaModel>
   }
 
   export type UserDetailsCreateWithoutUserInput = {
@@ -23144,16 +26357,24 @@ export namespace Prisma {
   export type CoffeeChatCreateWithoutInviterInput = {
     id?: string
     scheduledAt?: Date | string | null
+    duration: number
+    personalMessage?: string | null
     status?: $Enums.CoffeeChatStatus
     createdAt?: Date | string
     updatedAt?: Date | string
     invitee: UserDetailsCreateNestedOneWithoutCoffeeChatsReceivedInput
+    purpose: CoffeeChatPurposeCreateNestedOneWithoutCoffeeChatsInput
+    venue: CoffeeChatVenueCreateNestedOneWithoutCoffeeChatsInput
   }
 
   export type CoffeeChatUncheckedCreateWithoutInviterInput = {
     id?: string
     inviteeId: string
+    purposeId: string
+    venueId: string
     scheduledAt?: Date | string | null
+    duration: number
+    personalMessage?: string | null
     status?: $Enums.CoffeeChatStatus
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -23172,16 +26393,24 @@ export namespace Prisma {
   export type CoffeeChatCreateWithoutInviteeInput = {
     id?: string
     scheduledAt?: Date | string | null
+    duration: number
+    personalMessage?: string | null
     status?: $Enums.CoffeeChatStatus
     createdAt?: Date | string
     updatedAt?: Date | string
     inviter: UserDetailsCreateNestedOneWithoutCoffeeChatsSentInput
+    purpose: CoffeeChatPurposeCreateNestedOneWithoutCoffeeChatsInput
+    venue: CoffeeChatVenueCreateNestedOneWithoutCoffeeChatsInput
   }
 
   export type CoffeeChatUncheckedCreateWithoutInviteeInput = {
     id?: string
     inviterId: string
+    purposeId: string
+    venueId: string
     scheduledAt?: Date | string | null
+    duration: number
+    personalMessage?: string | null
     status?: $Enums.CoffeeChatStatus
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -23566,7 +26795,11 @@ export namespace Prisma {
     id?: StringFilter<"CoffeeChat"> | string
     inviterId?: StringFilter<"CoffeeChat"> | string
     inviteeId?: StringFilter<"CoffeeChat"> | string
+    purposeId?: StringFilter<"CoffeeChat"> | string
+    venueId?: StringFilter<"CoffeeChat"> | string
     scheduledAt?: DateTimeNullableFilter<"CoffeeChat"> | Date | string | null
+    duration?: IntFilter<"CoffeeChat"> | number
+    personalMessage?: StringNullableFilter<"CoffeeChat"> | string | null
     status?: EnumCoffeeChatStatusFilter<"CoffeeChat"> | $Enums.CoffeeChatStatus
     createdAt?: DateTimeFilter<"CoffeeChat"> | Date | string
     updatedAt?: DateTimeFilter<"CoffeeChat"> | Date | string
@@ -25139,6 +28372,50 @@ export namespace Prisma {
     create: XOR<UserDetailsCreateWithoutCoffeeChatsReceivedInput, UserDetailsUncheckedCreateWithoutCoffeeChatsReceivedInput>
   }
 
+  export type CoffeeChatPurposeCreateWithoutCoffeeChatsInput = {
+    id?: string
+    purposeName: string
+    description: string
+    timeLimit: number
+  }
+
+  export type CoffeeChatPurposeUncheckedCreateWithoutCoffeeChatsInput = {
+    id?: string
+    purposeName: string
+    description: string
+    timeLimit: number
+  }
+
+  export type CoffeeChatPurposeCreateOrConnectWithoutCoffeeChatsInput = {
+    where: CoffeeChatPurposeWhereUniqueInput
+    create: XOR<CoffeeChatPurposeCreateWithoutCoffeeChatsInput, CoffeeChatPurposeUncheckedCreateWithoutCoffeeChatsInput>
+  }
+
+  export type CoffeeChatVenueCreateWithoutCoffeeChatsInput = {
+    id?: string
+    venueName: string
+    noiseLevel: $Enums.CoffeeChatVenueNoiseLevel
+    description: string
+    location: string
+    rating: number
+    tags?: CoffeeChatVenueCreatetagsInput | $Enums.CoffeeChatVenueTags[]
+  }
+
+  export type CoffeeChatVenueUncheckedCreateWithoutCoffeeChatsInput = {
+    id?: string
+    venueName: string
+    noiseLevel: $Enums.CoffeeChatVenueNoiseLevel
+    description: string
+    location: string
+    rating: number
+    tags?: CoffeeChatVenueCreatetagsInput | $Enums.CoffeeChatVenueTags[]
+  }
+
+  export type CoffeeChatVenueCreateOrConnectWithoutCoffeeChatsInput = {
+    where: CoffeeChatVenueWhereUniqueInput
+    create: XOR<CoffeeChatVenueCreateWithoutCoffeeChatsInput, CoffeeChatVenueUncheckedCreateWithoutCoffeeChatsInput>
+  }
+
   export type UserDetailsUpsertWithoutCoffeeChatsSentInput = {
     update: XOR<UserDetailsUpdateWithoutCoffeeChatsSentInput, UserDetailsUncheckedUpdateWithoutCoffeeChatsSentInput>
     create: XOR<UserDetailsCreateWithoutCoffeeChatsSentInput, UserDetailsUncheckedCreateWithoutCoffeeChatsSentInput>
@@ -25263,6 +28540,166 @@ export namespace Prisma {
     chatsAsUser1?: ChatUncheckedUpdateManyWithoutUser1NestedInput
     chatsAsUser2?: ChatUncheckedUpdateManyWithoutUser2NestedInput
     messagesSent?: MessageUncheckedUpdateManyWithoutSenderNestedInput
+  }
+
+  export type CoffeeChatPurposeUpsertWithoutCoffeeChatsInput = {
+    update: XOR<CoffeeChatPurposeUpdateWithoutCoffeeChatsInput, CoffeeChatPurposeUncheckedUpdateWithoutCoffeeChatsInput>
+    create: XOR<CoffeeChatPurposeCreateWithoutCoffeeChatsInput, CoffeeChatPurposeUncheckedCreateWithoutCoffeeChatsInput>
+    where?: CoffeeChatPurposeWhereInput
+  }
+
+  export type CoffeeChatPurposeUpdateToOneWithWhereWithoutCoffeeChatsInput = {
+    where?: CoffeeChatPurposeWhereInput
+    data: XOR<CoffeeChatPurposeUpdateWithoutCoffeeChatsInput, CoffeeChatPurposeUncheckedUpdateWithoutCoffeeChatsInput>
+  }
+
+  export type CoffeeChatPurposeUpdateWithoutCoffeeChatsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    purposeName?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    timeLimit?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type CoffeeChatPurposeUncheckedUpdateWithoutCoffeeChatsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    purposeName?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    timeLimit?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type CoffeeChatVenueUpsertWithoutCoffeeChatsInput = {
+    update: XOR<CoffeeChatVenueUpdateWithoutCoffeeChatsInput, CoffeeChatVenueUncheckedUpdateWithoutCoffeeChatsInput>
+    create: XOR<CoffeeChatVenueCreateWithoutCoffeeChatsInput, CoffeeChatVenueUncheckedCreateWithoutCoffeeChatsInput>
+    where?: CoffeeChatVenueWhereInput
+  }
+
+  export type CoffeeChatVenueUpdateToOneWithWhereWithoutCoffeeChatsInput = {
+    where?: CoffeeChatVenueWhereInput
+    data: XOR<CoffeeChatVenueUpdateWithoutCoffeeChatsInput, CoffeeChatVenueUncheckedUpdateWithoutCoffeeChatsInput>
+  }
+
+  export type CoffeeChatVenueUpdateWithoutCoffeeChatsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    venueName?: StringFieldUpdateOperationsInput | string
+    noiseLevel?: EnumCoffeeChatVenueNoiseLevelFieldUpdateOperationsInput | $Enums.CoffeeChatVenueNoiseLevel
+    description?: StringFieldUpdateOperationsInput | string
+    location?: StringFieldUpdateOperationsInput | string
+    rating?: IntFieldUpdateOperationsInput | number
+    tags?: CoffeeChatVenueUpdatetagsInput | $Enums.CoffeeChatVenueTags[]
+  }
+
+  export type CoffeeChatVenueUncheckedUpdateWithoutCoffeeChatsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    venueName?: StringFieldUpdateOperationsInput | string
+    noiseLevel?: EnumCoffeeChatVenueNoiseLevelFieldUpdateOperationsInput | $Enums.CoffeeChatVenueNoiseLevel
+    description?: StringFieldUpdateOperationsInput | string
+    location?: StringFieldUpdateOperationsInput | string
+    rating?: IntFieldUpdateOperationsInput | number
+    tags?: CoffeeChatVenueUpdatetagsInput | $Enums.CoffeeChatVenueTags[]
+  }
+
+  export type CoffeeChatCreateWithoutPurposeInput = {
+    id?: string
+    scheduledAt?: Date | string | null
+    duration: number
+    personalMessage?: string | null
+    status?: $Enums.CoffeeChatStatus
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    inviter: UserDetailsCreateNestedOneWithoutCoffeeChatsSentInput
+    invitee: UserDetailsCreateNestedOneWithoutCoffeeChatsReceivedInput
+    venue: CoffeeChatVenueCreateNestedOneWithoutCoffeeChatsInput
+  }
+
+  export type CoffeeChatUncheckedCreateWithoutPurposeInput = {
+    id?: string
+    inviterId: string
+    inviteeId: string
+    venueId: string
+    scheduledAt?: Date | string | null
+    duration: number
+    personalMessage?: string | null
+    status?: $Enums.CoffeeChatStatus
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type CoffeeChatCreateOrConnectWithoutPurposeInput = {
+    where: CoffeeChatWhereUniqueInput
+    create: XOR<CoffeeChatCreateWithoutPurposeInput, CoffeeChatUncheckedCreateWithoutPurposeInput>
+  }
+
+  export type CoffeeChatCreateManyPurposeInputEnvelope = {
+    data: CoffeeChatCreateManyPurposeInput | CoffeeChatCreateManyPurposeInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type CoffeeChatUpsertWithWhereUniqueWithoutPurposeInput = {
+    where: CoffeeChatWhereUniqueInput
+    update: XOR<CoffeeChatUpdateWithoutPurposeInput, CoffeeChatUncheckedUpdateWithoutPurposeInput>
+    create: XOR<CoffeeChatCreateWithoutPurposeInput, CoffeeChatUncheckedCreateWithoutPurposeInput>
+  }
+
+  export type CoffeeChatUpdateWithWhereUniqueWithoutPurposeInput = {
+    where: CoffeeChatWhereUniqueInput
+    data: XOR<CoffeeChatUpdateWithoutPurposeInput, CoffeeChatUncheckedUpdateWithoutPurposeInput>
+  }
+
+  export type CoffeeChatUpdateManyWithWhereWithoutPurposeInput = {
+    where: CoffeeChatScalarWhereInput
+    data: XOR<CoffeeChatUpdateManyMutationInput, CoffeeChatUncheckedUpdateManyWithoutPurposeInput>
+  }
+
+  export type CoffeeChatCreateWithoutVenueInput = {
+    id?: string
+    scheduledAt?: Date | string | null
+    duration: number
+    personalMessage?: string | null
+    status?: $Enums.CoffeeChatStatus
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    inviter: UserDetailsCreateNestedOneWithoutCoffeeChatsSentInput
+    invitee: UserDetailsCreateNestedOneWithoutCoffeeChatsReceivedInput
+    purpose: CoffeeChatPurposeCreateNestedOneWithoutCoffeeChatsInput
+  }
+
+  export type CoffeeChatUncheckedCreateWithoutVenueInput = {
+    id?: string
+    inviterId: string
+    inviteeId: string
+    purposeId: string
+    scheduledAt?: Date | string | null
+    duration: number
+    personalMessage?: string | null
+    status?: $Enums.CoffeeChatStatus
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type CoffeeChatCreateOrConnectWithoutVenueInput = {
+    where: CoffeeChatWhereUniqueInput
+    create: XOR<CoffeeChatCreateWithoutVenueInput, CoffeeChatUncheckedCreateWithoutVenueInput>
+  }
+
+  export type CoffeeChatCreateManyVenueInputEnvelope = {
+    data: CoffeeChatCreateManyVenueInput | CoffeeChatCreateManyVenueInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type CoffeeChatUpsertWithWhereUniqueWithoutVenueInput = {
+    where: CoffeeChatWhereUniqueInput
+    update: XOR<CoffeeChatUpdateWithoutVenueInput, CoffeeChatUncheckedUpdateWithoutVenueInput>
+    create: XOR<CoffeeChatCreateWithoutVenueInput, CoffeeChatUncheckedCreateWithoutVenueInput>
+  }
+
+  export type CoffeeChatUpdateWithWhereUniqueWithoutVenueInput = {
+    where: CoffeeChatWhereUniqueInput
+    data: XOR<CoffeeChatUpdateWithoutVenueInput, CoffeeChatUncheckedUpdateWithoutVenueInput>
+  }
+
+  export type CoffeeChatUpdateManyWithWhereWithoutVenueInput = {
+    where: CoffeeChatScalarWhereInput
+    data: XOR<CoffeeChatUpdateManyMutationInput, CoffeeChatUncheckedUpdateManyWithoutVenueInput>
   }
 
   export type UserDetailsCreateWithoutChatsAsUser1Input = {
@@ -25771,7 +29208,11 @@ export namespace Prisma {
   export type CoffeeChatCreateManyInviterInput = {
     id?: string
     inviteeId: string
+    purposeId: string
+    venueId: string
     scheduledAt?: Date | string | null
+    duration: number
+    personalMessage?: string | null
     status?: $Enums.CoffeeChatStatus
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -25780,7 +29221,11 @@ export namespace Prisma {
   export type CoffeeChatCreateManyInviteeInput = {
     id?: string
     inviterId: string
+    purposeId: string
+    venueId: string
     scheduledAt?: Date | string | null
+    duration: number
+    personalMessage?: string | null
     status?: $Enums.CoffeeChatStatus
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -26082,16 +29527,24 @@ export namespace Prisma {
   export type CoffeeChatUpdateWithoutInviterInput = {
     id?: StringFieldUpdateOperationsInput | string
     scheduledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    duration?: IntFieldUpdateOperationsInput | number
+    personalMessage?: NullableStringFieldUpdateOperationsInput | string | null
     status?: EnumCoffeeChatStatusFieldUpdateOperationsInput | $Enums.CoffeeChatStatus
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     invitee?: UserDetailsUpdateOneRequiredWithoutCoffeeChatsReceivedNestedInput
+    purpose?: CoffeeChatPurposeUpdateOneRequiredWithoutCoffeeChatsNestedInput
+    venue?: CoffeeChatVenueUpdateOneRequiredWithoutCoffeeChatsNestedInput
   }
 
   export type CoffeeChatUncheckedUpdateWithoutInviterInput = {
     id?: StringFieldUpdateOperationsInput | string
     inviteeId?: StringFieldUpdateOperationsInput | string
+    purposeId?: StringFieldUpdateOperationsInput | string
+    venueId?: StringFieldUpdateOperationsInput | string
     scheduledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    duration?: IntFieldUpdateOperationsInput | number
+    personalMessage?: NullableStringFieldUpdateOperationsInput | string | null
     status?: EnumCoffeeChatStatusFieldUpdateOperationsInput | $Enums.CoffeeChatStatus
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -26100,7 +29553,11 @@ export namespace Prisma {
   export type CoffeeChatUncheckedUpdateManyWithoutInviterInput = {
     id?: StringFieldUpdateOperationsInput | string
     inviteeId?: StringFieldUpdateOperationsInput | string
+    purposeId?: StringFieldUpdateOperationsInput | string
+    venueId?: StringFieldUpdateOperationsInput | string
     scheduledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    duration?: IntFieldUpdateOperationsInput | number
+    personalMessage?: NullableStringFieldUpdateOperationsInput | string | null
     status?: EnumCoffeeChatStatusFieldUpdateOperationsInput | $Enums.CoffeeChatStatus
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -26109,16 +29566,24 @@ export namespace Prisma {
   export type CoffeeChatUpdateWithoutInviteeInput = {
     id?: StringFieldUpdateOperationsInput | string
     scheduledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    duration?: IntFieldUpdateOperationsInput | number
+    personalMessage?: NullableStringFieldUpdateOperationsInput | string | null
     status?: EnumCoffeeChatStatusFieldUpdateOperationsInput | $Enums.CoffeeChatStatus
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     inviter?: UserDetailsUpdateOneRequiredWithoutCoffeeChatsSentNestedInput
+    purpose?: CoffeeChatPurposeUpdateOneRequiredWithoutCoffeeChatsNestedInput
+    venue?: CoffeeChatVenueUpdateOneRequiredWithoutCoffeeChatsNestedInput
   }
 
   export type CoffeeChatUncheckedUpdateWithoutInviteeInput = {
     id?: StringFieldUpdateOperationsInput | string
     inviterId?: StringFieldUpdateOperationsInput | string
+    purposeId?: StringFieldUpdateOperationsInput | string
+    venueId?: StringFieldUpdateOperationsInput | string
     scheduledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    duration?: IntFieldUpdateOperationsInput | number
+    personalMessage?: NullableStringFieldUpdateOperationsInput | string | null
     status?: EnumCoffeeChatStatusFieldUpdateOperationsInput | $Enums.CoffeeChatStatus
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -26127,7 +29592,11 @@ export namespace Prisma {
   export type CoffeeChatUncheckedUpdateManyWithoutInviteeInput = {
     id?: StringFieldUpdateOperationsInput | string
     inviterId?: StringFieldUpdateOperationsInput | string
+    purposeId?: StringFieldUpdateOperationsInput | string
+    venueId?: StringFieldUpdateOperationsInput | string
     scheduledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    duration?: IntFieldUpdateOperationsInput | number
+    personalMessage?: NullableStringFieldUpdateOperationsInput | string | null
     status?: EnumCoffeeChatStatusFieldUpdateOperationsInput | $Enums.CoffeeChatStatus
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -26468,6 +29937,110 @@ export namespace Prisma {
     bio?: NullableStringFieldUpdateOperationsInput | string | null
     availability?: NullableStringFieldUpdateOperationsInput | string | null
     reading?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type CoffeeChatCreateManyPurposeInput = {
+    id?: string
+    inviterId: string
+    inviteeId: string
+    venueId: string
+    scheduledAt?: Date | string | null
+    duration: number
+    personalMessage?: string | null
+    status?: $Enums.CoffeeChatStatus
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type CoffeeChatUpdateWithoutPurposeInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    scheduledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    duration?: IntFieldUpdateOperationsInput | number
+    personalMessage?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: EnumCoffeeChatStatusFieldUpdateOperationsInput | $Enums.CoffeeChatStatus
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    inviter?: UserDetailsUpdateOneRequiredWithoutCoffeeChatsSentNestedInput
+    invitee?: UserDetailsUpdateOneRequiredWithoutCoffeeChatsReceivedNestedInput
+    venue?: CoffeeChatVenueUpdateOneRequiredWithoutCoffeeChatsNestedInput
+  }
+
+  export type CoffeeChatUncheckedUpdateWithoutPurposeInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    inviterId?: StringFieldUpdateOperationsInput | string
+    inviteeId?: StringFieldUpdateOperationsInput | string
+    venueId?: StringFieldUpdateOperationsInput | string
+    scheduledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    duration?: IntFieldUpdateOperationsInput | number
+    personalMessage?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: EnumCoffeeChatStatusFieldUpdateOperationsInput | $Enums.CoffeeChatStatus
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type CoffeeChatUncheckedUpdateManyWithoutPurposeInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    inviterId?: StringFieldUpdateOperationsInput | string
+    inviteeId?: StringFieldUpdateOperationsInput | string
+    venueId?: StringFieldUpdateOperationsInput | string
+    scheduledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    duration?: IntFieldUpdateOperationsInput | number
+    personalMessage?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: EnumCoffeeChatStatusFieldUpdateOperationsInput | $Enums.CoffeeChatStatus
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type CoffeeChatCreateManyVenueInput = {
+    id?: string
+    inviterId: string
+    inviteeId: string
+    purposeId: string
+    scheduledAt?: Date | string | null
+    duration: number
+    personalMessage?: string | null
+    status?: $Enums.CoffeeChatStatus
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type CoffeeChatUpdateWithoutVenueInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    scheduledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    duration?: IntFieldUpdateOperationsInput | number
+    personalMessage?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: EnumCoffeeChatStatusFieldUpdateOperationsInput | $Enums.CoffeeChatStatus
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    inviter?: UserDetailsUpdateOneRequiredWithoutCoffeeChatsSentNestedInput
+    invitee?: UserDetailsUpdateOneRequiredWithoutCoffeeChatsReceivedNestedInput
+    purpose?: CoffeeChatPurposeUpdateOneRequiredWithoutCoffeeChatsNestedInput
+  }
+
+  export type CoffeeChatUncheckedUpdateWithoutVenueInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    inviterId?: StringFieldUpdateOperationsInput | string
+    inviteeId?: StringFieldUpdateOperationsInput | string
+    purposeId?: StringFieldUpdateOperationsInput | string
+    scheduledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    duration?: IntFieldUpdateOperationsInput | number
+    personalMessage?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: EnumCoffeeChatStatusFieldUpdateOperationsInput | $Enums.CoffeeChatStatus
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type CoffeeChatUncheckedUpdateManyWithoutVenueInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    inviterId?: StringFieldUpdateOperationsInput | string
+    inviteeId?: StringFieldUpdateOperationsInput | string
+    purposeId?: StringFieldUpdateOperationsInput | string
+    scheduledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    duration?: IntFieldUpdateOperationsInput | number
+    personalMessage?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: EnumCoffeeChatStatusFieldUpdateOperationsInput | $Enums.CoffeeChatStatus
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type MessageCreateManyChatInput = {

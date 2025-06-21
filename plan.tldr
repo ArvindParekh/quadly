@@ -28,7 +28,7 @@
 			"com.tldraw.shape.highlight": 1,
 			"com.tldraw.shape.embed": 4,
 			"com.tldraw.shape.image": 5,
-			"com.tldraw.shape.video": 3,
+			"com.tldraw.shape.video": 4,
 			"com.tldraw.binding.arrow": 1
 		}
 	},
@@ -36,10 +36,105 @@
 		{
 			"id": "pointer:pointer",
 			"typeName": "pointer",
-			"x": -96.9677405349828,
-			"y": 1944.1445713098447,
-			"lastActivityTimestamp": 1748293785604,
+			"x": -904.7830921976837,
+			"y": 2575.911274709378,
+			"lastActivityTimestamp": 1750460706899,
 			"meta": {}
+		},
+		{
+			"x": -1223.5609291630758,
+			"y": 1925.0889777620878,
+			"rotation": 0,
+			"isLocked": false,
+			"opacity": 1,
+			"meta": {},
+			"id": "shape:BP12rcGMUqnxgew9Eg9bp",
+			"type": "text",
+			"props": {
+				"color": "black",
+				"size": "m",
+				"w": 1251.953125,
+				"font": "draw",
+				"textAlign": "start",
+				"autoSize": true,
+				"scale": 1,
+				"richText": {
+					"type": "doc",
+					"content": [
+						{
+							"type": "paragraph",
+							"attrs": {
+								"dir": "auto"
+							},
+							"content": [
+								{
+									"type": "text",
+									"text": "current problems:"
+								}
+							]
+						},
+						{
+							"type": "bulletList",
+							"content": [
+								{
+									"type": "listItem",
+									"content": [
+										{
+											"type": "paragraph",
+											"attrs": {
+												"dir": "auto"
+											},
+											"content": [
+												{
+													"type": "text",
+													"text": "on accepting/declining a coffee chat, there's no change in ui, until the user refreshes"
+												}
+											]
+										}
+									]
+								},
+								{
+									"type": "listItem",
+									"content": [
+										{
+											"type": "paragraph",
+											"attrs": {
+												"dir": "auto"
+											},
+											"content": [
+												{
+													"type": "text",
+													"text": "remove the \"connections\" stat? or figure out a way to show the correct stat"
+												}
+											]
+										}
+									]
+								},
+								{
+									"type": "listItem",
+									"content": [
+										{
+											"type": "paragraph",
+											"attrs": {
+												"dir": "auto"
+											},
+											"content": [
+												{
+													"type": "text",
+													"text": "\"message\" or \"find people to connect with\" or \"schedule a coffee chat\" buttons are not patched"
+												}
+											]
+										}
+									]
+								}
+							]
+						}
+					]
+				}
+			},
+			"parentId": "page:page",
+			"index": "aaBbY",
+			"typeName": "shape"
 		},
 		{
 			"x": 913,
@@ -692,12 +787,109 @@
 			"typeName": "shape"
 		},
 		{
-			"x": 1565.3228930027183,
-			"y": -1085.2953311872068,
-			"z": 0.8662754360634491,
+			"x": 1497.2019955603103,
+			"y": -2039.4328560296003,
+			"z": 1.090444609942799,
 			"meta": {},
 			"id": "camera:page:page",
 			"typeName": "camera"
+		},
+		{
+			"x": -1352.8647490297544,
+			"y": 1277.0305472398059,
+			"rotation": 0,
+			"isLocked": false,
+			"opacity": 1,
+			"meta": {},
+			"id": "shape:XOxWbW8J4rtZDiyeU9UKJ",
+			"type": "text",
+			"props": {
+				"color": "black",
+				"size": "m",
+				"w": 58.875,
+				"font": "draw",
+				"textAlign": "start",
+				"autoSize": true,
+				"scale": 1,
+				"richText": {
+					"type": "doc",
+					"content": [
+						{
+							"type": "paragraph",
+							"attrs": {
+								"dir": "auto"
+							},
+							"content": [
+								{
+									"type": "text",
+									"text": "Chat"
+								}
+							]
+						}
+					]
+				}
+			},
+			"parentId": "page:page",
+			"index": "aY8B8",
+			"typeName": "shape"
+		},
+		{
+			"x": -3261.2074420169483,
+			"y": 695.2347486355295,
+			"rotation": 0,
+			"isLocked": false,
+			"opacity": 1,
+			"meta": {},
+			"id": "shape:p4xAGu02cSQDO_ALkcX7S",
+			"type": "geo",
+			"props": {
+				"w": 131.76573304170597,
+				"h": 118.58779996340974,
+				"geo": "ellipse",
+				"color": "black",
+				"labelColor": "black",
+				"fill": "none",
+				"dash": "draw",
+				"size": "m",
+				"font": "draw",
+				"align": "middle",
+				"verticalAlign": "middle",
+				"growY": 0,
+				"url": "",
+				"scale": 1,
+				"richText": {
+					"type": "doc",
+					"content": [
+						{
+							"type": "paragraph",
+							"attrs": {
+								"dir": "auto"
+							},
+							"content": [
+								{
+									"type": "text",
+									"text": "coffee"
+								}
+							]
+						},
+						{
+							"type": "paragraph",
+							"attrs": {
+								"dir": "auto"
+							},
+							"content": [
+								{
+									"type": "text",
+									"text": "chat"
+								}
+							]
+						}
+					]
+				}
+			},
+			"parentId": "page:page",
+			"index": "aN4D4",
+			"typeName": "shape"
 		},
 		{
 			"x": -549.1600262022193,
@@ -795,6 +987,283 @@
 			"typeName": "shape"
 		},
 		{
+			"x": -1327.789609915266,
+			"y": 2300.9889630066878,
+			"rotation": 0,
+			"isLocked": false,
+			"opacity": 1,
+			"meta": {},
+			"id": "shape:aTYscHc38BDvy4oIRf3uJ",
+			"type": "text",
+			"props": {
+				"color": "black",
+				"size": "m",
+				"w": 1066.625,
+				"font": "draw",
+				"textAlign": "start",
+				"autoSize": true,
+				"scale": 1,
+				"richText": {
+					"type": "doc",
+					"content": [
+						{
+							"type": "paragraph",
+							"attrs": {
+								"dir": "auto"
+							},
+							"content": [
+								{
+									"type": "text",
+									"text": "current things to do:"
+								}
+							]
+						},
+						{
+							"type": "bulletList",
+							"content": [
+								{
+									"type": "listItem",
+									"content": [
+										{
+											"type": "paragraph",
+											"attrs": {
+												"dir": "auto"
+											},
+											"content": [
+												{
+													"type": "text",
+													"text": "on profile settings, need a way to upload image from pc"
+												}
+											]
+										}
+									]
+								},
+								{
+									"type": "listItem",
+									"content": [
+										{
+											"type": "paragraph",
+											"attrs": {
+												"dir": "auto"
+											},
+											"content": [
+												{
+													"type": "text",
+													"text": "discrepancy between profile image on setting's page and profile image in navbar"
+												}
+											]
+										}
+									]
+								},
+								{
+									"type": "listItem",
+									"content": [
+										{
+											"type": "paragraph",
+											"attrs": {
+												"dir": "auto"
+											},
+											"content": [
+												{
+													"type": "text",
+													"text": "matches feature yet to be implemented"
+												}
+											]
+										}
+									]
+								},
+								{
+									"type": "listItem",
+									"content": [
+										{
+											"type": "paragraph",
+											"attrs": {
+												"dir": "auto"
+											},
+											"content": [
+												{
+													"type": "text",
+													"text": "discover feature yet to be implemented"
+												}
+											]
+										}
+									]
+								},
+								{
+									"type": "listItem",
+									"content": [
+										{
+											"type": "paragraph",
+											"attrs": {
+												"dir": "auto"
+											},
+											"content": [
+												{
+													"type": "text",
+													"text": "notifications feature yet to be implemented"
+												}
+											]
+										}
+									]
+								},
+								{
+									"type": "listItem",
+									"content": [
+										{
+											"type": "paragraph",
+											"attrs": {
+												"dir": "auto"
+											},
+											"content": [
+												{
+													"type": "text",
+													"text": "comments feature yet to be implemented"
+												}
+											]
+										}
+									]
+								},
+								{
+									"type": "listItem",
+									"content": [
+										{
+											"type": "paragraph",
+											"attrs": {
+												"dir": "auto"
+											},
+											"content": [
+												{
+													"type": "text",
+													"text": "search feature yet to be implemented"
+												}
+											]
+										}
+									]
+								},
+								{
+									"type": "listItem",
+									"content": [
+										{
+											"type": "paragraph",
+											"attrs": {
+												"dir": "auto"
+											},
+											"content": [
+												{
+													"type": "text",
+													"marks": [
+														{
+															"type": "highlight"
+														}
+													],
+													"text": "no \"src\" for images on homepage"
+												}
+											]
+										}
+									]
+								}
+							]
+						}
+					]
+				}
+			},
+			"parentId": "page:page",
+			"index": "ab7Ke",
+			"typeName": "shape"
+		},
+		{
+			"x": -3247.5494754648503,
+			"y": 791.4421769663023,
+			"rotation": 0,
+			"isLocked": false,
+			"opacity": 1,
+			"meta": {},
+			"id": "shape:Dr5BefpfIlsgGQeCmcKfc",
+			"type": "line",
+			"props": {
+				"dash": "draw",
+				"size": "m",
+				"color": "black",
+				"spline": "line",
+				"points": {
+					"a1": {
+						"id": "a1",
+						"index": "a1",
+						"x": 0,
+						"y": 0
+					},
+					"a23og": {
+						"id": "a23og",
+						"index": "a23og",
+						"x": -153.34171538038072,
+						"y": 91.88086589593661
+					}
+				},
+				"scale": 1
+			},
+			"parentId": "page:page",
+			"index": "aT7ID",
+			"typeName": "shape"
+		},
+		{
+			"x": -2959.4905445478594,
+			"y": 667.278844674496,
+			"rotation": 0,
+			"isLocked": false,
+			"opacity": 1,
+			"meta": {},
+			"id": "shape:gkDkjOQ30Vln0rjjoTAtw",
+			"type": "geo",
+			"props": {
+				"w": 114.23026570846184,
+				"h": 114.23026570846184,
+				"geo": "ellipse",
+				"color": "black",
+				"labelColor": "black",
+				"fill": "none",
+				"dash": "draw",
+				"size": "m",
+				"font": "draw",
+				"align": "middle",
+				"verticalAlign": "middle",
+				"growY": 0,
+				"url": "",
+				"scale": 1,
+				"richText": {
+					"type": "doc",
+					"content": [
+						{
+							"type": "paragraph",
+							"attrs": {
+								"dir": "auto"
+							},
+							"content": [
+								{
+									"type": "text",
+									"text": "user"
+								}
+							]
+						},
+						{
+							"type": "paragraph",
+							"attrs": {
+								"dir": "auto"
+							},
+							"content": [
+								{
+									"type": "text",
+									"text": "details"
+								}
+							]
+						}
+					]
+				}
+			},
+			"parentId": "page:page",
+			"index": "aO1Yu",
+			"typeName": "shape"
+		},
+		{
 			"x": 887,
 			"y": 590,
 			"rotation": 0,
@@ -832,12 +1301,12 @@
 			"typeName": "shape"
 		},
 		{
-			"editingShapeId": null,
+			"editingShapeId": "shape:aTYscHc38BDvy4oIRf3uJ",
 			"croppingShapeId": null,
 			"selectedShapeIds": [
-				"shape:fShRwa6XG5cN3mcD7OPFl"
+				"shape:aTYscHc38BDvy4oIRf3uJ"
 			],
-			"hoveredShapeId": null,
+			"hoveredShapeId": "shape:aTYscHc38BDvy4oIRf3uJ",
 			"erasingShapeIds": [],
 			"hintingShapeIds": [],
 			"focusedGroupId": null,
@@ -845,6 +1314,52 @@
 			"id": "instance_page_state:page:page",
 			"pageId": "page:page",
 			"typeName": "instance_page_state"
+		},
+		{
+			"x": -3497.2686515657833,
+			"y": 858.4630193500456,
+			"rotation": 0,
+			"isLocked": false,
+			"opacity": 1,
+			"meta": {},
+			"id": "shape:4IuKzwnzoWmcnWgQawBuR",
+			"type": "geo",
+			"props": {
+				"w": 106.80884474650172,
+				"h": 102.48946324840443,
+				"geo": "ellipse",
+				"color": "black",
+				"labelColor": "black",
+				"fill": "none",
+				"dash": "draw",
+				"size": "m",
+				"font": "draw",
+				"align": "middle",
+				"verticalAlign": "middle",
+				"growY": 0,
+				"url": "",
+				"scale": 1,
+				"richText": {
+					"type": "doc",
+					"content": [
+						{
+							"type": "paragraph",
+							"attrs": {
+								"dir": "auto"
+							},
+							"content": [
+								{
+									"type": "text",
+									"text": "venue"
+								}
+							]
+						}
+					]
+				}
+			},
+			"parentId": "page:page",
+			"index": "aR3yZ",
+			"typeName": "shape"
 		},
 		{
 			"x": 119,
@@ -884,8 +1399,8 @@
 			"typeName": "shape"
 		},
 		{
-			"x": -298.3045548582693,
-			"y": 2032.7278421905028,
+			"x": 497.5296697973595,
+			"y": 1461.6359711126727,
 			"rotation": 0,
 			"isLocked": false,
 			"opacity": 1,
@@ -974,6 +1489,105 @@
 			"typeName": "shape"
 		},
 		{
+			"x": -3337.56789137641,
+			"y": 655.4214363047092,
+			"rotation": 0,
+			"isLocked": false,
+			"opacity": 1,
+			"meta": {},
+			"id": "shape:1lf0GU-ZHz4P2VwCZZggf",
+			"type": "text",
+			"props": {
+				"color": "black",
+				"size": "m",
+				"w": 40.078125,
+				"font": "draw",
+				"textAlign": "start",
+				"autoSize": true,
+				"scale": 1,
+				"richText": {
+					"type": "doc",
+					"content": [
+						{
+							"type": "paragraph",
+							"attrs": {
+								"dir": "auto"
+							},
+							"content": [
+								{
+									"type": "text",
+									"text": "1:m"
+								}
+							]
+						}
+					]
+				}
+			},
+			"parentId": "page:page",
+			"index": "aW8Kp",
+			"typeName": "shape"
+		},
+		{
+			"x": -2975.83112116911,
+			"y": 1757.6548113369754,
+			"rotation": 0,
+			"isLocked": false,
+			"opacity": 1,
+			"meta": {},
+			"id": "shape:BdZXWdY16yDjcl_gxvEdd",
+			"type": "text",
+			"props": {
+				"color": "black",
+				"size": "m",
+				"w": 1374.84375,
+				"font": "draw",
+				"textAlign": "start",
+				"autoSize": true,
+				"scale": 1,
+				"richText": {
+					"type": "doc",
+					"content": [
+						{
+							"type": "paragraph",
+							"attrs": {
+								"dir": "auto"
+							},
+							"content": [
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "bold"
+										}
+									],
+									"text": "Themed or Topic-Based Chats:"
+								},
+								{
+									"type": "text",
+									"text": " Introduce the option for users to join or create Coffee Chats based on specific "
+								}
+							]
+						},
+						{
+							"type": "paragraph",
+							"attrs": {
+								"dir": "auto"
+							},
+							"content": [
+								{
+									"type": "text",
+									"text": "themes or topics, such as 'Study Groups,' 'Gaming,' or 'Movie Nights,' to foster more targeted connections."
+								}
+							]
+						}
+					]
+				}
+			},
+			"parentId": "page:page",
+			"index": "aL1ut",
+			"typeName": "shape"
+		},
+		{
 			"x": 159,
 			"y": 170,
 			"rotation": 0,
@@ -1008,6 +1622,52 @@
 			},
 			"parentId": "page:page",
 			"index": "a1",
+			"typeName": "shape"
+		},
+		{
+			"x": -3492.1512400797087,
+			"y": 618.2343284192325,
+			"rotation": 0,
+			"isLocked": false,
+			"opacity": 1,
+			"meta": {},
+			"id": "shape:J34V3JiRF3yc7R58g5Qrx",
+			"type": "geo",
+			"props": {
+				"w": 97,
+				"h": 96.22658252614974,
+				"geo": "ellipse",
+				"color": "black",
+				"labelColor": "black",
+				"fill": "none",
+				"dash": "draw",
+				"size": "m",
+				"font": "draw",
+				"align": "middle",
+				"verticalAlign": "middle",
+				"growY": 0,
+				"url": "",
+				"scale": 1,
+				"richText": {
+					"type": "doc",
+					"content": [
+						{
+							"type": "paragraph",
+							"attrs": {
+								"dir": "auto"
+							},
+							"content": [
+								{
+									"type": "text",
+									"text": "purpose"
+								}
+							]
+						}
+					]
+				}
+			},
+			"parentId": "page:page",
+			"index": "aS2E5",
 			"typeName": "shape"
 		},
 		{
@@ -1207,6 +1867,45 @@
 			"typeName": "shape"
 		},
 		{
+			"x": -3084.8955101625834,
+			"y": 691.4288026693331,
+			"rotation": 0,
+			"isLocked": false,
+			"opacity": 1,
+			"meta": {},
+			"id": "shape:cwIqIOV6rfImilbOcskrm",
+			"type": "text",
+			"props": {
+				"color": "black",
+				"size": "m",
+				"w": 46.609375,
+				"font": "draw",
+				"textAlign": "start",
+				"autoSize": true,
+				"scale": 1,
+				"richText": {
+					"type": "doc",
+					"content": [
+						{
+							"type": "paragraph",
+							"attrs": {
+								"dir": "auto"
+							},
+							"content": [
+								{
+									"type": "text",
+									"text": "2:m"
+								}
+							]
+						}
+					]
+				}
+			},
+			"parentId": "page:page",
+			"index": "aQ1Nx",
+			"typeName": "shape"
+		},
+		{
 			"x": 860,
 			"y": 129,
 			"rotation": 0,
@@ -1243,6 +1942,140 @@
 			},
 			"parentId": "page:page",
 			"index": "a612Q",
+			"typeName": "shape"
+		},
+		{
+			"x": -3358.675657866017,
+			"y": 805.6590683777949,
+			"rotation": 0,
+			"isLocked": false,
+			"opacity": 1,
+			"meta": {},
+			"id": "shape:oZVJQolR6ShbsnkLzkj8b",
+			"type": "text",
+			"props": {
+				"color": "black",
+				"size": "m",
+				"w": 40.078125,
+				"font": "draw",
+				"textAlign": "start",
+				"autoSize": true,
+				"scale": 1,
+				"richText": {
+					"type": "doc",
+					"content": [
+						{
+							"type": "paragraph",
+							"attrs": {
+								"dir": "auto"
+							},
+							"content": [
+								{
+									"type": "text",
+									"text": "1:m"
+								}
+							]
+						}
+					]
+				}
+			},
+			"parentId": "page:page",
+			"index": "aUAzK",
+			"typeName": "shape"
+		},
+		{
+			"x": -2895.7841323598036,
+			"y": 868.901588177803,
+			"rotation": 0,
+			"isLocked": false,
+			"opacity": 1,
+			"meta": {},
+			"id": "shape:1pEShz0YKRX5eeZMv9Jty",
+			"type": "text",
+			"props": {
+				"color": "black",
+				"size": "m",
+				"w": 533.484375,
+				"font": "draw",
+				"textAlign": "start",
+				"autoSize": true,
+				"scale": 1,
+				"richText": {
+					"type": "doc",
+					"content": [
+						{
+							"type": "paragraph",
+							"attrs": {
+								"dir": "auto"
+							},
+							"content": [
+								{
+									"type": "text",
+									"text": "create coffeeChat"
+								}
+							]
+						},
+						{
+							"type": "bulletList",
+							"content": [
+								{
+									"type": "listItem",
+									"content": [
+										{
+											"type": "paragraph",
+											"attrs": {
+												"dir": "auto"
+											},
+											"content": [
+												{
+													"type": "text",
+													"text": "create if not exists purpose"
+												}
+											]
+										}
+									]
+								},
+								{
+									"type": "listItem",
+									"content": [
+										{
+											"type": "paragraph",
+											"attrs": {
+												"dir": "auto"
+											},
+											"content": [
+												{
+													"type": "text",
+													"text": "create if not exists venue"
+												}
+											]
+										}
+									]
+								},
+								{
+									"type": "listItem",
+									"content": [
+										{
+											"type": "paragraph",
+											"attrs": {
+												"dir": "auto"
+											},
+											"content": [
+												{
+													"type": "text",
+													"text": "create coffeechat with status pending"
+												}
+											]
+										}
+									]
+								}
+							]
+						}
+					]
+				}
+			},
+			"parentId": "page:page",
+			"index": "aX2eu",
 			"typeName": "shape"
 		},
 		{
@@ -1529,6 +2362,79 @@
 			"typeName": "shape"
 		},
 		{
+			"x": -1320.5387940630847,
+			"y": 1875.8303797176388,
+			"rotation": 0,
+			"isLocked": false,
+			"opacity": 1,
+			"meta": {},
+			"id": "shape:xJXD2F76CNUjivVx3yc5i",
+			"type": "text",
+			"props": {
+				"color": "black",
+				"size": "m",
+				"w": 150.984375,
+				"font": "draw",
+				"textAlign": "start",
+				"autoSize": true,
+				"scale": 1,
+				"richText": {
+					"type": "doc",
+					"content": [
+						{
+							"type": "paragraph",
+							"attrs": {
+								"dir": "auto"
+							},
+							"content": [
+								{
+									"type": "text",
+									"text": "CoffeeChats"
+								}
+							]
+						}
+					]
+				}
+			},
+			"parentId": "page:page",
+			"index": "aZAFT",
+			"typeName": "shape"
+		},
+		{
+			"x": -3395.924657553559,
+			"y": 672.2453779661682,
+			"rotation": 0,
+			"isLocked": false,
+			"opacity": 1,
+			"meta": {},
+			"id": "shape:acL2mCikXhoD3jNZVEHgH",
+			"type": "line",
+			"props": {
+				"dash": "draw",
+				"size": "m",
+				"color": "black",
+				"spline": "line",
+				"points": {
+					"a1": {
+						"id": "a1",
+						"index": "a1",
+						"x": 0,
+						"y": 0
+					},
+					"a24gw": {
+						"id": "a24gw",
+						"index": "a24gw",
+						"x": 141.54619881265944,
+						"y": 55.25268286985386
+					}
+				},
+				"scale": 1
+			},
+			"parentId": "page:page",
+			"index": "aVCCH",
+			"typeName": "shape"
+		},
+		{
 			"x": 894,
 			"y": 550,
 			"rotation": 0,
@@ -1568,6 +2474,40 @@
 			"typeName": "shape"
 		},
 		{
+			"x": -2960.1113612093186,
+			"y": 715.7025442683005,
+			"rotation": 0,
+			"isLocked": false,
+			"opacity": 1,
+			"meta": {},
+			"id": "shape:dzeYnbYYrczD5ZKtgGIEv",
+			"type": "line",
+			"props": {
+				"dash": "draw",
+				"size": "m",
+				"color": "black",
+				"spline": "line",
+				"points": {
+					"a1": {
+						"id": "a1",
+						"index": "a1",
+						"x": 0,
+						"y": 0
+					},
+					"a23oz": {
+						"id": "a23oz",
+						"index": "a23oz",
+						"x": -171.96621522415126,
+						"y": 23.59103313544324
+					}
+				},
+				"scale": 1
+			},
+			"parentId": "page:page",
+			"index": "aP2YL",
+			"typeName": "shape"
+		},
+		{
 			"meta": {},
 			"id": "page:page",
 			"name": "Page 1",
@@ -1598,7 +2538,7 @@
 			"screenBounds": {
 				"x": 0,
 				"y": 0,
-				"w": 1620,
+				"w": 1682,
 				"h": 939
 			},
 			"insets": [
@@ -2097,12 +3037,51 @@
 											"content": [
 												{
 													"type": "text",
+													"text": "update time of conversation in /messages when new message is received"
+												}
+											]
+										}
+									]
+								},
+								{
+									"type": "listItem",
+									"content": [
+										{
+											"type": "paragraph",
+											"attrs": {
+												"dir": "auto"
+											},
+											"content": [
+												{
+													"type": "text",
 													"marks": [
 														{
 															"type": "highlight"
 														}
 													],
-													"text": "update time of conversation in /messages when new message is received"
+													"text": "when opening a chat at /messages/[chatId], by default show the view should be most scrolled-down to the latest message"
+												}
+											]
+										}
+									]
+								},
+								{
+									"type": "listItem",
+									"content": [
+										{
+											"type": "paragraph",
+											"attrs": {
+												"dir": "auto"
+											},
+											"content": [
+												{
+													"type": "text",
+													"marks": [
+														{
+															"type": "highlight"
+														}
+													],
+													"text": "also after sending a new message, scroll the scrollarea down to make the new message visible; same for the other person"
 												}
 											]
 										}
@@ -2115,6 +3094,146 @@
 			},
 			"parentId": "page:page",
 			"index": "aJ7it",
+			"typeName": "shape"
+		},
+		{
+			"x": -3129.266389796964,
+			"y": 1020.3449931001811,
+			"rotation": 0,
+			"isLocked": false,
+			"opacity": 1,
+			"meta": {},
+			"id": "shape:ShmST6GlNnC2X02YPg4Yd",
+			"type": "text",
+			"props": {
+				"color": "black",
+				"size": "m",
+				"w": 208.953125,
+				"font": "draw",
+				"textAlign": "start",
+				"autoSize": true,
+				"scale": 1,
+				"richText": {
+					"type": "doc",
+					"content": [
+						{
+							"type": "paragraph",
+							"attrs": {
+								"dir": "auto"
+							},
+							"content": [
+								{
+									"type": "text",
+									"text": "CoffeeChat:"
+								}
+							]
+						},
+						{
+							"type": "bulletList",
+							"content": [
+								{
+									"type": "listItem",
+									"content": [
+										{
+											"type": "paragraph",
+											"attrs": {
+												"dir": "auto"
+											},
+											"content": [
+												{
+													"type": "text",
+													"text": "id"
+												}
+											]
+										}
+									]
+								},
+								{
+									"type": "listItem",
+									"content": [
+										{
+											"type": "paragraph",
+											"attrs": {
+												"dir": "auto"
+											},
+											"content": [
+												{
+													"type": "text",
+													"text": "inviterId"
+												}
+											]
+										}
+									]
+								},
+								{
+									"type": "listItem",
+									"content": [
+										{
+											"type": "paragraph",
+											"attrs": {
+												"dir": "auto"
+											},
+											"content": [
+												{
+													"type": "text",
+													"text": "inviteeId"
+												}
+											]
+										}
+									]
+								},
+								{
+									"type": "listItem",
+									"content": [
+										{
+											"type": "paragraph",
+											"attrs": {
+												"dir": "auto"
+											},
+											"content": [
+												{
+													"type": "text",
+													"text": "scheduledAt"
+												}
+											]
+										}
+									]
+								},
+								{
+									"type": "listItem",
+									"content": [
+										{
+											"type": "paragraph",
+											"attrs": {
+												"dir": "auto"
+											},
+											"content": [
+												{
+													"type": "text",
+													"text": "status"
+												}
+											]
+										}
+									]
+								},
+								{
+									"type": "listItem",
+									"content": [
+										{
+											"type": "paragraph",
+											"attrs": {
+												"dir": "auto"
+											}
+										}
+									]
+								}
+							]
+						}
+					]
+				}
+			},
+			"parentId": "page:page",
+			"index": "aMB7j",
 			"typeName": "shape"
 		}
 	]

@@ -1,6 +1,7 @@
 // server actions for user
 "use server"
 
+import { imageStorage } from "@/lib/image-storage";
 import { prisma } from "@/lib/prisma"
 import { revalidatePath } from "next/cache";
 import { z } from "zod";
@@ -11,7 +12,7 @@ const UserDetailsSchema = z.object({
     bio: z.string().optional(),
     department: z.string().optional(),
     year: z.string().optional(),
-    profilePicture: z.string().url().optional().or(z.literal("")), 
+    profilePicture: z.instanceof(File).optional(), 
     reading: z.string().optional(),
     availability: z.string().optional(),
     interests: z.string().optional(),
@@ -37,6 +38,11 @@ export async function updateUserDetails(prevState: any, formData: FormData) {
     });
     
     try {
+        let profilePictureUrl = undefined;
+        if (profilePicture) {
+            const { url } = await imageStorage.uploadImage(userId, profilePicture);
+            profilePictureUrl = url;
+        }
         const updatedUserDetails = await prisma.userDetails.upsert({
             where: {
                 userId: userId
@@ -46,7 +52,7 @@ export async function updateUserDetails(prevState: any, formData: FormData) {
                 bio,
                 department,
                 year,
-                profilePicture: profilePicture || "",
+                profilePicture: profilePictureUrl,
                 reading,
                 availability,
                 interests: {
@@ -60,7 +66,7 @@ export async function updateUserDetails(prevState: any, formData: FormData) {
                 bio: bio || "",
                 department: department || "",
                 year: year || "",
-                profilePicture: profilePicture || "",
+                profilePicture: profilePictureUrl,
                 reading: reading || "",
                 availability: availability || "",
                 interests: {

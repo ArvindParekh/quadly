@@ -5,7 +5,7 @@ import { Card, CardContent, CardHeader } from "@/components/ui/card"
 export default function LoadingUserProfile() {
   return (
     <div className="min-h-screen bg-background">
-      <DashboardHeader />
+      {/* <DashboardHeader /> */}
 
       <main className="container py-6">
         {/* Profile Header Skeleton */}

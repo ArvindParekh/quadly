@@ -230,8 +230,16 @@ model CoffeeChat {
   inviteeId String
   invitee UserDetails @relation("Invitee", fields: [inviteeId], references: [id])
 
+  purposeId String
+  purpose CoffeeChatPurpose @relation(fields: [purposeId], references: [id])
+
+  venueId String
+  venue CoffeeChatVenue @relation(fields: [venueId], references: [id])
+
   scheduledAt DateTime?
   // location String?
+  duration Int // in minutes
+  personalMessage String?
   status CoffeeChatStatus @default(PENDING)
 
   createdAt DateTime @default(now())
@@ -239,6 +247,48 @@ model CoffeeChat {
 
   // allow duplicate [inviterId, inviteeId] fields here?
 }
+
+model CoffeeChatPurpose {
+  id String @id @default(uuid())
+
+  purposeName String @unique
+  description String
+  timeLimit Int // in minutes
+
+  coffeeChats CoffeeChat[]
+}
+
+model CoffeeChatVenue {
+  id String @id @default(uuid())
+
+  venueName String @unique
+  noiseLevel CoffeeChatVenueNoiseLevel
+  description String
+  location String
+  rating Int // out of 5
+  tags CoffeeChatVenueTags[]
+
+  coffeeChats CoffeeChat[]  
+}
+
+enum CoffeeChatVenueNoiseLevel {
+  QUIET
+  MODERATE
+  LIVELY
+}
+
+enum CoffeeChatVenueTags {
+  OUTDOOR
+  SCENIC
+  FRESH_AIR
+  WIFI
+  OUTLETS
+  WHITEBOARDS
+  PRIVATE
+  FOOD
+  COMFORTABLE_SEATING
+  BOOKS  
+} 
 
 enum CoffeeChatStatus {
   PENDING

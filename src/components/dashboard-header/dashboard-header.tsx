@@ -7,10 +7,18 @@ import Link from "next/link"
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
 import SearchComponent from "./searchComponent"
 import DropdownMenuComponent from "./dropdownMenu"
-import { User } from "@/generated/prisma"
 import { usePathname } from "next/navigation"
+import { Prisma } from "@/generated/prisma"
 
-export default function DashboardHeader({user}: {user: User}) {
+export default function DashboardHeader({user}: {user: Prisma.UserGetPayload<{
+  include: {
+    userDetails: {
+      include: {
+        interests: true,
+      }
+    }
+  }
+}>}) {
 
   const activePage = usePathname();
 
@@ -38,6 +46,9 @@ export default function DashboardHeader({user}: {user: User}) {
                 </Link>
                 <Link href="/messages" className="text-sm font-medium hover:text-pink-500 transition-colors">
                   Messages
+                </Link>
+                <Link href="/coffee-chats" className="text-sm font-medium hover:text-pink-500 transition-colors">
+                  Coffee Chats
                 </Link>
                 <Link href="/settings" className="text-sm font-medium hover:text-pink-500 transition-colors">
                   Settings
@@ -75,6 +86,12 @@ export default function DashboardHeader({user}: {user: User}) {
               Messages
             </Link>
             <Link
+              href="/coffee-chats"
+              className="text-sm font-medium text-muted-foreground transition-colors hover:text-pink-500"
+            >
+              Coffee Chats
+            </Link>
+            <Link
               href="/discover"
               className={`text-sm font-medium  transition-colors hover:text-pink-500 ${activePage === "/discover" ? "text-foreground" : "text-muted-foreground"}`}
             >
@@ -94,7 +111,7 @@ export default function DashboardHeader({user}: {user: User}) {
             </Button>
           </Link>
 
-          <DropdownMenuComponent name={user.username} email={user.email} />
+          <DropdownMenuComponent name={user.username} email={user.email} profilePicture={user.userDetails?.profilePicture || null} />
         </div>
       </div>
     </header>

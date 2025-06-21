@@ -1,88 +1,106 @@
-## About the project:
-- Quadly
-	- Problem: “It’s hard to make friends in grad school.”
-	- A private, university-only site where students post:
-		- What they’re reading, watching, working on
-		- “I'd love to talk to someone about…” posts
-		- Low-pressure questions or small thoughts
-	
-		You don’t message directly. Instead, the system:
-		- Pairs people with overlapping interests
-		- Lets them react (e.g., "I'd love to chat about this!")
-		- Suggests gentle nudges to meet (e.g., “grab coffee this week?”)
-		- Implements a leaderboard
-	
-		Think: Subtle matchmaking for friendships.
+# Quadly - University Connect
 
+## About the Project
+Quadly is a university-only platform designed to solve the common problem: "It's hard to make friends in graduate school." Our platform enables students to connect based on shared interests, activities, and academic pursuits in a low-pressure environment.
 
-# Quadly MVP Context
+### Core Concept
+Students can post about:
+- What they're currently reading or watching
+- Topics they'd love to discuss with others
+- Academic projects they're working on
+- Low-pressure thoughts or questions
 
-**Problem**: It’s hard to make friends in grad school.
+Instead of direct messaging, Quadly's intelligent system:
+- Pairs people with overlapping interests using our similarity algorithm
+- Enables reactions to posts to express interest in topics
+- Suggests gentle ways to connect (like "grab coffee this week?")
+- Includes a leaderboard for engagement
 
-**Solution**: A university-only platform where students can post their current activities and interests (books, hobbies, thoughts) and get matched with others who share similar interests. The app provides low-pressure ways to start conversations (e.g., “let’s grab coffee this week?”).
+Think of it as subtle matchmaking for friendships in the university environment.
 
-## Key Features:
-- **User Authentication**: Use NextAuth.js for university-based or email-based login.
-- **Profile Creation**: Users set up profiles with interests, books they're reading, hobbies, etc.
-- **Interest Posts**: Users can post about what they’re reading, working on, or looking for discussions about.
-- **Matchmaking Algorithm**: Pairs users based on shared interests and suggests gentle nudges to connect (e.g., “grab coffee”).
-- **Reactions & Interaction**: Users can react to posts and indicate interest in connecting (e.g., "I'd love to chat about this").
-- **Database**: Prisma with PostgreSQL to store users, posts, and matches.
+## Features
 
-## Tech Stack:
-- **Next.js** (App Router, SSR, SSG)
-- **Prisma** (Database ORM)
-- **PostgreSQL** (Database)
-- **TailwindCSS** (Styling)
-- **TypeScript** (Type Safety)
-- **NextAuth.js** (Authentication)
+### User Experience
+- **University-based Authentication**: Secure login system
+- **Rich User Profiles**: Share your interests, department, year, and current readings
+- **Interest-based Posts**: Share what you're working on or thinking about
+- **Smart Matching**: Our algorithm connects you with like-minded peers
+- **Coffee Chat System**: Low-pressure way to schedule meetups
+- **Direct Messaging**: Once connected, communicate directly
+- **Events**: Discover and join campus events
 
-## User Flow:
-1. Users sign up and create profiles.
-2. They post their current activities or thoughts.
-3. The app suggests potential matches based on shared interests.
-4. Users can interact by reacting to posts or suggesting a low-pressure meetup (e.g., grab coffee).
+### Technical Features
+- **Real-time Notifications**: Stay updated on interactions
+- **Similarity Scoring**: Advanced algorithm to find your best matches
+- **Comment System**: Engage in discussions on posts
+- **Tagging System**: Categorize posts for better discovery
 
-## Tools & Resources:
-- **React Query / SWR**: For data fetching
-- **Tailwind UI**: For UI components
-- **Prisma Studio**: For managing database
-- **Zod / Yup**: For form validation
+## Tech Stack
 
+### Frontend
+- **Next.js 15** with App Router
+- **React 19**
+- **TypeScript**
+- **TailwindCSS 4** for styling
+- **Radix UI and Shadcn UI** components
 
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+### Backend
+- **Next.js Server Actions**
+- **Prisma ORM** with PostgreSQL
+- **NextAuth.js** for authentication
+- **WebSockets** for real-time features
+
+### Infrastructure
+- **Docker** and **Docker Compose** for development environment
+- **PostgreSQL** database
+- **Redis** for caching and real-time features
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
+- Node.js (latest LTS version)
+- pnpm
+- Docker and Docker Compose (for containerized development)
 
+### Development Setup
+
+#### Using Docker (Recommended, but being updated as the project grows - might break)
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+# Clone the repository
+git clone <repository-url>
+cd quadly-university-connect
+
+# Start the Docker containers
+docker-compose up
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+#### Local Development
+```bash
+# Install dependencies
+pnpm install
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+# Set up your .env file with database connection
+# Example: DATABASE_URL=postgresql://postgres:postgres@localhost:5432/postgres
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+# Run database migrations
+pnpm prisma migrate dev
 
-## Learn More
+# Start the development server with Turbopack
+pnpm dev
+```
 
-To learn more about Next.js, take a look at the following resources:
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the application.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Project Structure
+- `/src/app`: Next.js application routes
+- `/src/components`: Reusable UI components
+- `/src/actions`: Server actions for data mutations
+- `/src/lib`: Utility functions and shared code
+- `/prisma`: Database schema and migrations
+- `/socket`: WebSocket server for real-time features
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Contributing
+Contributions are welcome! Please feel free to submit a Pull Request.
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## License
+This project is private and not licensed for public use.
