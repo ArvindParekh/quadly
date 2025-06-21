@@ -53,7 +53,10 @@ export default function ProfilePage({
    userId: string;
 }) {
    const [state, formAction] = useActionState(updateUserDetails, null);
-   const [stateInterests, formActionInterests] = useActionState(createInterests, null);
+   const [stateInterests, formActionInterests] = useActionState(
+      createInterests,
+      null
+   );
 
    // open a file picker to upload profile image
    const [profileImage, setProfileImage] = useState<File | null>(null);
@@ -80,7 +83,7 @@ export default function ProfilePage({
       reading: userDetails?.reading,
       availability: userDetails?.availability,
       interests: getInitialSelectedInterests(userDetails),
-      profilePicture: userDetails?.profilePicture,
+      // profilePicture: userDetails?.profilePicture,
    });
 
    const allInterests = [
@@ -129,7 +132,6 @@ export default function ProfilePage({
    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
       e.preventDefault();
 
-
       // Compare formData with userDetails
       const updateFormData = new FormData(e.target as HTMLFormElement);
       // if profileImage is not null, add it to the form data
@@ -144,7 +146,9 @@ export default function ProfilePage({
       // Parse interests from both updatedData and formData for comparison
       let updatedInterests: string[] = [];
       try {
-         updatedInterests = JSON.parse(updatedDataWithoutUserId.interests as string);
+         updatedInterests = JSON.parse(
+            updatedDataWithoutUserId.interests as string
+         );
       } catch {
          updatedInterests = [];
       }
@@ -153,8 +157,14 @@ export default function ProfilePage({
          // formData.interests could be array of objects or strings
          if (typeof formData.interests[0] === "string") {
             formInterests = formData.interests as string[];
-         } else if (typeof formData.interests[0] === "object" && formData.interests[0] !== null && "interestName" in formData.interests[0]) {
-            formInterests = (formData.interests as any[]).map(i => i.interestName);
+         } else if (
+            typeof formData.interests[0] === "object" &&
+            formData.interests[0] !== null &&
+            "interestName" in formData.interests[0]
+         ) {
+            formInterests = (formData.interests as any[]).map(
+               (i) => i.interestName
+            );
          }
       }
 
@@ -165,16 +175,26 @@ export default function ProfilePage({
          formInterests.some((i) => !updatedInterests.includes(i));
 
       // Compare other fields
-      const fieldsToCompare = ["name", "department", "year", "bio", "reading", "availability", "profilePicture"];
+      const fieldsToCompare = [
+         "name",
+         "department",
+         "year",
+         "bio",
+         "reading",
+         "availability",
+      ];
       let otherFieldsChanged = false;
       for (const field of fieldsToCompare) {
-         if ((updatedDataWithoutUserId as any)[field] !== (formData as any)[field]) {
+         if (
+            (updatedDataWithoutUserId as any)[field] !==
+            (formData as any)[field]
+         ) {
             otherFieldsChanged = true;
             break;
          }
       }
 
-      if (!otherFieldsChanged && !interestsChanged) {
+      if (!otherFieldsChanged && !interestsChanged && !profileImage) {
          toast.error("No changes made");
          return;
       }
@@ -200,8 +220,10 @@ export default function ProfilePage({
             bio: userDetails?.bio,
             reading: userDetails?.reading,
             availability: userDetails?.availability,
-            interests: userDetails?.interests.map((interest) => interest.interestName) as string[],
-            profilePicture: userDetails?.profilePicture,
+            interests: userDetails?.interests.map(
+               (interest) => interest.interestName
+            ) as string[],
+            // profilePicture: userDetails?.profilePicture,
          });
       }
    }, [state, userDetails, stateInterests]);
@@ -216,7 +238,9 @@ export default function ProfilePage({
 
    useEffect(() => {
       if (stateInterests?.success) {
-         toast.success(stateInterests.message || "Interests updated successfully!");
+         toast.success(
+            stateInterests.message || "Interests updated successfully!"
+         );
       } else if (stateInterests?.error) {
          toast.error(stateInterests.error || "Failed to update interests.");
       }
@@ -251,7 +275,11 @@ export default function ProfilePage({
          <main className='container py-6 mx-auto'>
             <form onSubmit={handleSubmit}>
                <Input type='hidden' name='userId' value={userId} />
-               <Input type='hidden' name='interests' value={JSON.stringify(selectedInterests)} />
+               <Input
+                  type='hidden'
+                  name='interests'
+                  value={JSON.stringify(selectedInterests)}
+               />
                <div className='max-w-3xl mx-auto space-y-6'>
                   <div className='flex items-center justify-between'>
                      <h1 className='text-3xl font-bold tracking-tight'>
@@ -371,18 +399,18 @@ export default function ProfilePage({
                               Interests
                            </label>
                            <div className='flex flex-wrap gap-2'>
-                              {selectedInterests.map(
-                                 (interest) => (
-                                    <InterestTag
-                                       key={interest}
-                                       name={interest}
-                                       color='pink'
-                                       removable={true}
-                                       interactive={true}
-                                       onRemove={() => handleRemoveInterest(interest)}
-                                    />
-                                 )
-                              )}
+                              {selectedInterests.map((interest) => (
+                                 <InterestTag
+                                    key={interest}
+                                    name={interest}
+                                    color='pink'
+                                    removable={true}
+                                    interactive={true}
+                                    onRemove={() =>
+                                       handleRemoveInterest(interest)
+                                    }
+                                 />
+                              ))}
                               <Dialog>
                                  <DialogTrigger asChild>
                                     <Button
@@ -521,7 +549,6 @@ export default function ProfilePage({
                                           variant='outline'
                                           onClick={() => {
                                              /* Close dialog */
-                                             
                                           }}
                                        >
                                           Cancel
@@ -579,26 +606,40 @@ export default function ProfilePage({
                            </label>
                            <div className='flex flex-wrap gap-2'>
                               <ToggleGroup type='multiple'>
-                                 
-                                    {/* <Badge
+                                 {/* <Badge
                                        variant='outline'
                                        className='bg-pink-500/10 border-pink-500/20 hover:bg-pink-500/20 cursor-pointer'
                                  > */}
-                                    <ToggleGroupItem value='coffee' className='rounded-full px-2.5 py-0.5 text-xs font-semibold border text-pink-700 bg-pink-500/10 border-pink-500/20 hover:bg-pink-500/20 data-[state=on]:bg-pink-500 data-[state=on]:text-white data-[state=on]:border-pink-500 cursor-pointer'>
+                                 <ToggleGroupItem
+                                    value='coffee'
+                                    className='rounded-full px-2.5 py-0.5 text-xs font-semibold border text-pink-700 bg-pink-500/10 border-pink-500/20 hover:bg-pink-500/20 data-[state=on]:bg-pink-500 data-[state=on]:text-white data-[state=on]:border-pink-500 cursor-pointer'
+                                 >
                                     Coffee Chats
-                                    </ToggleGroupItem>
+                                 </ToggleGroupItem>
                                  {/* </Badge> */}
-                                 <ToggleGroupItem value='study' className='rounded-full px-2.5 py-0.5 text-xs font-semibold border text-yellow-700 bg-yellow-400/10 border-yellow-400/20 hover:bg-yellow-400/20 data-[state=on]:bg-yellow-400 data-[state=on]:text-black data-[state=on]:border-yellow-400 cursor-pointer'>
-                                       Study Groups
+                                 <ToggleGroupItem
+                                    value='study'
+                                    className='rounded-full px-2.5 py-0.5 text-xs font-semibold border text-yellow-700 bg-yellow-400/10 border-yellow-400/20 hover:bg-yellow-400/20 data-[state=on]:bg-yellow-400 data-[state=on]:text-black data-[state=on]:border-yellow-400 cursor-pointer'
+                                 >
+                                    Study Groups
                                  </ToggleGroupItem>
-                                 <ToggleGroupItem value='collaboration' className='rounded-full px-2.5 py-0.5 text-xs font-semibold border text-blue-700 bg-blue-500/10 border-blue-500/20 hover:bg-blue-500/20 data-[state=on]:bg-blue-500 data-[state=on]:text-white data-[state=on]:border-blue-500 cursor-pointer'>
-                                       Project Collaboration
+                                 <ToggleGroupItem
+                                    value='collaboration'
+                                    className='rounded-full px-2.5 py-0.5 text-xs font-semibold border text-blue-700 bg-blue-500/10 border-blue-500/20 hover:bg-blue-500/20 data-[state=on]:bg-blue-500 data-[state=on]:text-white data-[state=on]:border-blue-500 cursor-pointer'
+                                 >
+                                    Project Collaboration
                                  </ToggleGroupItem>
-                                 <ToggleGroupItem value='mentorship' className='rounded-full px-2.5 py-0.5 text-xs font-semibold border text-pink-700 bg-pink-500/10 border-pink-500/20 hover:bg-pink-500/20 data-[state=on]:bg-pink-500 data-[state=on]:text-white data-[state=on]:border-pink-500 cursor-pointer'>
-                                       Mentorship
+                                 <ToggleGroupItem
+                                    value='mentorship'
+                                    className='rounded-full px-2.5 py-0.5 text-xs font-semibold border text-pink-700 bg-pink-500/10 border-pink-500/20 hover:bg-pink-500/20 data-[state=on]:bg-pink-500 data-[state=on]:text-white data-[state=on]:border-pink-500 cursor-pointer'
+                                 >
+                                    Mentorship
                                  </ToggleGroupItem>
-                                 <ToggleGroupItem value='book-discussions' className='rounded-full px-2.5 py-0.5 text-xs font-semibold border text-yellow-700 bg-yellow-400/10 border-yellow-400/20 hover:bg-yellow-400/20 data-[state=on]:bg-yellow-400 data-[state=on]:text-black data-[state=on]:border-yellow-400 cursor-pointer'>
-                                       Book Discussions
+                                 <ToggleGroupItem
+                                    value='book-discussions'
+                                    className='rounded-full px-2.5 py-0.5 text-xs font-semibold border text-yellow-700 bg-yellow-400/10 border-yellow-400/20 hover:bg-yellow-400/20 data-[state=on]:bg-yellow-400 data-[state=on]:text-black data-[state=on]:border-yellow-400 cursor-pointer'
+                                 >
+                                    Book Discussions
                                  </ToggleGroupItem>
                               </ToggleGroup>
                            </div>
@@ -644,16 +685,20 @@ export default function ProfilePage({
 }
 
 // Helper to extract interest names as string[]
-function getInitialSelectedInterests(userDetails: UserDetailsClient | null): string[] {
+function getInitialSelectedInterests(
+   userDetails: UserDetailsClient | null
+): string[] {
    console.log(userDetails?.interests);
    if (
       userDetails?.interests &&
       Array.isArray(userDetails.interests) &&
       userDetails.interests.length > 0 &&
-      typeof userDetails.interests[0] === 'object' &&
-      'interestName' in userDetails.interests[0]
+      typeof userDetails.interests[0] === "object" &&
+      "interestName" in userDetails.interests[0]
    ) {
-      return (userDetails.interests as any[]).map((userInterest) => userInterest.interestName);
+      return (userDetails.interests as any[]).map(
+         (userInterest) => userInterest.interestName
+      );
    }
    return [];
 }

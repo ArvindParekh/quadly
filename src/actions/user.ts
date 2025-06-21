@@ -40,7 +40,8 @@ export async function updateUserDetails(prevState: any, formData: FormData) {
     try {
         let profilePictureUrl = undefined;
         if (profilePicture) {
-            profilePictureUrl = await imageStorage.uploadImage(userId, profilePicture);
+            const { url } = await imageStorage.uploadImage(userId, profilePicture);
+            profilePictureUrl = url;
         }
         const updatedUserDetails = await prisma.userDetails.upsert({
             where: {
