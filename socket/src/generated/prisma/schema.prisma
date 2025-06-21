@@ -16,7 +16,7 @@ generator client_socket {
 
 datasource db {
   provider = "postgresql"
-  url      = env("DATABASE_URL")
+  url      = env("DIRECT_DATABASE_URL")
 }
 
 // I'm trying to do a overhaul of the schema to make it more efficient and scalable.
@@ -324,6 +324,16 @@ model Message {
 
   createdAt DateTime @default(now())
   // no updatedAt yet
+}
+
+model Waitlist {
+  id String @id @default(uuid())
+
+  email     String   @unique
+  interests String[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
 
 // todo: add indexes on frequently queried fields

@@ -36,9 +36,9 @@
 		{
 			"id": "pointer:pointer",
 			"typeName": "pointer",
-			"x": -1186.6429703276679,
-			"y": 2606.940252447063,
-			"lastActivityTimestamp": 1750479310557,
+			"x": -4754.707736801129,
+			"y": 832.9543640885825,
+			"lastActivityTimestamp": 1750520860762,
 			"meta": {}
 		},
 		{
@@ -787,9 +787,9 @@
 			"typeName": "shape"
 		},
 		{
-			"x": 1599.547861124164,
-			"y": -2092.6021502638346,
-			"z": 0.9760116893326463,
+			"x": 5426.8027888643355,
+			"y": -448.7552317628578,
+			"z": 0.986467610443959,
 			"meta": {},
 			"id": "camera:page:page",
 			"typeName": "camera"
@@ -1323,12 +1323,12 @@
 			"typeName": "shape"
 		},
 		{
-			"editingShapeId": "shape:aTYscHc38BDvy4oIRf3uJ",
+			"editingShapeId": "shape:4zZ2ZAr3FPg7ZPsdM14hH",
 			"croppingShapeId": null,
 			"selectedShapeIds": [
-				"shape:aTYscHc38BDvy4oIRf3uJ"
+				"shape:4zZ2ZAr3FPg7ZPsdM14hH"
 			],
-			"hoveredShapeId": "shape:aTYscHc38BDvy4oIRf3uJ",
+			"hoveredShapeId": null,
 			"erasingShapeIds": [],
 			"hintingShapeIds": [],
 			"focusedGroupId": null,
@@ -1644,6 +1644,105 @@
 			},
 			"parentId": "page:page",
 			"index": "a1",
+			"typeName": "shape"
+		},
+		{
+			"x": -4854.052103471105,
+			"y": 603.8540899312902,
+			"rotation": 0,
+			"isLocked": false,
+			"opacity": 1,
+			"meta": {},
+			"id": "shape:4zZ2ZAr3FPg7ZPsdM14hH",
+			"type": "text",
+			"props": {
+				"color": "black",
+				"size": "m",
+				"w": 133.296875,
+				"font": "draw",
+				"textAlign": "start",
+				"autoSize": true,
+				"scale": 1,
+				"richText": {
+					"type": "doc",
+					"content": [
+						{
+							"type": "paragraph",
+							"attrs": {
+								"dir": "auto"
+							},
+							"content": [
+								{
+									"type": "text",
+									"text": "Waitlist:"
+								}
+							]
+						},
+						{
+							"type": "paragraph",
+							"attrs": {
+								"dir": "auto"
+							},
+							"content": [
+								{
+									"type": "text",
+									"text": "id"
+								}
+							]
+						},
+						{
+							"type": "paragraph",
+							"attrs": {
+								"dir": "auto"
+							},
+							"content": [
+								{
+									"type": "text",
+									"text": "email"
+								}
+							]
+						},
+						{
+							"type": "paragraph",
+							"attrs": {
+								"dir": "auto"
+							},
+							"content": [
+								{
+									"type": "text",
+									"text": "createdAt"
+								}
+							]
+						},
+						{
+							"type": "paragraph",
+							"attrs": {
+								"dir": "auto"
+							},
+							"content": [
+								{
+									"type": "text",
+									"text": "updatedAt"
+								}
+							]
+						},
+						{
+							"type": "paragraph",
+							"attrs": {
+								"dir": "auto"
+							},
+							"content": [
+								{
+									"type": "text",
+									"text": "interests"
+								}
+							]
+						}
+					]
+				}
+			},
+			"parentId": "page:page",
+			"index": "ac17J",
 			"typeName": "shape"
 		},
 		{
@@ -2560,8 +2659,8 @@
 			"screenBounds": {
 				"x": 0,
 				"y": 0,
-				"w": 1233,
-				"h": 659
+				"w": 1682,
+				"h": 939
 			},
 			"insets": [
 				false,
