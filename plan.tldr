@@ -36,9 +36,9 @@
 		{
 			"id": "pointer:pointer",
 			"typeName": "pointer",
-			"x": -904.7830921976837,
-			"y": 2575.911274709378,
-			"lastActivityTimestamp": 1750460706899,
+			"x": -4754.707736801129,
+			"y": 832.9543640885825,
+			"lastActivityTimestamp": 1750520860762,
 			"meta": {}
 		},
 		{
@@ -787,9 +787,9 @@
 			"typeName": "shape"
 		},
 		{
-			"x": 1497.2019955603103,
-			"y": -2039.4328560296003,
-			"z": 1.090444609942799,
+			"x": 5426.8027888643355,
+			"y": -448.7552317628578,
+			"z": 0.986467610443959,
 			"meta": {},
 			"id": "camera:page:page",
 			"typeName": "camera"
@@ -1032,6 +1032,11 @@
 											"content": [
 												{
 													"type": "text",
+													"marks": [
+														{
+															"type": "highlight"
+														}
+													],
 													"text": "on profile settings, need a way to upload image from pc"
 												}
 											]
@@ -1157,6 +1162,23 @@
 														}
 													],
 													"text": "no \"src\" for images on homepage"
+												}
+											]
+										}
+									]
+								},
+								{
+									"type": "listItem",
+									"content": [
+										{
+											"type": "paragraph",
+											"attrs": {
+												"dir": "auto"
+											},
+											"content": [
+												{
+													"type": "text",
+													"text": "liking feature implementation is weird"
 												}
 											]
 										}
@@ -1301,12 +1323,12 @@
 			"typeName": "shape"
 		},
 		{
-			"editingShapeId": "shape:aTYscHc38BDvy4oIRf3uJ",
+			"editingShapeId": "shape:4zZ2ZAr3FPg7ZPsdM14hH",
 			"croppingShapeId": null,
 			"selectedShapeIds": [
-				"shape:aTYscHc38BDvy4oIRf3uJ"
+				"shape:4zZ2ZAr3FPg7ZPsdM14hH"
 			],
-			"hoveredShapeId": "shape:aTYscHc38BDvy4oIRf3uJ",
+			"hoveredShapeId": null,
 			"erasingShapeIds": [],
 			"hintingShapeIds": [],
 			"focusedGroupId": null,
@@ -1622,6 +1644,105 @@
 			},
 			"parentId": "page:page",
 			"index": "a1",
+			"typeName": "shape"
+		},
+		{
+			"x": -4854.052103471105,
+			"y": 603.8540899312902,
+			"rotation": 0,
+			"isLocked": false,
+			"opacity": 1,
+			"meta": {},
+			"id": "shape:4zZ2ZAr3FPg7ZPsdM14hH",
+			"type": "text",
+			"props": {
+				"color": "black",
+				"size": "m",
+				"w": 133.296875,
+				"font": "draw",
+				"textAlign": "start",
+				"autoSize": true,
+				"scale": 1,
+				"richText": {
+					"type": "doc",
+					"content": [
+						{
+							"type": "paragraph",
+							"attrs": {
+								"dir": "auto"
+							},
+							"content": [
+								{
+									"type": "text",
+									"text": "Waitlist:"
+								}
+							]
+						},
+						{
+							"type": "paragraph",
+							"attrs": {
+								"dir": "auto"
+							},
+							"content": [
+								{
+									"type": "text",
+									"text": "id"
+								}
+							]
+						},
+						{
+							"type": "paragraph",
+							"attrs": {
+								"dir": "auto"
+							},
+							"content": [
+								{
+									"type": "text",
+									"text": "email"
+								}
+							]
+						},
+						{
+							"type": "paragraph",
+							"attrs": {
+								"dir": "auto"
+							},
+							"content": [
+								{
+									"type": "text",
+									"text": "createdAt"
+								}
+							]
+						},
+						{
+							"type": "paragraph",
+							"attrs": {
+								"dir": "auto"
+							},
+							"content": [
+								{
+									"type": "text",
+									"text": "updatedAt"
+								}
+							]
+						},
+						{
+							"type": "paragraph",
+							"attrs": {
+								"dir": "auto"
+							},
+							"content": [
+								{
+									"type": "text",
+									"text": "interests"
+								}
+							]
+						}
+					]
+				}
+			},
+			"parentId": "page:page",
+			"index": "ac17J",
 			"typeName": "shape"
 		},
 		{

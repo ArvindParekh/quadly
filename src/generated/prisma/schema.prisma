@@ -328,6 +328,16 @@ model Message {
   // no updatedAt yet
 }
 
+model Waitlist {
+  id String @id @default(uuid())
+
+  email     String   @unique
+  interests String[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
 // todo: add indexes on frequently queried fields
 // todo: repetitive relation names in UserDetails
 // todo: keep comment counts in sync with comments - using something called prisma.$transaction() in code
