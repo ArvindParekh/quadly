@@ -4,11 +4,10 @@
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
-    "build": "next build",
+    "build": "prisma generate && prisma migrate deploy && next build",
     "start": "next start",
     "lint": "next lint",
-    "dev:docker": "prisma migrate dev && next dev --turbopack --port 3000",
-    "postinstall": "prisma generate"
+    "dev:docker": "prisma migrate dev && next dev --turbopack --port 3000"
   },
   "dependencies": {
     "@radix-ui/react-accordion": "^1.2.10",
