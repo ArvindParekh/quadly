@@ -37,8 +37,8 @@ export default function HomePage() {
         {/* Hero Section */}
         <section className="container mx-auto px-4 py-20 text-center">
           <div className="max-w-4xl mx-auto space-y-8">
-            <div className="inline-flex items-center gap-2 bg-primary/10 text-primary px-4 py-2 rounded-full text-sm font-medium">
-              <Sparkles className="w-4 h-4" />
+            <div className="inline-flex items-center gap-2 bg-primary/10 px-4 py-2 rounded-full text-sm font-medium text-pink-500 border border-pink-500/20 ">
+              <Sparkles className="w-4 h-4 " />
               Coming Soon to Your Campus
             </div>
 
@@ -64,11 +64,11 @@ export default function HomePage() {
                   <ArrowRight className="ml-2 w-5 h-5" />
                 </Button>
               </Link>
-              <Link href="/dashboard">
+              {/* <Link href="/dashboard">
                 <Button size="lg" variant="outline" className="text-lg px-8 py-6">
                   Explore Demo
                 </Button>
-              </Link>
+              </Link> */}
             </div>
 
             <div className="flex items-center justify-center gap-6 text-sm text-muted-foreground">
@@ -240,7 +240,7 @@ export default function HomePage() {
               </Badge>
             </div>
             <div className="text-sm text-muted-foreground">
-              © 2024 Quadly. Growing connections, one coffee chat at a time.
+              © 2025 Quadly. Growing connections, one coffee chat at a time.
             </div>
           </div>
         </footer>

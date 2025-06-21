@@ -44,7 +44,7 @@ export function ShareProfileModal({ user }: ShareProfileModalProps) {
   const [showQR, setShowQR] = useState(false)
 
   const profileUrl = `${typeof window !== "undefined" ? window.location.origin : ""}/user/${user.username}`
-  const shareText = `Check out ${user.name}'s profile on Social Garden! 🌱✨`
+  const shareText = `Check out ${user.name}'s profile on Quadly! 🌱✨`
 
   const copyToClipboard = async () => {
     try {
@@ -66,7 +66,7 @@ export function ShareProfileModal({ user }: ShareProfileModalProps) {
       facebook: `https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}`,
       linkedin: `https://www.linkedin.com/sharing/share-offsite/?url=${encodedUrl}`,
       instagram: `https://www.instagram.com/`, // Instagram doesn't support direct URL sharing
-      email: `mailto:?subject=${encodeURIComponent(`Check out ${user.name} on Social Garden`)}&body=${encodedText}%0A%0A${encodedUrl}`,
+      email: `mailto:?subject=${encodeURIComponent(`Check out ${user.name} on Quadly`)}&body=${encodedText}%0A%0A${encodedUrl}`,
       whatsapp: `https://wa.me/?text=${encodedText}%20${encodedUrl}`,
       telegram: `https://t.me/share/url?url=${encodedUrl}&text=${encodedText}`,
     }

@@ -373,9 +373,13 @@ export default function WaitlistPage() {
                   {/* Bottom CTA */}
                   <div className='mt-16 text-center'>
                      <div className='inline-flex items-center gap-2 text-sm text-muted-foreground'>
-                        <span>Want to see what we're building?</span>
+                        {/* <span>Want to see what we're building?</span>
                         <Link href='/' className='text-primary hover:underline'>
                            Explore the demo
+                        </Link> */}
+                        <span>We're excited to see you inside! 🎉</span>
+                        <Link href='/' className='text-primary hover:underline'>
+                           Back to Home
                         </Link>
                      </div>
                   </div>

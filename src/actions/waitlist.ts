@@ -1,25 +1,48 @@
 "use server"
 
 import { prisma } from "@/lib/prisma";
+import { z } from "zod";
+
+const waitlistSchema = z.object({
+    userEmail: z.string().email(),
+    userInterests: z.array(z.string()),
+})
 
 export async function addToWaitlist(email: string, interests: string[]) {
+
+    const { success, data } = waitlistSchema.safeParse({ userEmail: email, userInterests: interests });
+
+    if (!success) {
+        return {
+            success: false,
+            message: "Invalid email or interests",
+        }
+    }
+
+    const { userEmail, userInterests } = data;
+
     const waitlist = await prisma.waitlist.findMany();
 
-    const userExists = waitlist.some((user) => user.email === email);
+    let userExists = false;
+    if (waitlist){
+        userExists = waitlist.some((user) => user.email === userEmail);
+    } else {
+        userExists = false;
+    }
 
     if (userExists) {
         return {
             success: false,
-            message: "You're already on the waitlist!",
-            position: waitlist.findIndex((user) => user.email === email) + 1,
+            message: "We get it, you're excited! But you're already on the waitlist 🎉",
+            position: waitlist.findIndex((user) => user.email === userEmail) + 1,
         }
     }
     
     try {
         await prisma.waitlist.create({
             data: {
-                email,
-                interests,
+                email: userEmail,
+                interests: userInterests,
             }
         })
 
@@ -37,3 +60,5 @@ export async function addToWaitlist(email: string, interests: string[]) {
         }
     }
 }
+
+// preferably add a get endpoint in a server component to get waitlist stats, like number of people signed up, once you have a decent number of people.
