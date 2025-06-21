@@ -314,6 +314,7 @@ export default function ProfilePage({
                                  </AvatarFallback>
                               </Avatar>
                               <Button
+                                 type='button'
                                  size='icon'
                                  className='absolute bottom-0 right-0 h-8 w-8 rounded-full bg-gradient-to-r from-pink-500 to-yellow-400 text-black hover:opacity-90'
                                  onClick={handleProfileImageChange}
