@@ -1,6 +1,6 @@
 "use client";
 
-import { Prisma } from "@/generated/prisma";
+import { Prisma } from "@prisma/client";
 import Link from "next/link";
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
 import { Separator } from "../ui/separator";

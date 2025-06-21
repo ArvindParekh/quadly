@@ -12,7 +12,7 @@ import { Separator } from "@/components/ui/separator"
 import Link from "next/link"
 import { useEffect, useState, useCallback } from "react";
 import { useSession } from "next-auth/react";
-import { Chat, Prisma } from "@/generated/prisma";
+import { Chat, Prisma } from "@prisma/client";
 import ChatArea from "./chat-area";
 import ConversationList from "./conversation-list";
 

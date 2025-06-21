@@ -2,7 +2,7 @@
 import { z } from "zod";
 import { prisma } from "../prisma";
 import { createPostSchema, updatePostSchema } from "../zod/posts";
-import { Post, Prisma } from "@/generated/prisma";
+import { Post, Prisma } from "@prisma/client";
 
     
 // infer type

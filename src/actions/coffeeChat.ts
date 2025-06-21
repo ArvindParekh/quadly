@@ -3,7 +3,7 @@
 import { z } from "zod";
 import { prisma } from "@/lib/prisma";
 import { createCoffeeChatSchema } from "@/lib/zod/coffeeChat";
-import { CoffeeChatVenueNoiseLevel, CoffeeChatVenueTags } from "@/generated/prisma/client";
+import { CoffeeChatVenueNoiseLevel, CoffeeChatVenueTags } from "@prisma/client";
 
 const parseVenueTags = (tags: string[]) => {
     const tagRecord: Record<string, string> = {

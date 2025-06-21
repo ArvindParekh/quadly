@@ -21,7 +21,7 @@ import {
    RotateCcw,
 } from "lucide-react";
 import type { CoffeeChatInvitation } from "@/lib/coffee-chat/types";
-import { Prisma } from "@/generated/prisma";
+import { Prisma } from "@prisma/client";
 import { toast } from "sonner";
 import { Toaster } from "@/components/ui/sonner";
 import { acceptCoffeeChat, declineCoffeeChat } from "@/actions/coffeeChat";

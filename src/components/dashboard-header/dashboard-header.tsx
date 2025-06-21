@@ -8,7 +8,7 @@ import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
 import SearchComponent from "./searchComponent"
 import DropdownMenuComponent from "./dropdownMenu"
 import { usePathname } from "next/navigation"
-import { Prisma } from "@/generated/prisma"
+import { Prisma } from "@prisma/client"
 
 export default function DashboardHeader({user}: {user: Prisma.UserGetPayload<{
   include: {

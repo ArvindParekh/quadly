@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import ChatArea from "@/components/messages/chat-area";
-import { Prisma } from "@/generated/prisma";
+import { Prisma } from "@prisma/client";
 import { getWsClient } from "@/lib/wsClient";
 
 export default function ChatPageClient({ 

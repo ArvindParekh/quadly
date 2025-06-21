@@ -1,5 +1,5 @@
 "use client";
-import { Message, Prisma } from "@/generated/prisma";
+import { Message, Prisma } from "@prisma/client";
 import { Card, CardContent, CardHeader } from "../ui/card";
 import { Button } from "../ui/button";
 import { ImagePlus, Paperclip, Send } from "lucide-react";
