@@ -6,13 +6,13 @@
 
 generator client {
   provider = "prisma-client-js"
-  output   = "../src/generated/prisma"
-  binaryTargets = ["native", "rhel-openssl-3.0.x", "debian-openssl-3.0.x"]
+  output   = "../src/generated/prisma/client"
+  binaryTargets = ["native", "rhel-openssl-3.0.x"]
 }
 
 generator client_socket {
   provider = "prisma-client-js"
-  output   = "../socket/src/generated/prisma"
+  output   = "../socket/src/generated/prisma/client"
 }
 
 datasource db {
