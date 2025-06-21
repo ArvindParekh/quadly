@@ -12,7 +12,7 @@ generator client {
 
 generator client_socket {
   provider = "prisma-client-js"
-  // output   = "../socket/src/generated/prisma/client"
+  output   = "../socket/src/generated/prisma/client"
 }
 
 datasource db {

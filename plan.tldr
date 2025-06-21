@@ -36,9 +36,9 @@
 		{
 			"id": "pointer:pointer",
 			"typeName": "pointer",
-			"x": -4754.707736801129,
-			"y": 832.9543640885825,
-			"lastActivityTimestamp": 1750520860762,
+			"x": -620.6230855118754,
+			"y": 2640.4124276243074,
+			"lastActivityTimestamp": 1750532634772,
 			"meta": {}
 		},
 		{
@@ -787,9 +787,9 @@
 			"typeName": "shape"
 		},
 		{
-			"x": 5426.8027888643355,
-			"y": -448.7552317628578,
-			"z": 0.986467610443959,
+			"x": 2287.7559913140785,
+			"y": -2215.978750887753,
+			"z": 0.7515897476674617,
 			"meta": {},
 			"id": "camera:page:page",
 			"typeName": "camera"
@@ -1183,6 +1183,40 @@
 											]
 										}
 									]
+								},
+								{
+									"type": "listItem",
+									"content": [
+										{
+											"type": "paragraph",
+											"attrs": {
+												"dir": "auto"
+											},
+											"content": [
+												{
+													"type": "text",
+													"text": "when creating post, not able to add \"looking for\""
+												}
+											]
+										}
+									]
+								},
+								{
+									"type": "listItem",
+									"content": [
+										{
+											"type": "paragraph",
+											"attrs": {
+												"dir": "auto"
+											},
+											"content": [
+												{
+													"type": "text",
+													"text": "user still sees a coffee-chat button on his own post"
+												}
+											]
+										}
+									]
 								}
 							]
 						}
@@ -1323,12 +1357,12 @@
 			"typeName": "shape"
 		},
 		{
-			"editingShapeId": "shape:4zZ2ZAr3FPg7ZPsdM14hH",
+			"editingShapeId": "shape:aTYscHc38BDvy4oIRf3uJ",
 			"croppingShapeId": null,
 			"selectedShapeIds": [
-				"shape:4zZ2ZAr3FPg7ZPsdM14hH"
+				"shape:aTYscHc38BDvy4oIRf3uJ"
 			],
-			"hoveredShapeId": null,
+			"hoveredShapeId": "shape:aTYscHc38BDvy4oIRf3uJ",
 			"erasingShapeIds": [],
 			"hintingShapeIds": [],
 			"focusedGroupId": null,
@@ -2660,7 +2694,7 @@
 				"x": 0,
 				"y": 0,
 				"w": 1682,
-				"h": 939
+				"h": 659
 			},
 			"insets": [
 				false,
