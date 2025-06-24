@@ -1,5 +1,6 @@
 "use server";
 
+import { DatabaseAgoliaSyncManager } from "@/lib/algolia-search";
 import { sendNotification } from "@/lib/notification";
 import { prisma } from "@/lib/prisma";
 import { createPostSchema } from "@/lib/zod/posts";
@@ -79,6 +80,7 @@ export const likePost = async (postId: string, userDetailsId: string) => {
    //  userName?: string;
    //  userAvatar?: string;
    //  actionUrl?: string; 
+
       const liker = await prisma.userDetails.findUnique({
          where: {
             id: userDetailsId
@@ -95,6 +97,10 @@ export const likePost = async (postId: string, userDetailsId: string) => {
          userAvatar: liker?.profilePicture || undefined,
          // actionUrl: `/post/${postId}`,
       })
+
+      // const syncManager = DatabaseAgoliaSyncManager.getInstance(prisma, process.env.NEXT_PUBLIC_ALGOLIA_APP_ID as string, process.env.ALGOLIA_API_KEY as string);
+      // await syncManager.syncAllPosts();
+      // await syncManager.syncAllUsers();
 
 
    } catch (error) {
