@@ -4,6 +4,7 @@ import { z } from "zod";
 import { prisma } from "@/lib/prisma";
 import { createCoffeeChatSchema } from "@/lib/zod/coffeeChat";
 import { CoffeeChatVenueNoiseLevel, CoffeeChatVenueTags } from "@/generated/prisma/client";
+import { sendNotification } from "@/lib/notification";
 
 const parseVenueTags = (tags: string[]) => {
     const tagRecord: Record<string, string> = {
@@ -113,7 +114,25 @@ export async function createCoffeeChat(data: z.infer<typeof createCoffeeChatSche
               duration,
               personalMessage,
             }
-          });          
+          });
+          
+          // send notification of invitation for a coffee chat to invitee
+          const inviter = await prisma.userDetails.findUnique({
+            where: {
+                id: inviterId
+            }
+          })
+
+          await sendNotification({
+            subscriberId: inviteeId,
+            type: "coffeeChat",
+            title: "Coffee Chat Invitation",
+            description: `${inviter?.name} has invited you to a coffee chat`,
+            userId: inviterId,
+            userName: inviter?.name,
+            userAvatar: inviter?.profilePicture || undefined,
+            actionUrl: `/coffee-chats`,
+          })
 
         return {
             success: true,
@@ -140,6 +159,30 @@ export async function acceptCoffeeChat(coffeeChatId: string) {
       }
     })
 
+    // send notification to inviter that coffee chat has been accepted
+    const invitee = await prisma.userDetails.findUnique({
+      where: {
+        id: coffeeChat.inviteeId
+      }
+    })
+
+    const inviter = await prisma.userDetails.findUnique({
+      where: {
+        id: coffeeChat.inviterId
+      }
+    })
+
+    await sendNotification({
+      subscriberId: inviter?.id as string,
+      type: "coffeeChat",
+      title: "Coffee Chat Accepted",
+      description: `${invitee?.name} has accepted your coffee chat invitation`,
+      userId: invitee?.id as string,
+      userName: invitee?.name || "",
+      userAvatar: invitee?.profilePicture || undefined,
+      actionUrl: `/coffee-chats`,
+    })
+
     return {
       success: true,
       message: "Coffee chat accepted",
@@ -164,6 +207,30 @@ export async function declineCoffeeChat(coffeeChatId: string) {
       data: {
         status: "REJECTED"
       }
+    })
+
+    // send notification to inviter that coffee chat has been declined
+    const invitee = await prisma.userDetails.findUnique({
+      where: {
+        id: coffeeChat.inviteeId
+      }
+    })
+
+    const inviter = await prisma.userDetails.findUnique({
+      where: {
+        id: coffeeChat.inviterId
+      }
+    })
+    
+    await sendNotification({
+      subscriberId: inviter?.id as string,
+      type: "coffeeChat",
+      title: "Coffee Chat Declined",
+      description: `${invitee?.name} has declined your coffee chat invitation`,
+      userId: invitee?.id as string,
+      userName: invitee?.name || "",
+      userAvatar: invitee?.profilePicture || undefined,
+      actionUrl: `/coffee-chats`,
     })
 
     return {

@@ -5,7 +5,7 @@ import { PrismaClient } from "@/generated/prisma/client"
 
 export const novu = new Novu({secretKey: process.env.NOVU_SECRET_KEY});
 
-export type NotificationType = "like" | "comment" | "match" | "message" | "event" | "system"
+export type NotificationType = "like" | "comment" | "match" | "message" | "coffeeChat" | "system"
 
 interface NotificationPayload {
     subscriberId: string;
