@@ -68,7 +68,7 @@ export default function InterestPost({
       });
 
       try {
-         await likePost(postId, userId);
+         await likePost(postId, userDetailsId);
       } catch (error) {
          console.error("Error liking post", error);
          updateOptimistic(!optimisticState.isLiked);

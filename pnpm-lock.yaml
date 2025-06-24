@@ -8,6 +8,9 @@ importers:
 
   .:
     dependencies:
+      '@novu/api':
+        specifier: ^1.4.0
+        version: 1.4.0(zod@3.24.4)
       '@novu/nextjs':
         specifier: ^3.5.0
         version: 3.5.0(next@15.3.2(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
@@ -476,6 +479,16 @@ packages:
   '@nolyfill/is-core-module@1.0.39':
     resolution: {integrity: sha512-nn5ozdjYQpUCZlWGuxcJY/KpxkWQs4DcbMCmKojjyrYDEAGy4Ce19NN4v5MduafTwJlbKc99UA8YhSVqq9yPZA==}
     engines: {node: '>=12.4.0'}
+
+  '@novu/api@1.4.0':
+    resolution: {integrity: sha512-DB+XU1XI+8RKDFRWr8lGht+65EEHn7jT5ON4R/FiDX+Ssu2Etgh1BKpwyvnZiCA0S14hjUO2t+YhyiR7Ow/53Q==}
+    hasBin: true
+    peerDependencies:
+      '@modelcontextprotocol/sdk': '>=1.5.0 <1.10.0'
+      zod: '>= 3'
+    peerDependenciesMeta:
+      '@modelcontextprotocol/sdk':
+        optional: true
 
   '@novu/js@3.5.0':
     resolution: {integrity: sha512-7m1PG+6xswsQj48nX+oYXtxZCUn6olZquwbYoqru9E4kA6TwFczjeLRcNvOP0iF2Y/UKwxfM/GXeXX+x7xX+zA==}
@@ -3313,6 +3326,10 @@ snapshots:
       fastq: 1.19.1
 
   '@nolyfill/is-core-module@1.0.39': {}
+
+  '@novu/api@1.4.0(zod@3.24.4)':
+    dependencies:
+      zod: 3.24.4
 
   '@novu/js@3.5.0':
     dependencies:

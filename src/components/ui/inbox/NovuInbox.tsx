@@ -4,15 +4,20 @@
 // Learn more: https://docs.novu.co/platform/inbox/overview
 
 import { Inbox } from '@novu/nextjs';
+import { useSession } from 'next-auth/react';
 
-// import { dark } from '@novu/nextjs/themes'; => To enable dark theme support, uncomment this line.
+import { dark } from '@novu/nextjs/themes'; 
+// => To enable dark theme support, uncomment this line.
 
 // Get the subscriber ID based on the auth provider
 // const getSubscriberId = () => {};
 
-export default function NovuInbox() {
-  // Temporary subscriber ID - replace with your actual subscriber ID from your auth system
-  const temporarySubscriberId = "685ad542d80e094dc6b2aadd";
+export default function NovuInbox({ subscriberId }: { subscriberId: string }) {
+  const { data: session } = useSession();
+  
+  if (!subscriberId) {
+    return <div>Loading...</div>;
+  }
 
   const tabs = [
     // Basic tab with no filtering (shows all notifications)
@@ -48,16 +53,20 @@ export default function NovuInbox() {
     },
   ];
 
+  console.log(subscriberId);
+
   return <Inbox 
     applicationIdentifier={process.env.NEXT_PUBLIC_NOVU_APP_ID as string}
-    subscriberId={temporarySubscriberId} 
-    tabs={tabs} 
+    subscriberId={subscriberId}
+    // tabs={tabs} 
     appearance={{
       // To enable dark theme support, uncomment the following line:
-      // baseTheme: dark,
+      baseTheme: dark,
       variables: {
         // The `variables` object allows you to define global styling properties that can be reused throughout the inbox.
         // Learn more: https://docs.novu.co/platform/inbox/react/styling#variables
+        colorPrimary: '#ec4899', // Pink-500
+        colorSecondary: '#fbbf24', // Yellow-400
       },
       elements: {
         // The `elements` object allows you to define styles for these components.

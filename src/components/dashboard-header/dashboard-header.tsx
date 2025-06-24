@@ -9,6 +9,7 @@ import SearchComponent from "./searchComponent"
 import DropdownMenuComponent from "./dropdownMenu"
 import { usePathname } from "next/navigation"
 import { Prisma } from "@/generated/prisma"
+import Inbox from "@/components/ui/inbox/NovuInbox"
 
 export default function DashboardHeader({user}: {user: Prisma.UserGetPayload<{
   include: {
@@ -103,13 +104,15 @@ export default function DashboardHeader({user}: {user: Prisma.UserGetPayload<{
         <div className="flex items-center gap-4">
           <SearchComponent />
 
-          <Link href="/notifications" className="relative">
+          {/* <Link href="/notifications" className="relative">
             <Button variant="ghost" size="icon">
               <Bell className="h-5 w-5" />
               <span className="sr-only">Notifications</span>
               <span className="absolute right-1 top-1 h-2 w-2 rounded-full bg-pink-500"></span>
             </Button>
-          </Link>
+          </Link> */}
+
+          <Inbox subscriberId={user.userDetails?.id || ""} />
 
           <DropdownMenuComponent name={user.username} email={user.email} profilePicture={user.userDetails?.profilePicture || null} />
         </div>

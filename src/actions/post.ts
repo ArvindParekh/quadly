@@ -1,5 +1,6 @@
 "use server";
 
+import { sendNotification } from "@/lib/notification";
 import { prisma } from "@/lib/prisma";
 import { createPostSchema } from "@/lib/zod/posts";
 import { revalidatePath } from "next/cache";
@@ -45,7 +46,7 @@ export const createPost = async (prevState: any, formData: FormData) => {
    }
 };
 
-export const likePost = async (postId: string, userId: string) => {
+export const likePost = async (postId: string, userDetailsId: string) => {
    try{
       const reaction = await prisma.reaction.upsert({
          where: {
@@ -61,6 +62,41 @@ export const likePost = async (postId: string, userId: string) => {
             likes: 1
          }
       })
+
+      const post = await prisma.post.findUnique({
+         where: {
+            id: postId
+         }
+      })
+
+      // to send notification to post author, I need information about the liker
+      // interface NotificationPayload {
+   //  subscriberId: string;
+   //  type: NotificationType;
+   //  title: string;
+   //  description: string;
+   //  userId?: string;
+   //  userName?: string;
+   //  userAvatar?: string;
+   //  actionUrl?: string; 
+      const liker = await prisma.userDetails.findUnique({
+         where: {
+            id: userDetailsId
+         }
+      })
+
+      await sendNotification({
+         subscriberId: post?.authorId || "",
+         type: "like",
+         title: "Post Liked",
+         description: `${liker?.name} liked your post about ${post?.content.substring(0, 50)}...`,
+         userId: liker?.id,
+         userName: liker?.name,
+         userAvatar: liker?.profilePicture || undefined,
+         // actionUrl: `/post/${postId}`,
+      })
+
+
    } catch (error) {
       console.log("error", error);
       return { error: error, success: false, message: "Error liking post" };
